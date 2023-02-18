@@ -316,5 +316,5 @@ Use this space to list resources you find helpful and would like to give credit 
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com
-[Node.js]: https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=node&logoColor=green
+[Node.js]: https://img.shields.io/badge/node.js-000000?style=for-the-badge&logo=nodedotjs&logoColor=339933
 [Node-url]: https://nodejs.org/
