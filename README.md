@@ -142,17 +142,6 @@ This section should list any major frameworks/libraries used to bootstrap your p
 | Jeremiah Ruvalcaba |             |             |             |             |             |             |             |
 | Christian Jackson  |             |             |             |             |             |             |             |
 | Dylan Burns        |             |             | 10am - 4pm  |             | 12pm - 10pm | 10am - 4pm  |             |
-                                       
-### Software Stack Poll
-#### [MEAN vs MERN vs MEVN vs LAMP](https://www.arkasoftwares.com/blog/mean-vs-mern-vs-mevn-vs-lamp-stack-for-development/)                                       
-|        Name        |     MERN    |    MEAN     |     LAMP    |  No Preference  |                                  
-| ------------------ | ----------- | ----------- | ----------- | --------------- |
-| Tim Polich         |             |             |             |        X        |
-| Kevin Aziz         |             |             |             |        X        |
-| Wallace            |             |             |             |        X        |
-| Jeremiah Ruvalcaba |             |             |      X      |                 |
-| Christian Jackson  |             |             |             |                 |
-| Dylan Burns        |      X      |             |             |                 |
 
                                   
 ## Milestones                              
