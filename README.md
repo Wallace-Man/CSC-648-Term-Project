@@ -92,7 +92,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [![React][React.js]][React-url]
 * [![MySQL][MySQL.com]][MySQL-url]
 * [![Express][Express.js]][Express-url]
-* [![GoogleCloud][Google.com]][Google-url]
+* [![Google][Google.com]][Google-url]
 
 <!-- 
 * [![Next][Next.js]][Next-url]                                  
@@ -318,5 +318,5 @@ Use this space to list resources you find helpful and would like to give credit 
 [MySQL-url]: https://www.mysql.com
 [Express.js]: https://img.shields.io/badge/Express-EEE?style=for-the-badge&logo=express&logoColor=000000
 [Express-url]: https://expressjs.com  
-[Google.com]: https://img.shields.io/badge/Google-000000?style=for-the-badge&logo=googlecloud&logoColor=4285F4
+[Google.com]: https://img.shields.io/badge/GoogleCloud-000000?style=for-the-badge&logo=googlecloud&logoColor=4285F4
 [Google-url]: https://cloud.google.com
