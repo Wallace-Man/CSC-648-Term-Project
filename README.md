@@ -125,7 +125,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 | ----------------------- | -------------------------------- | -------------------------- | ------------- | ----------------------------- |
 | Tim Polich              | tpolich@sfsu.edu                 | MrTim11#0713               | (818)913-1657 |       Front End Lead          |
 | Kevin Aziz              | kaziz2@mail.sfsu.edu             | Kevin Brother #4099        |               |       Back End Lead           |
-| Wallace Man             | wman2@sfsu.edu                   | GoldenSushi#9071           |               |       Core Team Member        |
+| Wallace Man             | wman2@sfsu.edu                   | GoldenSushi#9071           | (626)623-9033 |       Core Team Member        |
 | Jeremiah Ruvalcaba      | jruvalcaba@mail.sfsu.edu         | jSR#3842                   |               |       Core Team Member        |
 | Christian Jackson       | cjackson21@sfsu.edu              | cjack513#1450              |               |       Github Lead             |
 | Dragutin Petkovic       | petkovic@sfsu.edu                |                            |               |       CEO                     |
