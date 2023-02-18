@@ -319,5 +319,5 @@ Use this space to list resources you find helpful and would like to give credit 
 [JQuery-url]: https://jquery.com
 [Node.js]: https://img.shields.io/badge/node.js-233056?style=for-the-badge&logo=nodedotjs&logoColor=339933
 [Node-url]: https://nodejs.org/
-[MySQL.com]: https://img.shields.io/badge/MySQL-F7F7F7?style=for-the-badge&logo=mysql&logoColor=4479A1?logoWidth=200
+[MySQL.com]: https://img.shields.io/badge/MySQL-F7F7F7??style=social&logo=appveyor&logo=mysql&logoColor=4479A1?
 [MySQL-url]: https://www.mysql.com
