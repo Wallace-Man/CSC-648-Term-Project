@@ -96,7 +96,7 @@ Please see pdf file attatched in repository
 * [Trello](https://trello.com)
 * [Google Developer Resources](https://developers.google.com)                                             
 
-## Team Members 
+### Team Members 
 #### [Join Team Discord Channel](https://discord.gg/D8CfRxBb)
 
 <!-- This information will be removed if/when the repository is made public -->
@@ -112,7 +112,7 @@ Please see pdf file attatched in repository
 | Dylan Burns             | dburns6@sfsu.edu                 | Dylan#6079                 | (619)415-9870 |       Tech Lead               |
 
 
-## Availibility
+### Availibility
 |        Name        |   Sunday    |   Monday    |   Tuesday   |  Wednesday  |   Thursday  |   Friday    |  Saturday   |                                          
 | ------------------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | Tim Polich         |             |             | 3:15pm - 4pm|             | 3:15pm - 4pm|             |             |
@@ -122,7 +122,7 @@ Please see pdf file attatched in repository
 | Christian Jackson  |             |             |             |             |             |             |             |
 | Dylan Burns        |             |             | 10am - 4pm  |             | 12pm - 10pm | 10am - 4pm  |             |
                                        
-## Software Stack Poll
+### Software Stack Poll
 #### [MEAN vs MERN vs MEVN vs LAMP](https://www.arkasoftwares.com/blog/mean-vs-mern-vs-mevn-vs-lamp-stack-for-development/)                                       
 |        Name        |     MERN    |    MEAN     |     LAMP    |  enter other    |    enter other |                                  
 | ------------------ | ----------- | ----------- | ----------- | --------------- | -------------- |
