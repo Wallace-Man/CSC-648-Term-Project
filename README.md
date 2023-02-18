@@ -318,5 +318,5 @@ Use this space to list resources you find helpful and would like to give credit 
 [MySQL-url]: https://www.mysql.com
 [Express.js]: https://img.shields.io/badge/Express-F7DF1E?style=for-the-badge&logo=express&logoColor=000000
 [Express-url]: https://expressjs.com  
-[Google.com]: https://img.shields.io/badge/GoogleCloud-F9AB00?style=for-the-badge&logo=googlecloud&logoColor=blue
+[Google.com]: https://img.shields.io/badge/GoogleCloud-EA4335?style=for-the-badge&logo=googlecloud&logoColor=blue
 [Google-url]: https://cloud.google.com
