@@ -316,7 +316,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [Node-url]: https://nodejs.org/
 [MySQL.com]: https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=FF880F
 [MySQL-url]: https://www.mysql.com
-[Express.js]:  https://img.shields.io/badge/Express-EEE?style=for-the-badge&logo=express&logoColor=000000
+[Express.js]: https://img.shields.io/badge/Express-EEE?style=for-the-badge&logo=express&logoColor=000000
 [Express-url]: https://expressjs.com  
-[GoogleCloud]:  https://img.shields.io/badge/GoogleCloud-000000?style=for-the-badge&logo=googlecloud&logoColor=4285F4
+[GoogleCloud]: https://img.shields.io/badge/Google-000000?style=for-the-badge&logo=googlecloud&logoColor=4285F4
 [GoogleCloud-url]: https://cloud.google.com
