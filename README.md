@@ -124,16 +124,15 @@ Please see pdf file attatched in repository
                                        
 ### Software Stack Poll
 #### [MEAN vs MERN vs MEVN vs LAMP](https://www.arkasoftwares.com/blog/mean-vs-mern-vs-mevn-vs-lamp-stack-for-development/)                                       
-|        Name        |     MERN    |    MEAN     |     LAMP    |  enter other    |    enter other |                                  
-| ------------------ | ----------- | ----------- | ----------- | --------------- | -------------- |
-| Tim Polich         |             |             |             | No preference   |                |
-| Kevin Aziz         |            |             |             |  No preference               |                |
-| Wallace            |             |             |             | No preference   |                |
-| Jeremiah Ruvalcaba |             |             |       X     |                 |                |
-| Christian Jackson  |             |             |             |                 |                |
-| Dylan Burns        |      X      |             |             |                 |                |
+|        Name        |     MERN    |    MEAN     |     LAMP    |  No Preference  |                                  
+| ------------------ | ----------- | ----------- | ----------- | --------------- |
+| Tim Polich         |             |             |             |        X        |
+| Kevin Aziz         |             |             |             |        X        |
+| Wallace            |             |             |             |        X        |
+| Jeremiah Ruvalcaba |             |             |      X      |                 |
+| Christian Jackson  |             |             |             |                 |
+| Dylan Burns        |      X      |             |             |                 |
 
-* REMINDER: we will be using mySQL where MongoDB is listed in the above software stacks. 
                                   
 ## Milestones                              
 | Checkpoints |                      Description                      |          TODO/DONE         |    Due Date    |
