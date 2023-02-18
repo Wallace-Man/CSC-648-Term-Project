@@ -312,7 +312,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com
-[Node.js]: https://img.shields.io/badge/node.js-233056?style=for-the-badge&logo=nodedotjs&logoColor=339933
+[Node.js]: https://img.shields.io/badge/node.js-333?style=for-the-badge&logo=nodedotjs&logoColor=339933
 [Node-url]: https://nodejs.org/
 [MySQL.com]: https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=FF880F
 [MySQL-url]: https://www.mysql.com
