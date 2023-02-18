@@ -92,7 +92,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [![React][React.js]][React-url]
 * [![MySQL][MySQL.com]][MySQL-url]
 * [![Express][Express.js]][Express-url]
-* [![Google][Google.com]][Google-url]
+* [![GoogleCloud][Google.com]][Google-url]
 
 <!-- 
 * [![Next][Next.js]][Next-url]                                  
