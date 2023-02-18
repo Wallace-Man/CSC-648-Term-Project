@@ -91,6 +91,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [![Node][Node.js]][Node-url]
 * [![React][React.js]][React-url]
 * [![MySQL][MySQL.com]][MySQL-url]
+* [![Express][Express.js]][Express-url]                                  
 * [![Vue][Vue.js]][Vue-url]
 * [![Angular][Angular.io]][Angular-url]
 * [![Svelte][Svelte.dev]][Svelte-url]
@@ -321,3 +322,6 @@ Use this space to list resources you find helpful and would like to give credit 
 [Node-url]: https://nodejs.org/
 [MySQL.com]: https://img.shields.io/badge/MySQL-F7F7F7?style=for-the-badge&logo=mysql&logoColor=4479A1
 [MySQL-url]: https://www.mysql.com
+[Express.js]:  https://img.shields.io/badge/Express-010101?style=for-the-badge&logo=express&logoColor=#000000
+[Express-url]: https://expressjs.com                                       
+                                       
