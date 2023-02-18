@@ -90,6 +90,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [![Next][Next.js]][Next-url]
 * [![Node][Node.js]][Node-url]
 * [![React][React.js]][React-url]
+* [![MySQL][MySQL.com]][MySQL-url]
 * [![Vue][Vue.js]][Vue-url]
 * [![Angular][Angular.io]][Angular-url]
 * [![Svelte][Svelte.dev]][Svelte-url]
