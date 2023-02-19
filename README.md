@@ -116,7 +116,8 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [Google Optimization Tools](https://github.com/google/or-tools)                                      
 * [ChatGPT](https://openai.com/blog/chatgpt/)                                      
 * [Trello](https://trello.com)
-* [Google Developer Resources](https://developers.google.com)                                             
+* [Google Developer Resources](https://developers.google.com)    
+* [Google Cloud SQL Documentation](https://cloud.google.com/sql/docs/mysql)
 
 ### Team Members 
 #### [Join Team Discord Channel](https://discord.gg/D8CfRxBb)
