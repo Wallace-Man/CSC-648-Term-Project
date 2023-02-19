@@ -158,7 +158,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 |     5       | M0: Install and configure approved Software Stack     |            TODO            |   02/24/2023   |
 |             |     (to be done after the above approval by class CTO)|                            |                |
 |     6       | M0: Correctly Populate Credentials Folder in Git      |            TODO            |   02/24/2023   |
-|             |     Repository                                        |                            |                |
+|             | Repository.                                           |                            |                |
 |     7       | M0: Create a Team Website and ABOUT page              |            TODO            |   02/24/2023   |
 |     8       | M0: Submit M0 for grading                             |            TODO            |   02/24/2023   |
 |     9       | M1:                                                   |            TODO            |                |
