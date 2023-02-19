@@ -93,16 +93,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [![MySQL][MySQL.com]][MySQL-url]
 * [![Express][Express.js]][Express-url]
 * [![Google][Google.com]][Google-url]
-
-<!-- 
-* [![Next][Next.js]][Next-url]                                  
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]                                  
--->
+* [![JavaScript][JavaScript.com]][JavaScript-url]
                                   
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -315,4 +306,6 @@ Use this space to list resources you find helpful and would like to give credit 
 [Express.js]: https://img.shields.io/badge/Express-F7DF1E?style=for-the-badge&logo=express&logoColor=000000
 [Express-url]: https://expressjs.com  
 [Google.com]: https://img.shields.io/badge/Google_Cloud-EA4335?style=for-the-badge&logo=googlecloud&logoColor=blue
-[Google-url]: https://cloud.google.com
+[Google-url]: https://cloud.google.com                              
+[JavaScript.com]: https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
+[JavaScript-url]: https://www.javascript.com
