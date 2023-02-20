@@ -126,10 +126,10 @@ This section should list any major frameworks/libraries used to bootstrap your p
 | Anthony John Souza      | ajsouza@sfsu.edu                 |                            |               |       CTO                     |
 | Dylan Burns             | dburns6@sfsu.edu                 | Dylan#6079                 | (619)415-9870 |       Tech Lead               |
 
-### Contributors
-[![Contributors over time](https://contributor-graph-api.apiseven.com/contributors-svg?chart=contributorOverTime&repo=CSC-648-SFSU/csc648-03-sp23-team02
-)](https://www.apiseven.com/en/contributor-graph?chart=contributorOverTime&repo=CSC-648-SFSU/csc648-03-sp23-team02)
 
+### GitHub Contributors
+
+[![GitHub Contributor Over Time](https://contributor-overtime-api.git-contributor.com/contributors-svg?chart=contributorOverTime&repo=Naereen/badges)](https://git-contributor.com?chart=contributorOverTime&repo=Naereen/badges)
                                        
 ### Availibility
 |        Name        |   Sunday    |   Monday    |   Tuesday   |  Wednesday  |   Thursday  |   Friday    |  Saturday   |                                          
