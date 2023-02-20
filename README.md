@@ -129,10 +129,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 ### Contributors
 [![Contributors over time](https://contributor-graph-api.apiseven.com/contributors-svg?chart=contributorOverTime&repo=CSC-648-SFSU/csc648-03-sp23-team02
 )](https://www.apiseven.com/en/contributor-graph?chart=contributorOverTime&repo=CSC-648-SFSU/csc648-03-sp23-team02)
-```markdown
-[![Contributors over time](https://contributor-graph-api.apiseven.com/contributors-svg?chart=contributorOverTime&repo=CSC-648-SFSU/csc648-03-sp23-team02
-)](https://www.apiseven.com/en/contributor-graph?chart=contributorOverTime&repo=CSC-648-SFSU/csc648-03-sp23-team02)
-```
+
                                        
 ### Availibility
 |        Name        |   Sunday    |   Monday    |   Tuesday   |  Wednesday  |   Thursday  |   Friday    |  Saturday   |                                          
