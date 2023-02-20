@@ -129,7 +129,8 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 ### GitHub Contributors
 
-[![GitHub Contributor Over Time](https://contributor-overtime-api.git-contributor.com/contributors-svg?chart=contributorOverTime&repo=Naereen/badges)](https://git-contributor.com?chart=contributorOverTime&repo=Naereen/badges)
+[![GitHub Contributor Over Time](https://contributor-overtime-api.git-contributor.com/contributors-svg?chart=contributorOverTime&repo=CSC-648-SFSU/
+csc648-03-sp23-team02)](https://git-contributor.com?chart=contributorOverTime&repo=CSC-648-SFSU/csc648-03-sp23-team02)
                                        
 ### Availibility
 |        Name        |   Sunday    |   Monday    |   Tuesday   |  Wednesday  |   Thursday  |   Friday    |  Saturday   |                                          
