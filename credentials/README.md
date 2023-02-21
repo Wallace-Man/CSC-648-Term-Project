@@ -18,8 +18,8 @@
 ### Instructions on how to use the above information.
 
 To access the Cloud SQL server you can use the Google Cloud CLI.
-* Download the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install-sdk)
-* Open a Terminal Window and cd into your downloads directory
+1. Download the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install-sdk)
+2. Open a Terminal Window and cd into your downloads directory
     * npm
   ```sh
   cd Downloads
