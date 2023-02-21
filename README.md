@@ -116,7 +116,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 <!-- This information will be removed if/when the repository is made public -->
 |          Name           |              Email               |           Discord          |     Phone     |        Team Position          |
-| :---------------------: | -------------------------------- | -------------------------- | ------------- | ----------------------------- |
+| :---------------------: | :------------------------------: | :------------------------: | :-----------: | :---------------------------: |
 | Tim Polich              | tpolich@sfsu.edu                 | MrTim11#0713               | (818)913-1657 |       Front End Lead          |
 | Kevin Aziz              | kaziz2@mail.sfsu.edu             | Kevin Brother #4099        |               |       Back End Lead           |
 | Wallace Man             | wman2@sfsu.edu                   | GoldenSushi#9071           | (626)623-9033 |       Core Team Member        |
