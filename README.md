@@ -88,7 +88,7 @@ Please see pdf file attatched in repository
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 
-[![Node][Node.js]][Node-url] [![React][React.js]][React-url] [![MySQL][MySQL.com]][MySQL-url] [![Express][Express.js]][Express-url] [![Google][Google.com]][Google-url] [![JavaScript][JavaScript.com]][JavaScript-url] [![HTML5][HTML.com]][HTML-url] [![CSS][CSS.com]][CSS-url]                           
+[![Node][Node.js]][Node-url] [![React][React.js]][React-url] [![MySQL][MySQL.com]][MySQL-url] [![Express][Express.js]][Express-url] [![Google][Google.com]][Google-url] [![JavaScript][JavaScript.com]][JavaScript-url] [![HTML5][HTML.com]][HTML-url] [![CSS][CSS.com]][CSS-url] [![Git][Git.com]][Git-url]                      
                                   
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -296,3 +296,5 @@ Use this space to list resources you find helpful and would like to give credit 
 [HTML-url]: https://html.com
 [CSS.com]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
 [CSS-url]: https://www.css3.com
+[Git.com]: https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white
+[Git-url]: https://git-scm.com
