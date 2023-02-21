@@ -88,8 +88,7 @@ Please see pdf file attatched in repository
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 
-* [![Node][Node.js]][Node-url]
-* [![React][React.js]][React-url]
+[![Node][Node.js]][Node-url] [![React][React.js]][React-url]
 * [![MySQL][MySQL.com]][MySQL-url]
 * [![Express][Express.js]][Express-url]
 * [![Google][Google.com]][Google-url]
