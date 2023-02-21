@@ -140,7 +140,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
                                   
 ## Milestones                              
 | Checkpoints |                      Description                      |          TODO/DONE         |    Due Date    |
-| :---------: | :--------------------------------------------------- | :------------------------: | :------------: |
+| :---------: | :---------------------------------------------------- | :------------------------: | :------------: |
 |     1       | M0: Set up GitHub for team SW development             |            DONE            |   02/17/2023   |
 |     2       | M0: Appoint team GitHub master                        |            DONE            |   02/24/2023   |
 |     3       | M0: Select Server/Platform Provider, Software stack for Deploying Your Team Web Application and ask class CTO for approval |                            DONE            |   02/24/2023   |
