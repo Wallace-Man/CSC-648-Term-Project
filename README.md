@@ -144,7 +144,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 |     1       | M0: Set up GitHub for team SW development             |            DONE            |   02/17/2023   |
 |     2       | M0: Appoint team GitHub master                        |            DONE            |   02/24/2023   |
 |     3       | M0: Select Server/Platform Provider, Software stack for Deploying Your Team Web Application and ask class CTO for approval |                            DONE            |   02/24/2023   |
-|     4       | M0: Get Server/Platform and Software Stack Approved by class CTO |            TODO            |   02/24/2023   |
+|     4       | M0: Get Server/Platform and Software Stack Approved by class CTO |            DONE            |   02/24/2023   |
 |     5       | M0: Install and configure approved Software Stack  (to be done after the above approval by class CTO) |            TODO            |   02/24/2023   |
 |     6       | M0: Correctly Populate Credentials Folder in Git Repository. |            TODO            |   02/24/2023   |
 |     7       | M0: Create a Team Website and ABOUT page              |            TODO            |   02/24/2023   |
