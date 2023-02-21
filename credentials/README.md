@@ -23,6 +23,36 @@ To access the Cloud SQL server you can use the Google Cloud CLI.
    ```sh
    cd Downloads
    ```
+3. Verify the file is in your Downloads directory
+   ```sh
+   ls
+   ```
+4. Move the file into your root user directory
+   ```sh
+   mv google-cloud-cli-418.0.0-darwin-x86_64.tar.gz ~/
+   ```
+5. Unpack the tar file
+  ```sh
+   tar xopf google-cloud-cli-418.0.0-darwin-x86_64.tar.gz
+   ```
+7. delete the tar file now that we have unpacked it 
+   ```sh
+   rm xopf google-cloud-cli-418.0.0-darwin-x86_64.tar.gz
+   ```
+8. cd into google-cloud-sdk file
+    ```sh
+   cd into google-cloud-sdk
+   ```
+9. Install Google Cloud SDK
+     ```sh
+   ./install.sh
+   ```
+Output after Successful Installation
+* Answer N for this question
+<img width="940" alt="Screenshot 2023-02-21 at 2 08 38 PM" src="https://user-images.githubusercontent.com/65887526/220469786-3e50a23c-07d7-4cff-9f77-df6e9b31208c.png">
+
+* Answer Y for this question
+<img width="1387" alt="Screenshot 2023-02-21 at 2 10 22 PM" src="https://user-images.githubusercontent.com/65887526/220470056-5e79f27c-df09-4518-992e-0acaddaa443a.png">
 
 
 
