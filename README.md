@@ -128,14 +128,14 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
                                    
 ### Availibility
-|        Name        |   Sunday    |   Monday    |   Tuesday   |  Wednesday  |   Thursday  |   Friday    |  Saturday   |                                          
-| ------------------ | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| Tim Polich         |             |             | 3:15pm - 4pm|             | 3:15pm - 4pm|             |             |
-| Kevin Aziz         |             |             |             |             |             | 12:30pm - 3pm              |             |
-| Wallace            |             |             | 2pm - 6pm   |             | 2pm - 6pm   | 11am - 4pm  |             |
-| Jeremiah Ruvalcaba |             |      x      | 3:15pm - 7pm|             | 3:15pm - 7pm|       x     |             |
-| Christian Jackson  |             |             |             |             |             |             |             |
-| Dylan Burns        |             |             | 10am - 4pm  |             | 12pm - 10pm | 10am - 4pm  |             |
+|        Name        |   Sunday    |   Monday    |   Tuesday    |  Wednesday  |   Thursday   |   Friday      |  Saturday   |                                          
+| :----------------: | :---------: | :---------: | :----------: | :---------: | :----------: | :-----------: | :---------: |
+| Tim Polich         |             |             | 3:15pm - 4pm |             | 3:15pm - 4pm |               |             |
+| Kevin Aziz         |             |             |              |             |              | 12:30pm - 3pm |             |
+| Wallace            |             |             | 2pm - 6pm    |             | 2pm - 6pm    | 11am - 4pm    |             |
+| Jeremiah Ruvalcaba |             |      x      | 3:15pm - 7pm |             | 3:15pm - 7pm |       x       |             |
+| Christian Jackson  |             |             |              |             |              |               |             |
+| Dylan Burns        |             |             | 10am - 4pm   |             | 12pm - 10pm  | 10am - 4pm    |             |
 
                                   
 ## Milestones                              
