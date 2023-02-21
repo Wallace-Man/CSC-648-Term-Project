@@ -6,15 +6,16 @@
 
 
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
-|                   |              |
-| :---------------- | :----------: |
-| Server URL or IP  | 34.94.177.91 |
-| SSH username      |              |
-| SSH password or key <br>(If a ssh key is used please upload the key to the credentials folder) | |
-| Database URL or IP and port used <br><strong> NOTE THIS DOES NOT MEAN YOUR DATABASE NEEDS A PUBLIC FACING PORT.</strong> But knowing the IP and port number will help with SSH tunneling into the database. The default port is more than sufficient for this class. | |
+|  |  |
+| :---------------- | :---------------: |
+| Server URL or IP | 34.94.177.91 |
+| SSH username |                   |
+| SSH password/key |                   |
+| Database IP:Port | 34.94.177.91:3306 |
 | Database username | user |
 | Database password | _vj,Dl2=NT,}}3Q" |
-| Database name     | csc648db |
+| Database name | csc648db          |
+| CLoud SQl Instance Name/ID | csc648-cloud |
 
 ###Instructions on how to use the above information.
 
