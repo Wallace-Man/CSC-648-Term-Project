@@ -92,10 +92,10 @@
     gcloud components update
     ```
     
-14. Login to Google Cloud using your login credentials (replace USERNAME with your username)
+14. Login to Google Cloud
 
     ```sh
-    gcloud beta sql connect csc648-cloud -u USERNAME
+    gcloud auth login
     ```
     
     
