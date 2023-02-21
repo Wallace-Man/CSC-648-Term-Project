@@ -17,62 +17,88 @@
 
 ### Instructions on how to use the above information.
 
-To access the Cloud SQL server you can use the Google Cloud CLI.
 1. Download the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install-sdk)
-2. Open a Terminal Window and cd into your downloads directory
+
+3. Open a Terminal Window and cd into your downloads directory
+
    ```sh
    cd Downloads
    ```
+   
 3. Verify the file is in your Downloads directory
+
    ```sh
    ls
    ```
+   
 4. Move the file into your root user directory
+
    ```sh
    mv google-cloud-cli-418.0.0-darwin-x86_64.tar.gz ~/
    ```
+   
 5. Unpack the tar file
-  ```sh
+
+   ```sh
    tar xopf google-cloud-cli-418.0.0-darwin-x86_64.tar.gz
    ```
-7. delete the tar file now that we have unpacked it 
+   
+7. Delete the tar file now that we have unpacked it 
+
    ```sh
    rm xopf google-cloud-cli-418.0.0-darwin-x86_64.tar.gz
    ```
+   
 8. cd into google-cloud-sdk file
-    ```sh
+
+   ```sh
    cd google-cloud-sdk
    ```
+   
 9. Install Google Cloud SDK
-     ```sh
+
+   ```sh
    ./install.sh
    ```
-Output after Successful Installation
+   
+#### Output after Successful Installation
 * Answer N for 
-   ```sh
-   Do you want to help improve the Google Cloud CLI (y/N)?
-   ```
+
+  ```sh
+  Do you want to help improve the Google Cloud CLI (y/N)?
+  ```
+  
 <img width="1267" alt="Screenshot 2023-02-21 at 2 12 36 PM" src="https://user-images.githubusercontent.com/65887526/220470389-cee03ca4-1d84-43d5-9f83-99aea2a05143.png">
 
 * Answer Y for 
+
   ```sh
-   Do you want to continue (Y/n)?
-   ```
+  Do you want to continue (Y/n)?
+  ```
+  
 <img width="1265" alt="Screenshot 2023-02-21 at 2 13 47 PM" src="https://user-images.githubusercontent.com/65887526/220470580-b1c63a24-225a-444f-a7a4-2fe72d313703.png">
 
 10. Start a new shell for changes to take effect
-11. cd into google-cloud sdk
-     ```sh
+
+12. cd into google-cloud sdk
+
+   ```sh
    cd google-cloud-sdk
    ```
+   
 13. Update Google Cloud CLI Components
-     ```sh
+
+    ```sh
     gcloud components update
-   ```
+    ```
+    
 14. Login to Google Cloud using your login credentials (replace USERNAME with your username)
-     ```sh
-    gcloud sql connect csc648-cloud --user=USERNAME
-   ```
+
+    ```sh
+    gcloud beta sql connect csc648-cloud -u USERNAME
+    ```
+    
+    
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
 ## <strong>Failure to do so will result it points be deducted from milestone submissions.</strong><br>
