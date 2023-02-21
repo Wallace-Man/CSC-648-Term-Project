@@ -69,9 +69,9 @@ Output after Successful Installation
      ```sh
     gcloud components update
    ```
-14. Login to Google Cloud using your login credentials
+14. Login to Google Cloud using your login credentials (replace USERNAME with your username)
      ```sh
-    gcloud sql connect csc648-cloud --user=<enter username>
+    gcloud sql connect csc648-cloud --user=USERNAME
    ```
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
