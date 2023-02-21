@@ -9,15 +9,23 @@
 |  |  |
 | :---------------- | :---------------: |
 | Server URL or IP | 34.94.177.91 |
-| SSH username |                   |
-| SSH password/key |                   |
 | Database IP:Port | 34.94.177.91:3306 |
 | Database username | user |
 | Database password | _vj,Dl2=NT,}}3Q" |
-| Database name | csc648db          |
-| CLoud SQl Instance Name/ID | csc648-cloud |
+| MySQLWorkbench Connection Name | csc648db |
+| Cloud SQL Instance Name/ID | csc648-cloud |
 
 ###Instructions on how to use the above information.
+
+To access the Cloud SQL server you can use the Google Cloud CLI.
+    1. Download the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install-sdk)
+    2. Open a Terminal Window and cd into your downloads directory
+    * npm
+  ```sh
+  cd Downloads
+  ```
+
+
 
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
