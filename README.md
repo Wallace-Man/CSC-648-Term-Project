@@ -128,7 +128,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 | Kevin Aziz         |             |             |              |             | 3:15pm - 4pm            |  |             |
 | Wallace            |             |             | 2pm - 6pm    |             | 2pm - 6pm    | 11am - 4pm    |             |
 | Jeremiah Ruvalcaba |             |      x      | 3:15pm - 7pm |             | 3:15pm - 7pm |       x       |             |
-| Christian Jackson  |             |             |              |             |              |               |             |
+| Christian Jackson  |             |             | 3pm - 11pm   |             | 3pm - 7pm    | 10am - 5pm    |             |
 | Dylan Burns        |             |             | 10am - 4pm   |             | 12pm - 10pm  | 10am - 4pm    |             |
 
                                   
