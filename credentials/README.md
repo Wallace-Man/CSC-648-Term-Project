@@ -15,11 +15,11 @@
 | MySQLWorkbench Connection Name | csc648db |
 | Cloud SQL Instance Name/ID | csc648-cloud |
 
-###Instructions on how to use the above information.
+### Instructions on how to use the above information.
 
 To access the Cloud SQL server you can use the Google Cloud CLI.
-    1. Download the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install-sdk)
-    2. Open a Terminal Window and cd into your downloads directory
+* Download the [Google Cloud CLI](https://cloud.google.com/sdk/docs/install-sdk)
+* Open a Terminal Window and cd into your downloads directory
     * npm
   ```sh
   cd Downloads
