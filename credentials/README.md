@@ -61,7 +61,10 @@ Output after Successful Installation
 <img width="1265" alt="Screenshot 2023-02-21 at 2 13 47 PM" src="https://user-images.githubusercontent.com/65887526/220470580-b1c63a24-225a-444f-a7a4-2fe72d313703.png">
 
 10. Start a new shell for changes to take effect
-
+11. Update Google Cloud CLI Components
+     ```sh
+    google-cloud-sdk gcloud components update
+   ```
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
 ## <strong>Failure to do so will result it points be deducted from milestone submissions.</strong><br>
