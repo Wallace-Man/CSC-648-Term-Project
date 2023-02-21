@@ -41,7 +41,7 @@ To access the Cloud SQL server you can use the Google Cloud CLI.
    ```
 8. cd into google-cloud-sdk file
     ```sh
-   cd into google-cloud-sdk
+   cd google-cloud-sdk
    ```
 9. Install Google Cloud SDK
      ```sh
@@ -61,9 +61,17 @@ Output after Successful Installation
 <img width="1265" alt="Screenshot 2023-02-21 at 2 13 47 PM" src="https://user-images.githubusercontent.com/65887526/220470580-b1c63a24-225a-444f-a7a4-2fe72d313703.png">
 
 10. Start a new shell for changes to take effect
-11. Update Google Cloud CLI Components
+11. cd into google-cloud sdk
      ```sh
-    google-cloud-sdk gcloud components update
+   cd google-cloud-sdk
+   ```
+13. Update Google Cloud CLI Components
+     ```sh
+    gcloud components update
+   ```
+14. Login to Google Cloud using your login credentials
+     ```sh
+    gcloud sql connect csc648-cloud --user=<enter username>
    ```
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
