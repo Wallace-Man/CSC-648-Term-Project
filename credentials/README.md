@@ -48,13 +48,19 @@ To access the Cloud SQL server you can use the Google Cloud CLI.
    ./install.sh
    ```
 Output after Successful Installation
-* Answer N for this question
-<img width="940" alt="Screenshot 2023-02-21 at 2 08 38 PM" src="https://user-images.githubusercontent.com/65887526/220469786-3e50a23c-07d7-4cff-9f77-df6e9b31208c.png">
+* Answer N for 
+   ```sh
+   Do you want to help improve the Google Cloud CLI (y/N)?
+   ```
+<img width="1267" alt="Screenshot 2023-02-21 at 2 12 36 PM" src="https://user-images.githubusercontent.com/65887526/220470389-cee03ca4-1d84-43d5-9f83-99aea2a05143.png">
 
-* Answer Y for this question
-<img width="1387" alt="Screenshot 2023-02-21 at 2 10 22 PM" src="https://user-images.githubusercontent.com/65887526/220470056-5e79f27c-df09-4518-992e-0acaddaa443a.png">
+* Answer Y for 
+  ```sh
+   Do you want to continue (Y/n)?
+   ```
+<img width="1265" alt="Screenshot 2023-02-21 at 2 13 47 PM" src="https://user-images.githubusercontent.com/65887526/220470580-b1c63a24-225a-444f-a7a4-2fe72d313703.png">
 
-
+10. Start a new shell for changes to take effect
 
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
