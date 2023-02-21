@@ -6,6 +6,7 @@
 
 
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
+|                   |              |
 | :---------------- | :----------: |
 | Server URL or IP  | 34.94.177.91 |
 | SSH username      |              |
