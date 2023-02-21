@@ -104,6 +104,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [Trello](https://trello.com)
 * [Google Developer Resources](https://developers.google.com)    
 * [Google Cloud SQL Documentation](https://cloud.google.com/sql/docs/mysql)
+* [Hosting a Web App on Google Cloud Using Compute Engine](https://www.cloudskillsboost.google/focuses/11952?parent=catalog)
 
 ### Team Members 
 #### [Join Team Discord Channel](https://discord.gg/D8CfRxBb)
