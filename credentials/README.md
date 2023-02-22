@@ -10,8 +10,8 @@
 | :---------------- | :---------------: |
 | Server URL or IP | 34.94.177.91 |
 | Database IP:Port | 34.94.177.91:3306 |
-| Database username | user |
-| Database password | _vj,Dl2=NT,}}3Q" |
+| Database username |  |
+| Database password |  |
 | MySQLWorkbench Connection Name | csc648db |
 | Cloud SQL Instance Name/ID | csc648-cloud |
 
