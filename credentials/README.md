@@ -8,7 +8,7 @@
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 |  |  |
 | :---------------- | :---------------: |
-| Server URL or IP | 34.94.177.91 |
+| Server URL or IP | https://application-dyk33n7j6q-wl.a.run.app |
 | Database IP:Port | 34.94.177.91:3306 |
 | Database username |  |
 | Database password |  |
