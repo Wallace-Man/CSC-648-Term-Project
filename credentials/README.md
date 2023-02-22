@@ -103,7 +103,7 @@
 15. Once you have authenticated your google account, you can execute the following command to tunnel into CLoud SQL server (replacing USERNAME with your username)
     ```sh
     gcloud sql connect csc648-cloud --user=USERNAME
-   ```
+    ```
     
     
 # Most important things to Remember
