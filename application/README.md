@@ -7,3 +7,23 @@ You are free to organize the contents of the folder as you see fit. But remember
 
 ## Please use the rest of the README.md to store important information for your team's application.
 
+## Run Instructions
+
+1. download the repository
+2. unzip the file
+3. open the terminal or IDE
+4. cd into the application directory
+   ```sh
+   cd application
+   ```
+5. install dependencies
+   ```sh
+   npm install
+   ```
+6. run the application
+   ```sh
+   npm start
+   ```
+7. open your web browser and go to http://localhost:8080
+
+You can modify/test the application on your local machine before pushing changes to this repository.
