@@ -3,35 +3,36 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'About Us' });
+  res.render('index');
 });
 
-router.get('/learnMore', function(req, res) {
-  res.render('learnMore', { title: 'Personal Profile' });
+router.get('/aboutUs', function(req, res) {
+  res.render('aboutUs');
 });
 
 router.get('/learnMoreDylan', function(req, res) {
-  res.render('learnMoreDylan', { title: 'Personal Profile' });
+    res.render('learnMoreDylan');
 });
 
 router.get('/learnMoreTim', function(req, res) {
-  res.render('learnMoreTim', { title: 'Personal Profile' });
+    res.render('learnMoreTim');
 });
 
 router.get('/learnMoreJeremiah', function(req, res) {
-  res.render('learnMoreJeremiah', { title: 'Personal Profile' });
+    res.render('learnMoreJeremiah');
 });
 
 router.get('/learnMoreKevin', function(req, res) {
-  res.render('learnMoreKevin', { title: 'Personal Profile' });
+    res.render('learnMoreKevin');
 });
 
 router.get('/learnMoreWallace', function(req, res) {
-  res.render('learnMoreWallace', { title: 'Personal Profile' });
+    res.render('learnMoreWallace');
 });
 
 router.get('/learnMoreChristian', function(req, res) {
-  res.render('learnMoreChristian', { title: 'Personal Profile' });
+    res.render('learnMoreChristian', { title: 'Personal Profile' });
 });
+
 
 module.exports = router;
