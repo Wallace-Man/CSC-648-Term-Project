@@ -107,6 +107,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [What is Cloud SQL?](https://cloud.google.com/sql/docs/introduction)
 * [Hosting a Web App on Google Cloud Using Compute Engine](https://www.cloudskillsboost.google/focuses/11952?parent=catalog)
 * [.pug framework for HTML](https://pugjs.org/api/getting-started.html)
+* [Jest Testing Framework](https://jestjs.io)
 
 ### Team Members 
 #### [Join Team Discord Channel](https://discord.gg/D8CfRxBb)
