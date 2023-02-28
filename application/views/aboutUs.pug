@@ -1,46 +1,54 @@
-doctype html
-html
-    head
-        link(rel='stylesheet', href='/stylesheets/aboutUs.css')
-    body
+extends layouts/main-layout
 
-        title About Us
-        h1 Meet Our Team
-            div.bio
-                p Welcome to our team! We are a group of passionate individuals dedicated to making
-                    a difference in the world. Our mission is to create innovative solutions to the
-                    worlds most pressing problems, and we work tirelessly to achieve this goal
-                    every day. Get to know our team members below:
-            div.card-grid
-                div.card
-                    img(src="/images/dylan.png", alt="Profile Picture")
-                    h2 Dylan Burns
-                    p Team Leader
-                    a(href="learnMoreDylan") Learn More
-                div.card
-                    img(src="https://via.placeholder.com/300", alt="Profile Picture")
-                    h2 Tim Polich
-                    p Front End Leader
-                    a(href="learnMoreTim") Learn More
-                div.card
-                    img(src="/images/kevin.png", alt="Profile Picture")
-                    h2 Kevin Aziz
-                    p Back End Leader
-                    a(href="learnMoreKevin") Learn More
-                div.card
-                    img(src="https://via.placeholder.com/300", alt="Profile Picture")
-                    h2 Christian Jackson
-                    p Github Leader
-                    a(href="learnMoreChristian") Learn More
-                div.card
-                    img(src="https://via.placeholder.com/300", alt="Profile Picture")
-                    h2 Jeremiah Ruvalcaba
-                    p Core Team Member
-                    a(href="learnMoreJeremiah") Learn More
-                div.card
-                    img(src="https://via.placeholder.com/300", alt="Profile Picture")
-                    h2 Wallace Man
-                    p Core Team Member
-                    a(href="learnMoreWallace") Learn More
-
-
+block content
+    header
+        div.header-image
+        nav
+            a.logo(href='')
+                span.thin Gator
+                span.bold Bites
+            ul
+                li
+                    a(href='') Delivery
+                li
+                    a(href='') Takeout
+                li
+                    a(href='') Grocery
+                li
+                    a(href='') Alcohol
+                li
+                    a(href='') More
+            div.right-btns
+                a.login-btn(href='') Log in
+                a.signup-btn(href='') Sign up
+    div.card-grid
+        div.card
+            img(src="/images/dylan.png", alt="Profile Picture")
+            h2 Dylan Burns
+            p Team Leader
+            a(href="learnMoreDylan") Learn More
+        div.card
+            img(src="https://via.placeholder.com/300", alt="Profile Picture")
+            h2 Tim Polich
+            p Front End Leader
+            a(href="learnMoreTim") Learn More
+        div.card
+            img(src="/images/kevin.png", alt="Profile Picture")
+            h2 Kevin Aziz
+            p Back End Leader
+            a(href="learnMoreKevin") Learn More
+        div.card
+            img(src="https://via.placeholder.com/300", alt="Profile Picture")
+            h2 Christian Jackson
+            p Github Leader
+            a(href="learnMoreChristian") Learn More
+        div.card
+            img(src="https://via.placeholder.com/300", alt="Profile Picture")
+            h2 Jeremiah Ruvalcaba
+            p Core Team Member
+            a(href="learnMoreJeremiah") Learn More
+        div.card
+            img(src="https://via.placeholder.com/300", alt="Profile Picture")
+            h2 Wallace Man
+            p Core Team Member
+            a(href="learnMoreWallace") Learn More

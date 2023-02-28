@@ -70,9 +70,12 @@ nav .logo{
   margin-left: 10px;
 }
 
-.login-btn:hover,
-.signup-btn:hover {
+.login-btn:hover {
   background-color: rgb(51, 51, 51);
+}
+
+.signup-btn:hover {
+  background-color: rgb(248, 248, 250);
 }
 
 nav ul {
@@ -91,7 +94,7 @@ nav li {
 nav a.login-btn {
   color: #FFF;
   background-color: black;
-  border: 1px solid white;
+  /*border: 1px solid white;*/
   padding: 10px 20px;
   border-radius: 5px;
   margin: 20px;
@@ -101,12 +104,13 @@ nav a.signup-btn {
 
   color: black;
   background-color: white;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   padding: 10px 20px;
   border-radius: 5px;
   margin: 0px;
 }
 
+/* SEARCH BAR */
 h1 {
   max-width: 800px;
   margin: 0 auto;
@@ -120,12 +124,12 @@ h1 br {
   display: none;
 }
 
+/* SEARCH FORM */
 form {
   max-width: 800px;
-  margin: 0 auto;
   text-align: center;
   padding: 0 20px;
-  margin-bottom: 60px;
+  margin: 0 auto 60px;
 }
 
 form input[type="text"] {
@@ -239,9 +243,14 @@ section li a p {
   margin-bottom: 0.5rem;
 }
 
+/* FOOTER PARTIAL */
 footer {
   background-color: #f2f2f2;
   padding: 20px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
 }
 
 .footer-container {
@@ -270,3 +279,136 @@ footer {
   text-decoration: blink;
 }
 
+/* ABOUT US PAGE */
+.bio {
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto 40px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+
+.bio p {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+  justify-items: center;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  font-weight: 500;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.card a {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+  background-color: #333;
+  border-radius: 25px;
+  padding: 10px 30px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.card a:hover {
+  background-color: #585757;
+}
+
+.profile-card {
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-card img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 20px;
+}
+
+.profile-card h2 {
+  font-weight: 500;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.profile-card p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.profile-card a {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+  background-color: #333;
+  border-radius: 25px;
+  padding: 10px 30px;
+}
+
+.profile-card a:hover {
+  background-color: #222;
+}
+
+.profile-card .bio {
+  font-size: 16px;
+  color: #666;
+  margin-top: 20px;
+  line-height: 1.5;
+  text-align: justify;
+}
