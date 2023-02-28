@@ -106,6 +106,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [Google Cloud SQL Documentation](https://cloud.google.com/sql/docs/mysql)
 * [What is Cloud SQL?](https://cloud.google.com/sql/docs/introduction)
 * [Hosting a Web App on Google Cloud Using Compute Engine](https://www.cloudskillsboost.google/focuses/11952?parent=catalog)
+* [.pug framework for HTML](https://pugjs.org/api/getting-started.html)
 
 ### Team Members 
 #### [Join Team Discord Channel](https://discord.gg/D8CfRxBb)
