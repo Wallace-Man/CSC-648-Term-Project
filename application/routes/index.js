@@ -31,7 +31,7 @@ router.get('/learnMoreWallace', function(req, res) {
 });
 
 router.get('/learnMoreChristian', function(req, res) {
-    res.render('learnMoreChristian', { title: 'Personal Profile' });
+    res.render('learnMoreChristian');
 });
 
 
