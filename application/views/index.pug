@@ -1,0 +1,77 @@
+// the home page will not extend /layouts/main-layout because we want the background image to span the entire
+// header and not just the navbar such as other views do
+doctype html
+html(lang="en")
+    include ./partials/head
+    body
+        header
+            div.header-image
+            nav
+                a.logo(href='')
+                    span.thin Gator
+                    span.bold Bites
+                ul
+                    li
+                        a(href='') Delivery
+                    li
+                        a(href='') Takeout
+                    li
+                        a(href='') Grocery
+                    li
+                        a(href='') Alcohol
+                    li
+                        a(href='') More
+                div.right-btns
+                    a.login-btn(href='login')
+                        img(src="/images/user.png", style= {width: "15px", height: "15px", marginBottom: "15px"} )
+                        span(style= {margin: "5px"}) Log in
+                    a.signup-btn(href='signup') Sign up
+            h1 Find your favorite restaurants, delivered.
+            form.search-form(action='')
+                input.search-input(type='text', placeholder='Enter delivery address')
+                button.search-btn(type='submit') Find Restaurants
+        main
+            section.popular-restaurants
+                h2 Popular Restaurants
+                ul.restaurant-list
+                    li
+                        a(href='')
+                            img(src='/images/cinnabon.png', alt='Cinnabon')
+                            div
+                                h3 Cinnabon
+                                p Bakery, Desserts, Coffee and Tea
+                                p 25–35 min • $
+                    li
+                        a(href='')
+                            img(src='/images/chipotle.png', alt='Chipotle')
+                            div
+                                h3 Chipotle
+                                p Mexican, Fast Food
+                                p 20–30 min • $
+                    li
+                        a(href='')
+                            img(src='/images/panda.png', alt='Panda Express')
+                            div
+                                h3 Panda Express
+                                p Chinese, Fast Food
+                                p 30–40 min • $
+            section.popular-cuisines
+                h2 Popular Cuisines
+                ul.cuisine-list
+                    li
+                        a(href='') Chinese
+                    li
+                        a(href='') Italian
+                    li
+                        a(href='') Mexican
+                    li
+                        a(href='') Thai
+                    li
+                        a(href='') Indian
+                    li
+                        a(href='') Japanese
+                    li
+                        a(href='') Greek
+                    li
+                        a(href='') Vietnamese
+    include ./partials/footer
