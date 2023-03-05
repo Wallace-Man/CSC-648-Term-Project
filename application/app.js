@@ -6,7 +6,6 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 
-
 const app = express();
 
 // view engine setup
@@ -27,10 +26,16 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-app.use(function (err, req, res, next) {
-  console.error(err.stack)
-  res.status(500).send('Something broke!')
-})
+// Error handler middleware
+app.use(function(err, req, res, next) {
+  if (err.status === 404) {
+    // Handle 404 errors here
+    res.status(404).send('Not Found');
+  } else {
+    // Pass other errors to the default error handler
+    next(err);
+  }
+});
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -44,8 +49,14 @@ app.use(function(err, req, res, next) {
 });
 
 const port = parseInt(process.env.PORT) || 8080;
-app.listen(port, () => {
-  console.log(`application: listening on port ${port}`);
-});
+
+// if process is a test environment, don't have the app listen on the port
+if (process.env.NODE_ENV !== 'test') {
+  // otherwise listen on port
+  app.listen(port, () => {
+    console.log(`application: listening on port ${port}`);
+  });
+}
+
 
 module.exports = app;
