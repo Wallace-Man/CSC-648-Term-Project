@@ -61,4 +61,11 @@ router.get('/privacyPolicy', function(req, res) {
     res.render('privacyPolicy');
 });
 
+/* GET ERROR PAGE */
+router.get('/error', function(req, res, next) {
+    const error = new Error('Something went wrong');
+    error.status = 500;
+    next(error);
+});
+
 module.exports = router;
