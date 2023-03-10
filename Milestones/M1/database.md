@@ -20,11 +20,6 @@ This checkpoint contains three sections: cover page, table of contents and produ
 
 The cover page of your document must contain the title of your project (i.e Library Management System ), your name, student id and GitHub username, and finally, a version history table similar to the one in the below:
 
-|     Checkpoint #  |    Date Submitted   |
-| ----------------- | ------------------- |
-|    Checkpoint I   |      02/14/2023     |
-|    Checkpoint II  |      02/27/2023     |
-
 ### Table of Contents (1 point)
 
 A technical document like this one is read by technical and non-technical people (i,e CEO, founders, 
