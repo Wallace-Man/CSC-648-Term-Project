@@ -105,7 +105,7 @@
     
 16. Once you have **authenticated your google account** and **set the Project ID**, you can execute the following command to tunnel into CLoud SQL server **replacing USERNAME with your username.**
     ```sh
-    gcloud sql connect csc648-cloud --user=USERNAME
+    gcloud sql connect csc648-cloud --user=USERNAME 
     ```
     
     
