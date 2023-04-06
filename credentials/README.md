@@ -102,8 +102,7 @@
     ```sh 
     gcloud config set project steady-library-378220
     ```
-
-*** Note that the Instance must be ACTIVE to connect. The server will be set to INACTIVE until we begin using it consistently to limit charges***
+    
 16. Once you have **authenticated your google account** and **set the Project ID**, you can execute the following command to tunnel into CLoud SQL server **replacing USERNAME with your username.**
     ```sh
     gcloud sql connect csc648-cloud --user=USERNAME
