@@ -27,9 +27,22 @@ html(lang="en")
                         span(style= {margin: "5px"}) Log in
                     a.signup-btn(href="signup") Sign up
             h1 Find your favorite restaurants, delivered.
-            form.search-form(action="")
-                input.search-input(type="text", placeholder="Enter delivery address")
-                button.search-btn(type="submit") Find Restaurants
+            form.search-form(action='')
+                select#category-select(name='category')
+                    option(value='') All 
+                    option(value='italian') Italian
+                    option(value='american') American
+                    option(value='mexican') Mexican
+                    option(value='chinese') Chinese
+                    option(value='japanese') Japanese
+                    option(value='korean') Korean
+                    option(value='thai') Thai
+                    option(value='vietnamese') Vietnamese
+                    option(value='greek') Greek
+                    option(value='french') French
+                input.search-input(type='text', placeholder='Search For Restuarants')
+                button.search-btn(type='submit') 
+                    img(src='images/search-icon.png', alt='search', style='width: 30px; height: 30px;')
         main
             section.popular-restaurants
                 h2 Popular Restaurants
