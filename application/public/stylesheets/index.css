@@ -633,4 +633,56 @@ li.PP:before {
 }
 
 
+/* Set font family and size for headings */
+h2, h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Set margin and padding for restaurant card */
+.popular-restaurants div {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  width: 50%;
+  margin: 0 auto;
+
+  
+}
+
+/* Set styles for restaurant image */
+.popular-restaurants img {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Set styles for restaurant name */
+.popular-restaurants h3 {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  
+}
+
+/* Set styles for restaurant address */
+.popular-restaurants p {
+  text-align: center;
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Set styles for restaurant cuisine type */
+.popular-restaurants p:last-of-type {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
 

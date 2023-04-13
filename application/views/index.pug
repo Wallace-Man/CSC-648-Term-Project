@@ -1,8 +1,7 @@
-// the home page will not extend /layouts/main-layout because we want the background image to span the entire
-// header and not just the navbar such as other views do
 doctype html
 html(lang="en")
     include ./partials/head
+
     body
         header
             div.header-image
@@ -46,82 +45,62 @@ html(lang="en")
         main
             section.popular-restaurants
                 h2 Popular Restaurants
-                ul.restaurant-list
-                    li
-                        a(href = "")
-                        img(src="/images/golden.png", alt = "Pizza")
-                        div
-                        h3 Pizza
-                        p Fast Food, Italian
-                        p 25-35 min  • $
+    script.
+      // Wait for the DOM to load before adding event listeners
+      document.addEventListener('DOMContentLoaded', function() {
 
-                    li
-                        a(href = "")
-                        img(src="/images/INNY.png", alt = "Hamburger")
-                        div
-                        h3 IN N OUT
-                        p Fast Food, American
-                        p 25-35 min  • $
+        // Get the form element
+        var form = document.querySelector('form.search-form');
+        // Add an event listener for form submissions
+        form.addEventListener('submit', function(event) {
 
-                    li
-                        a(href = "")
-                        img(src="/images/CHUTNEY.png", alt = "Pakistani")
-                        div
-                        h3 Chutney
-                        p Fast Food, Pakistani
-                        p 25-35 min  • $
+          // Prevent the default form submission behavior
+          event.preventDefault();
 
-                    li
-                        a(href = "")
-                        img(src="/images/lahore.png", alt = "Indian")
-                        div
-                        h3 Lahore Karahi
-                        p Fast Food, Indian
-                        p 25-35 min  • $
+          // Get the selected category
+          var categorySelect = document.getElementById('category-select')
+          var search_input = document.querySelector('input.search-input').value;
+          var selectedCategory = categorySelect.options[categorySelect.selectedIndex].value;
+          
+          console.log('Selected category:', selectedCategory);
+          console.log('Search query:', search_input);
+          
+          fetch('/getAllRestaurants')
+            .then(function(response) {
+              return response.json();
+            })
+            .then(function(data) {
+              // Display the restaurant data on the page
+              displayRestaurants(data);
+            })
+            .catch(function(error) {
+              console.error('Error fetching restaurant data:', error);
+            });
+        });
 
-                    li
-                        a(href="")
-                        img(src="/images/cinnabon.png", alt="Cinnabon")
-                        div
-                        h3 Cinnabon
-                        p Bakery, Desserts, Coffee and Tea
-                        p 25–35 min • $
+      });
+        // Display restaurant data on the page
+        function displayRestaurants(restaurants) {
+        // Get the popular restaurants section element
+        var popularRestaurants = document.querySelector('section.popular-restaurants');
 
-                    li
-                        a(href="")
-                        img(src="/images/chipotle.png", alt="Chipotle")
-                        div
-                        h3 Chipotle
-                        p Mexican, Fast Food
-                        p 20–30 min • $
+        // Clear the content of the section
+        popularRestaurants.innerHTML = '';
 
-                    li
-                        a(href="")
-                        img(src="/images/panda.png", alt="Panda Express")
-                        div
-                        h3 Panda Express
-                        p Chinese, Fast Food
-                        p 30–40 min • $
+        // Loop through the restaurants and create an HTML element for each one
+        for (var i = 0; i < restaurants.length; i++) {
+            var restaurant = restaurants[i];
+            var restaurantElement = document.createElement('div');
+            restaurantElement.innerHTML = `
+            <img src="https://via.placeholder.com/150x150" alt="${restaurant['restaurant Name']}">
+            <h3>${restaurant['restaurant Name']}</h3>
+            <p>${restaurant.address}</p>
+            <p>${restaurant.city}, ${restaurant.state_} ${restaurant['zip code']}</p>
+            <p>Cuisine: ${restaurant['cuisine_type']}</p>
+            `;
+            popularRestaurants.appendChild(restaurantElement);
+        }
+        }
 
-            section.popular-cuisines
-                h2 Popular Cuisines
-                ul.cuisine-list
-                    li
-                        a(href="") Chinese
-                    li
-                        a(href="") Italian
-                    li
-                        a(href="") Pakistani
-                    li
-                        a(href="") Mexican
-                    li
-                        a(href="") Thai
-                    li
-                        a(href="") Indian
-                    li
-                        a(href="") Japanese
-                    li
-                        a(href="") Greek
-                    li
-                        a(href="") Vietnamese
+
     include ./partials/footer

@@ -43,19 +43,37 @@ router.get('/getCuisineType', function(req, res, next) {
 
 
 router.get('/getAllRestaurants', function(req, res, next) {
-  //grab the search term out of the request
+  // //grab the search term out of the request
   
-  //create the sql query
-  let query = "SELECT * FROM Restaurant";
-  //execute the sql query on the db object
-  // con.connect(function(err) {
-  //   if (err) throw err;
-    con.query(query, function (err, result, fields) {
-      if (err) throw err;
-      console.log(result);
-      //send the result back the front end
-      res.json(result);
-    });
-  });
+  // //create the sql query
+  // let query = "SELECT * FROM Restaurant";
+  // //execute the sql query on the db object
+  // // con.connect(function(err) {
+  // //   if (err) throw err;
+  //   con.query(query, function (err, result, fields) {
+  //     if (err) throw err;
+  //     console.log(result);
+  //     //send the result back the front end
+  //     res.json(result);
+  //   });
+  const restaurants = [
+    {
+      name: "Restaurant 1",
+      cuisine: "Italian",
+      rating: 4.5
+    },
+    {
+      name: "Restaurant 2",
+      cuisine: "American",
+      rating: 4.0
+    },
+    {
+      name: "Restaurant 3",
+      cuisine: "Mexican",
+      rating: 4.2
+    }
+  ];
+  res.json(restaurants);  
+});
 
 module.exports = router;

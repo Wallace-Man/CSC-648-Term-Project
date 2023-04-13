@@ -60,5 +60,76 @@ router.get('/termsOfService', function(req, res) {
 router.get('/privacyPolicy', function(req, res) {
     res.render('privacyPolicy');
 });
-
+router.get('/getAllRestaurants', function(req, res, next) {
+    // //grab the search term out of the request
+    
+    // //create the sql query
+    // let query = "SELECT * FROM Restaurant";
+    // //execute the sql query on the db object
+    // // con.connect(function(err) {
+    // //   if (err) throw err;
+    //   con.query(query, function (err, result, fields) {
+    //     if (err) throw err;
+    //     console.log(result);
+    //     //send the result back the front end
+    //     res.json(result);
+    //   });
+    const restaurants = [
+        {
+          "restaurantID": 1,
+          "restaurant Name": "Burger Joint",
+          "website": "burgerjoint.com",
+          "address": "123 Main St",
+          "city": "Anytown",
+          "state_": "CA",
+          "zip code": "12345",
+          "country": "USA",
+          "open": "11AM",
+          "closed": "10PM",
+          "cuisine_type": "Burgers"
+        },
+        {
+          "restaurantID": 2,
+          "restaurant Name": "Pizzeria",
+          "website": "pizzeria.com",
+          "address": "456 Elm St",
+          "city": "Anytown",
+          "state_": "CA",
+          "zip code": "12345",
+          "country": "USA",
+          "open": "11AM",
+          "closed": "10PM",
+          "cuisine_type": "Pizza"
+        },
+        {
+          "restaurantID": 3,
+          "restaurant Name": "Sushi Bar",
+          "website": "sushibar.com",
+          "address": "789 Oak St",
+          "city": "Anytown",
+          "state_": "CA",
+          "zip code": "12345",
+          "country": "USA",
+          "open": "11AM",
+          "closed": "10PM",
+          "cuisine_type": "Japanese"
+        },
+        {
+          "restaurantID": 4,
+          "restaurant Name": "Taco Stand",
+          "website": null,
+          "address": "321 Maple St",
+          "city": "Anytown",
+          "state_": "CA",
+          "zip code": "12345",
+          "country": "USA",
+          "open": "11AM",
+          "closed": "10PM",
+          "cuisine_type": "Mexican"
+        }
+      ];
+      
+    res.json(restaurants);  
+  });
+  
 module.exports = router;
