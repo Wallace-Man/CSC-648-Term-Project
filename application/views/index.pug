@@ -43,8 +43,8 @@ html(lang="en")
                 button.search-btn(type='submit') 
                     img(src='images/search-icon.png', alt='search', style='width: 30px; height: 30px;')
         main
+            h3.number-of-results
             section.popular-restaurants
-                h2 Popular Restaurants
     script.
       // Wait for the DOM to load before adding event listeners
       document.addEventListener('DOMContentLoaded', function() {
@@ -53,7 +53,6 @@ html(lang="en")
         var form = document.querySelector('form.search-form');
         // Add an event listener for form submissions
         form.addEventListener('submit', function(event) {
-
           // Prevent the default form submission behavior
           event.preventDefault();
 
@@ -64,7 +63,7 @@ html(lang="en")
           
           console.log('Selected category:', selectedCategory);
           console.log('Search query:', search_input);
-          
+
           fetch('/getAllRestaurants')
             .then(function(response) {
               return response.json();
@@ -83,10 +82,12 @@ html(lang="en")
         function displayRestaurants(restaurants) {
         // Get the popular restaurants section element
         var popularRestaurants = document.querySelector('section.popular-restaurants');
-
+        // Get the number of results section element
+        var searchNum = document.querySelector('h3.number-of-results');
         // Clear the content of the section
         popularRestaurants.innerHTML = '';
-
+        // Update number of results found
+        searchNum.innerHTML = 'Results Found: ' + restaurants.length;
         // Loop through the restaurants and create an HTML element for each one
         for (var i = 0; i < restaurants.length; i++) {
             var restaurant = restaurants[i];
