@@ -132,19 +132,13 @@ h1 br {
 /* SEARCH FORM */
 form.search-form {
   max-width: 800px;
-  margin: 0 auto;
   text-align: center;
   padding: 0 20px;
-  margin-bottom: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin: 0 auto 60px;
 }
 
-/* CATEGORY DROP DOWN MENU */
-#category-select {
-  margin-right: 10px;
-  width: 30%;
+form input[type="text"] {
+  width: 100%;
   height: 50px;
   padding: 10px;
   border: 2px solid #E5E5E5;
@@ -153,30 +147,16 @@ form.search-form {
   margin-bottom: 20px;
 }
 
-form input[type="text"] {
-  width: 100%;
-  height: 50px;
-  padding: 8px 16px;
-  border: 2px solid #E5E5E5;
-  border-radius: 5px 0 0 5px;
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  overflow: hidden;
-  outline: none;
-}
-
 form button[type="submit"] {
-  width: 10%;
+  width: 100%;
   height: 50px;
   background-color: black;
   color: #FFF;
   font-size: 1.2rem;
   border: none;
-  border-radius: 0 5px 5px 0;
-  margin-bottom: 20px;
+  border-radius: 5px;
   cursor: pointer;
 }
-
 
 main {
   max-width: 1024px;
