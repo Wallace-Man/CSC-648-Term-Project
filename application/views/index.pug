@@ -44,15 +44,15 @@ html(lang="en")
     body(onload='initMap()')
 
         main
-            div.maps-frame(id="map")
-                iframe(
-                    width="100%",
-                    height="100%",
-                    loading="lazy",
-                    allowfullscreen,
-                    referrerpolicy="no-referrer-when-downgrade",
-                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCqHQxuCGH2vnVMNkTRDReJIX3YZU-CIY8&q=Space+Needle,Seattle+WA"
-                )
+        div.maps-frame(id="map")
+            iframe(
+                width="100%",
+                height="100%",
+                loading="lazy",
+                allowfullscreen,
+                referrerpolicy="no-referrer-when-downgrade",
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCqHQxuCGH2vnVMNkTRDReJIX3YZU-CIY8&q=Space+Needle,Seattle+WA"
+            )
 
             h3.number-of-results
             section.popular-restaurants
