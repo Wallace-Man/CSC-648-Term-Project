@@ -705,3 +705,47 @@ div.maps-frame {
   width: 100vw;
   height:  100vh;
 }
+
+/* CSS for the info window */
+.info-window {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.info-window h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.info-window h3 img {
+    margin-right: 10px;
+}
+
+.info-window p {
+    margin: 0;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.info-window p img {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+}
+
+.info-window img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 5px;
+}
