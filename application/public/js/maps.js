@@ -4,7 +4,7 @@ function initMap() {
     // Create a map object centered on your location
     var map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 37.720664, lng: -122.474497 },
-        zoom: 12,
+        zoom: 14,
     });
 
     // Create a search box and link it to the UI element
