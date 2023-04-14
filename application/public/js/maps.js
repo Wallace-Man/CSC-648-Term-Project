@@ -47,6 +47,10 @@ function createMarker(place, map) {
         price += '$';
     }
 
+    // create a link to open the restaurant in Google Maps
+    const url = `https://www.google.com/maps/search/?api=1&query=${place.name}&query_place_id=${place.place_id}`;
+    // const link = `<a href="${url}" target="_blank">${place.name}</a>`;
+
     // render info window information about clicked on restaurant
     const content = '<div class="info-window">' +
         '<h3>' + place.name + '</h3>' +
@@ -56,6 +60,7 @@ function createMarker(place, map) {
         '<p>' + 'Rating: ' + place.rating + ' stars ' + '</p>' +
         '<p><i class="fas fa-utensils"></i> Price: ' + price + '</p>' +
         '<p><i class="fas fa-map-marker-alt"></i> Distance: ' + getDistance(place.geometry.location, map.getCenter()).toFixed(1) + ' mi</p>' +
+        '<p>' + `<a href="${url}" target="_blank" style="color: blue">view in google maps</a>` + '</p>' +
         '<img src="' + place.photos[0].getUrl({maxHeight: 200, maxWidth: 200}) + '" alt="">' +
         '</div>';
 
