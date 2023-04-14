@@ -135,10 +135,9 @@ h1 br {
 /* SEARCH FORM */
 form.search-form {
   max-width: 800px;
-  margin: 0 auto;
   text-align: center;
   padding: 0 20px;
-  margin-bottom: 60px;
+  margin: 0 auto 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -149,11 +148,21 @@ form.search-form {
   width: 30%;
   height: 50px;
   padding: 10px;
-  border: 2px solid #E5E5E5;
-  border-radius: 5px 0 0 5px;
+  border: 0 solid #E5E5E5;
+  border-radius: 0 0 0 0;
   font-size: 1.2rem;
   margin-bottom: 20px;
 }
+
+/*input.search-bar {*/
+/*  max-width: 800px;*/
+/*  text-align: center;*/
+/*  padding: 0 20px;*/
+/*  margin: 0 auto 60px;*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  align-items: center;*/
+/*}*/
 
 form input[type="text"] {
   width: 100%;
@@ -689,4 +698,15 @@ h2, h3 {
 .popular-restaurants p:last-of-type {
   margin-top: 5px;
   margin-bottom: 10px;
+}
+
+/*MAPS FRAME*/
+
+div.maps-frame {
+  margin: 0;
+  object-fit: cover;
+  width: 1200px;
+  height:  900px;
+  border: 0;
+  overflow-x: hidden;
 }
