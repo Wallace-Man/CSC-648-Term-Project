@@ -1,0 +1,19 @@
+extends layouts/main-layout
+
+block content
+    .signup-form-container
+        form.signup(action="register.php", method="post")
+            .form-group
+                label.signup(for="username") Username:
+                input.signup(type="text", id="username", name="username", required)
+            .form-group
+                label.signup(for="email") Email:
+                input.signup(type="email", id="email", name="email", required)
+            .form-group
+                label.signup(for="password") Password:
+                input.signup(type="password", id="password", name="password", required)
+            .form-group
+                label.signup(for="password2") Confirm Password:
+                input.signup(type="password", id="password2", name="password2", required)
+            button.signup-form-btn(type="submit") Register
+

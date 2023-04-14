@@ -1,0 +1,751 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global styles */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+header {
+  background-image: url("../images/header.png");
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid black;
+  /*padding: 20px 0;*/
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0 20px;
+}
+
+nav .logo{
+  font-size: 2rem;
+  color: black;
+  text-decoration: none;
+}
+
+.thin{
+  font-size: 2rem;
+  font-weight: lighter;
+  color: black;
+}
+
+.bold{
+  font-size: 2rem;
+  font-weight: bolder;
+  color: black;
+}
+
+.right-btns {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.login-btn,
+.signup-btn {
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.login-btn:hover {
+
+  background-color: #E2E2E2;
+}
+
+.signup-btn:hover {
+  background-color: rgb(51, 51, 51);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+}
+
+nav li {
+  margin-right: 20px;
+  font-weight: bold;
+  font-size: larger;
+}
+
+nav a.login-btn {
+  color: black;
+
+  background-color: white;
+  /*border: 1px solid white;*/
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+nav a.signup-btn {
+
+  color: white;
+  background-color: black;
+  /*border: 1px solid black;*/
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 0px;
+}
+
+/* SEARCH BAR */
+h1 {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+h1 br {
+  display: none;
+}
+
+/* SEARCH FORM */
+form.search-form {
+  max-width: 800px;
+  text-align: center;
+  padding: 0 20px;
+  margin: 0 auto 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* CATEGORY DROP DOWN MENU */
+#category-select {
+  width: 30%;
+  height: 50px;
+  padding: 10px;
+  border: 0 solid #E5E5E5;
+  border-radius: 0 0 0 0;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/*input.search-bar {*/
+/*  max-width: 800px;*/
+/*  text-align: center;*/
+/*  padding: 0 20px;*/
+/*  margin: 0 auto 60px;*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  align-items: center;*/
+/*}*/
+
+form input[type="text"] {
+  width: 100%;
+  height: 50px;
+  padding: 8px 16px;
+  border: 2px solid #E5E5E5;
+  border-radius: 0 0 0 0;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  overflow: hidden;
+  outline: none;
+}
+
+/* Search Button */
+form button.search-btn[type="submit"] {
+  width: 10%;
+  height: 50px;
+  background-color: black;
+  color: #FFF;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+/* Login and Register Button */
+form button[type="submit"] {
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  color: #FFF;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+main {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+section {
+  margin-bottom: 60px;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+section ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+section li {
+  flex-basis: calc(33.33% - 20px);
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border: 0px solid black;
+  border-radius: 0px;
+  overflow: hidden;
+}
+
+section a {
+  display: block;
+  padding: 20px;
+}
+
+section.popular-restaurants img {
+  width: 100%;
+  height: 150px;
+  border-radius: 0px;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+section ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+section li {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+section li a {
+  display: block;
+  padding: 1rem;
+  background-color: #FFF;
+  border: 0px solid #DDD;
+  border-radius: 5px;
+  color: black;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+section li a:hover {
+  /*background-color: #EEEEEE;*/
+}
+
+section li a img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+section li a h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+section li a p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* FOOTER PARTIAL */
+footer {
+  background-color: #F2F2F2;
+  padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: auto;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-list {
+  display: flex;
+  margin-left: 15px;
+  padding: 0;
+}
+
+.footer-list li {
+  margin-right: 20px;
+}
+
+.footer-list li a {
+  color: black;
+  text-decoration: none;
+}
+
+.footer-list li a:hover {
+  text-decoration: blink;
+}
+
+/* ABOUT US PAGE */
+.bio {
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto 40px;
+  padding: 20px;
+  background-color: #FFF;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+
+.bio p {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* MEMBER CARDS */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+  justify-items: center;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.card {
+  background-color: #FFF;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  font-weight: 500;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.card a {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 16px;
+  color: #FFF;
+  background-color: #333;
+  border-radius: 25px;
+  padding: 10px 30px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.card a:hover {
+  background-color: #585757;
+}
+
+/* MEMBER PROFILE */
+.profile-card {
+  background-color: #FFF;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-card img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 20px;
+}
+
+.profile-card h2 {
+  font-weight: 500;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.profile-card p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.profile-card a {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 16px;
+  color: #FFF;
+  background-color: #333;
+  border-radius: 25px;
+  padding: 10px 30px;
+}
+
+.profile-card a:hover {
+  background-color: #222;
+}
+
+.profile-card .bio {
+  font-size: 16px;
+  color: #666;
+  margin-top: 20px;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+/* LOGIN & SIGNUP */
+.login-form-container,
+.signup-form-container {
+  display: flex;
+  justify-content: center;
+}
+
+form.login,
+form.signup {
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label.signup,
+label.login {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input.signup[type="text"],
+input.signup[type="email"],
+input.signup[type="password"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #F1F1F1;
+  width: 100%;
+}
+
+input.login[type="text"],
+input.login[type="password"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #F1F1F1;
+  width: 100%;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button.login-form-btn:hover,
+button.signup-form-btn:hover {
+  background-color: rgb(51, 51, 51);
+}
+
+/* GOOGLE-APPLE-FACEBOOK LOGIN BUTTONS */
+.alt-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.alt-login p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.social-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
+  border-radius: 5px;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+a.social-login i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+a.social-login.google {
+  background-color: #F1F1F1;
+}
+
+a.social-login.apple {
+  background-color: #F1F1F1;
+}
+
+a.social-login.facebook {
+  background-color: #F1F1F1;
+}
+
+a.social-login:hover {
+  background-color: #E2E2E2;
+}
+
+hr {
+  border-top: 1px solid #CCC;
+  margin: 20px 0;
+}
+
+/* TERMS OF SERVICE */
+h1.ToS {
+  text-align: left;
+  font-size: 40px;
+}
+
+p.ToS {
+  margin-top: 30px;
+  font-size: 20px;
+  margin-bottom: 60px;
+}
+
+ul.ToS{
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+li.ToS {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+li.ToS:before {
+  margin-right: 10px;
+}
+
+.ToS-container {
+  max-width: 40%;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  padding: 30px;
+}
+
+/* PRIVACY POLICY */
+h1.PP {
+  text-align: left;
+  font-size: 40px;
+}
+
+p.PP {
+  margin-top: 30px;
+  font-size: 20px;
+  margin-bottom: 60px;
+}
+
+ul.PP{
+  /*margin-top: 30px;*/
+  margin-bottom: 10px;
+}
+
+li.PP {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+li.PP:before {
+  margin-right: 10px;
+}
+
+.PP-container {
+  max-width: 40%;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  padding: 30px;
+}
+
+
+/* Set font family and size for headings */
+h2, h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+
+/* Set grid and spacing for restaurant card */
+
+/* Set margin and padding for restaurant card */
+.popular-restaurants div {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  width: auto;
+  margin: 0 auto;
+
+  
+}
+
+/* Set styles for restaurant image */
+.popular-restaurants img {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Set styles for restaurant name */
+.popular-restaurants h3 {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  
+}
+
+/* Set styles for restaurant address */
+.popular-restaurants p {
+  text-align: center;
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Set styles for restaurant cuisine type */
+.popular-restaurants p:last-of-type {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+/*GOOGLE MAPS FRAME*/
+div.maps-frame {
+  width: 100vw;
+  height:  100vh;
+}
+
+/* CSS for the info window */
+.info-window {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.info-window h3 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.info-window h3 img {
+  margin-right: 10px;
+}
+
+.info-window p {
+  margin: 0;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.info-window p img {
+  margin-right: 10px;
+  width: 16px;
+  height: 16px;
+}
+
+.info-window img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 5px;
+}
