@@ -18,7 +18,8 @@
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "path": "^0.12.7",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "supertest": "^6.3.3"
   },
   "devDependencies": {
     "jest": "^29.4.3",
