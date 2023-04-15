@@ -6,37 +6,37 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-/* GET ABOUTUS PAGE */
+/* GET ABOUT US PAGE */
 router.get('/aboutUs', function(req, res) {
   res.render('aboutUs');
 });
 
-/* GET ABOUTUS-DYLAN PAGE */
+/* GET ABOUT US-DYLAN PAGE */
 router.get('/learnMoreDylan', function(req, res) {
     res.render('learnMoreDylan');
 });
 
-/* GET ABOUTUS-TIM PAGE */
+/* GET ABOUT US-TIM PAGE */
 router.get('/learnMoreTim', function(req, res) {
     res.render('learnMoreTim');
 });
 
-/* GET ABOUTUS-JEREMIAH PAGE */
+/* GET ABOUT US-JEREMIAH PAGE */
 router.get('/learnMoreJeremiah', function(req, res) {
     res.render('learnMoreJeremiah');
 });
 
-/* GET ABOUTUS-KEVIN PAGE */
+/* GET ABOUT US-KEVIN PAGE */
 router.get('/learnMoreKevin', function(req, res) {
     res.render('learnMoreKevin');
 });
 
-/* GET ABOUTUS-WALLACE PAGE */
+/* GET ABOUT US-WALLACE PAGE */
 router.get('/learnMoreWallace', function(req, res) {
     res.render('learnMoreWallace');
 });
 
-/* GET ABOUTUS-CHRISTIAN PAGE */
+/* GET ABOUT US-CHRISTIAN PAGE */
 router.get('/learnMoreChristian', function(req, res) {
     res.render('learnMoreChristian');
 });
@@ -61,11 +61,24 @@ router.get('/privacyPolicy', function(req, res) {
     res.render('privacyPolicy');
 });
 
-/* GET ERROR PAGE */
-router.get('/error', function(req, res, next) {
-    const error = new Error('Something went wrong');
-    error.status = 500;
-    next(error);
+/* GET DRIVER PAGE */
+router.get('/driver', function(req, res) {
+    res.render('driver');
+});
+
+/* GET DRIVER INFO PAGE */
+router.get('/driverInfo', function(req, res) {
+    res.render('driverInfo');
+});
+
+/* GET DRIVER PAGE */
+router.get('/restaurant', function(req, res) {
+    res.render('restaurant');
+});
+
+/* GET DRIVER INFO PAGE */
+router.get('/restaurantInfo', function(req, res) {
+    res.render('restaurantInfo');
 });
 
 module.exports = router;
