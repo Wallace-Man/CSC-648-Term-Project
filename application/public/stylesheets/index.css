@@ -28,15 +28,49 @@ ul {
   list-style: none;
 }
 
+/*HEADER*/
 header {
   background-image: url("../images/header.png");
   background-size: cover;
   background-position: center;
   border-bottom: 1px solid black;
-  /*padding: 20px 0;*/
+  padding: 20px 0;
   text-align: center;
   margin-bottom: 0px;
 }
+
+/*DRIVER REGISTRATION BANNER*/
+div.driver-banner {
+  background-image: url("../images/driver-banner.png");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid black;
+}
+
+/*RESTAURANT REGISTRATION BANNER*/
+div.restaurant-banner {
+  background-image: url("../images/restaurant-banner.png");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid black;
+}
+
+/*div.nav-search-form-container {*/
+/*  max-width: 800px;*/
+/*  text-align: center;*/
+/*  !*padding: 0 20px;*!*/
+/*  !*margin: 0 auto 60px;*!*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  */
+/*  align-items: center;*/
+/*}*/
 
 nav {
   display: flex;
@@ -345,13 +379,13 @@ footer {
 }
 
 /* MEMBER CARDS */
-.card-grid {
+div.card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 40px;
   justify-items: center;
   align-items: center;
-  margin-top: 80px;
+  margin: 80px;
 }
 
 .card {
@@ -392,7 +426,7 @@ footer {
   font-weight: 500;
   font-size: 16px;
   color: #FFF;
-  background-color: #333;
+  background-color: black;
   border-radius: 25px;
   padding: 10px 30px;
   text-decoration: none;
@@ -403,6 +437,69 @@ footer {
 .card a:hover {
   background-color: #585757;
 }
+
+/* MAIN-PAGE CARDS*/
+.main-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+  justify-items: center;
+  align-items: center;
+  margin: 60px;
+}
+
+.main-card {
+  background-color: #FFF;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.main-card img {
+  width: 400px;
+  height: 280px;
+  border-radius: 30%;
+  border: 1px solid black;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 20px;
+}
+
+.main-card h2 {
+  font-weight: 500;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.main-card p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.main-card a {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 16px;
+  color: #FFF;
+  background-color: black;
+  border-radius: 25px;
+  padding: 10px 30px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.main-card a:hover {
+  background-color: #585757;
+}
+
 
 /* MEMBER PROFILE */
 .profile-card {
@@ -462,26 +559,34 @@ footer {
   text-align: justify;
 }
 
-/* LOGIN & SIGNUP */
+/* USER LOGIN & SIGNUP */
+.driver-signup-form-container,
+.restaurant-signup-form-container,
 .login-form-container,
 .signup-form-container {
   display: flex;
   justify-content: center;
+  margin-top: 200px;
 }
 
+form.driver-signup,
+form.restaurant-signup,
 form.login,
 form.signup {
-  border: 1px solid #CCC;
+  border: 1px solid black;
   border-radius: 5px;
   padding: 20px;
   max-width: 400px;
   width: 100%;
+  background-color: #F2F2F2;
+  opacity: 85%;
 }
 
 .form-group {
   margin-bottom: 20px;
 }
-
+label.driver-signup,
+label.restaurant-signup,
 label.signup,
 label.login {
   display: block;
@@ -489,22 +594,35 @@ label.login {
   margin-bottom: 5px;
 }
 
+input.driver-signup[type="username"],
+input.driver-signup[type="email"],
+input.driver-signup[type="password"],
+input.driver-signup[type="email"],
+input.driver-signup[type="phone"],
+input.restaurant-signup[type="store-address"],
+input.restaurant-signup[type="floor-suite"],
+input.restaurant-signup[type="store-name"],
+input.restaurant-signup[type="business-type"],
+input.restaurant-signup[type="full-name"],
+input.restaurant-signup[type="email"],
+input.restaurant-signup[type="phone"],
+input.signup[type="username"],
 input.signup[type="text"],
 input.signup[type="email"],
 input.signup[type="password"] {
   padding: 10px;
-  border: none;
+  border: 1px solid black;
   border-radius: 5px;
-  background-color: #F1F1F1;
+  /*background-color: none;*/
   width: 100%;
 }
 
-input.login[type="text"],
+input.login[type="username"],
 input.login[type="password"] {
   padding: 10px;
-  border: none;
+  border: 1px solid black;
   border-radius: 5px;
-  background-color: #F1F1F1;
+  /*background-color: none;*/
   width: 100%;
 }
 
@@ -520,7 +638,7 @@ input.login[type="password"] {
 
 button.login-form-btn:hover,
 button.signup-form-btn:hover {
-  background-color: rgb(51, 51, 51);
+  background-color: black;
 }
 
 /* GOOGLE-APPLE-FACEBOOK LOGIN BUTTONS */
@@ -558,18 +676,22 @@ a.social-login i {
 
 a.social-login.google {
   background-color: #F1F1F1;
+  border: 1px solid black;
 }
 
 a.social-login.apple {
   background-color: #F1F1F1;
+  border: 1px solid black;
 }
 
 a.social-login.facebook {
   background-color: #F1F1F1;
+  border: 1px solid black;
 }
 
 a.social-login:hover {
   background-color: #E2E2E2;
+
 }
 
 hr {
@@ -585,18 +707,21 @@ h1.ToS {
 
 p.ToS {
   margin-top: 30px;
-  font-size: 20px;
+  font-size: 16px;
   margin-bottom: 60px;
+  font-weight: normal;
 }
 
 ul.ToS{
   margin-top: 30px;
   margin-bottom: 10px;
+  font-weight: normal;
 }
 
 li.ToS {
   margin-bottom: 10px;
   font-size: 16px;
+  font-weight: normal;
 }
 
 li.ToS:before {
@@ -618,18 +743,21 @@ h1.PP {
 
 p.PP {
   margin-top: 30px;
-  font-size: 20px;
+  font-size: 16px;
   margin-bottom: 60px;
+  font-weight: normal;
 }
 
 ul.PP{
   /*margin-top: 30px;*/
   margin-bottom: 10px;
+  font-weight: normal;
 }
 
 li.PP {
   margin-bottom: 10px;
   font-size: 16px;
+  font-weight: normal;
 }
 
 li.PP:before {
@@ -702,11 +830,25 @@ h2, h3 {
 
 /*GOOGLE MAPS FRAME*/
 div.maps-frame {
-  width: 100vw;
-  height:  100vh;
+  width: 100%;
+  height:  85vh;
+  overflow-x: hidden;
+  object-fit: cover;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid black;
 }
 
-/* CSS for the info window */
+/*div.maps-frame {*/
+/*    margin: 0;*/
+/*    object-fit: cover;*/
+/*    width: 1200px;*/
+/*    height:  900px;*/
+/*    border: 0;*/
+/*    overflow-x: hidden;*/
+/*  }*/
+
+/* INFO WINDOW */
 .info-window {
     max-width: 300px;
     padding: 10px;

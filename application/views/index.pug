@@ -1,17 +1,20 @@
 doctype html
 html(lang="en")
     include ./partials/head
-    header
+
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8ry_zAnVk-Iph2sk9-invGhwY1GSq8ts&libraries=places")
+    script(src="https://apis.google.com/js/api.js")
+    header(style="margin-bottom: 0")
         div.header-image
         nav
             a.logo(href="/")
                 span.thin Gator
                 span.bold Bites
-            ul
-                li
-                    a(href="") Drivers
-                li
-                    a(href="") Restaurants
+            //ul
+            //    li
+            //        a(href="") Drivers
+            //    li
+            //        a(href="") Restaurants
             div.right-btns
                 a.login-btn(href="login")
                     img(src="/images/user.png", style= {width: "15px", height: "15px", marginBottom: "15px"} )
@@ -45,68 +48,26 @@ html(lang="en")
                 loading="lazy",
                 allowfullscreen,
                 referrerpolicy="no-referrer-when-downgrade",
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCqHQxuCGH2vnVMNkTRDReJIX3YZU-CIY8&q=Space+Needle,Seattle+WA"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCqHQxuCGH2vnVMNkTRDReJIX3YZU-CIY8&q=San+Francisco,San+Francisco+CA"
             )
-
-            h3.number-of-results
-            section.popular-restaurants
-    //script.
-    //  // Wait for the DOM to load before adding event listeners
-    //  document.addEventListener('DOMContentLoaded', function() {
-    //
-    //    // Get the form element
-    //    var form = document.querySelector('form.search-form');
-    //    // Add an event listener for form submissions
-    //    form.addEventListener('submit', function(event) {
-    //      // Prevent the default form submission behavior
-    //      event.preventDefault();
-    //
-    //      // Get the selected category
-    //      var categorySelect = document.getElementById('category-select')
-    //      var search_input = document.querySelector('input.search-input').value;
-    //      var selectedCategory = categorySelect.options[categorySelect.selectedIndex].value;
-    //
-    //      console.log('Selected category:', selectedCategory);
-    //      console.log('Search query:', search_input);
-    //
-    //      fetch('/getAllRestaurants')
-    //        .then(function(response) {
-    //          return response.json();
-    //        })
-    //        .then(function(data) {
-    //          // Display the restaurant data on the page
-    //          displayRestaurants(data);
-    //        })
-    //        .catch(function(error) {
-    //          console.error('Error fetching restaurant data:', error);
-    //        });
-    //    });
-    //
-    //  });
-    //    // Display restaurant data on the page
-    //    function displayRestaurants(restaurants) {
-    //    // Get the popular restaurants section element
-    //    var popularRestaurants = document.querySelector('section.popular-restaurants');
-    //    // Get the number of results section element
-    //    var searchNum = document.querySelector('h3.number-of-results');
-    //    // Clear the content of the section
-    //    popularRestaurants.innerHTML = '';
-    //    // Update number of results found
-    //    searchNum.innerHTML = 'Results Found: ' + restaurants.length;
-    //    // Loop through the restaurants and create an HTML element for each one
-    //    for (var i = 0; i < restaurants.length; i++) {
-    //        var restaurant = restaurants[i];
-    //        var restaurantElement = document.createElement('div');
-    //        restaurantElement.innerHTML = `
-    //        <img src="https://via.placeholder.com/150x150" alt="${restaurant['restaurant Name']}">
-    //        <h3>${restaurant['restaurant Name']}</h3>
-    //        <p>${restaurant.address}</p>
-    //        <p>${restaurant.city}, ${restaurant.state_} ${restaurant['zip code']}</p>
-    //        <p>Cuisine: ${restaurant['cuisine_type']}</p>
-    //        `;
-    //        popularRestaurants.appendChild(restaurantElement);
-    //    }
-        }
-
+        div.main-card-container
+            div.main-card-grid
+                div.main-card
+                    img(src="/images/delivery-driver.png", alt="main-card-img")
+                    p Drive your way to a
+                    p reliable income - anytime, anywhere.
+                    a(href="driver") Become a Driver
+                div.main-card
+                    img(src="/images/partner.png", alt="main-card-img")
+                    p Partner with us to expand your
+                    p business and reach more customers.
+                    a(href="restaurant") Become a Partner
+                div.main-card
+                    img(src="/images/sfsu.png", alt="main-card-img")
+                    p Get your food delivered to
+                    p campus in no time - Quick & Easy
+                    a(href="/") Find Restaurants
 
     include ./partials/footer
+
+
