@@ -1,7 +1,7 @@
 //This file serves as a list of items that need to be added/ reminders of what needs fixing
 -------------------------------------------------------------
 /* TODO ITEM FORMAT */
-  
+----Item n----
 Name: Person(s) who suggested the changes
 Date: MM/DD/YYYY
 Desc: A short description of the item to add/modify
@@ -9,16 +9,22 @@ File: A list of the file(s) involved
 -------------------------------------------------------------
 
 /* TODO LIST */
- 
-  
- // Item 1
+
+ ----Item 1----
  Name: Dylan
  Date: 04/15/2023
  Desc: Add useful information/data underneath the driver sign up page to entice new drivers
  File: driver.pug, driverInfo.pug
  
-  // Item 1
+ ----Item 2----
  Name: Dylan
  Date: 04/15/2023
  Desc: Add useful information/data underneath the restaurant sign up page to entice new restaurant owners
  File: restaurant.pug, restaurantInfo.pug
+
+  ----Item 3----
+  Name: Dylan
+  Date: 04/16/2023
+  Desc: Fix dynamic sizing issue on home page (specifically the 3 bottom cards)
+  File: index.pug, index.css, main-layout.pug
+
