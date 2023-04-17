@@ -14,17 +14,28 @@ File: A list of the file(s) involved
  Name: Dylan
  Date: 04/15/2023
  Desc: Add useful information/data underneath the driver sign up page to entice new drivers
- File: driver.pug, driverInfo.pug
+ File: views/driver.pug, views/driverInfo.pug
  
  ----Item 2----
  Name: Dylan
  Date: 04/15/2023
  Desc: Add useful information/data underneath the restaurant sign up page to entice new restaurant owners
- File: restaurant.pug, restaurantInfo.pug
+ File: views/restaurant.pug, views/restaurantInfo.pug
 
   ----Item 3----
   Name: Dylan
   Date: 04/16/2023
   Desc: Fix dynamic sizing issue on home page (specifically the 3 bottom cards)
-  File: index.pug, index.css, main-layout.pug
+  File: views/index.pug, public/stylesheets/index.css, views/layouts/main-layout.pug
 
+ ----Item 4----
+  Name: Dylan
+  Date: 04/17/2023
+  Desc: adjust Google Places API search parameters to search for restaurants only
+  File: public/js/maps.js, /views/index.pug
+  
+   ----Item 5----
+  Name: Dylan
+  Date: 04/17/2023
+  Desc: integrate search filter drop down menu into search bar
+  File: public/js/maps.js, /views/index.pug
