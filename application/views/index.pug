@@ -48,7 +48,10 @@ html(lang="en")
                 loading="lazy",
                 allowfullscreen,
                 referrerpolicy="no-referrer-when-downgrade",
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCqHQxuCGH2vnVMNkTRDReJIX3YZU-CIY8&q=San+Francisco,San+Francisco+CA"
+                src="https://www.google.com/maps/embed/v1/place" +
+                "?key=AIzaSyCqHQxuCGH2vnVMNkTRDReJIX3YZU-CIY8" +
+                "&q=San+Francisco+CA" +
+                "&zoom=14"
             )
         div.main-card-container
             div.main-card-grid
@@ -68,6 +71,6 @@ html(lang="en")
                     p campus in no time - Quick & Easy
                     a(href="/") Find Restaurants
 
-    include ./partials/footer
+        include ./partials/footer
 
 
