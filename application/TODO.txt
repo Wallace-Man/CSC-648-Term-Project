@@ -39,3 +39,21 @@ File: A list of the file(s) involved
   Date: 04/17/2023
   Desc: integrate search filter drop down menu into search bar
   File: public/js/maps.js, /views/index.pug
+
+   ----Item 6----
+  Name: Dylan
+  Date: 04/17/2023
+  Desc: add 'on hover' css styling for become a driver button
+  File: /views/driver.pug
+
+   ----Item 7----
+  Name: Dylan
+  Date: 04/17/2023
+  Desc: add 'on hover' css styling for become a partner button
+  File: /views/restaurant.pug
+
+     ----Item 8----
+    Name: Dylan
+    Date: 04/17/2023
+    Desc: add unit tests for maps.js
+    File: public/js/maps.js
