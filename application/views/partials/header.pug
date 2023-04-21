@@ -1,29 +1,42 @@
 header
     div.header-image
         nav
-            a.logo(href='/')
-                span.thin Gator
-                span.bold Bites
-            //div.nav-search-form-container
-            //    form.search-form(action='')
-            //        select#category-select(name='category')
-            //            option(value='') All
-            //            option(value='italian') Italian
-            //            option(value='american') American
-            //            option(value='mexican') Mexican
-            //            option(value='chinese') Chinese
-            //            option(value='japanese') Japanese
-            //            option(value='korean') Korean
-            //            option(value='thai') Thai
-            //            option(value='vietnamese') Vietnamese
-            //            option(value='greek') Greek
-            //            option(value='french') French
-            //        input.search-input(id='search-input', type='text', placeholder='Search For Restaurants')
-            //        button.search-btn(type='submit')
-            //            img(src='images/search-icon.png', alt='search', style='width: 30px; height: 30px;')
-
-            div.right-btns
-                a.login-btn(href='login')
-                    img(src="/images/user.png", style= {width: "15px", height: "15px", marginBottom: "15px"} )
-                    span(style= {margin: "5px"}) Log in
-                a.signup-btn(href='signup') Sign up
+            table(style='width: 100%')
+                tr
+                    td(style='width: 20%; text-align: left')
+                        a.logo(href='/')
+                            span.thin Gator
+                            span.bold Bites
+                    td(style='width: 60%')
+                        div.nav-search-form-container
+                            form.search-form(action='' style='margin-top: 20px; margin-bottom: 0px')
+                                select#category-select(name='category')
+                                    option(value='') All
+                                    option(value='italian') Italian
+                                    option(value='american') American
+                                    option(value='mexican') Mexican
+                                    option(value='chinese') Chinese
+                                    option(value='japanese') Japanese
+                                    option(value='korean') Korean
+                                    option(value='thai') Thai
+                                    option(value='vietnamese') Vietnamese
+                                    option(value='greek') Greek
+                                    option(value='french') French
+                                input.search-input(id='search-input', type='text', placeholder='Search For Restaurants')
+                                button.search-btn(type='submit')
+                                    img(src='images/search-icon.png', alt='search', style='width: 30px; height: 30px;')
+                    td(style='width: 20%')
+                        div.right-btns
+                            a.login-btn(href='login')
+                                img(src="/images/user.png", style= {width: "15px", height: "15px", marginBottom: "15px"} )
+                                span(style= {margin: "5px"}) Log in
+                            a.signup-btn(href='signup') Sign up
+                tr 
+                    td(colspan='2' style='text-align: left')
+                        ul(style='justify-content: initial')
+                            li 
+                                a(href='/aboutUs') About Us
+                            li 
+                                a(href='driver') Drivers
+                            li 
+                                a(href='restaurant') Restaurants
