@@ -1,79 +1,75 @@
+// Import necessary libraries
 const express = require('express');
-const { con } = require('../config/db');
 const router = express.Router();
+const mysql = require('mysql');
 
-/* GET users listing. */
-router.get('/getRestaurants', function(req, res, next) {
-  //grab the search term out of the request
-  console.log("Before: ");
-  let searchTerm = req.body.searchTerm;
-  console.log("After: "+searchTerm);
-  //create the sql query
-  let query = "SELECT * FROM Restaurant WHERE restaurant_Name LIKE '%" + searchTerm + "%'";
-  //execute the sql query on the db object
-  // con.connect(function(err) {
-  //   if (err) throw err;
-    con.query(query, function (err, result, fields) {
-      if (err) throw err;
-      console.log(result);
-      //send the result back the front end
-      res.json(result);
-    });
-  });
-// });
-
-
-router.get('/getCuisineType', function(req, res, next) {
- 
-   //grab the search term out of the request
-   let searchTerm = req.body.searchTerm;
-   //create the sql query
-   let query = "SELECT restaurant_Name from Restaurant where cuisine_type = '"+ searchTerm+"'" ;
-   //execute the sql query on the db object
-   // con.connect(function(err) {
-   //   if (err) throw err;
-     con.query(query, function (err, result, fields) {
-       if (err) throw err;
-       console.log(result);
-       //send the result back the front end
-       res.json(result);
-  
-    });
-  });
-
-
-router.get('/getAllRestaurants', function(req, res, next) {
-  // //grab the search term out of the request
-  
-  // //create the sql query
-  // let query = "SELECT * FROM Restaurant";
-  // //execute the sql query on the db object
-  // // con.connect(function(err) {
-  // //   if (err) throw err;
-  //   con.query(query, function (err, result, fields) {
-  //     if (err) throw err;
-  //     console.log(result);
-  //     //send the result back the front end
-  //     res.json(result);
-  //   });
-  const restaurants = [
-    {
-      name: "Restaurant 1",
-      cuisine: "Italian",
-      rating: 4.5
-    },
-    {
-      name: "Restaurant 2",
-      cuisine: "American",
-      rating: 4.0
-    },
-    {
-      name: "Restaurant 3",
-      cuisine: "Mexican",
-      rating: 4.2
-    }
-  ];
-  res.json(restaurants);  
+// Create a MySQL connection
+const dbConnection = mysql.createConnection({
+  host: "34.94.177.91",
+  user: "root",
+  password: "*4M3K0pOd(Y?dP?t",
+  database: "restaurantdb",
 });
 
+// Connect to the MySQL database
+dbConnection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to the database:', err);
+    return;
+  }
+  console.log('Connected to the database.');
+});
+
+// Define /getRestaurants endpoint to search for restaurants by name
+router.get('/getRestaurants', (req, res) => {
+  const searchTerm = req.query.searchTerm; // Get the search term from the query string
+  const query = "SELECT * FROM Restaurant WHERE restaurant_Name LIKE '%" + searchTerm + "%'"; // Create SQL query
+  console.log(`Executing query: ${query}`);
+
+  // Execute the SQL query and handle the result
+  dbConnection.query(query, (err, result) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      res.status(500).json({ error: 'Internal server error' });
+      return;
+    }
+    console.log('Query result:', result);
+    res.json(result); // Send the result as the response
+  });
+});
+
+// Define /getCuisineType endpoint to search for restaurants by cuisine type
+router.get('/getCuisineType', (req, res) => {
+  const searchTerm = req.query.searchTerm; // Get the search term from the query string
+  const query = "SELECT restaurant_Name FROM Restaurant WHERE cuisine_type = '" + searchTerm + "'"; // Create SQL query
+  console.log(`Executing query: ${query}`);
+
+  // Execute the SQL query and handle the result
+  dbConnection.query(query, (err, result) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      res.status(500).json({ error: 'Internal server error' });
+      return;
+    }
+    console.log('Query result:', result);
+    res.json(result); // Send the result as the response
+  });
+});
+
+// Define /getAllRestaurants endpoint to return all restaurants
+router.get('/getAllRestaurants', (req, res) => {
+  const query = "SELECT * FROM Restaurant"; // Create SQL query
+
+  // Execute the SQL query and handle the result
+  dbConnection.query(query, (err, result) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      res.status(500).json({ error: 'Internal server error' });
+      return;
+    }
+    res.json(result); // Send the result as the response
+  });
+});
+
+// Export the router to be used in the main application
 module.exports = router;
