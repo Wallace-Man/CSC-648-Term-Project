@@ -1,15 +1,15 @@
 header
     div.header-image
         nav
-            table(style='width: 100%')
+            table
                 tr
-                    td(style='width: 20%; text-align: left')
+                    td.logo
                         a.logo(href='/')
                             span.thin Gator
                             span.bold Bites
-                    td(style='width: 60%')
+                    td.search
                         div.nav-search-form-container
-                            form.search-form(action='' style='margin-top: 20px; margin-bottom: 0px')
+                            form.search-form(action='')
                                 select#category-select(name='category')
                                     option(value='') All
                                     option(value='italian') Italian
@@ -23,17 +23,18 @@ header
                                     option(value='greek') Greek
                                     option(value='french') French
                                 input.search-input(id='search-input', type='text', placeholder='Search For Restaurants')
+                                
                                 button.search-btn(type='submit')
-                                    img(src='images/search-icon.png', alt='search', style='width: 30px; height: 30px;')
-                    td(style='width: 20%')
+                                    img.search(src='images/search-icon.png', alt='search',)
+                    td.login-signup
                         div.right-btns
                             a.login-btn(href='login')
-                                img(src="/images/user.png", style= {width: "15px", height: "15px", marginBottom: "15px"} )
-                                span(style= {margin: "5px"}) Log in
+                                img.user(src="/images/user.png")
+                                span.login Log in
                             a.signup-btn(href='signup') Sign up
                 tr 
-                    td(colspan='2' style='text-align: left')
-                        ul(style='justify-content: initial')
+                    td.nav(colspan='2')
+                        ul
                             li 
                                 a(href='/aboutUs') About Us
                             li 

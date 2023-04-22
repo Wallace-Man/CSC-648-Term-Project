@@ -39,6 +39,50 @@ header {
   margin-bottom: 0px;
 }
 
+header table {
+  width: 100%;
+}
+
+header td.logo {
+  width: 20%;
+  text-align: left;
+}
+
+header td.search {
+  width: 60%
+}
+
+header form.search-form {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+header img.search {
+  width: 30px;
+  height: 30px;
+}
+
+header td.login-signup {
+  width: 20%;
+}
+
+header img.user {
+  width: 15px;
+  height: 15px;
+}
+
+header span.login {
+  margin: 5px;
+}
+
+header td.nav {
+  text-align: left;
+}
+
+header ul {
+  justify-content: initial;
+}
+
 /*DRIVER REGISTRATION BANNER*/
 div.driver-banner {
   background-image: url("../images/driver-banner.png");
@@ -61,47 +105,6 @@ div.restaurant-banner {
   border-bottom: 1px solid black;
 }
 
-/*DRIVER INFO BANNER*/
-div.driver-info-header {
-  background-color: black;
-  height: 40vh;
-  margin: 0;
-  padding: 0;
-  border-bottom: 1px solid black;
-}
-
-.driver-info-header a {
-  color: white;
-}
-
-div.driver-info-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 200px;
-  gap: 20px;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  /*justify-content: center;*/
-  /*margin-top: 100px;*/
-  /*margin-left: 40%;*/
-  /*width: 500px;*/
-}
-
-div.driver-info-header-text p {
-  color: white;
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 1.5;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-div.driver-info-header-image img {
-  width: 600px;
-  height: 300px;
-  margin-left: 40px;
-}
-
-
 /*div.nav-search-form-container {*/
 /*  max-width: 800px;*/
 /*  text-align: center;*/
@@ -121,7 +124,7 @@ nav {
   padding: 0 20px;
 }
 
-nav .logo{
+nav a.logo{
   font-size: 2rem;
   color: black;
   text-decoration: none;
@@ -143,6 +146,7 @@ nav .logo{
   display: flex;
   align-items: center;
   margin-left: auto;
+  float: right;
 }
 
 .login-btn,
@@ -162,7 +166,6 @@ nav .logo{
 
 nav ul {
   display: flex;
-  justify-content: center;
   align-items: center;
   width: 40%;
 }
@@ -252,7 +255,7 @@ form input[type="text"] {
 }
 
 /* Search Button */
-form button.search-btn[type="submit"] {
+button.search-btn[type="submit"] {
   width: 10%;
   height: 50px;
   background-color: black;
@@ -262,12 +265,11 @@ form button.search-btn[type="submit"] {
   border-radius: 0 5px 5px 0;
   margin-bottom: 20px;
   cursor: pointer;
-  display: inline-block;
 }
 
 /* Login and Register Button */
 form button[type="submit"] {
-  width: 50%;
+  width: 100%;
   height: 50px;
   background-color: black;
   color: #FFF;
@@ -275,9 +277,6 @@ form button[type="submit"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
-form {
-  text-align: center;
 }
 
 main {
@@ -402,7 +401,7 @@ footer {
 }
 
 .footer-list li a:hover {
-  text-decoration: underline;
+  text-decoration: blink;
 }
 
 /* ABOUT US PAGE */
@@ -486,17 +485,16 @@ div.card-grid {
 
 /* MAIN-PAGE CARDS*/
 .main-card-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 60px;
-  justify-content: center;
+  grid-gap: 40px;
+  justify-items: center;
   align-items: center;
-  margin: 60px auto;
+  margin: 60px;
 }
 
 .main-card {
-  background-color: white;
+  background-color: #FFF;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border: 1px solid black;
   border-radius: 5px;
@@ -514,7 +512,7 @@ div.card-grid {
   border: 1px solid black;
   object-fit: cover;
   object-position: center;
-  margin: 20px;
+  margin-bottom: 20px;
 }
 
 .main-card h2 {
@@ -527,26 +525,26 @@ div.card-grid {
 .main-card p {
   font-size: 16px;
   color: #666;
-  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.main-card a.btn {
+.main-card a {
   display: inline-block;
   font-weight: 500;
   font-size: 16px;
   color: #FFF;
   background-color: black;
   border-radius: 25px;
-  padding: 10px 10px;
+  padding: 10px 30px;
   text-decoration: none;
   margin-top: 20px;
   transition: background-color 0.2s ease-in-out;
-  width: 40%;
 }
 
-.main-card a.btn:hover {
+.main-card a:hover {
   background-color: #585757;
 }
+
 
 /* MEMBER PROFILE */
 .profile-card {
@@ -623,7 +621,7 @@ form.signup {
   border: 1px solid black;
   border-radius: 5px;
   padding: 20px;
-  max-width: 800px;
+  max-width: 400px;
   width: 100%;
   background-color: #F2F2F2;
   opacity: 85%;
@@ -631,7 +629,6 @@ form.signup {
 
 .form-group {
   margin-bottom: 20px;
-  text-align: center;
 }
 label.driver-signup,
 label.restaurant-signup,
@@ -662,8 +659,7 @@ input.signup[type="password"] {
   border: 1px solid black;
   border-radius: 5px;
   /*background-color: none;*/
-  width: 50%;
-  justify-content: center;
+  width: 100%;
 }
 
 input.login[type="username"],
@@ -672,7 +668,7 @@ input.login[type="password"] {
   border: 1px solid black;
   border-radius: 5px;
   /*background-color: none;*/
-  width: 50%;
+  width: 100%;
 }
 
 .btn {
@@ -682,14 +678,13 @@ input.login[type="password"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 50%;
+  width: 100%;
 }
 
 button.login-form-btn:hover,
 button.signup-form-btn:hover {
   background-color: black;
 }
-
 
 /* GOOGLE-APPLE-FACEBOOK LOGIN BUTTONS */
 .alt-login {
@@ -709,7 +704,7 @@ button.signup-form-btn:hover {
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
-  width: 50%;
+  width: 100%;
   max-width: 300px;
   height: 50px;
   border-radius: 5px;
@@ -842,7 +837,7 @@ h2, h3 {
   width: auto;
   margin: 0 auto;
 
-
+  
 }
 
 /* Set styles for restaurant image */
@@ -861,7 +856,7 @@ h2, h3 {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 5px;
-
+  
 }
 
 /* Set styles for restaurant address */
@@ -900,44 +895,54 @@ div.maps-frame {
 
 /* INFO WINDOW */
 .info-window {
-  max-width: 300px;
-  padding: 10px;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  font-family: Arial, sans-serif;
-  font-size: 14px;
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
 }
 
 .info-window h3 {
-  margin-top: 0;
-  margin-bottom: 5px;
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
 }
 
 .info-window h3 img {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .info-window p {
-  margin: 0;
-  margin-bottom: 5px;
-  display: flex;
-  align-items: center;
+    margin: 0;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
 }
 
 .info-window p img {
-  margin-right: 10px;
-  width: 16px;
-  height: 16px;
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
 }
 
 .info-window img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 5px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 5px;
 }
+
+.cart-form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+}
+
+/* table, td {
+  border: 1px solid black;
+} */
