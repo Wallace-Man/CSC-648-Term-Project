@@ -10,18 +10,13 @@ html(lang="en")
             a.logo(href="/")
                 span.thin Gator
                 span.bold Bites
-            //ul
-            //    li
-            //        a(href="") Drivers
-            //    li
-            //        a(href="") Restaurants
             div.right-btns
                 a.login-btn(href="login")
                     img(src="/images/user.png", style= {width: "15px", height: "15px", marginBottom: "15px"} )
                     span(style= {margin: "5px"}) Log in
                 a.signup-btn(href="signup") Sign up
         h1 Find your favorite restaurants, delivered.
-        form.search-form(action='')
+        form.search-form(method="GET" action="/middleware/search.js" enctype="application/x-www-form-urlencoded")
             select#category-select(name='category')
                 option(value='') All
                 option(value='italian') Italian
@@ -34,7 +29,7 @@ html(lang="en")
                 option(value='vietnamese') Vietnamese
                 option(value='greek') Greek
                 option(value='french') French
-            input.search-input(id='search-input', type='text', placeholder='Search For Restaurants')
+            input.search-input(id='search-input', type='text', name="searchTerm"  placeholder='Search For Restaurants')
             button.search-btn(type='submit')
                 img(src='images/search-icon.png', alt='search', style='width: 30px; height: 30px;')
 
@@ -54,23 +49,24 @@ html(lang="en")
                 "&zoom=14"
             )
         div.main-card-container
-            div.main-card-grid
-                div.main-card
-                    img(src="/images/delivery-driver.png", alt="main-card-img")
+            .main-card-grid
+                .main-card
+                    a(href="driver")
+                        img(src="/images/delivery-driver.png", alt="main-card-img")
                     p Drive your way to a
                     p reliable income - anytime, anywhere.
-                    a(href="driver") Become a Driver
-                div.main-card
-                    img(src="/images/partner.png", alt="main-card-img")
+                    a.btn(href="    driverInfo", class="button") Become a Driver
+                .main-card
+                    a(href="restaurant")
+                        img(src="/images/partner.png", alt="main-card-img")
                     p Partner with us to expand your
                     p business and reach more customers.
-                    a(href="restaurant") Become a Partner
-                div.main-card
-                    img(src="/images/sfsu.png", alt="main-card-img")
+                    a.btn(href="restaurant", class="button") Become a Partner
+                .main-card
+                    a(href="/")
+                        img(src="/images/sfsu.png", alt="main-card-img")
                     p Get your food delivered to
                     p campus in no time - Quick & Easy
-                    a(href="/") Find Restaurants
+                    a.btn(href="/", class="button") Find Restaurants
 
-        include ./partials/footer
-
-
+        include ./partials/footergit add map
