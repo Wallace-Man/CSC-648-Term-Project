@@ -928,3 +928,275 @@ div.maps-frame {
 /* table, td {
   border: 1px solid black;
 } */
+
+
+ .restaurant-menu-container{
+   padding: 10px;
+   display: flex;
+   justify-content: center;
+   margin-top: 10px;
+   margin-bottom: 10px;
+ }
+
+ .items{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height: 100%;
+ }
+
+ .item{
+   padding: 10px;
+   border: 1px solid black;
+   border-radius: 5px;
+   /*background-color: none;*/
+   width: 50%;
+   min-width: 50%;
+   margin-top: 10px;
+   text-align: center;
+   align-items: center;
+   justify-content: center;
+ }
+
+ #item-name{
+   width: 100%;
+   padding: 10px;
+   margin-bottom: 10px;
+   border: 1px solid #000000;
+   border-radius: 5px;
+   font-size: 16px;
+   color: #333;
+   resize: none;
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   text-align: center;
+ }
+
+ #item-price{
+   width: 100%;
+   padding: 10px;
+   margin-bottom: 10px;
+   border: 1px solid #000000;
+   border-radius: 5px;
+   font-size: 16px;
+   color: #333;
+   resize: none;
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   text-align: center;
+ }
+
+ .add-item-btn{
+   width: 90px;
+   height: 30px;
+   background-color: black;
+   color: #FFF;
+   font-size: 1rem;
+   border: none;
+   border-radius: 5px 5px 5px 5px;
+   margin-bottom: 20px;
+   margin-top: 20px;
+   margin-right: 10px;
+   cursor: pointer;
+   float: right;
+ }
+
+ .delete-item-btn{
+   width: 70px;
+   height: 30px;
+   background-color: black;
+   color: #FFF;
+   font-size: 1rem;
+   border: none;
+   border-radius: 5px 5px 5px 5px;
+   margin-bottom: 5px;
+   cursor: pointer;
+ }
+
+ .info-about-signingup {
+   padding-bottom: 20px;
+   max-width: auto;
+ }
+
+ .info-top-part {
+   padding: 20px;
+ }
+
+ .info-bottom-part {
+   text-align: center;
+ }
+
+ .bottom-part-left {
+   padding: 20px;
+ }
+
+ .bottom-part-middle {
+   padding: 20px;
+ }
+
+ .bottom-part-right {
+   padding: 20px;
+ }
+
+ .steps-to-signup{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+ }
+
+ .steps-container{
+   display: flex;
+   align-items: center;
+   width: 100%;
+
+ }
+ .img{
+   width:50%;
+   height: auto;
+   margin-left: 8rem;
+   padding-right: 10rem;
+
+ }
+ .steps{
+   width: 50%;
+   list-style: none;
+   padding: 0;
+   margin-left: 120px;
+ }
+
+ .steps li{
+   display:flex;
+   align-items: center;
+   margin-bottom: 1rem;
+   margin-right: 10rem;
+   font-size: 20px;
+   padding-bottom: 10px;
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-weight: bold;
+ }
+
+ .steps a{
+   text-decoration: none;
+   font-weight: bold;
+   margin-left: 0.5rem;
+   font-family: Arial, sans-serif;
+
+ }
+
+ input[type="time"]{
+   border: 1px solid black;
+   border-radius: 5px;
+   padding: 10px;
+   width: auto;
+   background-color: #F2F2F2;
+   opacity: 85%;
+ }
+ input[type="file"]{
+   margin-left: 80px;
+   padding-top: 10px;
+ }
+ #cuisine-choice{
+   padding: 10px;
+   border: 1px solid #000000;
+   border-radius: 5px;
+   font-size: 16px;
+   color: #333;
+
+   width: 200px;
+ }
+
+ .faq-heading{
+   border-bottom: #777;
+   padding: 20px 60px;
+ }
+ .faq-container{
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+ }
+ .hr-line{
+ width: 60%;
+ margin: auto;
+
+ }
+ /* Style the buttons that are used to open and close the faq-page body */
+ .faq-page {
+   /* background-color: #eee; */
+   color: #444;
+   cursor: pointer;
+   padding: 30px 20px;
+   width: 60%;
+   border: none;
+   outline: none;
+   transition: 0.4s;
+   margin: auto;
+ }
+ .faq-body{
+   margin: auto;
+   /* text-align: center; */
+  width: 50%; 
+  padding: auto;
+
+ }
+ /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+ .active,
+ .faq-page:hover {
+   background-color: #F9F9F9;
+ }
+ /* Style the faq-page panel. Note: hidden by default */
+ .faq-body {
+   padding: 20px;
+   background-color: white;
+   display: none;
+   overflow: hidden;
+ }
+ .faq-page:after {
+   content: '\02795';
+   /* Unicode character for "plus" sign (+) */
+   font-size: 13px;
+   color: #777;
+   float: right;
+   margin-left: 5px;
+ }
+ .active:after {
+   content: "\2796";
+   /* Unicode character for "minus" sign (-) */
+ }
+
+ .confirmation-container{
+   padding: 100px;
+   text-align: center;
+ }
+
+ .steps-to-signup h2{
+   font-size: 40px;
+   padding: 30px;
+ }
+
+ #confirm-menu{
+   width: 80px;
+   height: 30px;
+   background-color: black;
+   color: #FFF;
+   font-size: 1rem;
+   border: none;
+   border-radius: 5px 5px 5px 5px;
+   margin-bottom: 20px;
+   margin-top: 20px;
+   margin-left: 101px;
+   cursor: pointer;
+   float: center;
+ }
+
+ #description{
+   width: 100%;
+   padding: 10px;
+   margin-bottom: 10px;
+   border: 1px solid #000000;
+   border-radius: 5px;
+   font-size: 16px;
+   color: #333;
+   resize: none;
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   text-align: center;
+ }
