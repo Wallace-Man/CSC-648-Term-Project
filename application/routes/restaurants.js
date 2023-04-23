@@ -71,5 +71,6 @@ router.get('/getAllRestaurants', (req, res) => {
   });
 });
 
+
 // Export the router to be used in the main application
 module.exports = router;
