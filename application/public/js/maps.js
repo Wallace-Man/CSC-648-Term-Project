@@ -19,13 +19,14 @@
  *   - handleLocationError: Displays an error message if the user's location cannot be determined
  *   - onPlaceChanged: Handles the event when the user selects a place from the autocomplete dropdown
  *   - handleFormSubmit: Handles the event when the user submits the search form
- *   - createMarker: Creates a marker on the map and adds an info window with information about the associated restaurant
+ *   - createMarker: Creates a marker on the map and adds an info window with information about the associated
+ *     restaurant
  *   - getDistance: Calculates the distance between two points on the map using the Haversine formula
  *   - searchNearbyRestaurants: Searches for nearby restaurants using the Google Maps Places API
  */
 
 // Initialize global variables
-let infowindow; // Info window object to display information about markers
+let infoWindow; // Info window object to display information about markers
 let map; // Map object to display the map
 let markers = []; // Array to hold marker objects
 let service; // PlacesService object to interact with the Places API
@@ -34,12 +35,13 @@ let predictionsDropdown; // Dropdown element to display autocomplete predictions
 let userLocation; // Object to store the user's location coordinates
 
 /**
- * Initializes the Google Map, sets up the Autocomplete feature and location services, and adds a listener for place selection.
+ * Initializes the Google Map, sets up the Autocomplete feature and location services, and adds a listener for place
+ * selection.
  * Called when the Google Maps API script is loaded and the page is loaded.
  */
 function initMap() {
     // Create a new InfoWindow object to display information when a marker is clicked
-    infowindow = new google.maps.InfoWindow();
+    infoWindow = new google.maps.InfoWindow();
 
     // If the user's location can be obtained, initialize the map and location services
     if (navigator.geolocation) {
@@ -59,13 +61,13 @@ function initMap() {
             // Create a new PlacesService object to interact with the Google Places API
             service = new google.maps.places.PlacesService(map);
 
-            // Initialize the Autocomplete feature to provide place suggestions as the user types
-            const input = document.getElementById("search-input");
-            autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.bindTo("bounds", map);
-
-            // Add a listener for when the user selects a place from the Autocomplete dropdown
-            autocomplete.addListener("place_changed", onPlaceChanged);
+            // // Initialize the Autocomplete feature to provide place suggestions as the user types
+            // const input = document.getElementById("search-input");
+            // autocomplete = new google.maps.places.Autocomplete(input);
+            // autocomplete.bindTo("bounds", map);
+            //
+            // // Add a listener for when the user selects a place from the Autocomplete dropdown
+            // autocomplete.addListener("place_changed", onPlaceChanged);
 
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -202,8 +204,8 @@ function createMarker(place, map) {
 
     // Add a click listener to the marker to open the info window when clicked
     marker.addListener('click', function() {
-        infowindow.setContent(content);
-        infowindow.open(map, marker);
+        infoWindow.setContent(content);
+        infoWindow.open(map, marker);
     });
 }
 
