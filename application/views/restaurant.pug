@@ -10,8 +10,8 @@ block content
     div.restaurant-banner(id="top")
         .restaurant-signup-form-container
             form.restaurant-signup(id='restaurant-form' action="/restaurantInfo", method="post")
-                p(style="color: red; font-weight: bold; text-align: right;") * Mandatory Field
-                p(style="font-weight: bold; text-align: center; font-size: 30px; padding:3px;") Get Started
+                p(id="mandatory-field") * Mandatory Field
+                p(id="get-started") Get Started
                 .form-group
                     label.restaurant-signup(for="store-address") *Store Address:
                     input.restaurant-signup(type="store-address", id="store-address", name="store-address", required)

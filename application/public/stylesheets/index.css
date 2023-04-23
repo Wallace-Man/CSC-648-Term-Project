@@ -99,7 +99,7 @@ div.restaurant-banner {
   background-image: url("../images/restaurant-banner.png");
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  height: 140vh;
   margin: 0;
   padding: 0;
   border-bottom: 1px solid black;
@@ -601,7 +601,7 @@ div.card-grid {
 .signup-form-container {
   display: flex;
   justify-content: center;
-  margin-top: 200px;
+  margin-top: 20px;
 }
 
 form.driver-signup,
@@ -627,6 +627,7 @@ label.login {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
+  text-align: center;
 }
 
 input.driver-signup[type="username"],
@@ -641,6 +642,10 @@ input.restaurant-signup[type="business-type"],
 input.restaurant-signup[type="full-name"],
 input.restaurant-signup[type="email"],
 input.restaurant-signup[type="phone"],
+input.restaurant-signup[type="password"],
+input.restaurant-signup[type="tel"],
+input.restaurant-signup[type="url"],
+input.restaurant-signup[type="cuisine"],
 input.signup[type="username"],
 input.signup[type="text"],
 input.signup[type="email"],
@@ -650,6 +655,7 @@ input.signup[type="password"] {
   border-radius: 5px;
   /*background-color: none;*/
   width: 100%;
+  text-align: center;
 }
 
 input.login[type="username"],
@@ -951,7 +957,7 @@ div.maps-frame {
    border: 1px solid black;
    border-radius: 5px;
    /*background-color: none;*/
-   width: 50%;
+   width: 100%;
    min-width: 50%;
    margin-top: 10px;
    text-align: center;
@@ -1090,18 +1096,21 @@ div.maps-frame {
    width: auto;
    background-color: #F2F2F2;
    opacity: 85%;
+   margin-left: 60px;
  }
+
  input[type="file"]{
-   margin-left: 80px;
+   margin-left: 90px;
    padding-top: 10px;
  }
+
  #cuisine-choice{
    padding: 10px;
    border: 1px solid #000000;
    border-radius: 5px;
    font-size: 16px;
    color: #333;
-
+  margin-left: 80px;
    width: 200px;
  }
 
@@ -1183,7 +1192,7 @@ div.maps-frame {
    border-radius: 5px 5px 5px 5px;
    margin-bottom: 20px;
    margin-top: 20px;
-   margin-left: 101px;
+   margin-left: 140px;
    cursor: pointer;
    float: center;
  }
@@ -1199,4 +1208,24 @@ div.maps-frame {
    resize: none;
    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
    text-align: center;
+ }
+
+ #mandatory-field{
+  color: red; 
+  font-weight: bold; 
+  text-align: right;
+ }
+
+ #get-started{
+  font-weight: bold; 
+  text-align: center;
+  font-size: 30px; 
+  padding:3px;
+ }
+
+ #create-your-menu{
+  font-weight: bold;
+  text-align: center; 
+  font-size: 50px; 
+  padding: 20px;
  }
