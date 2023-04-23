@@ -1,36 +1,17 @@
-//extends layouts/main-layout
-//
-//block content
-//    div.restaurant-banner
-//        .restaurant-signup-form-container
-//            form.restaurant-signup(action="register.php", method="post")
-//                .form-group
-//                    label.restaurant-signup(for="store-address") Store Address:
-//                    input.restaurant-signup(type="text", id="store-address", name="store-address", required)
-//                .form-group
-//                    label.restaurant-signup(for="floor-suite") Floor / Suite (Optional):
-//                    input.restaurant-signup(type="floor-suite", id="floor-suite", name="floor-suite", required)
-//                .form-group
-//                    label.restaurant-signup(for="store-name") Store Name:
-//                    input.restaurant-signup(type="store-name", id="store-name", name="store-name", required)
-//                .form-group
-//                    label.restaurant-signup(for="business-type") Business Type:
-//                    input.restaurant-signup(type="business-type", id="business-type", name="business-type", required)
-//                .form-group
-//                    label.restaurant-signup(for="full-name") Full Name:
-//                    input.restaurant-signup(type="full-name", id="full-name", name="full-name", required)
-//                .form-group
-//                    label.restaurant-signup(for="email") Email:
-//                    input.restaurant-signup(type="email", id="email", name="email", required)
-//                .form-group
-//                    label.restaurant-signup(for="phone") Phone:
-//                    input.restaurant-signup(type="phone", id="phone", name="phone", required)
-//                button.signup-form-btn(type="submit") Register
-//
-//    script.
-//        const restaurantForm = document.getElementById("restaurant-form");
-//
-//        restaurantForm.addEventListener("submit", function (event) {
-//            event.preventDefault();
-//            window.location.href = "/restaurantInfo";
-//        });
+- This file contains restaurant sign up form where restaurant owners
+    can create their menu by adding, deleting, or editing their menu items. 
+//- 
+extends layouts/main-layout
+block content
+    div
+        // Container for the handling menu items
+        .restaurant-menu-container
+            form.restaurant-signup(action="/confirmation")
+                p(style="font-weight: bold; text-align: center; font-size: 50px; padding: 20px;") Create Your Menu
+                .menu 
+                    .menu-items(id="menu-items")
+                        .items(id="items")
+                            
+                    button.add-item-btn(type="button", id="add-item-btn") Add Item
+                button.signup-form-btn(type="submit", id="confirm-menu") Confirm
+            
