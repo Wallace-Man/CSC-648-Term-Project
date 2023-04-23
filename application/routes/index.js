@@ -71,14 +71,20 @@ router.get('/driverInfo', function(req, res) {
     res.render('driverInfo');
 });
 
-/* GET DRIVER PAGE */
-router.get('/restaurant', function(req, res) {
-    res.render('restaurant');
-});
 
-/* GET DRIVER INFO PAGE */
-router.get('/restaurantInfo', function(req, res) {
-    res.render('restaurantInfo');
-});
+ /* GET RESTAURANT PAGE */
+ router.get('/restaurant', function(req, res) {
+     res.render('restaurant');
+ });
+
+ /* GET RESTAURANT INFO PAGE */
+ router.get('/restaurantInfo', function(req, res) {
+     res.render('restaurantInfo');
+ });
+
+ /* GET CONFIRMATION PAGE */
+ router.get('/confirmation' , function(req, res){
+     res.render('confirmation')
+ })
 
 module.exports = router;
