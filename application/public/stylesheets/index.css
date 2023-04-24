@@ -642,7 +642,10 @@ input.restaurant-signup[type="store-name"],
 input.restaurant-signup[type="business-type"],
 input.restaurant-signup[type="full-name"],
 input.restaurant-signup[type="email"],
-input.restaurant-signup[type="phone"],
+input.restaurant-signup[type="tel"],
+input.restaurant-signup[type="password"],
+input.restaurant-signup[type="url"],
+input.restaurant-signup[type="cuisine"],
 input.signup[type="username"],
 input.signup[type="text"],
 input.signup[type="email"],
@@ -652,6 +655,7 @@ input.signup[type="password"] {
   border-radius: 5px;
   /*background-color: none;*/
   width: 100%;
+  text-align: center;
 }
 
 input.login[type="username"],
@@ -946,18 +950,18 @@ div.maps-frame {
   height: 100%;
 }
 
- .item{
-   padding: 10px;
-   border: 1px solid black;
-   border-radius: 5px;
-   /*background-color: none;*/
-   width: 50%;
-   min-width: 50%;
-   margin-top: 10px;
-   text-align: center;
-   align-items: center;
-   justify-content: center;
- }
+.item{
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  /*background-color: none;*/
+  width: 90%;
+  min-width: 50%;
+  margin-top: 10px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
 
 #item-name{
   width: 100%;
@@ -1051,17 +1055,16 @@ div.maps-frame {
 
  }
  .img{
-   width:50%;
+   width:auto;
    height: auto;
    margin-left: 8rem;
-   padding-right: 10rem;
-
+   padding-right: 8rem;
 }
 .steps{
   width: 50%;
   list-style: none;
   padding: 0;
-  margin-left: 120px;
+  margin-left: 20px;
 }
 
 .steps li{
@@ -1183,7 +1186,7 @@ div.maps-frame {
    border-radius: 5px 5px 5px 5px;
    margin-bottom: 20px;
    margin-top: 20px;
-   margin-left: 101px;
+   margin-left: 240px;
    cursor: pointer;
    float: center;
  }
@@ -1200,3 +1203,25 @@ div.maps-frame {
    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
    text-align: center;
  }
+ 
+ #mandatory-field{
+  color: red; 
+  font-weight: bold; 
+  text-align: right;
+ }
+
+ #get-started{
+  font-weight: bold; 
+  text-align: center;
+  font-size: 30px; 
+  padding:3px;
+ }
+
+ #create-your-menu{
+  font-weight: bold;
+  text-align: center; 
+  font-size: 50px; 
+  padding: 20px;
+ }
+
+ 

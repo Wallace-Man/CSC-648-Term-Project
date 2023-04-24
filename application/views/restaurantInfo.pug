@@ -3,11 +3,11 @@
 //- 
 extends layouts/main-layout
 block content
-    div
+    div 
+        p(id="create-your-menu") Create Your Menu
         // Container for the handling menu items
         .restaurant-menu-container
             form.restaurant-signup(action="/confirmation")
-                p(id="create-your-menu") Create Your Menu
                 .menu 
                     .menu-items(id="menu-items")
                         .items(id="items")
