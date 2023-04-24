@@ -1,0 +1,55 @@
+doctype html
+html(lang="en")
+    include ./partials/head
+    body
+        include ./partials/header
+        block content
+            .cart-form-container
+                table
+                    tr
+                        td
+                            h3 Your Cart
+                    tr
+                        td
+                            form.cart-form
+                                table.cart-table
+                                    tr
+                                        td
+                                            label.cart-label2 Product Name
+                                        td.cart-info
+                                            label.cart-label2 $
+                                    tr
+                                        td
+                                            label.cart-label2 Quantity:
+                                        td.cart-info
+                                            label.cart-label2 #
+                                    tr 
+                                        td(colspan='2')
+                                            hr
+                                    tr
+                                        td
+                                            label.cart-label2 Product Name
+                                        td.cart-info
+                                            label.cart-label2 $
+                                    tr
+                                        td
+                                            label.cart-label2 Quantity:
+                                        td.cart-info
+                                            label.cart-label2 #
+                                    tr 
+                                        td(colspan='2')
+                                            hr.cart-line
+                                    tr
+                                        td
+                                            label.cart-label1 Total:
+                                        td.cart-info
+                                            label.cart-label1 $
+                                    tr 
+                                        td.cart-info(colspan='2')
+                                            a.cart-btn(href='orderStatus') Checkout
+        include ./partials/footer
+
+
+
+
+
