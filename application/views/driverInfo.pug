@@ -1,36 +1,71 @@
-//extends layouts/main-layout
-//
-//block content
-//    div.driver-banner
-//        .driver-signup-form-container
-//            form.driver-signup(action="register.php", method="post")
-//                .form-group
-//                    label.driver-signup(for="store-address") Store Address:
-//                    input.driver-signup(type="text", id="store-address", name="store-address", required)
-//                .form-group
-//                    label.driver-signup(for="floor-suite") Floor / Suite (Optional):
-//                    input.driver-signup(type="floor-suite", id="floor-suite", name="floor-suite", required)
-//                .form-group
-//                    label.driver-signup(for="store-name") Store Name:
-//                    input.driver-signup(type="store-name", id="store-name", name="store-name", required)
-//                .form-group
-//                    label.driver-signup(for="business-type") Business Type:
-//                    input.driver-signup(type="business-type", id="business-type", name="business-type", required)
-//                .form-group
-//                    label.driver-signup(for="full-name") Full Name:
-//                    input.driver-signup(type="full-name", id="full-name", name="full-name", required)
-//                .form-group
-//                    label.driver-signup(for="email") Email:
-//                    input.driver-signup(type="email", id="email", name="email", required)
-//                .form-group
-//                    label.driver-signup(for="phone") Phone:
-//                    input.driver-signup(type="phone", id="phone", name="phone", required)
-//                button.signup-form-btn(type="submit") Register
-//
-//    script.
-//        const driverForm = document.getElementById("driver-form");
-//
-//        driverForm.addEventListener("submit", function (event) {
-//            event.preventDefault();
-//            window.location.href = "/driverInfo";
-//        });
+extends layouts/main-layout
+
+block content
+    head
+        title Become a Driver
+        link(rel="stylesheet", href="/stylesheets/signup.css")
+        script(src="https://code.jquery.com/jquery-3.6.0.min.js")
+
+    main
+
+    .banner
+        .container
+            .row
+                .col-6.text-center
+                    h1.banner-text Deliver When You Want Where You Want
+                    .banner-btn-container
+                        button.btn.btn-primary(type="button", onclick="window.location.href='/driver'") Become a Driver
+                .col-6
+                    img.banner-image(src="/images/driver.jpg", alt="Delivery Image")
+
+
+    .banner2
+        <img src="/images/started.png" alt="Delivery Image" >
+
+    .banner3
+        .container
+            h1 Why Drive with Us
+            .image-label-container
+            img(src="/images/drive-with-us.jpg", alt="Driver Benefits Image")
+            ul
+                li Flexible scheduling options
+                li Earn money while exploring your city
+                li Get paid quickly and easily through our app
+                li Opportunities for growth and advancement within our company
+
+
+    .banner
+        .container
+            .col-12
+                .faq 
+                h1 Frequently Asked Questions
+                .faq-container
+                    .faq-one
+                        // faq question 1
+                        h3.faq-page How do I become a driver with GatorBites?
+                        // faq answer 1
+                        .faq-body
+                            p It's easy! Simply fill out our online driver signup form with your basic information and we'll review your application. If you meet our requirements, we'll contact you with further instructions.
+                    hr.hr-line
+                    .faq-two
+                        // faq question 2
+                        h3.faq-page How long does it take to become a driver?
+                        // faq answer 2
+                        .faq-body
+                            p You can begin the process by signing up here. It will take less than 48 hours to be approved, have your menu set up, and start accepting orders.
+                    hr.hr-line
+                    .faq-three
+                        // faq question 3
+                        h3.faq-page  What kind of vehicle do I need to be a driver with your company?
+                        // faq answer 3
+                        .faq-body
+                            p You can use any reliable vehicle to make deliveries, including cars, trucks, and motorcycles. Your vehicle must have valid insurance coverage.
+                    hr.hr-line
+                    .faq-four 
+                        // faq question 4
+                        h3.faq-page What kind of support can I expect as a driver?
+                        // faq answer 4
+                        .faq-body 
+                            p Discounts will be offered our customer base to encourage them to order from our platform , helping your restaurant grow faster.
+
+        script(src="/js/driverInfo.js")
