@@ -1288,6 +1288,7 @@ label.order-label2 {
 }
 
 td.order-info {
+  width: 50%;
   height: 100px;
 }
 
@@ -1307,6 +1308,7 @@ div.maps-order {
   object-fit: cover;
   padding: 0;
   margin: 0;
+  margin-bottom: 50px;
   border-bottom: 1px solid black;
 }
 
