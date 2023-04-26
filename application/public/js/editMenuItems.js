@@ -28,10 +28,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
             const newItem = document.createElement('div');
             newItem.classList.add("item");
             const newMarkup = `
-                <label for="item-name">Name of Menu Item:</label>
+                <label id="item_label" for="item-name">Name of Menu Item:</label>
                 <input type="text" id="item-name" name="item-name" required>
-                <label for="item-price">Price of Menu Item:</label>
+                <label id="item_label" for="item-price">Price of Menu Item:</label>
                 <input type="text" id="item-price" name="item-price" placeholder="123.45" required>
+                <label id="item_label" for="item-category">Menu Item Category</label>
+                <select id="item-category">
+                    <option disabled selected>-- Select An Option --</option>
+                    <option value="option1">Entree</option>
+                    <option value="option2">Side</option>
+                    <option value="option3">Drink</option>
+                    <option value="option3">Combo</option>
+                </select>
+                <label id="item_label" for="item-description">Description:</label>
                 <textarea id="description" name="description" rows="4" cols="50" placeholder="Description of Menu Item" required></textarea>
                 <button type="button" class="delete-item-btn">Delete</button>
                 `;

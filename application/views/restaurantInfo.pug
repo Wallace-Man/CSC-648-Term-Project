@@ -1,13 +1,13 @@
-- This file contains restaurant sign up form where restaurant owners
+//- This file contains restaurant sign up form where restaurant owners
     can create their menu by adding, deleting, or editing their menu items. 
 //- 
 extends layouts/main-layout
 block content
-    div
+    div 
+        p(id="create-your-menu") Create Your Menu
         // Container for the handling menu items
         .restaurant-menu-container
-            form.restaurant-signup(action="/confirmation")
-                p(style="font-weight: bold; text-align: center; font-size: 50px; padding: 20px;") Create Your Menu
+            form.edit-menu(action="/confirmation")
                 .menu 
                     .menu-items(id="menu-items")
                         .items(id="items")

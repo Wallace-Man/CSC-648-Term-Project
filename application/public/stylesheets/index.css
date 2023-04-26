@@ -88,7 +88,7 @@ div.driver-banner {
   background-image: url("../images/driver-banner.png");
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  height: 120vh;
   margin: 0;
   padding: 0;
   border-bottom: 1px solid black;
@@ -99,7 +99,7 @@ div.restaurant-banner {
   background-image: url("../images/restaurant-banner.png");
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  height: 140vh;
   margin: 0;
   padding: 0;
   border-bottom: 1px solid black;
@@ -597,7 +597,6 @@ div.card-grid {
 
 /* USER LOGIN & SIGNUP */
 .driver-signup-form-container,
-.restaurant-signup-form-container,
 .login-form-container,
 .signup-form-container {
   display: flex;
@@ -605,8 +604,24 @@ div.card-grid {
   margin-top: 80px;
 }
 
+.restaurant-signup-form-container{
+  display:flex;
+  justify-content: center;
+  margin-top: 80px;
+  max-height: 80%;
+}
+
+form.edit-menu{
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+  background-color: #F2F2F2;
+  opacity: 85%;
+}
+
 form.driver-signup,
-form.restaurant-signup,
 form.login,
 form.signup {
   border: 1px solid black;
@@ -618,10 +633,25 @@ form.signup {
   opacity: 85%;
 }
 
+form.restaurant-signup{
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+  background-color: #F2F2F2;
+  opacity: 85%;
+  max-height: 100%;
+  overflow: auto;
+}
+
 .form-group {
   margin-bottom: 20px;
   text-align: center;
+  max-height: fit-content;
+  resize: vertical;
 }
+
 label.driver-signup,
 label.restaurant-signup,
 label.signup,
@@ -629,7 +659,6 @@ label.login {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
-
 }
 
 input.driver-signup[type="username"],
@@ -644,10 +673,9 @@ input.restaurant-signup[type="business-type"],
 input.restaurant-signup[type="full-name"],
 input.restaurant-signup[type="email"],
 input.restaurant-signup[type="tel"],
-input.restaurant-signup[type="cuisine"],
-input.restaurant-signup[type="url"],
-input.restaurant-signup[type="logo"],
 input.restaurant-signup[type="password"],
+input.restaurant-signup[type="url"],
+input.restaurant-signup[type="cuisine"],
 input.signup[type="username"],
 input.signup[type="text"],
 input.signup[type="email"],
@@ -657,8 +685,9 @@ input.signup[type="password"] {
   border-radius: 5px;
   /*background-color: none;*/
   width: 50%;
-  justify-content: center;
   text-align: center;
+  resize: vertical;
+  height: 100%;
 }
 
 input.signup[type="checkbox"] {
@@ -673,6 +702,7 @@ input.login[type="password"] {
   border-radius: 5px;
   /*background-color: none;*/
   width: 50%;
+  text-align: center;
 }
 
 .btn {
@@ -999,21 +1029,23 @@ label.cart-label2 {
 }
 
 .item{
-  padding: 10px;
+  padding: 20px;
   border: 1px solid black;
   border-radius: 5px;
   /*background-color: none;*/
-  width: 50%;
+  width: 90%;
   min-width: 50%;
   margin-top: 10px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  font-weight: bold;
 }
 
 #item-name{
-  width: 100%;
-  padding: 10px;
+  width: 50%;
+  padding: 20px;
   margin-bottom: 10px;
   border: 1px solid #000000;
   border-radius: 5px;
@@ -1024,15 +1056,26 @@ label.cart-label2 {
   text-align: center;
 }
 
+#item-category{
+  width: 50%;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
 #item-price{
-  width: 100%;
+  width: 50%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #000000;
   border-radius: 5px;
   font-size: 16px;
   color: #333;
-  resize: none;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-align: center;
 }
@@ -1094,26 +1137,22 @@ label.cart-label2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-div.steps-container{
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-div.steps-container-img{
-  width: 50%;
-  height: auto;
-  margin-left: 8rem;
-  padding-right: 10rem;
-
+ .steps-container{
+   display: flex;
+   align-items: center;
+ }
+ .img{
+   max-width: 100%;
+   max-height: 100%;
 }
 .steps{
   width: 50%;
   list-style: none;
-  padding: 0;
-  margin-left: 120px;
+  padding-left: 20px;
+  flex-wrap: wrap;
 }
 
 .steps li{
@@ -1135,27 +1174,28 @@ div.steps-container-img{
 
 }
 
-input[type="time"]{
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 10px;
-  width: auto;
-  background-color: #F2F2F2;
-  opacity: 85%;
-}
-input[type="file"]{
-  margin-left: 80px;
-  padding-top: 10px;
-}
-#cuisine-choice{
-  padding: 10px;
-  border: 1px solid #000000;
-  border-radius: 5px;
-  font-size: 16px;
-  color: #333;
+ input[type="time"]{
+   border: 1px solid black;
+   border-radius: 5px;
+   padding: 10px;
+   width: auto;
+   background-color: #F2F2F2;
+   opacity: 85%;
+ }
+ input[type="file"]{
+   margin-left: 80px;
+   padding: 10px;
+ }
+ #cuisine-choice{
+   padding: 10px;
+   border: 1px solid #000000;
+   border-radius: 5px;
+   font-size: 16px;
+   color: #333;
 
-  width: 200px;
-}
+   width: 200px;
+ }
+
 
 .faq-heading{
   border-bottom: #777;
@@ -1225,33 +1265,58 @@ input[type="file"]{
   padding: 30px;
 }
 
-#confirm-menu{
-  width: 80px;
-  height: 30px;
-  background-color: black;
-  color: #FFF;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px 5px 5px 5px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  margin-left: 101px;
-  cursor: pointer;
-  float: center;
-}
+ #confirm-menu{
+   width: 80px;
+   height: 30px;
+   background-color: black;
+   color: #FFF;
+   font-size: 1rem;
+   border: none;
+   border-radius: 5px 5px 5px 5px;
+   margin-bottom: 20px;
+   margin-top: 20px;
+   margin-left: 240px;
+   cursor: pointer;
+   float: center;
+ }
 
-#description{
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #000000;
-  border-radius: 5px;
-  font-size: 16px;
-  color: #333;
-  resize: none;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+ #description{
+   width: 50%;
+   padding: 10px;
+   margin-bottom: 10px;
+   border: 1px solid #000000;
+   border-radius: 5px;
+   font-size: 16px;
+   color: #333;
+   resize: none;
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   text-align: center;
+ }
+ 
+ #mandatory-field{
+  color: red; 
+  font-weight: bold; 
+  text-align: right;
+ }
+
+ #get-started{
+  font-weight: bold; 
   text-align: center;
-}
+  font-size: 30px; 
+  padding:3px;
+ }
+
+ #create-your-menu{
+  font-weight: bold;
+  text-align: center; 
+  font-size: 50px; 
+  margin-top: 80px;
+  padding-bottom: 20px;
+ }
+
+ #item_label{
+  padding-bottom: 10px;
+ }
 
 /* ORDER STATUS */
 .order-form-container {
