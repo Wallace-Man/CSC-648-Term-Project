@@ -1,0 +1,43 @@
+extends layouts/main-layout
+
+block content
+    .order-form-container(onload='initMap()')
+        div.maps-order(id="map")
+            iframe(
+                width="100%",
+                height="100%",
+                loading="lazy",
+                allowfullscreen,
+                referrerpolicy="no-referrer-when-downgrade",
+                src="https://www.google.com/maps/embed/v1/place" +
+                "?key=AIzaSyCqHQxuCGH2vnVMNkTRDReJIX3YZU-CIY8" +
+                "&q=San+Francisco+CA" +
+                "&zoom=14"
+            )
+        table
+            tr
+                td
+                    h3 Your Order
+            tr
+                td
+                    form.order-form
+                        table.order-table
+                            tr
+                                td.order-info
+                                    label.order-label1 Order Number:
+                                td.order-info
+                                    label.order-label1 Estimated Arrival Time:
+                            tr
+                                td.order-progress
+                                    label.order-label2 Preparing
+                                    progress.order-bar(value='1' max='2') 
+                                td.order-progress
+                                    label.order-label2 Out for Delivery 
+                                    progress.order-bar(value='0' max='2')
+                                td.order-progress
+                                    label.order-label2 Delivered 
+                                    progress.order-bar(value='0' max='2')
+
+
+
+
