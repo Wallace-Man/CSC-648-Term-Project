@@ -1184,7 +1184,7 @@ label.cart-label2 {
  }
  input[type="file"]{
    margin-left: 80px;
-   padding-top: 10px;
+   padding: 10px;
  }
  #cuisine-choice{
    padding: 10px;
