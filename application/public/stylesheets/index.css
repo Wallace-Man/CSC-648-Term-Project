@@ -608,7 +608,7 @@ div.card-grid {
   display:flex;
   justify-content: center;
   margin-top: 80px;
-  max-height: 8%;
+  max-height: 80%;
 }
 
 form.edit-menu{
@@ -697,6 +697,7 @@ input.login[type="password"] {
   border-radius: 5px;
   /*background-color: none;*/
   width: 50%;
+  text-align: center;
 }
 
 .btn {
@@ -1268,4 +1269,7 @@ div.maps-frame {
   padding-bottom: 20px;
  }
 
- 
+ #item_label{
+  padding-bottom: 10px;
+ }
+
