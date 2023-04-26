@@ -1,99 +1,88 @@
-//-  AUTHOR: Christian Jackson
-//-  DESCRIPTION: Pug template file for managing orders. Displays a table of orders with corresponding details 
-//-  Allows for adding new orders through a form submission
-//-  TODO: Add functionality to update order status
-
 extends layouts/main-layout
 
 block content
   head
     title Order Management
-    link(rel="stylesheet", href="/stylesheets/orderManagement.css")
 
   main
     section#orders
       h1 Manage Orders
-      table#orders-table
-        thead
-          tr
-            th Order ID
-            th Restaurant Name
-            th Customer Name
-            th Driver Name
-            th Status
-        tbody
-          tr(data-toggle="collapse", data-target="#order-details-12345", aria-expanded="false", aria-controls="order-details-12345")
-            td.order-id #12345
-            td.restaurant-name Pizza Palace
-            td.customer-name John Smith
-            td.driver-name Sarah Johnson
-            td.status Pending
-          tr(id="order-details-12345", class="collapse")
-            td(colspan="5")
-              div.order-details-container
-                h2 Order Details:
-                hr
-                ul.order-details-list
-                  li Ordered on: May 1, 2022 at 12:30 PM
-                  li Total amount: $25.99
-                  li Delivery address: 123 Main St.
-              ol.order-items
-                li Margherita Pizza
-                li Caesar Salad
-                li Soda
-          tr(data-toggle="collapse", data-target="#order-details-12346", aria-expanded="false", aria-controls="order-details-12346")
-            td.order-id #12346
-            td.restaurant-name Pizza Palace
-            td.customer-name Mary Johnson
-            td.driver-name John Smith
-            td.status In Progress
-          tr(id="order-details-12346", class="collapse")
-            td(colspan="5")
-              div.order-details-container
-                h2 Order Details:
-                ul.order-details-list
-                  li Ordered on: May 2, 2022 at 1:30 PM
-                  li Total amount: $35.99
-                  li Delivery address: 456 Oak St.
-              ol.order-items
-                li BBQ Chicken Pizza
-                li Greek Salad
-                li Iced Tea with L
-          tr(data-toggle="collapse", data-target="#order-details-12347", aria-expanded="false", aria-controls="order-details-12347")
-            td.order-id #12347
-            td.restaurant-name Pizza Palace
-            td.customer-name Peter Wilson
-            td.driver-name Sarah Johnson
-            td.status Delivered
-          tr(id="order-details-12347", class="collapse")
-            td(colspan="5")
-              div.order-details-container
-                h2 Order Details:
-                ul.order-details-list
-                  li Ordered on: May 3, 2022 at 2:30 PM
-                  li Total amount: $45.99
-                  li Delivery address: 789 Pine St.
-              ol.order-items
-                li Pepperoni Pizza
-                li Milk Shake
-                li Sandwich with Fries
+      .order-card
+        .order-card-header
+          h2 Order #12345
+          h3 Pending
+        .order-card-body
+          ul
+            li
+              strong Restaurant:
+              | Pizza Palace
+            li
+              strong Customer:
+              | John Smith
+            li
+              strong Driver:
+              | Sarah Johnson
+            li
+              strong Ordered on:
+              | May 1, 2022 at 12:30 PM
+            li
+              strong Total amount:
+              | $25.99
+            li
+              strong Delivery address:
+              | 123 Main St.
+            li
+              strong Order items:
+              .order-items
+                ul
+                  li Margherita Pizza
+                  li Caesar Salad
+                  li Soda
+      .order-card
+        .order-card-header
+          h2 Order #12346
+          h3 In Progress
+        .order-card-body
+          ul
+            li
+              strong Restaurant:
+              | Pizza Palace
+            li
+              strong Customer:
+              | Mary Johnson
+            li
+              strong Driver:
+              | John Smith
+            li
+              strong Ordered on:
+              | May 2, 2022 at 1:30 PM
+            li
+              strong Total amount:
+              | $35.99
+            li
+              strong Delivery address:
+              | 456 Oak St.
+            li
+              strong Order items:
+              .order-items
+                ul
+                  li BBQ Chicken Pizza
+                  li Greek Salad
+                  li Iced Tea with L
     section#new-order
-      h2 New Order
-      form.new-order-form(action="/addOrder", method="POST")
+      h2 Add New Order
+      form.new-order-form(action="", method="POST")
         div.form-group
           label(for="restaurant-name") Restaurant Name:
           input#restaurant-name.form-control(type="text", name="restaurantName", placeholder="Enter Restaurant Name")
-        div.form-group
           label(for="customer-name") Customer Name:
           input#customer-name.form-control(type="text", name="customerName", placeholder="Enter Customer Name")
-        div.form-group
           label(for="delivery-address") Delivery Address:
           input#delivery-address.form-control(type="text", name="deliveryAddress", placeholder="Enter Delivery Address")
-        div.form-group
           label(for="total-amount") Total Amount:
           input#total-amount.form-control(type="text", name="totalAmount", placeholder="Enter Total Amount")
-        div.form-group
           label(for="order-items") Order Items:
-          textarea#order-items.form-control(name="orderItems", placeholder="Enter Order Items (one per line)")
+          textarea#order-items.form-control(name="orderItems",placeholder="Enter Order Items")
         button.btn.btn-primary(type="submit") Submit
+
 
