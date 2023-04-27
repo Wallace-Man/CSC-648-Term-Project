@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
+const multer = require('multer');
 
 // Create a MySQL connection
 const dbConnection = mysql.createConnection({
@@ -19,6 +20,36 @@ dbConnection.connect((err) => {
   }
   console.log('Connected to the database.');
 });
+//function for database photo import
+const storage = multer.diskStorage({
+  destination: 'public/images/',
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' + file.originalname);
+  },
+});
+const upload = multer({ storage });
+
+// Define /upload/:restaurantId endpoint to handle image uploads for each restaurant
+router.post('/upload/:restaurantId', upload.single('image'), (req, res) => {
+  const restaurantId = req.params.restaurantId;
+  const imageUrl = '/images/' + req.file.filename;
+
+  const query = 'UPDATE Restaurant SET image_url=? WHERE restaurantID=?';
+  dbConnection.query(query, [imageUrl, restaurantId], (err, result) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      res.status(500).json({ error: 'Internal server error' });
+      return;
+    }
+    res.status(200).json({ message: 'Image uploaded and URL stored in the database.' });
+  });
+});
+
+//uncomment to test the route
+// router.get('/test', (req, res) => {
+//   res.send('Test route is working');
+// });
+
 
 // Define /getRestaurants endpoint to search for restaurants by name
 router.get('/getRestaurants', (req, res) => {
@@ -41,7 +72,7 @@ router.get('/getRestaurants', (req, res) => {
 // Define /getCuisineType endpoint to search for restaurants by cuisine type
 router.get('/getCuisineType', (req, res) => {
   const searchTerm = req.query.searchTerm; // Get the search term from the query string
-  const query = "SELECT restaurant_Name FROM Restaurant WHERE cuisine_type = '" + searchTerm + "'"; // Create SQL query
+  const query = "SELECT restaurant_Name, image_url FROM Restaurant WHERE cuisine_type = '" + searchTerm + "'"; // Create SQL query, include image_url
   console.log(`Executing query: ${query}`);
 
   // Execute the SQL query and handle the result
@@ -55,6 +86,7 @@ router.get('/getCuisineType', (req, res) => {
     res.json(result); // Send the result as the response
   });
 });
+
 
 // Define /getAllRestaurants endpoint to return all restaurants
 router.get('/getAllRestaurants', (req, res) => {

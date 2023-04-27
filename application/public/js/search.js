@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Add the restaurant image
             const restaurantImage = document.createElement('img');
-            restaurantImage.src = restaurant.image;
+            restaurantImage.src = restaurant.image_url;
             restaurantCard.appendChild(restaurantImage);
 
             // Add the restaurant rating
