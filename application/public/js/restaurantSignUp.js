@@ -8,6 +8,9 @@
 */
 const restaurantForm = document.getElementById("restaurant-form");
 const faq = document.getElementsByClassName("faq-page");
+
+window.addEventListener("resize", checkWindowSize);
+
 restaurantForm.addEventListener("submit", function (event) {
     event.preventDefault();
     window.location.href = "/confirmation";
@@ -28,4 +31,33 @@ for (i = 0; i < faq.length; i++) {
         }
     });
 }
+
+// function checkWindowSize(){
+//     var windowHeight = window.innerHeight;
+//     var windowWidth = window.innerWidth;
+
+//     if (windowHeight < 500) {
+//         const banner = document.querySelector('.restaurant-banner');
+//         banner.style.height = 400 + 'vh';
+//         console.log("change has happened");
+//         // Apply styles for small window height
+//         // For example:
+
+//         // var inputs = document.querySelectorAll('input.restaurant-signup');
+//         // inputs.forEach(function(input) {
+//         //     input.style.padding = '8px';
+//         //     input.style.padding = '1px';
+//         // });
+//         // var labels = document.querySelectorAll('label.restaurant-signup');
+//         // labels.forEach(function(label) {
+//         //     label.style.fontSize = '10px';
+//         //     label.style.padding = '1px';
+//         //     label.style.marginTop = '1px';
+//         // });
+//     } else {
+//         // Apply styles for larger window height
+//         // For example:
+//         //document.body.style.backgroundColor = "white";
+//     }
+// }
 
