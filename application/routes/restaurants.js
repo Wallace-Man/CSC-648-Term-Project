@@ -2,13 +2,13 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
-const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
 
 // Create a MySQL connection
 const dbConnection = mysql.createConnection({
   host: "34.94.177.91",
   user: "root",
-  password: "*4M3K0pOd(Y?dP?t",
+  password: "Jaws0044!",
   database: "restaurantdb",
 });
 
@@ -21,29 +21,21 @@ dbConnection.connect((err) => {
   console.log('Connected to the database.');
 });
 //function for database photo import
-const storage = multer.diskStorage({
-  destination: 'public/images/',
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname);
-  },
-});
-const upload = multer({ storage });
 
-// Define /upload/:restaurantId endpoint to handle image uploads for each restaurant
-router.post('/upload/:restaurantId', upload.single('image'), (req, res) => {
-  const restaurantId = req.params.restaurantId;
-  const imageUrl = '/images/' + req.file.filename;
-
-  const query = 'UPDATE Restaurant SET image_url=? WHERE restaurantID=?';
-  dbConnection.query(query, [imageUrl, restaurantId], (err, result) => {
-    if (err) {
-      console.error('Error executing query:', err);
-      res.status(500).json({ error: 'Internal server error' });
-      return;
-    }
-    res.status(200).json({ message: 'Image uploaded and URL stored in the database.' });
-  });
+//cloudinary configuration for image storage
+cloudinary.config({
+  cloud_name: 'dh1xrnknh',
+  api_key: '455679853853498',
+  api_secret: 'ICod3Gyzgek7V8PxsDI_28aCguA'
 });
+//Generates cloud link for image to then be used on postman as a post request
+// cloudinary.uploader.upload('public/images/cinnabon.png', (error, result) => {
+//   if (error) {
+//     console.error('Error uploading image:', error);
+//   } else {
+//     console.log('Image uploaded successfully:', result.url);
+//   }
+// });
 
 //uncomment to test the route
 // router.get('/test', (req, res) => {
