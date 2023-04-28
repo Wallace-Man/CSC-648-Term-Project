@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Add the restaurant image
             const restaurantImage = document.createElement('img');
-            restaurantImage.src = restaurant.image;
+            restaurantImage.src = restaurant.image_url;
             restaurantCard.appendChild(restaurantImage);
 
             // Add the restaurant rating
@@ -95,6 +95,11 @@ document.addEventListener('DOMContentLoaded', function() {
             viewMenuButton.textContent = 'View Menu';
             viewMenuButton.classList.add('button');
             restaurantCard.appendChild(viewMenuButton);
+            //Add the 'Delivery Time' text display
+            const deliveryTimePrint = document.createElement('p');
+            deliveryTimePrint.textContent = 'Delivery Time: ' + restaurant.delivery_time;
+            restaurantCard.appendChild(deliveryTimePrint);
+            
 
             // Add the restaurant card to the popular restaurants
             // section
