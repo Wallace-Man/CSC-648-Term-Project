@@ -1,27 +1,25 @@
 doctype html
 html(lang="en")
+
+    // Include the head partial file which contains metadata for the webpage
     include ./partials/head
 
-    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8ry_zAnVk-Iph2sk9-invGhwY1GSq8ts&libraries=places")
-    script(src="https://apis.google.com/js/api.js")
+    // Define the header section of the webpage with the logo, login/signup buttons, and search form
     header(style="margin-bottom: 0")
         div.header-image
         nav
             a.logo(href="/")
                 span.thin Gator
                 span.bold Bites
-            //ul
-            //    li
-            //        a(href="") Drivers
-            //    li
-            //        a(href="") Restaurants
             div.right-btns
                 a.login-btn(href="login")
                     img(src="/images/user.png", style= {width: "15px", height: "15px", marginBottom: "15px"} )
                     span(style= {margin: "5px"}) Log in
                 a.signup-btn(href="signup") Sign up
         h1 Find your favorite restaurants, delivered.
-        form.search-form(action='')
+
+        // Define the search form with a select element for restaurant categories and a text input for search term
+        form.search-form(method="GET" action="/middleware/search.js" enctype="application/x-www-form-urlencoded")
             select#category-select(name='category')
                 option(value='') All
                 option(value='italian') Italian
@@ -34,13 +32,14 @@ html(lang="en")
                 option(value='vietnamese') Vietnamese
                 option(value='greek') Greek
                 option(value='french') French
-            input.search-input(id='search-input', type='text', placeholder='Search For Restaurants')
+            input.search-input(id='search-input', type='text', name="searchTerm"  placeholder='Search For Restaurants')
             button.search-btn(type='submit')
                 img(src='images/search-icon.png', alt='search', style='width: 30px; height: 30px;')
 
+    // Initialize Google Maps Window
     body(onload='initMap()')
 
-        main
+        // Define the frame attributes for Embedded Google Maps API
         div.maps-frame(id="map")
             iframe(
                 width="100%",
@@ -48,26 +47,38 @@ html(lang="en")
                 loading="lazy",
                 allowfullscreen,
                 referrerpolicy="no-referrer-when-downgrade",
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCqHQxuCGH2vnVMNkTRDReJIX3YZU-CIY8&q=San+Francisco,San+Francisco+CA"
+                src="https://www.google.com/maps/embed/v1/place" +
+                "?key=AIzaSyCqHQxuCGH2vnVMNkTRDReJIX3YZU-CIY8" +
+                "&q=San+Francisco+CA" +
+                "&zoom=14"
             )
+
+        main
+            // Display the # of search results
+            h3.number-of-results
+            // Display the search results
+            section.popular-restaurants
         div.main-card-container
-            div.main-card-grid
-                div.main-card
-                    img(src="/images/delivery-driver.png", alt="main-card-img")
+            .main-card-grid
+                .main-card
+                    a(href="driver")
+                        img(src="/images/delivery-driver.png" alt="main-card-img")
                     p Drive your way to a
                     p reliable income - anytime, anywhere.
-                    a(href="driver") Become a Driver
-                div.main-card
-                    img(src="/images/partner.png", alt="main-card-img")
+                    a.btn(href="driverInfo" class="button") Become a Driver
+                .main-card
+                    a(href="restaurant")
+                        img(src="/images/partner.png" alt="main-card-img")
                     p Partner with us to expand your
                     p business and reach more customers.
-                    a(href="restaurant") Become a Partner
-                div.main-card
-                    img(src="/images/sfsu.png", alt="main-card-img")
+                    a.btn(href="restaurant" class="button") Become a Partner
+                .main-card
+                    a(href="/")
+                        img(src="/images/sfsu.png" alt="main-card-img")
                     p Get your food delivered to
                     p campus in no time - Quick & Easy
-                    a(href="/") Find Restaurants
+                    a.btn(href="/" class="button") Find Restaurants
 
-    include ./partials/footer
+        include ./partials/footer
 
 

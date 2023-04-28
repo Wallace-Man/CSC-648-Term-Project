@@ -1,0 +1,60 @@
+extends layouts/main-layout
+
+block content
+    head
+        title Restaurant Menu
+        link(rel="stylesheet", href="/stylesheets/restaurantMenu.css")
+    body
+        div#main
+            div#header
+                div#restaurant-info
+                    h3 Roma Antica
+                    p Rating: 4.5 stars
+                    p Category: Italian
+                    p Address: 123 Main St, Anytown USA
+                    p Website: www.restaurantname.com
+                    p Phone: (123) 456-7890
+                img(src="https://via.placeholder.com/150")
+
+            div#menu-container
+                div#menu
+                    .card
+                        h3 Spaghetti Bolognese
+                        p Delicious spaghetti with a classic Bolognese sauce.
+                        p(class="price") $12
+                        button Add to cart
+                    .card
+                        h3 Margherita Pizza
+                        p Fresh mozzarella, basil, and tomato sauce on a thin crust.
+                        p(class="price") $10
+                        button Add to cart
+                    .card
+                        h3 Margherita Pizza
+                        p Fresh mozzarella, basil, and tomato sauce on a thin crust.
+                        p(class="price") $10
+                        button Add to cart
+                    .card
+                      h3 Chicken Alfredo
+                      p Creamy fettuccine pasta with grilled chicken and parmesan cheese.
+                      p(class="price") $14
+                      button Add to cart
+                    
+                    .card
+                      h3 Veggie Burger
+                      p A delicious vegetarian burger made with a soy patty, avocado, and chipotle mayo.
+                      p(class="price") $9
+                      button Add to cart
+                    
+                    .card
+                      h3 Fish and Chips
+                      p Golden-brown battered fish served with crispy French fries and tartar sauce.
+                      p(class="price") $13
+                      button Add to cart
+                div#cart
+                    h2 Cart
+                    hr
+                    ul 
+                        p Your cart is empty
+                    button Checkout
+        script(src="/js/restaurantMenu.js")
+

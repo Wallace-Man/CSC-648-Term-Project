@@ -1,0 +1,88 @@
+extends layouts/main-layout
+
+block content
+  head
+    title Order Management
+
+  main
+    section#orders
+      h1 Manage Orders
+      .order-card
+        .order-card-header
+          h2 Order #12345
+          h3 Pending
+        .order-card-body
+          ul
+            li
+              strong Restaurant:
+              | Pizza Palace
+            li
+              strong Customer:
+              | John Smith
+            li
+              strong Driver:
+              | Sarah Johnson
+            li
+              strong Ordered on:
+              | May 1, 2022 at 12:30 PM
+            li
+              strong Total amount:
+              | $25.99
+            li
+              strong Delivery address:
+              | 123 Main St.
+            li
+              strong Order items:
+              .order-items
+                ul
+                  li Margherita Pizza
+                  li Caesar Salad
+                  li Soda
+      .order-card
+        .order-card-header
+          h2 Order #12346
+          h3 In Progress
+        .order-card-body
+          ul
+            li
+              strong Restaurant:
+              | Pizza Palace
+            li
+              strong Customer:
+              | Mary Johnson
+            li
+              strong Driver:
+              | John Smith
+            li
+              strong Ordered on:
+              | May 2, 2022 at 1:30 PM
+            li
+              strong Total amount:
+              | $35.99
+            li
+              strong Delivery address:
+              | 456 Oak St.
+            li
+              strong Order items:
+              .order-items
+                ul
+                  li BBQ Chicken Pizza
+                  li Greek Salad
+                  li Iced Tea with L
+    section#new-order
+      h2 Add New Order
+      form.new-order-form(action="", method="POST")
+        div.form-group
+          label(for="restaurant-name") Restaurant Name:
+          input#restaurant-name.form-control(type="text", name="restaurantName", placeholder="Enter Restaurant Name")
+          label(for="customer-name") Customer Name:
+          input#customer-name.form-control(type="text", name="customerName", placeholder="Enter Customer Name")
+          label(for="delivery-address") Delivery Address:
+          input#delivery-address.form-control(type="text", name="deliveryAddress", placeholder="Enter Delivery Address")
+          label(for="total-amount") Total Amount:
+          input#total-amount.form-control(type="text", name="totalAmount", placeholder="Enter Total Amount")
+          label(for="order-items") Order Items:
+          textarea#order-items.form-control(name="orderItems",placeholder="Enter Order Items")
+        button.btn.btn-primary(type="submit") Submit
+
+

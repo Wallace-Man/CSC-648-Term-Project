@@ -18,7 +18,7 @@ block content
                     input.driver-signup(type="password", id="password2", name="password2", required)
                 .form-group
                     label.driver-signup(for="phone") Phone:
-                    input.driver-signup(type="phone", id="phone", name="phone", required)
+                    input.driver-signup(type="tel", id="phone", name="phone", required)
                 button.signup-form-btn(type="submit") Become a Driver
 
     script.
@@ -26,5 +26,5 @@ block content
 
         driverForm.addEventListener("submit", function (event) {
             event.preventDefault();
-            window.location.href = "/driverInfo";
+            window.location.href = "driver";
         });
