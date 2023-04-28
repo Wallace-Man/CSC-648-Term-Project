@@ -1828,3 +1828,14 @@ input::placeholder, textarea::placeholder {
   background-color: #F2F2F2;
   opacity: 85%;
 }
+
+ a.forgot-password {
+  color: blue;
+  margin-left: 55%;
+  font-size: smaller;
+}
+
+a.login-link{
+  color: blue;
+  margin-left: 25%;
+}
