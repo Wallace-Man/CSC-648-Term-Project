@@ -71,7 +71,6 @@ router.get('/driverInfo', function(req, res) {
     res.render('driverInfo');
 });
 
-
  /* GET RESTAURANT PAGE */
  router.get('/restaurant', function(req, res) {
      res.render('restaurant');
@@ -87,4 +86,24 @@ router.get('/driverInfo', function(req, res) {
      res.render('confirmation')
  })
 
+  /* GET CART PAGE */
+  router.get('/cart' , function(req, res){
+    res.render('cart')
+})
+
+ /* GET ORDER STATUS PAGE */
+ router.get('/orderStatus' , function(req, res){
+    res.render('orderStatus')
+})
+
+ /* GET ORDER MANAGEMENT PAGE */
+ router.get('/manageorder', (req, res) => {
+    res.render('manageOrder');
+  });
+
+  /* GET RESTURANT MENU PAGE */
+  router.get('/restaurantMenuPage', (req, res) => {
+    res.render('restaurantMenuPage');
+  }); 
+  
 module.exports = router;
