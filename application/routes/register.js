@@ -6,10 +6,10 @@ const util = require('util');
 
 // Create a MySQL connection
 const connection = mysql.createConnection({
-    host: "34.94.177.91",
-    user: "jruv",
-    password: "12345",
-    database: "restaurantdb",
+  host: "34.94.177.91",
+  user: "root",
+  password: "Jaws0044!",
+  database: "restaurantdb",
   });
   
   // Connect to the MySQL database
