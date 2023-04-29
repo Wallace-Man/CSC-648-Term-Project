@@ -2,7 +2,7 @@ extends layouts/main-layout
 
 block content
     .signup-form-container
-        form.signup(action="/users/signup", method="post")
+        form.signup(action="/register/authorization", method="post")
             .form-group
                 label.signup(for="username") Username:
                 input.signup(type="username", id="username", name="username", required)
