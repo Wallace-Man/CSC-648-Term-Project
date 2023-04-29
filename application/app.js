@@ -6,6 +6,8 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const restaurantRouter = require('./routes/restaurants');
+const usersRouter = require("./routes/users");
+const registerRouter = require('./routes/register');
 
 const app = express();
 
@@ -21,6 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/restaurants', restaurantRouter);
+app.use("/users", usersRouter);
+app.use('/register', registerRouter);
 
 //app.use('/images', express.static('public/images'));
 
@@ -51,7 +55,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const port = parseInt(process.env.PORT) || 8080;
+const port = parseInt(process.env.PORT) || 8081;
 
 // if process is a test environment, don't have the app listen on the port
 if (process.env.NODE_ENV !== 'test') {
