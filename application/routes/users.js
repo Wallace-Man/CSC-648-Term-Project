@@ -6,16 +6,14 @@ const util = require('util');
 const bcrypt = require('bcrypt');
 
 
-// Create a MySQL connection
-const connection = mysql.createConnection({
-    host: "34.94.177.91",
-    user: "jruv",
-    password: "12345",
-    database: "restaurantdb",
-  });
-  
+const dbConnection = mysql.createConnection({
+  host: "34.94.177.91",
+  user: "jruv",
+  password: "12345",
+  database: "restaurantdb",
+});
   // Connect to the MySQL database
-  connection.connect((err) => {
+  dbConnection.connect((err) => {
     if (err) {
       console.error('Error connecting to the database:', err);
       return;
@@ -28,8 +26,8 @@ const connection = mysql.createConnection({
     const query = 'SELECT * FROM user WHERE username = ?';
   
     try {
-      // Promisify the connection.query function
-      const queryPromise = util.promisify(connection.query).bind(connection);
+      // Promisify the dbConnection.query function
+      const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
   
       // Query the database for a user with the given username
       const results = await queryPromise(query, [username]);
