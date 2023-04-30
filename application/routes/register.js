@@ -48,6 +48,7 @@ router.post('/authorization', async (req, res) => {
         res.redirect('/');
         console.log('Account Created!');
       } else {
+
         res.render('signup', { error: 'Unable to create an account. Please try again.' });
       }
     } catch (err) {
@@ -66,6 +67,4 @@ router.post('/authorization', async (req, res) => {
       
   });
   
-  
-
 module.exports = router;
