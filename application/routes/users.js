@@ -21,7 +21,11 @@ connection.connect((err) => {
   // console.log('Connected to the database.');
 });
 
-router.post('/login', async (req, res) => {
+router.get('/login', (req, res) => {
+  res.render('login');
+});
+
+router.post('/', async (req, res) => {
   const { username, password } = req.body;
   const query = 'SELECT * FROM user WHERE username = ?';
 
@@ -39,13 +43,14 @@ router.post('/login', async (req, res) => {
       const passwordMatches = await bcrypt.compare(password, user.password);
 
       if (passwordMatches) {
-        res.redirect('/');
+        // req.session.user = user;  // set session cookie
+        res.redirect('/');        // redirect to home page
+        return;
       } else {
-        console.log(res.render('login', { error: 'Invalid username or password' }));
-        
+        res.render('login', { error: 'Invalid username or password' });
       }
     } else {
-      console.log(res.render('login', { error: 'Invalid username or password' }));
+      res.render('login', { error: 'Invalid username or password' });
     }
   } catch (err) {
     console.error('Error during login:', err);
@@ -54,4 +59,3 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
-

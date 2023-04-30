@@ -2,7 +2,7 @@ extends layouts/main-layout
 
 block content
     .login-form-container
-        form.login(action="/users/login", method="post")
+        form.login(action="/", method="post")
             .form-group
                 label.login(for="username") Username:
                 input.login(type="username", id="username", name="username", required)
