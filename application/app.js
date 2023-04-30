@@ -51,7 +51,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const port = parseInt(process.env.PORT) || 8080;
+const port = parseInt(process.env.PORT) || 8081;
 
 // if process is a test environment, don't have the app listen on the port
 if (process.env.NODE_ENV !== 'test') {
