@@ -6,23 +6,22 @@ const util = require('util');
 
 // Create a MySQL connection
 const connection = mysql.createConnection({
-  host: "34.94.177.91",
-  user: "root",
-  password: "Jaws0044!",
-  database: "restaurantdb",
-  });
-  
-  // Connect to the MySQL database
-  connection.connect((err) => {
-    if (err) {
-      console.error('Error connecting to the database:', err);
-      return;
-    }
-    console.log('Connected to the database.');
-  });
+    host: "34.94.177.91",
+    user: "root",
+    password: "Jaws0044!",
+    database: "restaurantdb",
+});
 
+// Connect to the MySQL database
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to the database:', err);
+    return;
+  }
+//   console.log('Connected to the database.');
+});
 
-  //rounds for bcrypt
+//rounds for bcrypt
 const saltRounds = 10;
 
 // POST request for sign up
@@ -30,7 +29,7 @@ router.post('/authorization', async (req, res) => {
     const { username, email, password, password2 } = req.body;
   
     if (password != password2) {
-      res.render('register', { error: 'Passwords do not match. Please try again.' });
+      res.render('signup', { error: 'Passwords do not match. Please try again.' });
       return;
     }
   
@@ -49,12 +48,23 @@ router.post('/authorization', async (req, res) => {
         res.redirect('/');
         console.log('Account Created!');
       } else {
-        res.render('register', { error: 'Unable to create an account. Please try again.' });
+
+        res.render('signup', { error: 'Unable to create an account. Please try again.' });
       }
     } catch (err) {
-      console.error('Error during registration:', err);
-      res.status(500).send('Internal Server Error: ' + err.message);
-    }
+        console.error('Error during registration:', err);
+        console.log('Error code:', err.code);
+        console.log('Error message:', err.message);
+        console.log('Error stack:', err.stack);
+      
+        if (err.code === 'ER_DUP_ENTRY') {
+          res.render('signup', { error: 'Username or email already exists. Please try again.' });
+        } else {
+          res.status(500).send('Internal Server Error: ' + err.message);
+        }
+      }
+      
+      
   });
   
-  module.exports = router;
+module.exports = router;
