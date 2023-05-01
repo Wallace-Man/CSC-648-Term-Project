@@ -1926,3 +1926,8 @@ button.login-form-btn[type="submit"] {
   width: 50%;
   margin-left: 25%;
 }
+
+button.signup-form-btn[type="submit"] {
+  width: 50%;
+  margin-left: 25%;
+}
