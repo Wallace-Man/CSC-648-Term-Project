@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
-const bcrypt = require('bcrypt');
 const util = require('util');
+const bcrypt = require('bcrypt');
 
 // Create a MySQL connection
 const connection = mysql.createConnection({
-    host: "34.94.177.91",
-    user: "root",
-    password: "Jaws0044!",
-    database: "restaurantdb",
+  host: "34.94.177.91",
+  user: "root",
+  password: "Jaws0044!",
+  database: "restaurantdb",
 });
 
 // Connect to the MySQL database
@@ -18,53 +18,40 @@ connection.connect((err) => {
     console.error('Error connecting to the database:', err);
     return;
   }
-//   console.log('Connected to the database.');
+  // console.log('Connected to the database.');
 });
 
-//rounds for bcrypt
-const saltRounds = 10;
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
 
-// POST request for sign up
-router.post('/authorization', async (req, res) => {
-    const { username, email, password, password2 } = req.body;
-  
-    if (password != password2) {
-      res.render('signup', { error: 'Passwords do not match. Please try again.' });
-      return;
-    }
-  
-    try {
-      // Promisify the connection.query function
-      const queryPromise = util.promisify(connection.query).bind(connection);
-  
-      // Hash the password before storing it in the database
-      const hashedPassword = await bcrypt.hash(password, saltRounds);
-  
-      // Replace the original password with the hashed password in the query
-      const query = 'INSERT INTO user (username, email, password) VALUES (?, ?, ?)';
-      const results = await queryPromise(query, [username, email, hashedPassword]);
-  
-      if (results.affectedRows > 0) {
-        res.redirect('/');
-        console.log('Account Created!');
-      } else {
+router.post('/signup', async (req, res) => {
+  const { username, email, password, password2 } = req.body;
 
-        res.render('signup', { error: 'Unable to create an account. Please try again.' });
-      }
-    } catch (err) {
-        console.error('Error during registration:', err);
-        console.log('Error code:', err.code);
-        console.log('Error message:', err.message);
-        console.log('Error stack:', err.stack);
-      
-        if (err.code === 'ER_DUP_ENTRY') {
-          res.render('signup', { error: 'Username or email already exists. Please try again.' });
-        } else {
-          res.status(500).send('Internal Server Error: ' + err.message);
-        }
-      }
-      
-      
-  });
-  
+  // Check if the passwords match
+  if (password !== password2) {
+    res.render('signup', { error: 'Passwords do not match' });
+    return;
+  }
+
+  const query = 'INSERT INTO user (username, email, password) VALUES (?, ?, ?)';
+
+  try {
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Promisify the connection.query function
+    const queryPromise = util.promisify(connection.query).bind(connection);
+
+    // Insert the user into the database
+    await queryPromise(query, [username, email, hashedPassword]);
+
+    console.log('Account Created!');
+    res.redirect('/login');
+  } catch (err) {
+    console.error('Error during registration:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
+
 module.exports = router;
