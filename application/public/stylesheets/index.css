@@ -71,6 +71,11 @@ header img.user {
   height: 15px;
 }
 
+header img.profile-cart{
+  width: 20px;
+  height: 20px;
+}
+
 header span.login {
   margin: 5px;
 }
@@ -164,6 +169,10 @@ nav a.logo{
   background-color: rgb(51, 51, 51);
 }
 
+.logout-btn:hover{
+  background-color: rgb(51, 51, 51);
+}
+
 nav ul {
   display: flex;
   align-items: center;
@@ -188,6 +197,15 @@ nav a.login-btn {
 
 nav a.signup-btn {
 
+  color: white;
+  background-color: black;
+  /*border: 1px solid black;*/
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 0px;
+}
+
+nav a.logout-btn{
   color: white;
   background-color: black;
   /*border: 1px solid black;*/

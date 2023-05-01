@@ -2,8 +2,7 @@ extends layouts/main-layout
 
 block content
     .login-form-container
-        form.login(action="login.php", method="post")
-            p(id="mandatory-field") Mandatory Field *
+        form.login(action="/login", method="post")
             .form-group
                 label.login(for="username") Username:
                     span.mandatory-tag *
