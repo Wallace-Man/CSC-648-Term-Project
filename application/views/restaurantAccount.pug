@@ -1,0 +1,55 @@
+extends layouts/main-layout
+
+block content
+        .restaurant-signup-form-container
+            form.restaurant-signup(id='restaurant-form' action="/restaurantInfo", method="post")
+                p(id="get-started") Edit Restaurant Details
+                br
+                br
+                hr
+                .form-group
+                    label.restaurant-signup(for="store-address") Store Address:
+                    input.restaurant-signup(type="store-address", id="store-address", name="store-address")
+                .form-group
+                    label.restaurant-signup(for="floor-suite") Floor / Suite :
+                    input.restaurant-signup(type="floor-suite", id="floor-suite", name="floor-suite")
+                .form-group
+                    label.restaurant-signup(for="store-name") Store Name:
+                    input.restaurant-signup(type="store-name", id="store-name", name="store-name")
+                .form-group
+                    label.restaurant-signup(for="full-name") Full Name:
+                    input.restaurant-signup(type="full-name", id="full-name", name="full-name")
+                .form-group
+                    label.restaurant-signup(for="email") Email:
+                    input.restaurant-signup(type="email", id="email", name="email", placeholder='example123@ex.com')
+                .form-group
+                    label.restaurant-signup(for="password") Password:
+                    input.restaurant-signup(type="password", id="password", name="password")
+                .form-group
+                    label.restaurant-signup(for="phone") Phone:
+                    input.restaurant-signup(type="tel", id="phone", name="phone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', placeholder='123-456-7890')
+                .form-group
+                    label.restaurant-signup(for="website") Website:
+                    input.restaurant-signup(type="url", id="website", name="website", placeholder='https://example.com')
+                .form-group
+                    label.restaurant-signup(for="hours") Operating Hours:
+                    input.restaurant-signup(type="time", id="start-time", name="start-time")
+                    input.restaurant-signup(type="time", id="end-time", name="end-time", style="margin-left: 10px;")
+                .form-group
+                    label.restaurant-signup(for="cuisine") *Cuisine:
+                    select#cuisine-choice(name='category')
+                        option(disabled selected) --Select An Option--
+                        option(value='american') American
+                        option(value='italian') Italian
+                        option(value='mexican') Mexican
+                        option(value='chinese') Chinese
+                        option(value='japanese') Japanese
+                        option(value='korean') Korean
+                        option(value='thai') Thai
+                        option(value='vietnamese') Vietnamese
+                        option(value='greek') Greek
+                        option(value='french') French
+                .form-group
+                    label.restaurant-signup(for="logo") Logo:
+                    input.restaurant-signup(type="file", id="logo", name="logo")
+                button.signup-form-btn(type="submit") Save Changes
