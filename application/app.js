@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/restaurants', restaurantRouter);
 app.use('/', usersRouter);
-app.use('/register', registerRouter);
+app.use('/', registerRouter);
 
 //app.use('/images', express.static('public/images'));
 
