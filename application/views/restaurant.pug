@@ -12,38 +12,113 @@ block content
     div.restaurant-banner(id="top")
         .restaurant-signup-form-container
             form.restaurant-signup(id='restaurant-form' action="/restaurantInfo", method="post")
-                p(id="mandatory-field") * Mandatory Field
+                p(id="mandatory-field") Mandatory Field *
                 p(id="get-started") Get Started
                 .form-group
-                    label.restaurant-signup(for="store-address") *Store Address:
-                    input.restaurant-signup(type="store-address", id="store-address", name="store-address", required)
+                    label.restaurant-signup(for="restaurant-address") Restaurant Address:
+                        span.mandatory-tag *
+                    input.restaurant-signup(type="restaurant-address", id="restaurant-address", name="restaurant-address", required)
                 .form-group
-                    label.restaurant-signup(for="floor-suite") Floor / Suite :
-                    input.restaurant-signup(type="floor-suite", id="floor-suite", name="floor-suite")
+                    label.restaurant-signup(for="city") City:
+                        span.mandatory-tag *
+                    input.restaurant-signup(type="city", id="city", name="city", required)
                 .form-group
-                    label.restaurant-signup(for="store-name") *Store Name:
-                    input.restaurant-signup(type="store-name", id="store-name", name="store-name", required)
+                    label.restaurant-signup(for="state") State:
+                        span.mandatory-tag *
+                    select#cuisine-choice(name='state', required)
+                        option(disabled selected) --Select State--
+                        option(value='AL') Alabama
+                        option(value='AK') Alaska
+                        option(value='AZ') Arizona
+                        option(value='AR') Arkansas
+                        option(value='CA') California
+                        option(value='CO') Colorado
+                        option(value='CT') Connecticut
+                        option(value='DE') Delaware
+                        option(value='DC') District Of Columbia
+                        option(value='FL') Florida
+                        option(value='GA') Georgia
+                        option(value='HI') Hawaii
+                        option(value='ID') Idaho
+                        option(value='IL') Illinois
+                        option(value='IN') Indiana
+                        option(value='IA') Iowa
+                        option(value='KS') Kansas
+                        option(value='KY') Kentucky
+                        option(value='LA') Louisiana
+                        option(value='ME') Maine
+                        option(value='MD') Maryland
+                        option(value='MA') Massachusetts
+                        option(value='MI') Michigan
+                        option(value='MN') Minnesota
+                        option(value='MS') Mississippi
+                        option(value='MO') Missouri
+                        option(value='MT') Montana
+                        option(value='NE') Nebraska
+                        option(value='NV') Nevada
+                        option(value='NH') New Hampshire
+                        option(value='NJ') New Jersey
+                        option(value='NM') New Mexico
+                        option(value='NY') New York
+                        option(value='NC') North Carolina
+                        option(value='ND') North Dakota
+                        option(value='OH') Ohio
+                        option(value='OK') Oklahoma
+                        option(value='OR') Oregon
+                        option(value='PA') Pennsylvania
+                        option(value='RI') Rhode Island
+                        option(value='SC') South Carolina
+                        option(value='SD') South Dakota
+                        option(value='TN') Tennessee
+                        option(value='TX') Texas
+                        option(value='UT') Utah
+                        option(value='VT') Vermont
+                        option(value='VA') Virginia
+                        option(value='WA') Washington
+                        option(value='WV') West Virginia
+                        option(value='WI') Wisconsin
+                        option(value='WY') Wyoming
                 .form-group
-                    label.restaurant-signup(for="full-name") *Full Name:
-                    input.restaurant-signup(type="full-name", id="full-name", name="full-name", required)
+                    label.restaurant-signup(for="country") Country:
+                        span.mandatory-tag *
+                    input.restaurant-signup(type="country", id="country", name="country", required)
                 .form-group
-                    label.restaurant-signup(for="email") *Email:
+                    label.restaurant-signup(for="zipcode") Zip Code:
+                    input.restaurant-signup(type="number", id="zipcode", name="zipcode", min=00501, max=99950)
+                .form-group
+                    label.restaurant-signup(for="restaurant-name") Restaurant Name:
+                        span.mandatory-tag *
+                    input.restaurant-signup(type="restaurant-name", id="restaurant-name", name="restaurant-name", required)
+                .form-group
+                    label.restaurant-signup(for="username") Username:
+                        span.mandatory-tag *
+                    input.restaurant-signup(type="username", id="username", name="username", required)
+                .form-group
+                    label.restaurant-signup(for="email") Email:
+                        span.mandatory-tag *
                     input.restaurant-signup(type="email", id="email", name="email", placeholder='example123@ex.com', required)
                 .form-group
-                    label.restaurant-signup(for="password") *Password:
+                    label.restaurant-signup(for="password") Password:
+                        span.mandatory-tag *
                     input.restaurant-signup(type="password", id="password", name="password", required)
                 .form-group
-                    label.restaurant-signup(for="phone") *Phone:
+                    label.restaurant-signup(for="phone") Phone:
+                        span.mandatory-tag *
                     input.restaurant-signup(type="tel", id="phone", name="phone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', placeholder='123-456-7890', required)
                 .form-group
                     label.restaurant-signup(for="website") Website:
                     input.restaurant-signup(type="url", id="website", name="website", placeholder='https://example.com')
                 .form-group
-                    label.restaurant-signup(for="hours") *Operating Hours:
+                    label.restaurant-signup(for="hours") Operating Hours:
+                        span.mandatory-tag *
                     input.restaurant-signup(type="time", id="start-time", name="start-time", required)
                     input.restaurant-signup(type="time", id="end-time", name="end-time", style="margin-left: 10px;" required)
                 .form-group
-                    label.restaurant-signup(for="cuisine") *Cuisine:
+                    label.restaurant-signup(for="delivery-time") Delivery Time(minutes):
+                    input.restaurant-signup(type="number", id="delivery-time", name="delivery-time", min=0, max=120)
+                .form-group
+                    label.restaurant-signup(for="cuisine") Cuisine:
+                        span.mandatory-tag *
                     select#cuisine-choice(name='category', required)
                         option(disabled selected) --Select An Option--
                         option(value='american') American

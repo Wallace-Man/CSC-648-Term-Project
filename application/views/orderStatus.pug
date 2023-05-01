@@ -1,8 +1,8 @@
 extends layouts/main-layout
 
 block content
-    .order-form-container(onload='initMap()')
-        div.maps-order(id="map")
+    .orderStatus-form-container(onload='initMap()')
+        div.maps-orderStatus(id="map")
             iframe(
                 width="100%",
                 height="100%",
@@ -20,23 +20,23 @@ block content
                     h3 Your Order
             tr
                 td
-                    form.order-form
-                        table.order-table
+                    form.orderStatus-form
+                        table.orderStatus-table
                             tr
-                                td.order-info
-                                    label.order-label1 Order Number:
-                                td.order-info
-                                    label.order-label1 Estimated Arrival Time:
+                                td.orderStatus-info
+                                    label.orderStatus-label1 Order Number:
+                                td.orderStatus-info
+                                    label.orderStatus-label1 Estimated Arrival Time:
                             tr
-                                td.order-progress
-                                    label.order-label2 Preparing
-                                    progress.order-bar(value='1' max='2') 
-                                td.order-progress
-                                    label.order-label2 Out for Delivery 
-                                    progress.order-bar(value='0' max='2')
-                                td.order-progress
-                                    label.order-label2 Delivered 
-                                    progress.order-bar(value='0' max='2')
+                                td.orderStatus-progress
+                                    .orderStatus-label2 Preparing
+                                    progress.orderStatus-bar(value='1' max='2') 
+                                td.orderStatus-progress
+                                    .orderStatus-label2 Out for Delivery 
+                                    progress.orderStatus-bar(value='0' max='2')
+                                td.orderStatus-progress
+                                    .orderStatus-label2 Delivered 
+                                    progress.orderStatus-bar(value='0' max='2')
 
 
 
