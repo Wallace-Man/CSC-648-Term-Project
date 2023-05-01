@@ -6,16 +6,30 @@ html(lang="en")
 
     // Define the header section of the webpage with the logo, login/signup buttons, and search form
     header(style="margin-bottom: 0")
+        h5 SFSU - Spring 2023 - Team 02
         div.header-image
         nav
-            a.logo(href="/")
-                span.thin Gator
-                span.bold Bites
-            div.right-btns
-                a.login-btn(href="login")
-                    img(src="/images/user.png", style= {width: "15px", height: "15px", marginBottom: "15px"} )
-                    span(style= {margin: "5px"}) Log in
-                a.signup-btn(href="signup") Sign up
+            table
+                tr
+                    td.logo
+                        a.logo(href='/')
+                            span.thin Gator
+                            span.bold Bites
+                    td.login-signup
+                        div.right-btns
+                            a.login-btn(href='login')
+                                img.user(src="/images/user.png")
+                                span.login Log in
+                            a.signup-btn(href='signup') Sign up
+                tr 
+                    td.index(colspan='2')
+                        ul
+                            li 
+                                a(href='/aboutUs') About Us
+                            li 
+                                a(href='driver') Drivers
+                            li 
+                                a(href='restaurant') Restaurants
         h1 Find your favorite restaurants, delivered.
 
         // Define the search form with a select element for restaurant categories and a text input for search term
