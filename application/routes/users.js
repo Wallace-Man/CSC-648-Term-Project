@@ -21,7 +21,11 @@ connection.connect((err) => {
   // console.log('Connected to the database.');
 });
 
-router.post('/login', async (req, res) => {
+router.get('/login', (req, res) => {
+  res.render('login');
+});
+
+router.post('/login', async (req, res) => { // Change this line
   const { username, password } = req.body;
   const query = 'SELECT * FROM user WHERE username = ?';
 
@@ -34,18 +38,24 @@ router.post('/login', async (req, res) => {
 
     if (results.length > 0) {
       const user = results[0];
-      
+
+      console.log('Entered password:', password); // Add this line
+
       // Compare the hashed password in the database with the provided password
       const passwordMatches = await bcrypt.compare(password, user.password);
 
+      console.log('Password matches:', passwordMatches); // Add this line
+
       if (passwordMatches) {
-        res.redirect('/');
+        // req.session.user = user;  // set session cookie
+        console.log('Redirecting to home page'); // Add this line
+        res.redirect('/');        // redirect to home page
+        return;
       } else {
-        console.log(res.render('login', { error: 'Invalid username or password' }));
-        
+        res.render('login', { error: 'Invalid username or password' });
       }
     } else {
-      console.log(res.render('login', { error: 'Invalid username or password' }));
+      res.render('login', { error: 'Invalid username or password' });
     }
   } catch (err) {
     console.error('Error during login:', err);
@@ -54,4 +64,3 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
-
