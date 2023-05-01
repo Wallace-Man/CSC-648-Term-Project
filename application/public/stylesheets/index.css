@@ -1863,9 +1863,10 @@ input::placeholder, textarea::placeholder {
 }
 
  a.forgot-password {
+   display: flex;
+   justify-content: center;
   color: blue;
-  margin-left: 55%;
-  font-size: smaller;
+  /*font-size: 16px;*/
 }
 
 a.login-link{
