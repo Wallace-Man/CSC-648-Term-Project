@@ -294,6 +294,8 @@ main {
 
 section {
   margin-bottom: 60px;
+  display: flex;
+  flex-flow: wrap;
 }
 
 section h2 {
@@ -318,13 +320,14 @@ section li {
 
 section a {
   display: block;
-  padding: 20px;
+  float: right;
+  text-decoration: overline;
 }
 
 section.popular-restaurants img {
-  width: 100%;
-  height: 150px;
-  border-radius: 0;
+  width: 400px;
+  height: 200px;
+  border-radius: 5px;
 }
 
 section h2 {
@@ -684,16 +687,19 @@ input.driver-signup[type="email"],
 input.driver-signup[type="password"],
 input.driver-signup[type="email"],
 input.driver-signup[type="tel"],
-input.restaurant-signup[type="store-address"],
-input.restaurant-signup[type="floor-suite"],
-input.restaurant-signup[type="store-name"],
+input.restaurant-signup[type="restaurant-address"],
+input.restaurant-signup[type="city"],
+input.restaurant-signup[type="state"],
+input.restaurant-signup[type="country"],
+input.restaurant-signup[type="restaurant-name"],
 input.restaurant-signup[type="business-type"],
-input.restaurant-signup[type="full-name"],
+input.restaurant-signup[type="username"],
 input.restaurant-signup[type="email"],
 input.restaurant-signup[type="tel"],
 input.restaurant-signup[type="password"],
 input.restaurant-signup[type="url"],
 input.restaurant-signup[type="cuisine"],
+input.restaurant-signup[type="number"],
 input.signup[type="username"],
 input.signup[type="text"],
 input.signup[type="email"],
@@ -882,13 +888,13 @@ h2, h3 {
 
 /* Set margin and padding for restaurant card */
 .popular-restaurants div {
-  margin: 20px;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  width: auto;
+  width: 450px;
   margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 /* Set styles for restaurant image */
@@ -912,10 +918,8 @@ h2, h3 {
 
 /* Set styles for restaurant address */
 .popular-restaurants p {
-  text-align: center;
-  margin: 0;
+  margin: 10px;
   font-size: 14px;
-  color: #666;
 }
 
 /* Set styles for restaurant cuisine type */
@@ -1317,6 +1321,12 @@ label.cart-label2 {
   text-align: right;
  }
 
+ .mandatory-tag {
+  color: red;
+  font-weight: bold;
+  margin-left: 5px;
+ }
+
  #get-started{
   font-weight: bold; 
   text-align: center;
@@ -1337,7 +1347,7 @@ label.cart-label2 {
  }
 
 /* ORDER STATUS */
-.order-form-container {
+.orderStatus-form-container {
   display: flex;
   margin: auto;
   flex-direction: column;
@@ -1345,37 +1355,46 @@ label.cart-label2 {
   margin-top: 80px;
 }
 
-table.order-table {
+form.orderStatus-form {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  width: 100%;
+  background-color: #F2F2F2;
+  opacity: 85%;
+}
+
+table.orderStatus-table {
   width: 800px;
 }
 
-label.order-label1 {
+.orderStatus-label1 {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-label.order-label2 {
+.orderStatus-label2 {
   display: block;
   font-weight: thin;
   margin-bottom: 5px;
 }
 
-td.order-info {
-  width: 50%;
-  height: 100px;
-}
-
-td.order-progress {
+td.orderStatus-info {
   width: 33%;
   height: 100px;
 }
 
-progress.order-bar {
+td.orderStatus-progress {
+  width: 33%;
+  height: 100px;
+}
+
+progress.orderStatus-bar {
   width: 100%;
 }
 
-div.maps-order {
+div.maps-orderStatus {
   width: 100%;
   height:  40vh;
   overflow-x: hidden;
@@ -1385,10 +1404,6 @@ div.maps-order {
   margin-bottom: 50px;
   border-bottom: 1px solid black;
 }
-
-/* table, td {
-  border: 1px solid black;
-} */
 
 form.order-form {
   border: 1px solid black;
@@ -1846,3 +1861,7 @@ input::placeholder, textarea::placeholder {
   background-color: #F2F2F2;
   opacity: 85%;
 }
+
+/* table, td {
+  border: 1px solid black;
+} */
