@@ -105,5 +105,14 @@ router.get('/driverInfo', function(req, res) {
   router.get('/restaurantMenuPage', (req, res) => {
     res.render('restaurantMenuPage');
   }); 
-  
+
+/* GET RESTURANT ACCOUNT PAGE */
+router.get('/restaurantAccount', (req, res) => {
+    res.render('restaurantAccount');
+}); 
+
+/* GET DRIVER ACCOUNT PAGE */
+router.get('/driverAccount', (req, res) => {
+    res.render('driverAccount');
+});
 module.exports = router;
