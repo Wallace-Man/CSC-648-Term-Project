@@ -96,10 +96,10 @@ router.get('/driverInfo', function(req, res) {
     res.render('orderStatus')
 })
 
- /* GET ORDER MANAGEMENT PAGE */
- router.get('/manageorder', (req, res) => {
-    res.render('manageOrder');
-  });
+/* GET ORDER MANAGEMENT PAGE */
+router.get('/manageorder', (req, res) => {
+   res.render('manageOrder');
+});
 
   /* GET RESTURANT MENU PAGE */
   router.get('/restaurantMenuPage', (req, res) => {
@@ -111,8 +111,14 @@ router.get('/restaurantAccount', (req, res) => {
     res.render('restaurantAccount');
 }); 
 
-/* GET DRIVER ACCOUNT PAGE */
-router.get('/driverAccount', (req, res) => {
+  /* GET DRIVER ACCOUNT PAGE */
+  router.get('/driverAccount', (req, res) => {
     res.render('driverAccount');
-});
+  });
+
+  /* GET USER ACCOUNT PAGE */
+  router.get('/userAccount', (req, res) => {
+    res.render('userAccount');
+  }); 
+  
 module.exports = router;

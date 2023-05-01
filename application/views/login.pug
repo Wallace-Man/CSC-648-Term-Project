@@ -2,12 +2,14 @@ extends layouts/main-layout
 
 block content
     .login-form-container
-        form.login(action="/", method="post")
+        form.login(action="/login", method="post")
             .form-group
                 label.login(for="username") Username:
+                    span.mandatory-tag *
                 input.login(type="username", id="username", name="username", required)
             .form-group
                 label.login(for="password") Password:
+                    span.mandatory-tag *
                 input.login(type="password", id="password", name="password", required)
                 br
             br
