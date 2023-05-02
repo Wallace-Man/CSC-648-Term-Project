@@ -119,7 +119,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // TODO: Handle favorite icon click
                 console.log('Favorite clicked for restaurant ' + restaurant.restaurant_Name);
             })
-
+            
+            // added dollar sign icons   
             const priceIcon = document.createElement('i');
             priceIcon.classList.add('price-icon');
 
