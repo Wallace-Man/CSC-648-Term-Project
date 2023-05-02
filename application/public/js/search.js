@@ -99,8 +99,47 @@ document.addEventListener('DOMContentLoaded', function() {
             const deliveryTimePrint = document.createElement('p');
             deliveryTimePrint.textContent = 'Delivery Time: ' + restaurant.delivery_time;
             restaurantCard.appendChild(deliveryTimePrint);
-            
 
+
+            // Add the favorite icon
+            const favoriteButton = document.createElement('p');
+            favoriteButton.classList.add('far', 'fa-heart');
+            restaurantCard.appendChild(favoriteButton);
+            
+            favoriteButton.addEventListener('click', function() {
+                // Toggle the 'fas' and 'far' classes to change the icon's appearance
+                if (favoriteButton.classList.contains('far')) {
+                    favoriteButton.classList.remove('far');
+                    favoriteButton.classList.add('fas');
+                } else {
+                    favoriteButton.classList.remove('fas');
+                    favoriteButton.classList.add('far');
+                }
+    
+                // TODO: Handle favorite icon click
+                console.log('Favorite clicked for restaurant ' + restaurant.restaurant_Name);
+            })
+
+            const priceIcon = document.createElement('i');
+            priceIcon.classList.add('price-icon');
+
+            if (restaurant.price_range === 4) {
+                const dollarIcons = Array.from({ length: 4 }, () => {
+                const dollarIcon = document.createElement('i');
+                dollarIcon.classList.add('fas', 'fa-dollar-sign');
+            return dollarIcon;
+            });
+            priceIcon.append(...dollarIcons);
+            } else {
+            for (let i = 0; i < restaurant.price_range; i++) {
+                const dollarIcon = document.createElement('i');
+                dollarIcon.classList.add('fas', 'fa-dollar-sign');
+                priceIcon.appendChild(dollarIcon);
+                }
+            }
+
+            restaurantCard.appendChild(priceIcon);
+              
             // Add the restaurant card to the popular restaurants
             // section
             popularRestaurantsSection.appendChild(restaurantCard);

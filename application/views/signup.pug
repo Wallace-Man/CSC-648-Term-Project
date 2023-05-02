@@ -1,5 +1,6 @@
 extends layouts/main-layout
 
+
 block content
     .signup-form-container
         form.signup(action="/signup", method="post")
@@ -27,4 +28,6 @@ block content
             button.signup-form-btn(type="submit") Sign Up
             hr
             a.login-link(href="/login") Already have an account? Login here
+    script(src="/js/signupcheck.js")
 
+    
