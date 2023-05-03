@@ -909,7 +909,7 @@ h2, h3 {
 }
 
 /* Set styles for restaurant name */
-.popular-restaurants h3 {
+.popular-restaurants h3, a {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 5px;
