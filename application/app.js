@@ -10,6 +10,7 @@ const usersRouter = require('./routes/users');
 const registerRouter = require('./routes/register');
 const driverRouter = require('./routes/driver');
 
+
 const app = express();
 
 // view engine setup
@@ -32,6 +33,7 @@ app.use('/restaurants', restaurantRouter);
 app.use('/', usersRouter);
 app.use('/', registerRouter);
 app.use('/', driverRouter);
+
 //app.use('/images', express.static('public/images'));
 
 // app.use((req, res) => res.status(404).send('Not Found'));

@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
 const cloudinary = require('cloudinary').v2;
+const bcrypt = require('bcrypt');
+const util = require('util');
 
 // Create a MySQL connection
 const dbConnection = mysql.createConnection({
@@ -94,6 +96,30 @@ router.get('/getAllRestaurants', (req, res) => {
     res.json(result); // Send the result as the response
   });
 });
+
+router.post('/restaurant', async (req, res) => {
+  const { address, city, state, country, zip, name, username, email, password, phone, website, open, close, deliveryTime, cuisine } = req.body;
+  const query = 'INSERT INTO Restaurant (restaurant_Name, website, address_, city, state_, zip_code, country, open_, closed, cuisine_type , delivery_time, restaurant_username, password, email, phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+
+  try {
+    // Hash the password using bcrypt
+    const hashedPassword = await bcrypt.hash(password, 10);
+    // Promisify the MySQL query function
+    const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
+    // Execute the SQL query with the form data
+    await queryPromise(query, [name, website, address, city, state, zip, country, open, close, cuisine, deliveryTime, username, hashedPassword, email, phone]);
+
+
+    console.log('Account Created!');
+    // Redirect the user to the home page
+    res.redirect('/');
+  } catch (err) {
+    // Handle errors during the registration process
+    console.error('Error during registration:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
+
 
 module.exports = router;
   
