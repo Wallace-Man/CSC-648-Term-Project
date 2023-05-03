@@ -123,8 +123,16 @@ document.addEventListener('DOMContentLoaded', function() {
             // added dollar sign icons   
             const priceIcon = document.createElement('i');
             priceIcon.classList.add('price-icon');
-
-            if (restaurant.price_range === 4) {
+            
+            // if the restaurant price range is not set 
+            if (!restaurant.price_range){
+                // If there is not a set price range create a single dollar sign 
+                const dollarIcon = document.createElement('i');
+                dollarIcon.classList.add('fas', 'fa-dollar-sign');
+                priceIcon.appendChild(dollarIcon);
+            }
+            // if the price range is set to 4 display: $$$$
+            else if (restaurant.price_range === 4) {
                 const dollarIcons = Array.from({ length: 4 }, () => {
                 const dollarIcon = document.createElement('i');
                 dollarIcon.classList.add('fas', 'fa-dollar-sign');
@@ -132,6 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             priceIcon.append(...dollarIcons);
             } else {
+            // create the number of dollar sign icons based on price range
             for (let i = 0; i < restaurant.price_range; i++) {
                 const dollarIcon = document.createElement('i');
                 dollarIcon.classList.add('fas', 'fa-dollar-sign');
