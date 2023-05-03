@@ -112,13 +112,18 @@ router.get('/restaurantAccount', (req, res) => {
 }); 
 
   /* GET DRIVER ACCOUNT PAGE */
-  router.get('/driverAccount', (req, res) => {
+router.get('/driverAccount', (req, res) => {
     res.render('driverAccount');
-  });
+});
 
   /* GET USER ACCOUNT PAGE */
-  router.get('/userAccount', (req, res) => {
+router.get('/userAccount', (req, res) => {
     res.render('userAccount');
-  }); 
+}); 
+
+/* GET HELP PAGE */
+router.get('/help', (req, res) => {
+    res.render('help');
+}); 
   
 module.exports = router;
