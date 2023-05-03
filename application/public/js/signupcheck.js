@@ -28,7 +28,7 @@ form.addEventListener('submit', (event) => {
         alert('Please enter a password.');
         return;
     }
-
+    // Proiveds users with extra password security 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     if (!passwordRegex.test(passwordInput.value.trim())) {
         alert('Password must contain at least 8 characters, including at least one lowercase letter, one uppercase letter, and one number.');
@@ -44,7 +44,7 @@ form.addEventListener('submit', (event) => {
         alert('Passwords do not match.');
         return;
     }
-
+    
     if (!agreementCheckbox.checked) {
         alert('Please agree to use your Gator Card for payment.');
         return;
