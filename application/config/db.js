@@ -15,8 +15,8 @@ connection.connect((err) => {
     console.error('Error connecting to the database:', err);
     return;
   }
+  console.log('Connected to the database.');
 });
-
-connection.query = util.promisify(connection.query).bind(connection);
+connection.query = util.promisify(connection.query);
 
 module.exports = connection;

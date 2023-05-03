@@ -1,25 +1,9 @@
 // Import necessary libraries
 const express = require('express');
 const router = express.Router();
-const mysql = require('mysql');
 const cloudinary = require('cloudinary').v2;
+const db = require('../config/db');
 
-// Create a MySQL connection
-const dbConnection = mysql.createConnection({
-  host: "34.94.177.91",
-  user: "root",
-  password: "Jaws0044!",
-  database: "restaurantdb",
-});
-
-// Connect to the MySQL database
-dbConnection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to the database:', err);
-    return;
-  }
-  console.log('Connected to the database.');
-});
 //function for database photo import
 
 //cloudinary configuration for image storage
@@ -44,56 +28,51 @@ cloudinary.config({
 
 
 // Define /getRestaurants endpoint to search for restaurants by name
-router.get('/getRestaurants', (req, res) => {
+router.get('/getRestaurants', async (req, res) => {
   const searchTerm = req.query.searchTerm; // Get the search term from the query string
   const query = "SELECT * FROM Restaurant WHERE restaurant_Name LIKE '%" + searchTerm + "%'"; // Create SQL query
   console.log(`Executing query: ${query}`);
 
-  // Execute the SQL query and handle the result
-  dbConnection.query(query, (err, result) => {
-    if (err) {
-      console.error('Error executing query:', err);
-      res.status(500).json({ error: 'Internal server error' });
-      return;
-    }
+  try {
+    // Execute the SQL query using the database connection pool and handle the result
+    const result = await db.query(query);
     console.log('Query result:', result);
     res.json(result); // Send the result as the response
-  });
+  } catch (err) {
+    console.error('Error executing query:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // Define /getCuisineType endpoint to search for restaurants by cuisine type
-router.get('/getCuisineType', (req, res) => {
+router.get('/getCuisineType', async (req, res) => {
   const searchTerm = req.query.searchTerm; // Get the search term from the query string
   const query = "SELECT restaurant_Name, image_url,delivery_time FROM Restaurant WHERE cuisine_type = '" + searchTerm + "'"; // Create SQL query, include image_url
   console.log(`Executing query: ${query}`);
 
-  // Execute the SQL query and handle the result
-  dbConnection.query(query, (err, result) => {
-    if (err) {
-      console.error('Error executing query:', err);
-      res.status(500).json({ error: 'Internal server error' });
-      return;
-    }
+  try {
+    // Execute the SQL query using the database connection pool and handle the result
+    const result = await db.query(query);
     console.log('Query result:', result);
     res.json(result); // Send the result as the response
-  });
+  } catch (err) {
+    console.error('Error executing query:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
-
 // Define /getAllRestaurants endpoint to return all restaurants
-router.get('/getAllRestaurants', (req, res) => {
+router.get('/getAllRestaurants', async (req, res) => {
   const query = "SELECT * FROM Restaurant"; // Create SQL query
 
-  // Execute the SQL query and handle the result
-  dbConnection.query(query, (err, result) => {
-    if (err) {
-      console.error('Error executing query:', err);
-      res.status(500).json({ error: 'Internal server error' });
-      return;
-    }
+  try {
+    // Execute the SQL query using the database connection pool and handle the result
+    const result = await db.query(query);
     res.json(result); // Send the result as the response
-  });
+  } catch (err) {
+    console.error('Error executing query:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 module.exports = router;
-  
