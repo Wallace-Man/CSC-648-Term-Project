@@ -125,5 +125,9 @@ router.get('/userAccount', (req, res) => {
 router.get('/help', (req, res) => {
     res.render('help');
 }); 
-  
+
+/* GET NOTIFICATION PAGE */
+router.get('/notifications', (req, res) => {
+    res.render('notifications');
+}); 
 module.exports = router;
