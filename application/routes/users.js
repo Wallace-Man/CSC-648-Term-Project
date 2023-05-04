@@ -1,3 +1,4 @@
+// Import required modules
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
@@ -80,8 +81,6 @@ router.post('/signup', async (req, res) => {
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
-
-
 
 
 module.exports = router;
