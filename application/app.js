@@ -8,6 +8,8 @@ const indexRouter = require('./routes/index');
 const restaurantRouter = require('./routes/restaurants');
 const usersRouter = require('./routes/users');
 const registerRouter = require('./routes/register');
+const driverRouter = require('./routes/driver');
+
 
 const app = express();
 
@@ -30,6 +32,7 @@ app.use('/', indexRouter);
 app.use('/restaurants', restaurantRouter);
 app.use('/', usersRouter);
 app.use('/', registerRouter);
+app.use('/', driverRouter);
 
 //app.use('/images', express.static('public/images'));
 

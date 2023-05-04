@@ -116,7 +116,7 @@ router.get('/driverAccount', (req, res) => {
     res.render('driverAccount');
 });
 
-  /* GET USER ACCOUNT PAGE */
+/* GET USER ACCOUNT PAGE */
 router.get('/userAccount', (req, res) => {
     res.render('userAccount');
 }); 
@@ -130,4 +130,9 @@ router.get('/help', (req, res) => {
 router.get('/notifications', (req, res) => {
     res.render('notifications');
 }); 
+/* GET EDIT USER PAGE */
+router.get('/editUser', (req, res) => {
+    res.render('editUser');
+}); 
+  
 module.exports = router;
