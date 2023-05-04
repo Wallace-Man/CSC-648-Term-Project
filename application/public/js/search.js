@@ -98,17 +98,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Add the favorite icon
             const favoriteButton = document.createElement('h2');
-            favoriteButton.classList.add('far', 'fa-heart');
+            favoriteButton.classList.add('far', 'fa-heart', 'heart-outline');
             restaurantCard.appendChild(favoriteButton);
             
             favoriteButton.addEventListener('click', function() {
                 // Toggle the 'fas' and 'far' classes to change the icon's appearance
                 if (favoriteButton.classList.contains('far')) {
-                    favoriteButton.classList.remove('far');
-                    favoriteButton.classList.add('fas');
+                    favoriteButton.classList.remove('far', 'heart-outline');
+                    favoriteButton.classList.add('fas', 'heart-red');
                 } else {
-                    favoriteButton.classList.remove('fas');
-                    favoriteButton.classList.add('far');
+                    favoriteButton.classList.remove('fas', 'heart-red');
+                    favoriteButton.classList.add('far', 'heart-outline');
                 }
     
                 // TODO: Handle favorite icon click

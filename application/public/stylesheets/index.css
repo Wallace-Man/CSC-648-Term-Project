@@ -918,6 +918,10 @@ h2, h3 {
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
+/* heart button color*/
+.heart-red {
+  color: red;
+}
 
 /* Set styles for restaurant name */
 .popular-restaurants h3, a {
