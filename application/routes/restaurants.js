@@ -84,10 +84,9 @@ router.post('/restaurant', async (req, res) => {
   try {
     // Hash the password using bcrypt
     const hashedPassword = await bcrypt.hash(password, 10);
-    // Promisify the MySQL query function
-    const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
+    
     // Execute the SQL query with the form data
-    await queryPromise(query, [name, website, address, city, state, zip, country, open, close, cuisine, deliveryTime, username, hashedPassword, email, phone]);
+    await db.query(query, [name, website, address, city, state, zip, country, open, close, cuisine, deliveryTime, username, hashedPassword, email, phone]);
 
 
     console.log('Account Created!');
