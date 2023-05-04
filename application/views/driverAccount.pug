@@ -1,24 +1,24 @@
 extends layouts/main-layout
 
 block content
+  head 
+    title Driver Account
   br
   br
   br
   p#driver-profile Driver Details 
   .driverAccountFormContainer
-        form.driverAccountForm(id='driver-account-form', action="/driverAccount", method="post")
+        form.driverAccountForm(id='driver-account-form', action="/editDriverAccount", method="GET")
             p#get-started Driver Profile
             img(src="/images/driver-profile-pic.png", alt="Profile Picture")
             label(for="driver-name-input") Driver Name:
-            input#driver-name-input(type="text", name="driverName", placeholder='John Doe', required)
+            input#driver-name-input(type="text", name="driverName", readonly value='John Doe')
             label.driver-id(for="idUpload") Upload Id:
             input.driver-id(type="file", id="idUpload", name="idUpload")
             label(for="driver-phone-input") Phone Number:
-            input#driver-phone-input(type="tel", name="driverPhone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', placeholder='513-858-1394' required)
+            input#driver-phone-input(type="tel", name="driverPhone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', readonly value='513-858-1394' )
             label(for="driver-vehicle-input") Vehicle Make/Model:
-            input#driver-vehicle-input(type="text", placeholder="Honda Civic" ,name="driverVehicle", required)
-            label(for="driver-location-input") Change Password:
-            input#driver-location-input(type="password", name="driverLocation", required)
+            input#driver-vehicle-input(type="text", readonly value="Honda Civic" ,name="driverVehicle" )
             label(for="additional-info")  Bio (Optional):
-            textarea#additional-info(type="textarea", name="additionalInfo")
-            button#save-driver-button(type="submit") Save Changes
+            textarea#additional-info(type="textarea", name="additionalInfo" readonly placeholder="I am a driver for GatorDash!!")
+            button#save-driver-button(type="submit") Edit Info

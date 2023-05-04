@@ -125,5 +125,10 @@ router.get('/userAccount', (req, res) => {
 router.get('/editUser', (req, res) => {
     res.render('editUser');
 }); 
-  
+
+  /* GET DRIVER ACCOUNT PAGE */
+router.get('/editDriverAccount', (req, res) => {    
+    res.render('editDriverAccount');
+});
+
 module.exports = router;

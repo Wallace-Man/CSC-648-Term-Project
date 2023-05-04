@@ -1956,9 +1956,10 @@ label[for="driver-name-input"], label[for="driver-phone-input"], label[for="driv
   border: 2px solid #ccc;
   border-radius: 5px;
   width: 100%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 input[type="file"][id="idUpload"][name="idUpload"].driver-id {
-  margin: 10px 0 15px 0;
+  margin: 15px 0 15px 0;
   padding: 0;
   
 }
@@ -2160,3 +2161,17 @@ button.signup-form-btn[type="submit"] {
   margin: 10px 0;
 }
 
+#edit-driver-button {
+  display: block;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  justify-self: end;
+  grid-column: 1;
+  grid-row: 8;
+}
