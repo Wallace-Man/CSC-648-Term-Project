@@ -288,7 +288,7 @@ form button[type="submit"] {
 }
 
 main {
-  max-width: 1024px;
+  max-width: 2048px;
   margin: 0 auto;
 }
 
@@ -321,7 +321,14 @@ section li {
 section a {
   display: block;
   float: right;
-  text-decoration: overline;
+  background-color: black;
+  color: #FFF;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px;
 }
 
 section.popular-restaurants img {
@@ -884,6 +891,11 @@ h2, h3 {
   padding-bottom: 5px;
 }
 
+.number-of-results {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
 /* Set grid and spacing for restaurant card */
 
 /* Set margin and padding for restaurant card */
@@ -893,8 +905,7 @@ h2, h3 {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   width: 450px;
-  margin: 0 auto;
-  margin-bottom: 20px;
+  margin: 20px;
 }
 
 /* Set styles for restaurant image */
@@ -920,6 +931,7 @@ h2, h3 {
 .popular-restaurants p {
   margin: 10px;
   font-size: 14px;
+  font-weight: bold;
 }
 
 /* Set styles for restaurant cuisine type */
@@ -1331,7 +1343,8 @@ label.cart-label2 {
   font-weight: bold; 
   text-align: center;
   font-size: 30px; 
-  padding:3px;
+  padding: 3px;
+  margin-bottom: 20px;
  }
 
  #create-your-menu{
@@ -1862,6 +1875,288 @@ input::placeholder, textarea::placeholder {
   opacity: 85%;
 }
 
+ a.forgot-password {
+   display: flex;
+   justify-content: center;
+  color: blue;
+  /*font-size: 16px;*/
+}
+
+a.login-link{
+  color: blue;
+  margin-left: 25%;
+}
+
+.driverAccountFormContainer {
+  width: 80%;
+  background-color: #F2F2F2;
+  border: 1px solid #000000;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.driverAccountForm {
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-column-gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.driverAccountForm img{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 20px;
+    margin-top: 20px
+}
+#driver-name-input, #driver-license-input, #driver-phone-input, #driver-vehicle-input, #driver-location-input {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+#driver-name-input:focus, #driver-license-input:focus, #driver-phone-input:focus, #driver-vehicle-input:focus, #driver-location-input:focus {
+  border-color: #000000;
+}
+#save-driver-button {
+  display: block;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  justify-self: end;
+  grid-column: 2;
+}
+
+label[for="driver-name-input"], label[for="driver-phone-input"], label[for="driver-vehicle-input"], label[for="driver-location-input"], label[for="additional-info"] {
+  font-weight: bold;
+  text-align: left;
+}
+
+#additional-info {
+  height: 200px;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+input[type="file"][id="idUpload"][name="idUpload"].driver-id {
+  margin: 10px 0 15px 0;
+  padding: 0;
+  
+}
+#driver-profile{
+  font-weight: bold;
+  text-align: center;
+  font-size: 40px;
+  padding: 3px
+}
+
+button.login-form-btn[type="submit"] {
+  width: 50%;
+  margin-left: 25%;
+}
+
+button.signup-form-btn[type="submit"] {
+  width: 50%;
+  margin-left: 25%;
+}
+
+/* userAccount Styles */
+.userAccount-main-table {
+  width: 1400px;
+  height: 1000px;
+  margin: auto;
+}
+
+.userAccount-title-cell {
+  height: 10%;
+  vertical-align: 0;
+}
+
+.userAccount-orderHistory-cell {
+  width: 80%;
+  height: 25%;
+  vertical-align: 0;
+}
+
+.userAccount-heading {
+  text-decoration: underline; 
+  margin-bottom: 10px;
+}
+
+.userAccount-sub-table {
+  width: 90%;
+  height: 80%;
+  margin-top: 5px;
+}
+
+.userAccount-orderHistory-top {
+  vertical-align: bottom;
+}
+
+.userAccount-divider {
+  height: 5px;
+}
+
+.userAccount-orderHistory-bottom {
+  vertical-align: top;
+}
+
+.userAccount-accountDetails {
+  width: 20%;
+  height: 25%;
+  vertical-align: 0;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  width: 100%;
+  background-color: #F2F2F2;
+  opacity: 85%;
+}
+
+.userAccount-accountDetails-edit {
+  display: block;
+  float: right;
+  background-color: black;
+  color: #FFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.userAccount-list {
+  width: 100%;
+  height: 20%;
+  vertical-align: 0;
+}
+
+.userAccount-card-cell {
+  width: 33%;
+}
+
 /* table, td {
   border: 1px solid black;
 } */
+
+#restaurant-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+#restaurant-header img {
+  width: 150px;
+  height: 150px;
+}
+ 
+#restaurant-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 100px auto;
+  max-width: 1200px;
+}
+#restaurant-menu-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 50px;
+}
+#restaurant-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.restaurant-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.restaurant-card h3 {
+  margin-top: 0;
+}
+.restaurant-card p {
+  margin-bottom: 10px;
+}
+.restaurant-card .restaurant-price {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-weight: bold;
+}
+.restaurant-card button {
+  align-self: flex-end;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#restaurant-cart {
+  width: 20%;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border: 2px solid #333;
+  position: fixed;
+  top: 460px;
+  right: 35px;
+  z-index: 9999;
+}
+
+#restaurant-cart h2 {
+  margin-top: 0;
+  text-align: center;
+}
+#restaurant-cart ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#restaurant-cart li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+#restaurant-cart button {
+  margin-top: 20px;
+  margin-left: auto;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#restaurant-cart hr {
+  margin: 10px 0;
+}
+

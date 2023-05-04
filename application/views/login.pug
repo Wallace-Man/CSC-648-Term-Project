@@ -11,7 +11,13 @@ block content
                 label.login(for="password") Password:
                     span.mandatory-tag *
                 input.login(type="password", id="password", name="password", required)
+                br
+            br
             button.login-form-btn(type="submit") Login
+            br
+            br
+
+
             hr
             .alt-login
                 p Or continue with:
@@ -27,3 +33,5 @@ block content
                     i.fa.fa-facebook
                     img(src="/images/facebook.png", style= {width: "20px", height: "20px"} )
                     span Facebook
+            hr
+            a.forgot-password(href="#") Forgot password?
