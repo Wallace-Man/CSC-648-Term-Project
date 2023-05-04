@@ -116,9 +116,14 @@ router.get('/restaurantAccount', (req, res) => {
     res.render('driverAccount');
   });
 
-  /* GET USER ACCOUNT PAGE */
-  router.get('/userAccount', (req, res) => {
+/* GET USER ACCOUNT PAGE */
+router.get('/userAccount', (req, res) => {
     res.render('userAccount');
-  }); 
+}); 
+
+/* GET EDIT USER PAGE */
+router.get('/editUser', (req, res) => {
+    res.render('editUser');
+}); 
   
 module.exports = router;

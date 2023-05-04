@@ -11,13 +11,13 @@ extends layouts/main-layout
 block content
     div.restaurant-banner(id="top")
         .restaurant-signup-form-container
-            form.restaurant-signup(id='restaurant-form' action="/restaurantInfo", method="post")
+            form.restaurant-signup(id='restaurant-form' action="/restaurants/restaurant", method="post")
                 p(id="mandatory-field") Mandatory Field *
                 p(id="get-started") Get Started
                 .form-group
                     label.restaurant-signup(for="restaurant-address") Restaurant Address:
                         span.mandatory-tag *
-                    input.restaurant-signup(type="restaurant-address", id="restaurant-address", name="restaurant-address", required)
+                    input.restaurant-signup(type="restaurant-address", id="restaurant-address", name="address", required)
                 .form-group
                     label.restaurant-signup(for="city") City:
                         span.mandatory-tag *
@@ -84,11 +84,11 @@ block content
                     input.restaurant-signup(type="country", id="country", name="country", required)
                 .form-group
                     label.restaurant-signup(for="zipcode") Zip Code:
-                    input.restaurant-signup(type="number", id="zipcode", name="zipcode", min=00501, max=99950)
+                    input.restaurant-signup(type="number", id="zipcode", name="zip", min=00501, max=99950)
                 .form-group
                     label.restaurant-signup(for="restaurant-name") Restaurant Name:
                         span.mandatory-tag *
-                    input.restaurant-signup(type="restaurant-name", id="restaurant-name", name="restaurant-name", required)
+                    input.restaurant-signup(type="restaurant-name", id="restaurant-name", name="name", required)
                 .form-group
                     label.restaurant-signup(for="username") Username:
                         span.mandatory-tag *
@@ -111,15 +111,15 @@ block content
                 .form-group
                     label.restaurant-signup(for="hours") Operating Hours:
                         span.mandatory-tag *
-                    input.restaurant-signup(type="time", id="start-time", name="start-time", required)
-                    input.restaurant-signup(type="time", id="end-time", name="end-time", style="margin-left: 10px;" required)
+                    input.restaurant-signup(type="time", id="start-time", name="open", required)
+                    input.restaurant-signup(type="time", id="end-time", name="close", style="margin-left: 10px;" required)
                 .form-group
                     label.restaurant-signup(for="delivery-time") Delivery Time(minutes):
-                    input.restaurant-signup(type="number", id="delivery-time", name="delivery-time", min=0, max=120)
+                    input.restaurant-signup(type="number", id="delivery-time", name="deliveryTime", min=0, max=120)
                 .form-group
                     label.restaurant-signup(for="cuisine") Cuisine:
                         span.mandatory-tag *
-                    select#cuisine-choice(name='category', required)
+                    select#cuisine-choice(name='cuisine', required)
                         option(disabled selected) --Select An Option--
                         option(value='american') American
                         option(value='italian') Italian
