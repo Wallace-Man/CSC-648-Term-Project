@@ -8,18 +8,9 @@ block content
             button.tab-button(data-tab="archived") Archived
         .tab-contents
             .tab-content.active(data-tab="unread")
-                .notification
-                    h2 New message
-                    p You have a new message from John Doe.
-                .notification
-                    h2 New promotion
-                    p Get 20% off your next purchase with code SUMMER20.
+                div#unread-notifications
             .tab-content(data-tab="read")
-                .notification
-                    h2 Message from Jane Doe
-                    p You have a message from Jane Doe.
+                div#read-notifications
             .tab-content(data-tab="archived")
-                .notification
-                    h2 Account update required
-                    p Please update your account with a valid address and GatorPass card.
+                div#archived-notifications
     script(src="/js/notifications.js")
