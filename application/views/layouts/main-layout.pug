@@ -1,18 +1,16 @@
 doctype html
 html(lang="en")
-    include ../partials/head
-    body
-        // include ../partials/headerUser
-        // include ../partials/headerDriver
-        // include ../partials/headerRestaurant
-        // For testing purposes
+  include ../partials/head
+  body
+    // include ../partials/headerUser
+    // include ../partials/headerDriver
+    // include ../partials/headerRestaurant
+    // For testing purposes
 
-        include ../partials/headerUser
-        block content
+    if user
+      include ../partials/headerUser
+    else
+      include ../partials/header
+    block content
 
-        include ../partials/footer
-
-
-
-
-
+    include ../partials/footer
