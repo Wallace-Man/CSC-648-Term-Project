@@ -2174,6 +2174,7 @@ button.signup-form-btn[type="submit"] {
 }
 
 .dropdown-content {
+  top: 80px;
   display: none;
   position: absolute;
   background-color: #f1f1f1;
@@ -2182,6 +2183,7 @@ button.signup-form-btn[type="submit"] {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   right: 0;
   z-index: 1;
+  border-radius: 5px;
 }
 
 .dropdown-content a {
@@ -2189,17 +2191,11 @@ button.signup-form-btn[type="submit"] {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-}
-
-.dropdown-content li{
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
   font-weight: bold;
+  text-align: left;
 }
 
-.dropdown a:hover {background-color: #ddd;}
+.dropdown-content a:hover {background-color: #ddd;}
 
 .show {display: block;}
 
@@ -2213,8 +2209,8 @@ button.signup-form-btn[type="submit"] {
 }
 
 .notifications {
-  max-width: 800px;
-  margin: 0 auto;
+  width: 60%;
+  margin: 20px auto;
 }
 
 .tab-buttons {
@@ -2250,6 +2246,7 @@ button.signup-form-btn[type="submit"] {
 
 .tab-content {
   display: none;
+  background-color: #fff;
 }
 
 .tab-content.active {
@@ -2261,4 +2258,17 @@ button.signup-form-btn[type="submit"] {
   padding: 10px;
   border: 1px solid #eee;
   border-radius: 5px;
+  background-color: #ffc107;
+  padding-bottom: 25px;
 }
+
+.move-buttons{
+  float: right;
+  margin-bottom: 10px;
+
+}
+
+.move-btn{
+  margin-right: 5px;
+}
+
