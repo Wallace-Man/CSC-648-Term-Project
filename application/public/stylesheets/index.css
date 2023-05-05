@@ -901,9 +901,13 @@ h2, h3 {
 /* Set margin and padding for restaurant card */
 .popular-restaurants div {
   padding: 20px;
-  border: 1px solid black;
+  display: flex;
+  /*display: flex;*/
+ /* justify-content: space-between; */ /* Space out the elements within the div */
+ /* align-items: center;*/
+  /*border: 1px solid black;*/
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+ /* box-shadow: 0 2px 4px rgba(0,0,0,0.2);*/
   width: 450px;
   margin: 20px;
 }
@@ -917,10 +921,6 @@ h2, h3 {
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-/* heart button color*/
-.heart-red {
-  color: red;
 }
 
 /* Set styles for restaurant name */
@@ -2098,9 +2098,10 @@ button.signup-form-btn[type="submit"] {
 .restaurant-card {
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f5;
+  /*background-color: #f5f5f5;*/
   /*border-radius: 10px;*/
   /*padding: 0;*/
+  align-items: center;
   position: relative;
 }
 
@@ -2115,9 +2116,28 @@ button.signup-form-btn[type="submit"] {
 
 .restaurant-card h2 {
   font-size: 18px;
-  font-weight: bold;
-  margin: 10px 0;
-  color: #333333;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 8.75%;
+}
+
+.restaurant-card .rating {
+  color:yellowgreen;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0%;
+}
+.restaurant-card .delivery-time {
+  color: purple;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0%;
+}
+
+.restaurant-card .restaurant-info i {
+  margin: 0;
+  display: inline-block;
 }
 
 .restaurant-card .delivery {
@@ -2131,8 +2151,8 @@ button.signup-form-btn[type="submit"] {
   top: 25px;
   right: 25px;
   font-size: 24px;
-  color: #ff02af;
-  border: 1px solid black;
+  color: red;
+  border: 1px solid white;
   background-color: #000;
   border-radius: 50%;
   padding: 5px;
@@ -2150,14 +2170,14 @@ button.signup-form-btn[type="submit"] {
 
 .restaurant-card .price-icon {
   display: flex;
-  align-items: center;
+  position: absolute;
+  align-items: flex-start;
+  font-weight: bold;
+  color:black;
   font-size: 18px;
-  color: #333333;
-  margin-bottom: 10px;
-}
-
-.restaurant-card .price-icon i {
-  margin-right: 5px;
+  top: 7.5%;
+  right: 84%;
+  bottom: 80%;
 }
 
 .restaurant-card .clickable {

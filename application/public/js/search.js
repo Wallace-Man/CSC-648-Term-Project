@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
             restaurantCard.classList.add('restaurant-card');
 
         // Add the restaurant image
+        
             const restaurantImage = document.createElement('img');
             restaurantImage.src = restaurant.image_url;
             restaurantImage.classList.add('clickable');
@@ -84,7 +85,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const favoriteButton = document.createElement('i');
             favoriteButton.classList.add('favorite', 'far', 'fa-heart');
             restaurantCard.appendChild(favoriteButton);
-             
+
+
+  
             favoriteButton.addEventListener('click', function() {
                  // Toggle the 'fas' and 'far' classes to change the icon's appearance
                  if (favoriteButton.classList.contains('far')) {
@@ -99,37 +102,48 @@ document.addEventListener('DOMContentLoaded', function() {
                  console.log('Favorite clicked for restaurant ' + restaurant.restaurant_Name);
              })
    
-            // Add the restaurant name
+            
+
+    
+          
+            const restaurantInfo = document.createElement('div');
+            restaurantInfo.classList.add('restaurant-info');
+
+             // Add the restaurant name
             const restaurantName = document.createElement('h2');
             restaurantName.textContent = restaurant.restaurant_Name;
-            restaurantCard.appendChild(restaurantName);
+            restaurantInfo.appendChild(restaurantName);
 
-         
+             //Add the 'Delivery Time' text display
+             const deliveryTimePrint = document.createElement('h2');
+             deliveryTimePrint.classList.add('delivery-time')
+             deliveryTimePrint.textContent =  restaurant.delivery_time;
+             restaurantInfo.appendChild(deliveryTimePrint);
+  
             // Add the restaurant rating
             const restaurantRating = document.createElement('h2');
-            restaurantRating.textContent = 'Rating: ' + 'TBD';
-            restaurantCard.appendChild(restaurantRating);
-
-            //Add the 'Delivery Time' text display
-            const deliveryTimePrint = document.createElement('span');
-            deliveryTimePrint.textContent = 'Delivery Time: ' + restaurant.delivery_time;
-            restaurantCard.appendChild(deliveryTimePrint);
+            restaurantRating.classList.add('rating')
+            restaurantRating.textContent = '4.5' + ' Star';
+            restaurantInfo.appendChild(restaurantRating);
+                
+    
+            restaurantCard.appendChild(restaurantInfo);
  
             // added dollar sign icons   
-            const priceIcon = document.createElement('h2');
+            const priceIcon = document.createElement('i');
             priceIcon.classList.add('price-icon');
             
             // if the restaurant price range is not set 
             if (!restaurant.price_range){
                 // If there is not a set price range create a single dollar sign 
-                const dollarIcon = document.createElement('h2');
+                const dollarIcon = document.createElement('i');
                 dollarIcon.classList.add('fas', 'fa-dollar-sign');
                 priceIcon.appendChild(dollarIcon);
             }
             // if the price range is set to 4 display: $$$$
             else if (restaurant.price_range === 4) {
                 const dollarIcons = Array.from({ length: 4 }, () => {
-                const dollarIcon = document.createElement('h2');
+                const dollarIcon = document.createElement('i');
                 dollarIcon.classList.add('fas', 'fa-dollar-sign');
             return dollarIcon;
             });
@@ -137,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
             // create the number of dollar sign icons based on price range
             for (let i = 0; i < restaurant.price_range; i++) {
-                const dollarIcon = document.createElement('h2');
+                const dollarIcon = document.createElement('i');
                 dollarIcon.classList.add('fas', 'fa-dollar-sign');
                 priceIcon.appendChild(dollarIcon);
                 }
@@ -147,15 +161,14 @@ document.addEventListener('DOMContentLoaded', function() {
               
             // Add the restaurant card to the popular restaurants
             // section
-
+            /*
                    // Add the 'View Menu' button
                    const viewMenuButton = document.createElement('a');
                    viewMenuButton.href = '/menu/' + restaurant.id;
                    viewMenuButton.textContent = 'View Menu';
                    viewMenuButton.classList.add('button');
                    restaurantCard.appendChild(viewMenuButton);
-
-
+            */
 
             popularRestaurantsSection.appendChild(restaurantCard);
         });
