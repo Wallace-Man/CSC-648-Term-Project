@@ -128,6 +128,11 @@ router.get('/userAccount', (req, res) => {
 router.get('/editUser', (req, res) => {
     res.render('editUser');
 }); 
+
+/* GET ORDERS PAGE */
+router.get('/orders', (req, res) => {
+    res.render('orders');
+}); 
   
 
 module.exports = router;
