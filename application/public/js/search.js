@@ -74,47 +74,47 @@ document.addEventListener('DOMContentLoaded', function() {
             const restaurantCard = document.createElement('div');
             restaurantCard.classList.add('restaurant-card');
 
+        // Add the restaurant image
+            const restaurantImage = document.createElement('img');
+            restaurantImage.src = restaurant.image_url;
+            restaurantImage.classList.add('clickable');
+            restaurantCard.appendChild(restaurantImage);
+
+        // Add the favorite icon
+            const favoriteButton = document.createElement('i');
+            favoriteButton.classList.add('favorite', 'far', 'fa-heart');
+            restaurantCard.appendChild(favoriteButton);
+             
+            favoriteButton.addEventListener('click', function() {
+                 // Toggle the 'fas' and 'far' classes to change the icon's appearance
+                 if (favoriteButton.classList.contains('far')) {
+                     favoriteButton.classList.remove('far', 'heart-outline');
+                     favoriteButton.classList.add('fas', 'heart-red');
+                 } else {
+                     favoriteButton.classList.remove('fas', 'heart-red');
+                     favoriteButton.classList.add('far', 'heart-outline');
+                 }
+     
+                 // TODO: Handle favorite icon click
+                 console.log('Favorite clicked for restaurant ' + restaurant.restaurant_Name);
+             })
+   
             // Add the restaurant name
             const restaurantName = document.createElement('h2');
             restaurantName.textContent = restaurant.restaurant_Name;
             restaurantCard.appendChild(restaurantName);
 
-            // Add the restaurant image
-            const restaurantImage = document.createElement('img');
-            restaurantImage.src = restaurant.image_url;
-            restaurantCard.appendChild(restaurantImage);
-
+         
             // Add the restaurant rating
             const restaurantRating = document.createElement('h2');
             restaurantRating.textContent = 'Rating: ' + 'TBD';
             restaurantCard.appendChild(restaurantRating);
 
-     
             //Add the 'Delivery Time' text display
-            const deliveryTimePrint = document.createElement('h2');
+            const deliveryTimePrint = document.createElement('span');
             deliveryTimePrint.textContent = 'Delivery Time: ' + restaurant.delivery_time;
             restaurantCard.appendChild(deliveryTimePrint);
-
-
-            // Add the favorite icon
-            const favoriteButton = document.createElement('h2');
-            favoriteButton.classList.add('far', 'fa-heart', 'heart-outline');
-            restaurantCard.appendChild(favoriteButton);
-            
-            favoriteButton.addEventListener('click', function() {
-                // Toggle the 'fas' and 'far' classes to change the icon's appearance
-                if (favoriteButton.classList.contains('far')) {
-                    favoriteButton.classList.remove('far', 'heart-outline');
-                    favoriteButton.classList.add('fas', 'heart-red');
-                } else {
-                    favoriteButton.classList.remove('fas', 'heart-red');
-                    favoriteButton.classList.add('far', 'heart-outline');
-                }
-    
-                // TODO: Handle favorite icon click
-                console.log('Favorite clicked for restaurant ' + restaurant.restaurant_Name);
-            })
-            
+ 
             // added dollar sign icons   
             const priceIcon = document.createElement('h2');
             priceIcon.classList.add('price-icon');
