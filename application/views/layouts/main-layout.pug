@@ -1,18 +1,17 @@
 doctype html
 html(lang="en")
-    include ../partials/head
-    body
-        // include ../partials/headerUser
-        // include ../partials/headerDriver
-        // include ../partials/headerRestaurant
-        // For testing purposes
+  include ../partials/head
+  body
+    // include ../partials/headerUser
+    // include ../partials/headerDriver
+    // include ../partials/headerRestaurant
+    // For testing purposes
 
-        include ../partials/header
-        block content
+    include ../partials/header
+    if user
+      a(href="/logout") Log Out
+    else
+      a(href="/login") Log In
+    block content
 
-        include ../partials/footer
-
-
-
-
-
+    include ../partials/footer

@@ -2,10 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 /* GET HOME PAGE */
-router.get('/', function(req, res, next) {
-  res.render('index');
-});
-
+// router.get('/', function(req, res, next) {
+//   res.render('index');
+// });
+router.get('/', (req, res) => {
+    res.render('index', { user: req.session.user });
+  });
+  
 /* GET ABOUT US PAGE */
 router.get('/aboutUs', function(req, res) {
   res.render('aboutUs');
@@ -126,4 +129,5 @@ router.get('/editUser', (req, res) => {
     res.render('editUser');
 }); 
   
+
 module.exports = router;
