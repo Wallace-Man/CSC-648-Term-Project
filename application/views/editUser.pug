@@ -1,3 +1,18 @@
 extends layouts/main-layout
 
 block content
+    .signup-form-container
+        form.signup(action="/signup", method="post")
+            .form-group
+                label.signup(for="fname") First Name:
+                input.signup(type="text", id="fname", name="fname")
+            .form-group
+                label.signup(for="lname") Last Name:
+                input.signup(type="text", id="lname", name="lname")
+            .form-group
+                label.signup(for="email") Email:
+                input.signup(type="email", id="email", name="email")
+            .form-group
+                label.signup(for="tel") Phone Number:
+                input.signup(type="tel", id="tel", name="tel")
+            button.signup-form-btn(type="submit") Confirm Changes
