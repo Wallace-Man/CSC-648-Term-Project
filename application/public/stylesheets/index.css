@@ -2003,9 +2003,8 @@ button.signup-form-btn[type="submit"] {
 }
 
 .userAccount-sub-table {
-  width: 90%;
-  height: 80%;
-  margin-top: 5px;
+  width: 100%;
+  margin-top: 25px;
 }
 
 .userAccount-orderHistory-top {
@@ -2053,10 +2052,6 @@ button.signup-form-btn[type="submit"] {
 .userAccount-card-cell {
   width: 33%;
 }
-
-/* table, td {
-  border: 1px solid black;
-} */
 
 #restaurant-header {
   display: flex;
@@ -2160,3 +2155,6 @@ button.signup-form-btn[type="submit"] {
   margin: 10px 0;
 }
 
+/* table, td {
+  border: 1px solid black;
+} */
