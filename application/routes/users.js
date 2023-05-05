@@ -12,7 +12,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.post('/login', async (req, res) => { // Change this line
+router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   const query = 'SELECT * FROM user WHERE username = ?';
 
@@ -25,16 +25,16 @@ router.post('/login', async (req, res) => { // Change this line
     if (results.length > 0) {
       const user = results[0];
 
-      console.log('Entered password:', password); // Add this line
+      console.log('Entered password:', password);
 
       // Compare the hashed password in the database with the provided password
       const passwordMatches = await bcrypt.compare(password, user.password);
 
-      console.log('Password matches:', passwordMatches); // Add this line
+      console.log('Password matches:', passwordMatches);
 
       if (passwordMatches) {
-        // req.session.user = user;  // set session cookie
-        console.log('Redirecting to home page'); // Add this line
+        req.session.user = user;  // set session cookie
+        console.log('Redirecting to home page');
         res.redirect('/');        // redirect to home page
         return;
       } else {
@@ -84,3 +84,20 @@ router.post('/signup', async (req, res) => {
 
 
 module.exports = router;
+function ensureAuthenticated(req, res, next) {
+  if (req.session.user) {
+    return next();
+  } else {
+    res.redirect('/login');
+  }
+}
+router.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/');
+});
+
+
+module.exports = {
+  router,
+  ensureAuthenticated
+};
