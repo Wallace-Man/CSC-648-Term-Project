@@ -132,7 +132,12 @@ router.get('/editUser', (req, res) => {
 /* GET ORDERS PAGE */
 router.get('/orders', (req, res) => {
     res.render('orders');
-}); 
+});
+
+/* GET FAVORITES PAGE */
+router.get('/favorites', (req, res) => {
+    res.render('favorites');
+});
   
 
 module.exports = router;
