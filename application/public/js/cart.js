@@ -150,6 +150,11 @@ function updateCartSubtotal() {
     const subtotal = document.getElementById('subtotal-label');
     subtotal.innerHTML = '';
     subtotal.append('$' + calculateTotal());
+    let cartCount = document.getElementById('cart-count');
+    cartCount.innerHTML = '';
+    cartCount.append(getCartItemCount() + ' items');
+
+
 
 }
 
@@ -177,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(localCart[existingItemIndex])
                 setCart(localCart);
                 updateCartSubtotal();
+
             });
         }
 
