@@ -1,6 +1,6 @@
-
+import { addToCart, calculateTotal } from './cart.js';
 // get the "Add to Cart" buttons
-const addToCartButtons = document.querySelectorAll('.card button');
+const addToCartButtons = document.querySelectorAll('.restaurant-card button');
 
 // initialize the cart items
 let cartItems = [];
@@ -13,45 +13,58 @@ button.addEventListener('click', (event) => {
 
     // get the item name and price
     const itemName = card.querySelector('h3').textContent;
-    const itemPrice = card.querySelector('.price').textContent;
+    let itemPrice = card.querySelector('.price').textContent;
+    itemPrice = itemPrice.substring(1);
 
-    // create the cart item object
-    const cartItem = { name: itemName, price: itemPrice };
-
-    // add the cart item to the cart items array
-    cartItems.push(cartItem);
+    // update the cart in local storage
+    addToCart(itemName, itemPrice, 1);
+    console.log('item added to cart', localStorage.getItem('cart'));
 
     // update the cart UI
     updateCart();
+
 });
 });
 
 // update the cart UI
 function updateCart() {
-// get the cart element
-const cart = document.querySelector('#cart ul');
 
-// clear the cart element
-cart.innerHTML = '';
+    // select the cart html elements
+    const cartContainer = document.querySelector('#restaurant-cart');
+    const cartz = document.querySelector('#restaurant-cart ul');
 
-// calculate the total price
-let total = 0;
+    // get the cart from local storage
+    let localCart = JSON.parse(localStorage.getItem('cart'));
 
-// loop through the cart items
-cartItems.forEach((item) => {
-    // create the cart item HTML
-    const li = document.createElement('li');
-    li.innerHTML = `<span>${item.name}</span><span>${item.price}</span>`;
-    cart.appendChild(li);
+    // if the cart is empty, display empty message
+    if(localCart.length == 0){
+        let isEmpty = document.querySelector('p#cart-empty');
+        isEmpty.innerHTML = 'Your cart is empty';
+    }else{
+        // console.log('updated cart called on not empty cart')
+        // console.log('attempting to update cart ui')
+        // clear the cart element
+        cartz.innerHTML = '';
+            // loop through the cart items
+        for (let i = 0; i < localCart.length; i++) {
+            const li = document.createElement('li')
+            li.innerHTML = localCart[i].name + ' x ' + localCart[i].quantity
+            cartz.appendChild(li);
+        }   
+    
 
-    // add the item price to the total
-    total += parseFloat(item.price.replace('$', ''));
-});
+        // calculate the total price
+        let total = calculateTotal();
 
-// add the total to the cart UI
-const totalElement = document.createElement('li');
-const hrElement = document.createElement('hr');
-cart.appendChild(hrElement);
-totalElement.innerHTML = `<span>Total</span><span>$${total.toFixed(2)}</span>`;
-cart.appendChild(totalElement);
+        // add the total to the cart UI
+        const totalElement = document.createElement('li');
+        const hrElement = document.createElement('hr');
+        cartz.appendChild(hrElement);
+        totalElement.innerHTML = `<span>Total</span><span>$${total}</span>`;
+        cartz.appendChild(totalElement);
+    }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateCart();
+  });
