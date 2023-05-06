@@ -1,3 +1,7 @@
+/*
+    This file contains the JavaScript code to render and interact with the cart page and checkout page.
+    It is implemented using local storage to store the cart items.
+*/
 
 // Check if cart exists in local storage, create one if it doesn't
 if (!localStorage.getItem('cart')) {

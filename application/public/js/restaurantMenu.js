@@ -1,3 +1,7 @@
+/*
+    This file contains the JavaScript code to render and interact with the restaurant menu page. 
+    It is implemented using local storage to store the cart items.
+*/
 import { addToCart, calculateTotal } from './cart.js';
 // get the "Add to Cart" buttons
 const addToCartButtons = document.querySelectorAll('.restaurant-card button');
