@@ -7,19 +7,23 @@ const archivedNotificationsContainer = document.querySelector('#archived-notific
 const notifications = [
   {
       title: 'New message',
-      message: 'You have a new message from John Doe.'
+      message: 'You have a new message from John Doe.',
+      status: 'unread'
   },
   {
       title: 'New promotion',
-      message: 'Get 20% off your next purchase with code SUMMER20.'
+      message: 'Get 20% off your next purchase with code SUMMER20.',
+      status: 'unread'
   },
   {
       title: 'Message from Jane Doe',
-      message: 'You have a message from Jane Doe.'
+      message: 'You have a message from Jane Doe.',
+      status: 'read'
   },
   {
       title: 'Account update required',
-      message: 'Please update your account with a valid address and GatorPass card.'
+      message: 'Please update your account with a valid address and GatorPass card.',
+      status: 'archived'
   }
 ];
 
@@ -51,61 +55,44 @@ function createNotificationCard(notification, container) {
   message.textContent = notification.message;
   const moveButtons = document.createElement('div');
   moveButtons.classList.add('move-buttons');
-  const moveUnreadButton = document.createElement('move-btn');
-  moveUnreadButton.textContent = 'Move to unread';
+
+  const moveUnreadButton = document.createElement('button');
+  moveUnreadButton.textContent = 'Unread';
+  moveUnreadButton.classList.add('movebtn');
   moveUnreadButton.addEventListener('click', () => {
-      const unreadContainer = document.querySelector('#unread-notifications');
-      const cardIndex = Array.from(container.children).indexOf(card);
-      container.removeChild(card);
-      unreadContainer.insertBefore(card, unreadContainer.children[cardIndex]);
+    moveCard(card, container.id, 'unread-notifications');
   });
-  const moveReadButton = document.createElement('move-btn');
-  moveReadButton.textContent = 'Move to read';
+
+  const moveReadButton = document.createElement('button');
+  moveReadButton.textContent = 'Read';
+  moveReadButton.classList.add('movebtn');
   moveReadButton.addEventListener('click', () => {
-      const readContainer = document.querySelector('#read-notifications');
-      const cardIndex = Array.from(container.children).indexOf(card);
-      container.removeChild(card);
-      readContainer.insertBefore(card, readContainer.children[cardIndex]);
-
-      if (container.id === 'unread-notifications') {
-        moveButtons.removeChild(moveArchivedButton);
-        moveButtons.removeChild(moveReadButton);
-      } else {
-        moveButtons.removeChild(moveUnreadButton);
-        moveButtons.removeChild(moveReadButton);
-      }
-      moveButtons.appendChild(moveUnreadButton);
-      moveButtons.appendChild(moveArchivedButton);
+    moveCard(card, container.id, 'read-notifications');
   });
-  const moveArchivedButton = document.createElement('move-btn');
-  moveArchivedButton.textContent = 'Move to archived';
+
+  const moveArchivedButton = document.createElement('button');
+  moveArchivedButton.textContent = 'Archive';
+  moveArchivedButton.classList.add('movebtn');
   moveArchivedButton.addEventListener('click', () => {
-      const archivedContainer = document.querySelector('#archived-notifications');
-      const cardIndex = Array.from(container.children).indexOf(card);
-      container.removeChild(card);
-      archivedContainer.insertBefore(card, archivedContainer.children[cardIndex]);
-
-      if (container.id === 'unread-notifications') {
-        moveButtons.removeChild(moveArchivedButton);
-        moveButtons.removeChild(moveReadButton);
-      } else {
-        moveButtons.removeChild(moveArchivedButton);
-        moveButtons.removeChild(moveUnreadButton);
-      }
-      moveButtons.appendChild(moveUnreadButton);
-      moveButtons.appendChild(moveReadButton);
-    
+    moveCard(card, container.id, 'archived-notifications');
   });
-  if (container.id === 'unread-notifications') {
-      moveButtons.appendChild(moveReadButton);
-      moveButtons.appendChild(moveArchivedButton);
-  } else if (container.id === 'read-notifications') {
-      moveButtons.appendChild(moveUnreadButton);
-      moveButtons.appendChild(moveArchivedButton);
-  } else if (container.id === 'archived-notifications') {
-      moveButtons.appendChild(moveUnreadButton);
-      moveButtons.appendChild(moveReadButton);
+  
+  function createMoveButtons() {
+    moveButtons.innerHTML = '';
+    if (container.id === 'unread-notifications') {
+        moveButtons.appendChild(moveReadButton);
+        moveButtons.appendChild(moveArchivedButton);
+    } else if (container.id === 'read-notifications') {
+        moveButtons.appendChild(moveUnreadButton);
+        moveButtons.appendChild(moveArchivedButton);
+    } else if (container.id === 'archived-notifications') {
+        moveButtons.appendChild(moveUnreadButton);
+        moveButtons.appendChild(moveReadButton);
+    }
   }
+
+  createMoveButtons();
+  
   card.appendChild(title);
   card.appendChild(message);
   card.appendChild(moveButtons);
@@ -113,17 +100,79 @@ function createNotificationCard(notification, container) {
 }
 
 // A function to populate the containers with notifications
-function populateNotificationsContainer(container, notifications) {
-    container.innerHTML = '';
+function populateNotificationsContainer(notifications) {
+    unreadNotificationsContainer.innerHTML = '';
+    readNotificationsContainer.innerHTML = '';
+    archivedNotificationsContainer.innerHTML = '';
     notifications.forEach(notification => {
-        const card = createNotificationCard(notification, container);
-        container.appendChild(card);
+      if (notification.status === 'unread') {
+        const card = createNotificationCard(notification, unreadNotificationsContainer);
+        unreadNotificationsContainer.appendChild(card);
+      } else if (notification.status === 'read') {
+        const card = createNotificationCard(notification, readNotificationsContainer);
+        readNotificationsContainer.appendChild(card);
+      } else if (notification.status === 'archived') {
+        const card = createNotificationCard(notification, archivedNotificationsContainer);
+        archivedNotificationsContainer.appendChild(card);
+      }
     });
 }
 
+function moveCard(card, oldContainerId, newContainerId) {
+  const oldContainer = document.querySelector(`#${oldContainerId}`);
+  const newContainer = document.querySelector(`#${newContainerId}`);
+  const cardIndex = Array.from(oldContainer.children).indexOf(card);
+  
+  // Remove move buttons from the card
+  const moveButtons = card.querySelector('.move-buttons');
+  if (moveButtons) {
+    moveButtons.remove();
+  }
+
+  // Remove card from old container and insert it into new container
+  oldContainer.removeChild(card);
+  newContainer.insertBefore(card, newContainer.children[cardIndex]);
+
+  // Add new move buttons to the card
+  const moveButtonsContainer = document.createElement('div');
+  moveButtonsContainer.classList.add('move-buttons');
+
+  const moveUnreadButton = document.createElement('button');
+  moveUnreadButton.textContent = 'Unread';
+  moveUnreadButton.classList.add('movebtn');
+  moveUnreadButton.addEventListener('click', () => {
+    moveCard(card, newContainerId, 'unread-notifications');
+  });
+
+  const moveReadButton = document.createElement('button');
+  moveReadButton.textContent = 'Read';
+  moveReadButton.classList.add('movebtn');
+  moveReadButton.addEventListener('click', () => {
+    moveCard(card, newContainerId, 'read-notifications');
+  });
+
+  const moveArchivedButton = document.createElement('button');
+  moveArchivedButton.textContent = 'Archive';
+  moveArchivedButton.classList.add('movebtn');
+  moveArchivedButton.addEventListener('click', () => {
+    moveCard(card, newContainerId, 'archived-notifications');
+  });
+
+  if (newContainerId === 'unread-notifications') {
+    moveButtonsContainer.appendChild(moveReadButton);
+    moveButtonsContainer.appendChild(moveArchivedButton);
+  } else if (newContainerId === 'read-notifications') {
+    moveButtonsContainer.appendChild(moveUnreadButton);
+    moveButtonsContainer.appendChild(moveArchivedButton);
+  } else if (newContainerId === 'archived-notifications') {
+    moveButtonsContainer.appendChild(moveUnreadButton);
+    moveButtonsContainer.appendChild(moveReadButton);
+  }
+
+  card.appendChild(moveButtonsContainer);
+}
+
 // Load the initial notifications
-populateNotificationsContainer(unreadNotificationsContainer, notifications.slice(0, 2));
-populateNotificationsContainer(readNotificationsContainer, notifications.slice(2, 3));
-populateNotificationsContainer(archivedNotificationsContainer, notifications.slice(3));
+populateNotificationsContainer(notifications);
 
 showTab(0); // Show the first tab by default
