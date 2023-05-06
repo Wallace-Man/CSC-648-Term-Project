@@ -1,0 +1,69 @@
+extends layouts/main-layout
+
+block content
+    head 
+        title GatorBites Checkout
+        script(type='module' src="/js/cart.js")
+    div.checkoutContainer(id='checkout-container')
+        h1 Checkout
+        br
+        br
+        br
+        div#restaurant-header
+            div#restaurant-info
+                h3 Roma Antica
+            img(src="https://via.placeholder.com/150")
+        br
+
+        div#checkout-cards
+
+            div#checkout-card
+                div#delivery-details-card
+                    h3 Delivery Details
+                    br
+                    p Delivery Address: 
+                    input(type='text' id='delivery-address' placeholder='SFSU' readonly)
+                    p Delivery Instructions: 
+                    select(id='delivery-type')
+                        option(value='door') Leave at Door
+                        option(value='meet') Meet Outside        
+            #checkout-card 
+                #order-summary-card 
+                    h3 Order Summary
+                    br
+                    .totals-info 
+                        p Subtotal:
+                        label(for="subtotal" id='subtotal-label')
+                        p Tax:
+                        label(for="tax" id='tax-label')
+                        p Total:
+                        label(for="total" id='total-label')
+                        br
+                        br
+
+
+            //- #checkout-card 
+            //-     #payment-details-card
+            //-         h3 Payment Details
+            //-         br
+            //-         p Payment Method: 
+            //-         select(id='payment-type')
+            //-             option(value='cash') Cash
+            //-             option(value='card') Card
+            //-         br
+            //-         br
+            //-         p Card Number: 
+            //-         input(type='text' id='card-number' placeholder='1234 5678 9012 3456' readonly)
+            //-         br
+            //-         br
+            //-         p Expiration Date: 
+            //-         input(type='text' id='expiration-date' placeholder='MM/YY' readonly)
+            //-         br
+            //-         br
+            //-         p CVV: 
+            //-         input(type='text' id='cvv' placeholder='123' readonly)
+            //-         br
+            //-         br
+            //-         p Zip Code: 
+            //-         input(type='text' id='zip-code' placeholder='94132' readonly)            
+                       
