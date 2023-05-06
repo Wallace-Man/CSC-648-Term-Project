@@ -2285,3 +2285,14 @@ button.signup-form-btn[type="submit"] {
   cursor: pointer;
 }
 
+.faq h4{
+  padding-top: 30px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.faq p{
+  text-align: center;
+  padding-bottom: 10px;
+}
+
