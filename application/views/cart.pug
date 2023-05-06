@@ -1,50 +1,26 @@
 extends layouts/main-layout
 
 block content
-    .cart-form-container
-        table
-            tr
-                td
-                    h3 Your Cart
-            tr
-                td
-                    form.cart-form
-                        table.cart-table
-                            tr
-                                td
-                                    label.cart-label2 Product Name
-                                td.cart-info
-                                    label.cart-label2 $
-                            tr
-                                td
-                                    label.cart-label2 Quantity:
-                                td.cart-info
-                                    label.cart-label2 #
-                            tr 
-                                td(colspan='2')
-                                    hr
-                            tr
-                                td
-                                    label.cart-label2 Product Name
-                                td.cart-info
-                                    label.cart-label2 $
-                            tr
-                                td
-                                    label.cart-label2 Quantity:
-                                td.cart-info
-                                    label.cart-label2 #
-                            tr 
-                                td(colspan='2')
-                                    hr.cart-line
-                            tr
-                                td
-                                    label.cart-label1 Total:
-                                td.cart-info
-                                    label.cart-label1 $
-                            tr 
-                                td.cart-info(colspan='2')
-                                    a.cart-btn(href='orderStatus') Checkout
+
+    head 
+        title Cart
+        script(type='module' src="/js/cart.js")
+
+    div.cart-form-container(id="the-container")
+        h1 Cart
+        br
+        br
+        p(id='cart-count')
+        br
+        div.cart-cards(id="cart-cards")
+        hr
+        p(id='active-promos')
+        p Subtotal:
+        label(for="subtotal" id='subtotal-label') 
 
 
+        button#save-driver-button(type="submit" onclick="window.location.href='/promotions'") Add Promotions
 
-
+        button#save-driver-button(type="submit" onclick="window.location.href='/checkout'") Checkout
+        br
+        br
