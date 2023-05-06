@@ -1,0 +1,30 @@
+extends layouts/main-layout
+
+block content
+    script(type='module' src="/js/cart.js")
+
+    head 
+        title Promotions
+    .cart-form-container
+        h1 Promotions
+        br
+        br
+        p 3 Promotions Availible 
+        br
+        .promo-card
+            .promo-card-info
+                h2.cart-card-title Spring Semester Sale:
+                p Save up to 20% on all textbooks and supplies for the upcoming spring semester.
+                button.add-promo Add Promo
+        .promo-card
+            .promo-card-info
+                h2.cart-card-title Student Discount:
+                p Save 10% off on all purchases with a valid SFSU student ID.
+                button.add-promo Add Promo
+        .promo-card
+            .promo-card-info
+                h2.cart-card-title Faculty / Staff Appreciation Day:
+                p Enjoy 15% off on all purchases during SFSU Faculty and Staff Appreciation Day.
+                button.add-promo Add Promo
+
+        button#save-driver-button(type="submit" onclick="window.location.href='/cart'") Go To Cart
