@@ -13,7 +13,7 @@ block content
         .restaurant-signup-form-container
             form.restaurant-signup(id='restaurant-form' action="/restaurants/restaurant", method="post")
                 p(id="mandatory-field") Mandatory Field *
-                p(id="get-started") Get Started
+                p(id="get-started") Register your Restaurant
                 .form-group
                     label.restaurant-signup(for="restaurant-address") Restaurant Address:
                         span.mandatory-tag *
@@ -84,7 +84,8 @@ block content
                     input.restaurant-signup(type="country", id="country", name="country", required)
                 .form-group
                     label.restaurant-signup(for="zipcode") Zip Code:
-                    input.restaurant-signup(type="number", id="zipcode", name="zip", min=00501, max=99950)
+                        span.mandatory-tag *
+                    input.restaurant-signup(type="number", id="zipcode", name="zip", min=00501, max=99950, required)
                 .form-group
                     label.restaurant-signup(for="restaurant-name") Restaurant Name:
                         span.mandatory-tag *
