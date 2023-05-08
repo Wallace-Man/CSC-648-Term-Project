@@ -1,0 +1,20 @@
+//- This file contains notifications for users and sorts it out by message status
+
+    Author: Wallace Man
+//- 
+extends layouts/main-layout
+
+block content
+    .notifications
+        .tab-buttons
+            button.tab-button.active(data-tab="unread") Unread
+            button.tab-button(data-tab="read") Read
+            button.tab-button(data-tab="archived") Archived
+        .tab-contents
+            .tab-content.active(data-tab="unread")
+                div#unread-notifications
+            .tab-content(data-tab="read")
+                div#read-notifications
+            .tab-content(data-tab="archived")
+                div#archived-notifications
+    script(src="/js/notifications.js")

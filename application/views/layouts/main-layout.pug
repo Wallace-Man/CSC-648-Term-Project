@@ -7,11 +7,10 @@ html(lang="en")
     // include ../partials/headerRestaurant
     // For testing purposes
 
-    include ../partials/header
     if user
-      a(href="/logout") Log Out
+      include ../partials/headerUser
     else
-      a(href="/login") Log In
+      include ../partials/header
     block content
 
     include ../partials/footer
