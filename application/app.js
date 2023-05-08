@@ -59,7 +59,7 @@ app.use('/restaurants', restaurantRouter);
 app.use('/', usersRouter);
 app.use('/', registerRouter);
 app.use('/', driverRouter);
-app.use('/', menuRouter);
+app.use('/menu', menuRouter);
 
 const port = parseInt(process.env.PORT) || 8081;
 

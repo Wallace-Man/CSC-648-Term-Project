@@ -47,6 +47,28 @@ router.post('/addMenuItem', async (req, res) => {
 });
 
 
+// Define /menu endpoint to get all menu items for a specific restaurant
+router.get('/returnMenu', async (req, res) => {
+  console.log('Inside the /menu route');
+  const restaurantID = req.query.restaurantID;
+  console.log('restaurantID:', restaurantID);
+  const query = 'SELECT * from Menu WHERE restaurantID = ?';
+
+  try {
+    // Promisify the MySQL query function
+    const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
+    // Execute the SQL query with the form data
+    const menuItems = await queryPromise(query, [restaurantID]);
+
+    console.log('Menu items retrieved:', menuItems);
+    res.status(200).json({ menuItems });
+  }
+  catch (err) {
+    // Handle errors during the addition process
+    console.error('Error during menu item retrieval:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
 
 
 
