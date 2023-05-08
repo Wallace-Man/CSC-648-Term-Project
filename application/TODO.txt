@@ -73,5 +73,11 @@ File: index.pug, public/stylesheets/index.css
 ----Item 11----
 Name: Dylan
 Date: 04/30/2023
-Desc:the first FAQ bar cuts off the 'q' in 'Frequently' (more noticeable when hovering over and color changes to yellow)
+Desc: the first FAQ bar cuts off the 'q' in 'Frequently' (more noticeable when hovering over and color changes to yellow)
 File: views/driverInfo.pug
+
+----Item 12----
+Name: Tim
+Date: 05/07/2023
+Desc: Favorites restaurant cards disappear when search button is clicked.
+File: views/favorites.pug
