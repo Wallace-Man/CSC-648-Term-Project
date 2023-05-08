@@ -21,7 +21,7 @@ dbConnection.connect((err) => {
 
 // Define /addMenuItem endpoint to add a new menu item for a specific restaurant
 router.post('/addMenuItem', async (req, res) => {
-  const { itemName, itemPrice, itemDescription, itemCategory } = req.body;
+  const { itemName, itemDescription, itemPrice} = req.body;
   const restaurantID = req.session.restaurantID;
 
   if (!restaurantID) {
@@ -29,13 +29,13 @@ router.post('/addMenuItem', async (req, res) => {
     return;
   }
 
-  const query = 'INSERT INTO Menu (restaurantID, item_name, item_price, item_description, item_category) VALUES (?,?,?,?,?)';
+  const query = 'INSERT INTO Menu (restaurantID, itemName, itemDescription, itemPrice) VALUES (?,?,?,?)';
 
   try {
     // Promisify the MySQL query function
     const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
     // Execute the SQL query with the form data
-    await queryPromise(query, [restaurantID, itemName, itemPrice, itemDescription, itemCategory]);
+    await queryPromise(query, [restaurantID, itemName, itemDescription, itemPrice]);
 
     console.log('Menu item added!');
     res.status(201).json({ message: 'Menu item added successfully.' });
@@ -49,7 +49,7 @@ router.post('/addMenuItem', async (req, res) => {
 
 // Define /menu endpoint to get all menu items for a specific restaurant
 router.get('/returnMenu', async (req, res) => {
-  const restaurantID = req.session.restaurantID;
+  const restaurantID = req.query.restaurantID;
   console.log('restaurantID:', restaurantID);
   const query = 'SELECT * from Menu WHERE restaurantID = ?';
 
@@ -84,7 +84,7 @@ router.post('/deleteMenuItem', async (req, res) => {
     // Promisify the MySQL query function
     const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
     // Execute the SQL query with the form data
-    await queryPromise(query, [itemID]);
+    await queryPromise(query, [itemID, restaurantID]);
 
     console.log('Menu item deleted!');
     res.status(201).json({ message: 'Menu item deleted successfully.' });
@@ -94,6 +94,7 @@ router.post('/deleteMenuItem', async (req, res) => {
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
+
 
 // Define /updateMenuItem endpoint to update a menu item for a specific restaurant
 router.post('/updateMenuItem', async (req, res) => { 
@@ -105,7 +106,7 @@ router.post('/updateMenuItem', async (req, res) => {
     return;
   }
 
-  const query = 'UPDATE Menu SET itemName = ?, itemPrice = ?, itemDescription = ?,  WHERE itemID = ? AND restaurantID = ?';
+  const query = 'UPDATE Menu SET itemName = ?, itemPrice = ?, itemDescription = ? WHERE itemID = ? AND restaurantID = ?';
 
   try {
     // Promisify the MySQL query function
@@ -121,7 +122,6 @@ router.post('/updateMenuItem', async (req, res) => {
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
-
 
 
 module.exports = router;

@@ -123,6 +123,7 @@ router.post('/restaurant', async (req, res) => {
 });
 
 // Add a new route for the restaurant login
+// Add a new route for the restaurant login
 router.post('/restaurant/login', async (req, res) => {
   const { username, password } = req.body;
   const query = 'SELECT restaurantID, password FROM Restaurant WHERE restaurant_username = ?';
@@ -150,6 +151,7 @@ router.post('/restaurant/login', async (req, res) => {
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
+
 
 
 
