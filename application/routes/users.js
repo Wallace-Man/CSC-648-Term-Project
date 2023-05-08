@@ -82,6 +82,49 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+    router.get('/editUser', function(req, res) {
+    // Retrieve the user's current information from the database
+      const query = 'SELECT * FROM user WHERE user_id=?';
+      const params = [req.session.user.user_id];
+        db.query(query, params, function(error, results, fields) {
+      if (error) {
+        console.error('Error retrieving user:', error);
+        res.status(500).send('Internal Server Error: ' + error.message);
+        return;
+        }
+
+      // Render the edit user page with the current information
+        res.render('editUser', { user: results[0] });
+    });
+});
+
+router.post('/editUser', function(req, res) {
+  // Extract the updated information from the request body
+  const { username, email, password } = req.body;
+
+  // Hash the new password using bcrypt
+  bcrypt.hash(password, 10, function(error, hashedPassword) {
+    if (error) {
+      console.error('Error hashing password:', error);
+      res.status(500).send('Internal Server Error: ' + error.message);
+      return;
+    }
+
+    // Update the user's information in the database
+    const query = 'UPDATE user SET username=?, email=?, password=? WHERE user_id=?';
+    const params = [username, email, hashedPassword, req.session.user.user_id];
+    db.query(query, params, function(error, results, fields) {
+      if (error) {
+        console.error('Error updating user:', error);
+        res.status(500).send('Internal Server Error: ' + error.message);
+        return;
+      }
+
+      // Redirect back to the user account page
+      res.redirect('/userAccount');
+    });
+  });
+});
 
 module.exports = router;
 function ensureAuthenticated(req, res, next) {
@@ -89,6 +132,7 @@ function ensureAuthenticated(req, res, next) {
     return next();
   } else {
     res.redirect('/login');
+    console.log("User is logged in! ")
   }
 }
 router.get('/logout', (req, res) => {

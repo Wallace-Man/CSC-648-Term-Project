@@ -3,10 +3,43 @@ extends layouts/main-layout
 block content
     table.userAccount-main-table
         tr
-            td.userAccount-title-cell
-                h2 Your Account
+            td.userAccount-accountDetails
+                h2 Profile, #{user.username}
+                br
+                form.form-profile(action="/update-profile", method="post")
+                  .form-group.row-group
+
+                    .form-group.col-group
+                      label(for="email") First Name:
+                      input(type="text", id="email", name="fname" )
+                    .form-group.col-group
+                      label(for="email") Last Name:
+                      input(type="text", id="email", name="lname" )
+            
+                  .form-group.row-group
+                    .form-group.col-group
+                      label(for="password") Email:
+                      input(type="text", id="password", name="password", value=user.email)
+
+                      label(for="password") GatorID:
+                      input(type="text", id="password", name="password")
+  
+                    .form-group.col-group
+                      label(for="phonenumber") Phone:
+                      input(type="text", id="phone", name="phone", value=user.phone)
+  
+                  .form-group.submit-group
+                    
+                    input#checkbox(type="checkbox")
+                    label(for="checbox") Check for text messages
+                    input#save-driver-button(type="submit", value="Save Changes")
+                    
+                   
         tr
             td.userAccount-orderHistory-cell
+                br
+                br
+                br
                 h4.userAccount-heading Order History
                 table.userAccount-sub-table
                     tr.userAccount-orderHistory-top
@@ -24,17 +57,12 @@ block content
                         td Paid
                         td Fulfilled
                         td $
-            td.userAccount-accountDetails
-                h4.userAccount-heading Account Details
-                p User Name 
-                br
-                p Gator ID #
-                br
-                p Email
-                br
-                a.userAccount-accountDetails-edit(href='editUser') Edit
+       
         tr 
-            td.userAccount-list(colspan='2') 
+            td.userAccount-list(colspan='2')
+                br
+                br
+                br 
                 h4.userAccount-heading Favorite Restaurants 
                 table.userAccount-sub-table
                     tr 
@@ -54,7 +82,10 @@ block content
                         td
                             hr
         tr 
-            td.userAccount-list(colspan='2') 
+            td.userAccount-list(colspan='2')
+                br
+                br
+                br 
                 h4.userAccount-heading Recommendations
                 table.userAccount-sub-table
                     tr 

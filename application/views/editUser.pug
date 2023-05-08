@@ -1,7 +1,21 @@
 extends layouts/main-layout
 
 block content
-   h2 Edit Account Information
-   form(action='', method='')
-      label(for='username') User Name:
-      //input(type='text', name='username', value=user.username)
+  br
+  br
+  br
+  p#driver-profile Profile Details 
+  .driverAccountFormContainer
+        form.driverAccountForm(id='driver-account-form', action="/editUser", method="post")
+            p#get-started Profile
+            label(for="driver-name-input") User Name:
+            input#driver-name-input(type="text", name="username", value=user.username)
+            label.driver-id(for="driver-name-input") Email
+            input.driver-id(type="text", name="username", value=user.email)
+            label(for="driver-phone-input") Phone Number:
+            input#driver-phone-input(type="tel", name="phone", value=user.phone)
+            label(for="driver-location-input") Change Password:
+            input#driver-location-input(type="password", name="driverLocation", required)
+            label(for="additional-info")  Bio (Optional):
+            textarea#additional-info(type="textarea", name="additionalInfo")
+            button#save-driver-button(type="submit") Save Changes

@@ -113,6 +113,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const restaurantName = document.createElement('h2');
             restaurantName.textContent = restaurant.restaurant_Name;
             restaurantInfo.appendChild(restaurantName);
+            
+             // Add the restaurant rating
+            const restaurantRating = document.createElement('h2');
+            restaurantRating.classList.add('rating')
+            restaurantRating.innerHTML = '<i class="fas fa-star"></i> 4.5 ';
+            restaurantInfo.appendChild(restaurantRating);
 
              //Add the 'Delivery Time' text display
              const deliveryTimePrint = document.createElement('h2');
@@ -120,11 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
              deliveryTimePrint.textContent =  restaurant.delivery_time;
              restaurantInfo.appendChild(deliveryTimePrint);
   
-            // Add the restaurant rating
-            const restaurantRating = document.createElement('h2');
-            restaurantRating.classList.add('rating')
-            restaurantRating.textContent = '4.5' + ' Star';
-            restaurantInfo.appendChild(restaurantRating);
+            
                 
     
             restaurantCard.appendChild(restaurantInfo);
