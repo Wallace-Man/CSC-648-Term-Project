@@ -166,59 +166,79 @@ document.addEventListener("DOMContentLoaded", () => {
 //         }
 //     });
 // }
+
+// Create an array to store the markers
+
+
+// Function to clear markers from the map
+function clearMarkers() {
+  for (let i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+  markers = [];
+}
+
+
+
 async function handleFormSubmit(event) {
     event.preventDefault();
-
-    // Fetch the restaurant data from the /getAllRestaurants endpoint
-    const restaurantsData = await fetchRestaurants();
-
-    // Log the fetched restaurant data to the console for debugging
-    console.log("Fetched restaurant data:", restaurantsData);
-
-    // Use Promise.all to geocode all addresses concurrently and create an array of restaurant objects with the required properties
-    const restaurants = await Promise.all(
-        restaurantsData.map(async (restaurant) => {
-            try {
-                const searchLocation = `${restaurant.address_}, ${restaurant.city}, ${restaurant.state_}, ${restaurant.zip_code}`;
-                const location = await geocodeRestaurants(searchLocation);
-                return {
-                    name: restaurant.restaurant_Name,
-                    address: searchLocation,
-                    lat: location.lat,
-                    lng: location.lng,
-                };
-            } catch (error) {
-                console.error(`Error geocoding address for ${restaurant.restaurant_Name}: ${error.message}`);
-                return null;
-            }
-        })
-    );
-
-    // Log the geocoded restaurant data to the console for debugging
-    console.log("Geocoded restaurant data:", restaurants);
-
-    // Filter out any null values from the restaurants array (in case of geocoding errors)
-    const validRestaurants = restaurants.filter((restaurant) => restaurant !== null);
-
-    // Clear existing markers
-    markers.forEach((marker) => marker.setMap(null));
-    markers = [];
-
-    // Add new markers for each restaurant
-    for (const restaurant of validRestaurants) {
-        createMarker(restaurant, map);
+  
+    const searchTerm = document.getElementById('search-input').value;
+    const cuisineType = document.getElementById('category-select').value;
+    let url;
+  
+    if (searchTerm === '' && cuisineType === '') {
+      url = 'restaurants/getAllRestaurants';
+    } else if (cuisineType !== '') {
+      url = 'restaurants/getCuisineType?searchTerm=' + encodeURIComponent(cuisineType);
+    } else {
+      url = 'restaurants/getRestaurants?searchTerm=' + encodeURIComponent(searchTerm);
     }
-
-    // Log the created markers to the console for debugging
-    console.log("Created markers:", markers);
-
-    // Zoom map to fit all markers
-    const bounds = new google.maps.LatLngBounds();
-    markers.forEach(function (marker) {
+  
+    try {
+      const response = await fetch(url);
+      const restaurantsData = await response.json();
+  
+      const restaurants = await Promise.all(
+        restaurantsData.map(async (restaurant) => {
+          try {
+            const searchLocation = `${restaurant.address_}, ${restaurant.city}, ${restaurant.state_}, ${restaurant.zip_code}`;
+            const location = await geocodeRestaurants(searchLocation);
+            return {
+              name: restaurant.restaurant_Name,
+              address: searchLocation,
+              lat: location.lat,
+              lng: location.lng,
+            };
+          } catch (error) {
+            console.error(`Error geocoding address for ${restaurant.restaurant_Name}: ${error.message}`);
+            return null;
+          }
+        })
+      );
+  
+      console.log("Geocoded restaurant data:", restaurants);
+  
+      const validRestaurants = restaurants.filter((restaurant) => restaurant !== null);
+  
+      clearMarkers();
+  
+      for (const restaurant of validRestaurants) {
+        createMarker(restaurant, map);
+      }
+  
+      console.log("Created markers:", markers);
+  
+      const bounds = new google.maps.LatLngBounds();
+      markers.forEach(function (marker) {
         bounds.extend(marker.getPosition());
-    });
-    map.fitBounds(bounds);
-}
+      });
+      map.fitBounds(bounds);
+    } catch (error) {
+      console.error(`Error fetching and processing restaurant data: ${error.message}`);
+    }
+  }
+  
 
 
 async function fetchRestaurants() {
