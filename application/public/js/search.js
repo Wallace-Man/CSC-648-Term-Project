@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
    restaurantCard.appendChild(restaurantRating);
    
    const heartIcon = document.createElement('span');
-   /*heartIcon.innerHTML = '<i class="far fa-heart"></i>';*/
+   
    heartIcon.classList.add('heart-icon', 'far', 'fa-heart');
    restaurantCard.insertBefore(heartIcon, restaurantImage);
    
