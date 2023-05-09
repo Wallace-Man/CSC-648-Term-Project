@@ -6,20 +6,70 @@ html(lang="en")
 
     // Define the header section of the webpage with the logo, login/signup buttons, and search form
     header(style="margin-bottom: 0")
+        h5 SFSU - Spring 2023 - Team 02
         div.header-image
-        nav
-            a.logo(href="/")
-                span.thin Gator
-                span.bold Bites
-            div.right-btns
-                a.login-btn(href="login")
-                    img(src="/images/user.png", style= {width: "15px", height: "15px", marginBottom: "15px"} )
-                    span(style= {margin: "5px"}) Log in
-                a.signup-btn(href="signup") Sign up
+        if user
+            nav
+                table
+                    tr
+                        td.logo
+                            a.logo(href='/')
+                                span.thin Gator
+                                span.bold Bites
+
+                        td.login-signup
+                            div.right-btns
+                                a.login-btn(href='cart')
+                                    img.profile-cart(src="/images/shoppingCartIcon.png")
+
+                                a.login-btn(onclick="dropMenu()", class="dropbtn")
+                                    img.profile-cart(src="/images/user.png")
+                                div(id="myDropdown" class="dropdown-content")
+                                    a(href="userAccount") View Account 
+                                    a(href="") Orders 
+                                    a(href="") Favorites 
+                                    a(href="help") Help 
+                                    a(href="") Promotions 
+                                    a(href="notifications") Notifications 
+                                    a(href="/Logout") Sign out
+                    tr
+                        td.index(colspan='2')
+                            ul
+                                li
+                                    a(href='/aboutUs') About Us
+                                li
+                                    a(href='driver') Drivers
+                                li
+                                    a(href='restaurant') Restaurants
+
+        else
+            nav
+                table
+                    tr
+                        td.logo
+                            a.logo(href='/')
+                                span.thin Gator
+                                span.bold Bites
+                        td.login-signup
+                            div.right-btns
+                                a.login-btn(href='login')
+                                    img.user(src="/images/user.png")
+                                    span.login Log in
+                                a.signup-btn(href='signup') Sign up
+                    tr
+                        td.index(colspan='2')
+                            ul
+                                li
+                                    a(href='/aboutUs') About Us
+                                li
+                                    a(href='driver') Drivers
+                                li
+                                    a(href='restaurant') Restaurants
+
         h1 Find your favorite restaurants, delivered.
 
         // Define the search form with a select element for restaurant categories and a text input for search term
-        form.search-form(method="GET" action="/middleware/search.js" enctype="application/x-www-form-urlencoded")
+        form.search-form(onsubmit = 'handleFormSubmit(event)', method="GET",  enctype="application/x-www-form-urlencoded")
             select#category-select(name='category')
                 option(value='') All
                 option(value='italian') Italian
@@ -80,5 +130,4 @@ html(lang="en")
                     a.btn(href="/" class="button") Find Restaurants
 
         include ./partials/footer
-
 

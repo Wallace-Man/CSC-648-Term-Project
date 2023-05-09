@@ -5,6 +5,8 @@
 *   - When the page is rendered, add buttons that add item cards where the owner can edit to make menu items
 *   - When the user submits the form, it will go the next page which is the confirmation page
 *   - TODO: Get all the menu items and post them to the DB
+*
+*   Author: Wallace Man
 */
 
 // For when the window fully loads, add the event listener

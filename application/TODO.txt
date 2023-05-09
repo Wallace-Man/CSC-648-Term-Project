@@ -57,3 +57,21 @@ Name: Dylan
 Date: 04/17/2023
 Desc: add unit tests for maps.js
 File: public/js/maps.js
+
+----Item 9----
+Name: Dylan
+Date: 04/28/2023
+Desc: logo shifting issue from index.pug to other pages with header partial
+File: index.js / other pages involving header partial
+
+----Item 10----
+Name: Dylan
+Date: 04/30/2023
+Desc: the Google Maps frame has a scroll bar on the right side, leaving a very small gap at the bottom of the frame.
+File: index.pug, public/stylesheets/index.css
+
+----Item 11----
+Name: Dylan
+Date: 04/30/2023
+Desc:the first FAQ bar cuts off the 'q' in 'Frequently' (more noticeable when hovering over and color changes to yellow)
+File: views/driverInfo.pug

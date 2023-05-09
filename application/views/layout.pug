@@ -2,7 +2,9 @@ doctype html
 html
   include partials/head
   body
-      block content
-
-
-
+    header
+      if user
+        a(href="/logout") Log Out
+      else
+        a(href="/login") Log In
+    block content

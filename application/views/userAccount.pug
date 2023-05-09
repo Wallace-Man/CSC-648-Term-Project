@@ -1,0 +1,72 @@
+extends layouts/main-layout
+
+block content
+    table.userAccount-main-table
+        tr
+            td.userAccount-title-cell
+                h2 Your Account
+        tr
+            td.userAccount-orderHistory-cell
+                h4.userAccount-heading Order History
+                table.userAccount-sub-table
+                    tr.userAccount-orderHistory-top
+                        td ORDER 
+                        td DATE 
+                        td PAYMENT STATUS 
+                        td FULFILLMENT STATUS   
+                        td TOTAL 
+                    tr.userAccount-divider
+                        td(colspan='5')
+                            hr
+                    tr.userAccount-orderHistory-bottom
+                        td #
+                        td 00/00/0000
+                        td Paid
+                        td Fulfilled
+                        td $
+            td.userAccount-accountDetails
+                h4.userAccount-heading Account Details
+                p User Name 
+                br
+                p Gator ID #
+                br
+                p Email
+                br
+                a.userAccount-accountDetails-edit(href='editUser') Edit
+        tr 
+            td.userAccount-list(colspan='2') 
+                h4.userAccount-heading Favorite Restaurants 
+                table.userAccount-sub-table
+                    tr 
+                        td.userAccount-card-cell
+                            .popular-restaurants
+                                img
+                                p Favorite #1
+                        td.userAccount-card-cell
+                            .popular-restaurants
+                                img
+                                p Favorite #2
+                        td.userAccount-card-cell
+                            .popular-restaurants
+                                img
+                                p Favorite #3
+        tr.userAccount-divider
+                        td
+                            hr
+        tr 
+            td.userAccount-list(colspan='2') 
+                h4.userAccount-heading Recommendations
+                table.userAccount-sub-table
+                    tr 
+                        td.userAccount-card-cell
+                            .popular-restaurants
+                                img
+                                p Recommendation #1
+                        td.userAccount-card-cell
+                            .popular-restaurants
+                                img
+                                p Recommendation #2
+                        td.userAccount-card-cell
+                            .popular-restaurants
+                                img
+                                p Recommendation #3

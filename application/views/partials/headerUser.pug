@@ -1,3 +1,5 @@
+//- This file contains the header partial for a logged in user. 
+//- Author: Wallace Man
 header
     div.header-image
         nav
@@ -31,12 +33,22 @@ header
                                     img.search(src='images/search-icon.png', alt='search',)
                     td.login-signup
                         div.right-btns
-                            a.login-btn(href='login')
-                                img.user(src="/images/user.png")
-                                span.login Log in
-                            a.signup-btn(href='signup') Sign up
+                            a.login-btn(href='cart')
+                                img.profile-cart(src="/images/shoppingCartIcon.png")
+                              
+                            a.login-btn(onclick="dropMenu()", class="dropbtn")
+                                img.profile-cart(src="/images/user.png")
+                            div(id="myDropdown" class="dropdown-content")
+                                a(href="userAccount") View Account 
+                                a(href="") Orders 
+                                a(href="") Favorites 
+                                a(href="help") Help 
+                                a(href="") Promotions 
+                                a(href="notifications") Notifications 
+                                a(href="/Logout") Sign out
+                                
                 tr 
-                    td.index(colspan='2')
+                    td.nav(colspan='2')
                         ul
                             li 
                                 a(href='/aboutUs') About Us
