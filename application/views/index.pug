@@ -16,12 +16,12 @@ html(lang="en")
                             a.logo(href='/')
                                 span.thin Gator
                                 span.bold Bites
-                    
+
                         td.login-signup
                             div.right-btns
                                 a.login-btn(href='cart')
                                     img.profile-cart(src="/images/shoppingCartIcon.png")
-                                
+
                                 a.login-btn(onclick="dropMenu()", class="dropbtn")
                                     img.profile-cart(src="/images/user.png")
                                 div(id="myDropdown" class="dropdown-content")
@@ -32,14 +32,14 @@ html(lang="en")
                                     a(href="") Promotions 
                                     a(href="notifications") Notifications 
                                     a(href="/Logout") Sign out
-                    tr 
+                    tr
                         td.index(colspan='2')
                             ul
-                                li 
+                                li
                                     a(href='/aboutUs') About Us
-                                li 
+                                li
                                     a(href='driver') Drivers
-                                li 
+                                li
                                     a(href='restaurant') Restaurants
 
         else
@@ -56,16 +56,16 @@ html(lang="en")
                                     img.user(src="/images/user.png")
                                     span.login Log in
                                 a.signup-btn(href='signup') Sign up
-                    tr 
+                    tr
                         td.index(colspan='2')
                             ul
-                                li 
+                                li
                                     a(href='/aboutUs') About Us
-                                li 
+                                li
                                     a(href='driver') Drivers
-                                li 
+                                li
                                     a(href='restaurant') Restaurants
-                                
+
         h1 Find your favorite restaurants, delivered.
 
         // Define the search form with a select element for restaurant categories and a text input for search term
@@ -130,5 +130,4 @@ html(lang="en")
                     a.btn(href="/" class="button") Find Restaurants
 
         include ./partials/footer
-
 
