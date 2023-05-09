@@ -99,6 +99,36 @@ router.post('/restaurant', async (req, res) => {
   }
 });
 
+// Add a new route for the restaurant login
+router.post('/restaurant/login', async (req, res) => {
+  const { username, password } = req.body;
+  const query = 'SELECT restaurantID, password FROM Restaurant WHERE restaurant_username = ?';
+
+  try {
+    // Promisify the MySQL query function
+    const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
+    // Execute the SQL query with the form data
+    const result = await queryPromise(query, [username]);
+
+    // Check if there's a matching user and if the password is correct
+    if (result.length > 0 && await bcrypt.compare(password, result[0].password)) {
+      // Store the restaurantID in the session
+      req.session.restaurantID = result[0].restaurantID;
+
+      // Redirect the user to the home page
+      res.redirect('/');
+    } else {
+      // Redirect the user to the login page with an error message
+      res.redirect('/login?error=Invalid username or password');
+    }
+  } catch (err) {
+    // Handle errors during the login process
+    console.error('Error during login:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
+
+
 
 module.exports = router;
   

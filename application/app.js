@@ -11,6 +11,7 @@ const restaurantRouter = require('./routes/restaurants');
 const { router: usersRouter, ensureAuthenticated } = require('./routes/users');
 //const registerRouter = require('./routes/register');
 const driverRouter = require('./routes/driver');
+const menuRouter = require('./routes/menu');
 
 const app = express();
 
@@ -36,6 +37,19 @@ app.use((req, res, next) => {
 // Middleware to make user data available to Pug templates
 app.use((req, res, next) => {
   res.locals.user = req.session.user || null;
+  console.log('User data sent to Pug templates:', res.locals.user);
+  next();
+});
+// Middleware to make Restaurant data available to Pug templates
+app.use((req, res, next) => {
+  res.locals.restaurantID = req.session.restaurantID || null;
+  console.log('Restaurant data sent to Pug templates:', res.locals.restaurantID);
+  next();
+});
+// Middleware to make Driver data available to Pug templates
+app.use((req, res, next) => {
+  res.locals.driverID = req.session.driverID || null;
+  console.log('Driver data sent to Pug templates:', res.locals.driverID);
   next();
 });
 
@@ -45,6 +59,7 @@ app.use('/',indexRouter);
 app.use('/restaurants', restaurantRouter);
 app.use('/', usersRouter);
 app.use('/', driverRouter);
+app.use('/', menuRouter);
 
 
 //app.use('/images', express.static('public/images'));

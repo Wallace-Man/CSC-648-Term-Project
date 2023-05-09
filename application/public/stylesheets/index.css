@@ -901,18 +901,12 @@ h2, h3 {
 /* Set margin and padding for restaurant card */
 .popular-restaurants div {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1200px; /* Adjust to your desired maximum width */
   padding: 20px;
-  /* Space out the elements within the div */
-  border: 1px solid black;
- border-radius: 5px;
- box-shadow: 0 2px 4px rgba(0,0,0,0.2);
- /*
- width: 450px;
-  margin: 20px;
-  */
 }
 
 /* Set styles for restaurant image */
@@ -1250,6 +1244,13 @@ label.cart-label2 {
 .hr-line{
   width: 60%;
   margin: auto;
+
+}
+
+.hr-line2{
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
 
 }
 /* Style the buttons that are used to open and close the faq-page body */
@@ -2149,12 +2150,153 @@ button.signup-form-btn[type="submit"] {
 }
 
 /* js/search.js */
+
+
+.restaurant-card {
+  display: flex;
+  flex-direction: column;
+ 
+  border-radius: 10px;
+  align-items: flex-start; /* Align items to left */
+  position: relative;
+}
+
+.restaurant-card h2 {
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; /* Align restaurant name to left */
+  margin-left: 8.75%;
+  margin-top: 10px;
+}
+
+.restaurant-card .restaurant-info {
+
+  justify-content: flex-start;
+  align-items: center; /* Align delivery info items horizontally */
+  margin-left: 8.75%;
+  margin-top: 5px;
+}
+
+.restaurant-card .delivery p {
+  font-size: 14px;
+  color: #666666;
+
+}
+
+.restaurant-card .rating {
+  color: black;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0%;
+  margin-left: 8.75%;
+  margin-bottom: 10px;
+}
+
+.restaurant-card .delivery-distance,
+.restaurant-card .delivery-fee,
+.restaurant-card .delivery-time {
+  font-size: 14px;
+  color: #666666;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.restaurant-card .delivery-distance::after,
+.restaurant-card .delivery-fee::after {
+  content: " . "; /* Add separator between delivery info items */
+}
+
+
+/*
 .restaurant-card {
   display: flex;
   flex-direction: column;
   background-color: #f5f5f5;
   border-radius: 10px;
-  /*padding: 0;*/
+  align-items: center;
+  position: relative;
+}
+
+.restaurant-card img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.restaurant-card h2 {
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-left: 8.75%;
+  margin-top: 10px;
+}
+
+.restaurant-card .restaurant-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: left;
+  margin-left: 8.75%;
+  margin-top: 5px;
+}
+
+.restaurant-card .restaurant-info i {
+  margin: 0;
+  display: inline-block;
+}
+
+.restaurant-card .delivery {
+  font-size: 14px;
+  color: #666666;
+  margin-left: 8.75%;
+  margin-bottom: 10px;
+}
+
+.restaurant-card .rating {
+  color: black;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0%;
+  margin-left: 8.75%;
+  margin-bottom: 10px;
+}
+
+.restaurant-card .delivery-time {
+  color: black;
+  margin-left: 8.75%;
+  margin-bottom: 10px;
+}
+
+.restaurant-card .delivery-distance {
+  font-size: 14px;
+  color: #666666;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.restaurant-card .delivery-fee {
+  font-size: 14px;
+  color: #666666;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+*/
+/*
+.restaurant-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  /*padding: 0;
   align-items: center;
   position: relative;
 }
@@ -2199,15 +2341,14 @@ button.signup-form-btn[type="submit"] {
   color: #666666;
   margin-bottom: 10px;
 }
+*/
 
 .restaurant-card .favorite {
   position: absolute;
-  top: 25px;
+  bottom: 82px;
   right: 25px;
   font-size: 24px;
-  color: red;
-  border: 1px solid white;
-  background-color: #000;
+  color: gainsboro;
   border-radius: 50%;
   padding: 5px;
   cursor: pointer;
@@ -2279,5 +2420,134 @@ button.signup-form-btn[type="submit"] {
 }
 #restaurant-cart hr {
   margin: 10px 0;
+}
+
+.dropdown {
+  float: right;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  top: 80px;
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  right: 0;
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-weight: bold;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+
+.faq-body #answer{
+  margin: 10px;
+}
+
+.faq-body #question{
+  font-weight: bold;
+}
+
+.notifications {
+  width: 60%;
+  margin: 20px auto;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px;
+  background-color: #eee;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tab-button.active {
+  background-color: #333;
+  color: #fff;
+}
+
+.tab-button:hover:not(.active){
+  background-color: #ddd;
+}
+
+.tab-contents {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.tab-content {
+  display: none;
+  background-color: #fff;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.notification {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: #ffc107;
+  padding-bottom: 50px;
+}
+
+.move-buttons{
+  float: right;
+}
+
+.movebtn {
+  border: none;
+  background-color: #FFF;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+  font-weight: bold;
+}
+
+.movebtn:hover{
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.faq h4{
+  padding-top: 30px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.faq p{
+  text-align: center;
+  padding-bottom: 10px;
 }
 

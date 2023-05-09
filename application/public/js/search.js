@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
 
     
-          
+            
             const restaurantInfo = document.createElement('div');
             restaurantInfo.classList.add('restaurant-info');
 
@@ -114,68 +114,33 @@ document.addEventListener('DOMContentLoaded', function() {
             restaurantName.textContent = restaurant.restaurant_Name;
             restaurantInfo.appendChild(restaurantName);
             
-             // Add the restaurant rating
-            const restaurantRating = document.createElement('h2');
+            //Add the 'Delivery Time' text display
+            const deliveryTimePrint = document.createElement('p');
+            deliveryTimePrint.classList.add('delivery-time')
+            deliveryTimePrint.textContent =  restaurant.delivery_time;
+            restaurantInfo.appendChild(deliveryTimePrint);
+            
+            const deliveryFee = document.createElement('p');
+            deliveryFee.classList.add('delivery-fee')
+            deliveryFee.textContent =  "$3.00";
+            restaurantInfo.appendChild(deliveryFee);
+
+            
+            // Add the restaurant rating
+            const restaurantRating = document.createElement('p');
             restaurantRating.classList.add('rating')
             restaurantRating.innerHTML = '<i class="fas fa-star"></i> 4.5 ';
             restaurantInfo.appendChild(restaurantRating);
-
-             //Add the 'Delivery Time' text display
-             const deliveryTimePrint = document.createElement('h2');
-             deliveryTimePrint.classList.add('delivery-time')
-             deliveryTimePrint.textContent =  restaurant.delivery_time;
-             restaurantInfo.appendChild(deliveryTimePrint);
-  
             
-                
-    
             restaurantCard.appendChild(restaurantInfo);
  
-            // added dollar sign icons   
-            const priceIcon = document.createElement('i');
-            priceIcon.classList.add('price-icon');
-            
-            // if the restaurant price range is not set 
-            if (!restaurant.price_range){
-                // If there is not a set price range create a single dollar sign 
-                const dollarIcon = document.createElement('i');
-                dollarIcon.classList.add('fas', 'fa-dollar-sign');
-                priceIcon.appendChild(dollarIcon);
-            }
-            // if the price range is set to 4 display: $$$$
-            else if (restaurant.price_range === 4) {
-                const dollarIcons = Array.from({ length: 4 }, () => {
-                const dollarIcon = document.createElement('i');
-                dollarIcon.classList.add('fas', 'fa-dollar-sign');
-            return dollarIcon;
-            });
-            priceIcon.append(...dollarIcons);
-            } else {
-            // create the number of dollar sign icons based on price range
-            for (let i = 0; i < restaurant.price_range; i++) {
-                const dollarIcon = document.createElement('i');
-                dollarIcon.classList.add('fas', 'fa-dollar-sign');
-                priceIcon.appendChild(dollarIcon);
-                }
-            }
-
-            restaurantCard.appendChild(priceIcon);
-              
+    
             // Add the restaurant card to the popular restaurants
-            // section
-            /*
-                   // Add the 'View Menu' button
-                   const viewMenuButton = document.createElement('a');
-                   viewMenuButton.href = '/menu/' + restaurant.id;
-                   viewMenuButton.textContent = 'View Menu';
-                   viewMenuButton.classList.add('button');
-                   restaurantCard.appendChild(viewMenuButton);
-            */
-
             popularRestaurantsSection.appendChild(restaurantCard);
         });
     }
 });
+
 
 // // Google Maps API code for initialization
 // function initMap() {

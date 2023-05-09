@@ -115,15 +115,24 @@ router.get('/restaurantAccount', (req, res) => {
 }); 
 
   /* GET DRIVER ACCOUNT PAGE */
-  router.get('/driverAccount', (req, res) => {
+router.get('/driverAccount', (req, res) => {
     res.render('driverAccount');
-  });
+});
 
 /* GET USER ACCOUNT PAGE */
 router.get('/userAccount', (req, res) => {
     res.render('userAccount');
 }); 
 
+/* GET HELP PAGE */
+router.get('/help', (req, res) => {
+    res.render('help');
+}); 
+
+/* GET NOTIFICATION PAGE */
+router.get('/notifications', (req, res) => {
+    res.render('notifications');
+}); 
 /* GET EDIT USER PAGE */
 router.get('/editUser', (req, res) => {
     res.render('editUser');

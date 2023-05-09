@@ -5,6 +5,9 @@ header
         nav
             table
                 tr
+                    td(colspan='3')
+                        h5 SFSU - Spring 2023 - Team 02
+                tr
                     td.logo
                         a.logo(href='/')
                             span.thin Gator
@@ -30,11 +33,19 @@ header
                                     img.search(src='images/search-icon.png', alt='search',)
                     td.login-signup
                         div.right-btns
-                            a.login-btn(href='')
+                            a.login-btn(href='cart')
                                 img.profile-cart(src="/images/shoppingCartIcon.png")
-                                
-                            a.login-btn(href='')
-                                img.profile-cart(src="/images/user.png") 
+                              
+                            a.login-btn(onclick="dropMenu()", class="dropbtn")
+                                img.profile-cart(src="/images/user.png")
+                            div(id="myDropdown" class="dropdown-content")
+                                a(href="userAccount") View Account 
+                                a(href="") Orders 
+                                a(href="") Favorites 
+                                a(href="help") Help 
+                                a(href="") Promotions 
+                                a(href="notifications") Notifications 
+                                a(href="/Logout") Sign out
                                 
                 tr 
                     td.nav(colspan='2')

@@ -34,6 +34,7 @@ router.post('/login', async (req, res) => {
 
       if (passwordMatches) {
         req.session.user = user;  // set session cookie
+        // console.log(req.session);
         console.log('Redirecting to home page');
         res.redirect('/');        // redirect to home page
         return;
