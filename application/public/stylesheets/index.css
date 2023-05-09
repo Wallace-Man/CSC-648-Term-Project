@@ -454,7 +454,7 @@ div.card-grid {
   background-color: #FFF;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 5px;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -490,7 +490,7 @@ div.card-grid {
   font-size: 16px;
   color: #FFF;
   background-color: black;
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 10px 30px;
   text-decoration: none;
   margin-top: 20px;
@@ -515,7 +515,7 @@ div.card-grid {
 .main-card {
   background-color: white;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   border-radius: 5px;
   padding: 20px;
   display: flex;
@@ -525,10 +525,10 @@ div.card-grid {
 }
 
 .main-card img {
-  width: 400px;
-  height: 280px;
-  border-radius: 30%;
-  border: 1px solid black;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  /*border: 1px solid black;*/
   object-fit: cover;
   object-position: center;
   margin-bottom: 20px;
@@ -553,12 +553,12 @@ div.card-grid {
   font-size: 16px;
   color: #FFF;
   background-color: black;
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 10px 10px;
   text-decoration: none;
   margin-top: 20px;
   transition: background-color 0.2s ease-in-out;
-  width: 40%;
+  width: 60%;
 }
 
 .main-card a.btn:hover {
@@ -607,7 +607,7 @@ div.card-grid {
   font-size: 16px;
   color: #FFF;
   background-color: #333;
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 10px 30px;
 }
 
