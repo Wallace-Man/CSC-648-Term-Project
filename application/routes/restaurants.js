@@ -49,7 +49,9 @@ router.get('/getRestaurants', async (req, res) => {
 // Define /getCuisineType endpoint to search for restaurants by cuisine type
 router.get('/getCuisineType', async (req, res) => {
   const searchTerm = req.query.searchTerm; // Get the search term from the query string
-  const query = "SELECT restaurant_Name, image_url,delivery_time FROM Restaurant WHERE cuisine_type = '" + searchTerm + "'"; // Create SQL query, include image_url
+  // const query = "SELECT restaurant_Name, image_url,delivery_time FROM Restaurant WHERE cuisine_type = '" + searchTerm + "'"; // Create SQL query, include image_url
+  const query = "SELECT restaurant_Name, address_, city, state_, zip_code, image_url, delivery_time FROM Restaurant WHERE cuisine_type = '" + searchTerm + "'";
+
   console.log(`Executing query: ${query}`);
 
   try {

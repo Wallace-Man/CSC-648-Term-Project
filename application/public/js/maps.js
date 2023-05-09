@@ -136,78 +136,201 @@ document.addEventListener("DOMContentLoaded", () => {
  * Sends a search query to the Google Places API and displays the results on the map.
  * @param {event} event - The submit event.
  */
-function handleFormSubmit(event) {
-    event.preventDefault(); // Prevents the form from submitting and reloading the page
-    const input = document.getElementById('search-input'); // Get the search input element
-    const category = document.getElementById('category-select').value; // Get the selected category from the dropdown
-    const request = {
-        location: userLocation, // Use the user's current location as the search location
-        query: input.value, // Use the text entered by the user as the search query
-        type: ['restaurant'], // Limit the search results to restaurants
-        fields: ['name', 'geometry', 'rating', 'price_level', 'vicinity', 'photos'], // Request specific fields for each search result
-    };
-    if (category) {
-        request.keyword = category; // If a category is selected, add it to the search request
-    }
-    const service = new google.maps.places.PlacesService(map); // Create a new PlacesService object for the map
-    service.textSearch(request, function(results, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-            markers = []; // Clear the existing markers array
-            // Add new markers for each restaurant result
-            for (let i = 0; i < results.length; i++) {
-                createMarker(results[i], map);
-            }
-            // Zoom map to fit all markers
-            const bounds = new google.maps.LatLngBounds();
-            markers.forEach(function(marker) {
-                bounds.extend(marker.getPosition());
-            });
-            map.fitBounds(bounds);
-        }
-    });
+// function handleFormSubmit(event) {
+//     event.preventDefault(); // Prevents the form from submitting and reloading the page
+//     const input = document.getElementById('search-input'); // Get the search input element
+//     const category = document.getElementById('category-select').value; // Get the selected category from the dropdown
+//     const request = {
+//         location: userLocation, // Use the user's current location as the search location
+//         query: input.value, // Use the text entered by the user as the search query
+//         type: ['restaurant'], // Limit the search results to restaurants
+//         fields: ['name', 'geometry', 'rating', 'price_level', 'vicinity', 'photos'], // Request specific fields for each search result
+//     };
+//     if (category) {
+//         request.keyword = category; // If a category is selected, add it to the search request
+//     }
+//     const service = new google.maps.places.PlacesService(map); // Create a new PlacesService object for the map
+//     service.textSearch(request, function(results, status) {
+//         if (status === google.maps.places.PlacesServiceStatus.OK) {
+//             markers = []; // Clear the existing markers array
+//             // Add new markers for each restaurant result
+//             for (let i = 0; i < results.length; i++) {
+//                 createMarker(results[i], map);
+//             }
+//             // Zoom map to fit all markers
+//             const bounds = new google.maps.LatLngBounds();
+//             markers.forEach(function(marker) {
+//                 bounds.extend(marker.getPosition());
+//             });
+//             map.fitBounds(bounds);
+//         }
+//     });
+// }
+
+// Create an array to store the markers
+
+
+// Function to clear markers from the map
+function clearMarkers() {
+  for (let i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+  markers = [];
 }
+
+
+
+async function handleFormSubmit(event) {
+    event.preventDefault();
+  
+    const searchTerm = document.getElementById('search-input').value;
+    const cuisineType = document.getElementById('category-select').value;
+    let url;
+  
+    if (searchTerm === '' && cuisineType === '') {
+      url = 'restaurants/getAllRestaurants';
+    } else if (cuisineType !== '') {
+      url = 'restaurants/getCuisineType?searchTerm=' + encodeURIComponent(cuisineType);
+    } else {
+      url = 'restaurants/getRestaurants?searchTerm=' + encodeURIComponent(searchTerm);
+    }
+  
+    try {
+      const response = await fetch(url);
+      const restaurantsData = await response.json();
+  
+      const restaurants = await Promise.all(
+        restaurantsData.map(async (restaurant) => {
+          try {
+            const searchLocation = `${restaurant.address_}, ${restaurant.city}, ${restaurant.state_}, ${restaurant.zip_code}`;
+            const location = await geocodeRestaurants(searchLocation);
+            return {
+              name: restaurant.restaurant_Name,
+              address: searchLocation,
+              lat: location.lat,
+              lng: location.lng,
+            };
+          } catch (error) {
+            console.error(`Error geocoding address for ${restaurant.restaurant_Name}: ${error.message}`);
+            return null;
+          }
+        })
+      );
+  
+      console.log("Geocoded restaurant data:", restaurants);
+  
+      const validRestaurants = restaurants.filter((restaurant) => restaurant !== null);
+  
+      clearMarkers();
+  
+      for (const restaurant of validRestaurants) {
+        createMarker(restaurant, map);
+      }
+  
+      console.log("Created markers:", markers);
+  
+      const bounds = new google.maps.LatLngBounds();
+      markers.forEach(function (marker) {
+        bounds.extend(marker.getPosition());
+      });
+      map.fitBounds(bounds);
+    } catch (error) {
+      console.error(`Error fetching and processing restaurant data: ${error.message}`);
+    }
+  }
+  
+
+
+async function fetchRestaurants() {
+    const response = await fetch('restaurants/getAllRestaurants');
+
+    if (response.ok) {
+        const data = await response.json();
+        return data;
+    } else {
+        throw new Error(`Error fetching restaurants: ${response.statusText}`);
+    }
+}
+
 
 /**
  * Create a new marker for a given place and add it to the map
  * @param {Object} place - The place for which to create the marker
  * @param {Object} map - The Google Maps map object
  */
-function createMarker(place, map) {
-    // Create a new marker object
+// function createMarker(place, map) {
+
+//     console.log("Place object properties:");
+//     console.log("Name:", place.name);
+//     console.log("Address:", place.vicinity || place.address);
+//     console.log("Rating:", place.rating);
+//     console.log("Price level:", place.price_level);
+//     console.log("Photos:", place.photos);
+
+
+//     console.log("Received place object:", place);
+
+//     if (!place || !place.geometry || !place.geometry.location) {
+//         console.error("Invalid place object:", place);
+//         return;
+//     }
+//     // Create a new marker object
+//     const marker = new google.maps.Marker({
+//         map: map,
+//         position: place.geometry.location
+//     });
+
+//     // Add the new marker to the array of markers
+//     markers.push(marker);
+
+//     // Create a string of dollar signs to represent the price level of the restaurant
+//     let price = '';
+//     for (let i = 0; i < place.price_level; i++) {
+//         price += '$';
+//     }
+
+//     // Generate a Google Maps URL for the restaurant
+//     const url = `https://www.google.com/maps/search/?api=1&query=${place.name}&query_place_id=${place.place_id}`;
+
+//     // Create the HTML content for the info window associated with the marker
+//     const content = '<div class="info-window">' +
+//         '<h3>' + place.name + '</h3>' +
+//         '<p>' + 'Address: ' + place.vicinity + '</p>' +
+//         '<p>' + 'Rating: ' + place.rating + ' stars ' + '</p>' +
+//         '<p><i class="fas fa-utensils"></i> Price: ' + price + '</p>' +
+//         '<p><i class="fas fa-map-marker-alt"></i> Distance: ' + getDistance(place.geometry.location, map.center).toFixed(1) + ' mi</p>' +
+//         '<p>' + `<a href="${url}" target="_blank" style="color: blue">view in google maps</a>` + '</p>' +
+//         '<img src="' + place.photos[0].getUrl({maxHeight: 200, maxWidth: 200}) + '" alt="">' +
+//         '</div>';
+
+//     // Add a click listener to the marker to open the info window when clicked
+//     marker.addListener('click', function() {
+//         infoWindow.setContent(content);
+//         infoWindow.open(map, marker);
+//     });
+//      // Log the created marker for debugging
+//      console.log("Created marker:", marker);
+// }
+
+function createMarker(restaurant, map) {
+    console.log(`Creating marker for ${restaurant.name}`);
     const marker = new google.maps.Marker({
+        position: { lat: restaurant.lat, lng: restaurant.lng },
         map: map,
-        position: place.geometry.location
+        title: restaurant.name,
     });
 
-    // Add the new marker to the array of markers
     markers.push(marker);
 
-    // Create a string of dollar signs to represent the price level of the restaurant
-    let price = '';
-    for (let i = 0; i < place.price_level; i++) {
-        price += '$';
-    }
+    const infoWindow = new google.maps.InfoWindow({
+        content: `<h3>${restaurant.name}</h3><p>${restaurant.address}</p>`,
+    });
 
-    // Generate a Google Maps URL for the restaurant
-    const url = `https://www.google.com/maps/search/?api=1&query=${place.name}&query_place_id=${place.place_id}`;
-
-    // Create the HTML content for the info window associated with the marker
-    const content = '<div class="info-window">' +
-        '<h3>' + place.name + '</h3>' +
-        '<p>' + 'Address: ' + place.vicinity + '</p>' +
-        '<p>' + 'Rating: ' + place.rating + ' stars ' + '</p>' +
-        '<p><i class="fas fa-utensils"></i> Price: ' + price + '</p>' +
-        '<p><i class="fas fa-map-marker-alt"></i> Distance: ' + getDistance(place.geometry.location, map.center).toFixed(1) + ' mi</p>' +
-        '<p>' + `<a href="${url}" target="_blank" style="color: blue">view in google maps</a>` + '</p>' +
-        '<img src="' + place.photos[0].getUrl({maxHeight: 200, maxWidth: 200}) + '" alt="">' +
-        '</div>';
-
-    // Add a click listener to the marker to open the info window when clicked
-    marker.addListener('click', function() {
-        infoWindow.setContent(content);
+    marker.addListener('click', () => {
         infoWindow.open(map, marker);
     });
 }
+
 
 /**
  * Calculates the distance in miles between two points on the Earth's surface using the Haversine formula.
@@ -253,5 +376,42 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         'Error: Your browser doesn\'t support geolocation.');
     infoWindow.open(map);
 }
+
+// prototype functions moving forward
+
+async function geocodeAddress(geocoder, address) {
+    return new Promise((resolve, reject) => {
+      geocoder.geocode({ address: address }, (results, status) => {
+        if (status === google.maps.GeocoderStatus.OK) {
+          resolve(results[0].geometry.location);
+        } else {
+          reject(new Error("Geocode was not successful for the following reason: " + status));
+        }
+      });
+    });
+  }
+
+  async function geocodeRestaurants(address) {
+    const API_KEY = "AIzaSyCqHQxuCGH2vnVMNkTRDReJIX3YZU-CIY8";
+    const baseUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${API_KEY}`;
+
+    const response = await fetch(baseUrl);
+    if (!response.ok) {
+        throw new Error(`Failed to geocode address: ${address}`);
+    }
+
+    const data = await response.json();
+    if (data.status !== "OK") {
+        throw new Error(`Geocoding error: ${data.status}`);
+    }
+
+    const location = data.results[0].geometry.location;
+    return { lat: location.lat, lng: location.lng };
+}
+
+
+ 
+  
+  
 
 
