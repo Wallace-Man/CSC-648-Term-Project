@@ -69,7 +69,7 @@ html(lang="en")
         h1 Find your favorite restaurants, delivered.
 
         // Define the search form with a select element for restaurant categories and a text input for search term
-        form.search-form(method="GET" action="/middleware/search.js" enctype="application/x-www-form-urlencoded")
+        form.search-form(onsubmit = 'handleFormSubmit(event)', method="GET",  enctype="application/x-www-form-urlencoded")
             select#category-select(name='category')
                 option(value='') All
                 option(value='italian') Italian
