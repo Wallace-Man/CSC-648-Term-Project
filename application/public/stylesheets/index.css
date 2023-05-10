@@ -710,7 +710,8 @@ input.restaurant-signup[type="number"],
 input.signup[type="username"],
 input.signup[type="text"],
 input.signup[type="email"],
-input.signup[type="password"] {
+input.signup[type="password"],
+input.signup[type="tel"] {
   padding: 10px;
   border: 1px solid black;
   border-radius: 5px;
@@ -2008,14 +2009,12 @@ button.signup-form-btn[type="submit"] {
 }
 
 .userAccount-heading {
-  text-decoration: underline; 
   margin-bottom: 10px;
 }
 
 .userAccount-sub-table {
-  width: 90%;
-  height: 80%;
-  margin-top: 5px;
+  width: 100%;
+  margin-top: 25px;
 }
 
 .userAccount-orderHistory-top {
@@ -2063,10 +2062,6 @@ button.signup-form-btn[type="submit"] {
 .userAccount-card-cell {
   width: 33%;
 }
-
-/* table, td {
-  border: 1px solid black;
-} */
 
 #restaurant-header {
   display: flex;
