@@ -5,6 +5,7 @@ const passwordInput = form.querySelector('#password');
 const password2Input = form.querySelector('#password2');
 const agreementCheckbox = form.querySelector('input[type="checkbox"]');
 
+
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 

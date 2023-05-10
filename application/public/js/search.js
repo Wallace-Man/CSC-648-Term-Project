@@ -81,29 +81,38 @@ document.addEventListener('DOMContentLoaded', function() {
    restaurantImage.src = restaurant.image_url;
    restaurantImage.classList.add('clickable');
    restaurantCard.appendChild(restaurantImage);
-    // Add the restaurant name
-    const restaurantName = document.createElement('h2');
-    restaurantName.textContent = restaurant.restaurant_Name;
-    restaurantCard.appendChild(restaurantName);
+    
+   // Add the restaurant name
+   const restaurantName = document.createElement('h2');
+   restaurantName.textContent = restaurant.restaurant_Name;
+   restaurantCard.appendChild(restaurantName);
 
-   // Add the delivery information
-   const deliveryInfo = document.createElement('span');
-   deliveryInfo.innerHTML =`<br>`;
-   deliveryInfo.textContent = ` 3.5 mi - ${restaurant.delivery_time} - $0 delivery fee`;
-   restaurantCard.appendChild(deliveryInfo);
-   // Add the restaurant rating
+  // Add the delivery information
+  const deliveryInfo = document.createElement('span');
+  deliveryInfo.textContent = ` 3.5 mi - `;
+  deliveryInfo.classList.add('delivery-info');
+  restaurantCard.appendChild(deliveryInfo);
+
+  
+  // Add the delivery fee
+   const deliveryFee = document.createElement('span');
+   deliveryFee.textContent = `${restaurant.delivery_time} `;
+   deliveryFee.classList.add('delivery-fee');
+   deliveryInfo.appendChild(deliveryFee);
+   // Add the restaurant rating'
+
+
    const restaurantRating = document.createElement('span');
-   restaurantRating.innerHTML = `<br>`;
-   restaurantRating.innerHTML = `4.5 <i class="fas fa-star"></i>`;
+   deliveryFee.classList.add('star');
+   restaurantRating.innerHTML = `4.5 <i class="fas fa-star">  </i>`;
    restaurantCard.appendChild(restaurantRating);
    
    const heartIcon = document.createElement('span');
-   
    heartIcon.classList.add('heart-icon', 'far', 'fa-heart');
    restaurantCard.insertBefore(heartIcon, restaurantImage);
    
    // Add a click event listener to the heart icon
-heartIcon.addEventListener('click', function() {
+    heartIcon.addEventListener('click', function() {
     // Perform an action when the heart icon is clicked
     if (heartIcon.classList.contains('far')) {
         heartIcon.classList.remove('far', 'heart-outline');
@@ -112,7 +121,7 @@ heartIcon.addEventListener('click', function() {
         heartIcon.classList.remove('fas', 'heart-red');
         heartIcon.classList.add('far', 'heart-outline');
     }
-    console.log('Heart icon clicked!');
+      console.log('Heart icon clicked!');
   });
 
 
