@@ -710,7 +710,8 @@ input.restaurant-signup[type="number"],
 input.signup[type="username"],
 input.signup[type="text"],
 input.signup[type="email"],
-input.signup[type="password"] {
+input.signup[type="password"],
+input.signup[type="tel"] {
   padding: 10px;
   border: 1px solid black;
   border-radius: 5px;
