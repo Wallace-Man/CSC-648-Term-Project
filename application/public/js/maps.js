@@ -172,73 +172,73 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Function to clear markers from the map
 function clearMarkers() {
-  for (let i = 0; i < markers.length; i++) {
-    markers[i].setMap(null);
-  }
-  markers = [];
+    for (let i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+    }
+    markers = [];
 }
 
 
 
 async function handleFormSubmit(event) {
     event.preventDefault();
-  
+
     const searchTerm = document.getElementById('search-input').value;
     const cuisineType = document.getElementById('category-select').value;
     let url;
-  
+
     if (searchTerm === '' && cuisineType === '') {
-      url = 'restaurants/getAllRestaurants';
+        url = 'restaurants/getAllRestaurants';
     } else if (cuisineType !== '') {
-      url = 'restaurants/getCuisineType?searchTerm=' + encodeURIComponent(cuisineType);
+        url = 'restaurants/getCuisineType?searchTerm=' + encodeURIComponent(cuisineType);
     } else {
-      url = 'restaurants/getRestaurants?searchTerm=' + encodeURIComponent(searchTerm);
+        url = 'restaurants/getRestaurants?searchTerm=' + encodeURIComponent(searchTerm);
     }
-  
+
     try {
-      const response = await fetch(url);
-      const restaurantsData = await response.json();
-  
-      const restaurants = await Promise.all(
-        restaurantsData.map(async (restaurant) => {
-          try {
-            const searchLocation = `${restaurant.address_}, ${restaurant.city}, ${restaurant.state_}, ${restaurant.zip_code}`;
-            const location = await geocodeRestaurants(searchLocation);
-            return {
-              name: restaurant.restaurant_Name,
-              address: searchLocation,
-              lat: location.lat,
-              lng: location.lng,
-            };
-          } catch (error) {
-            console.error(`Error geocoding address for ${restaurant.restaurant_Name}: ${error.message}`);
-            return null;
-          }
-        })
-      );
-  
-      console.log("Geocoded restaurant data:", restaurants);
-  
-      const validRestaurants = restaurants.filter((restaurant) => restaurant !== null);
-  
-      clearMarkers();
-  
-      for (const restaurant of validRestaurants) {
-        createMarker(restaurant, map);
-      }
-  
-      console.log("Created markers:", markers);
-  
-      const bounds = new google.maps.LatLngBounds();
-      markers.forEach(function (marker) {
-        bounds.extend(marker.getPosition());
-      });
-      map.fitBounds(bounds);
+        const response = await fetch(url);
+        const restaurantsData = await response.json();
+
+        const restaurants = await Promise.all(
+            restaurantsData.map(async (restaurant) => {
+                try {
+                    const searchLocation = `${restaurant.address_}, ${restaurant.city}, ${restaurant.state_}, ${restaurant.zip_code}`;
+                    const location = await geocodeRestaurants(searchLocation);
+                    return {
+                        name: restaurant.restaurant_Name,
+                        address: searchLocation,
+                        lat: location.lat,
+                        lng: location.lng,
+                    };
+                } catch (error) {
+                    console.error(`Error geocoding address for ${restaurant.restaurant_Name}: ${error.message}`);
+                    return null;
+                }
+            })
+        );
+
+        console.log("Geocoded restaurant data:", restaurants);
+
+        const validRestaurants = restaurants.filter((restaurant) => restaurant !== null);
+
+        clearMarkers();
+
+        for (const restaurant of validRestaurants) {
+            createMarker(restaurant, map);
+        }
+
+        console.log("Created markers:", markers);
+
+        const bounds = new google.maps.LatLngBounds();
+        markers.forEach(function (marker) {
+            bounds.extend(marker.getPosition());
+        });
+        map.fitBounds(bounds);
     } catch (error) {
-      console.error(`Error fetching and processing restaurant data: ${error.message}`);
+        console.error(`Error fetching and processing restaurant data: ${error.message}`);
     }
-  }
-  
+}
+
 
 
 async function fetchRestaurants() {
@@ -381,18 +381,18 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 async function geocodeAddress(geocoder, address) {
     return new Promise((resolve, reject) => {
-      geocoder.geocode({ address: address }, (results, status) => {
-        if (status === google.maps.GeocoderStatus.OK) {
-          resolve(results[0].geometry.location);
-        } else {
-          reject(new Error("Geocode was not successful for the following reason: " + status));
-        }
-      });
+        geocoder.geocode({ address: address }, (results, status) => {
+            if (status === google.maps.GeocoderStatus.OK) {
+                resolve(results[0].geometry.location);
+            } else {
+                reject(new Error("Geocode was not successful for the following reason: " + status));
+            }
+        });
     });
-  }
+}
 
-  async function geocodeRestaurants(address) {
-    const API_KEY = "AIzaSyCqHQxuCGH2vnVMNkTRDReJIX3YZU-CIY8";
+async function geocodeRestaurants(address) {
+    const API_KEY = "AIzaSyCqqeOdsPM-latuhbnfIieM8IAMJzGtfG4";
     const baseUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${API_KEY}`;
 
     const response = await fetch(baseUrl);
@@ -410,8 +410,7 @@ async function geocodeAddress(geocoder, address) {
 }
 
 
- 
-  
-  
+
+
 
 

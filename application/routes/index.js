@@ -2,16 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 /* GET HOME PAGE */
-// router.get('/', function(req, res, next) {
-//   res.render('index');
-// });
 router.get('/', (req, res) => {
     res.render('index', { user: req.session.user });
-  });
+});
   
 /* GET ABOUT US PAGE */
 router.get('/aboutUs', function(req, res) {
-  res.render('aboutUs');
+    res.render('aboutUs');
 });
 
 /* GET ABOUT US-DYLAN PAGE */
@@ -74,47 +71,47 @@ router.get('/driverInfo', function(req, res) {
     res.render('driverInfo');
 });
 
- /* GET RESTAURANT PAGE */
- router.get('/restaurant', function(req, res) {
-     res.render('restaurant');
- });
+/* GET RESTAURANT PAGE */
+router.get('/restaurant', function(req, res) {
+    res.render('restaurant');
+});
 
- /* GET RESTAURANT INFO PAGE */
- router.get('/restaurantInfo', function(req, res) {
-     res.render('restaurantInfo');
- });
+/* GET RESTAURANT INFO PAGE */
+router.get('/restaurantInfo', function(req, res) {
+    res.render('restaurantInfo');
+});
 
- /* GET CONFIRMATION PAGE */
- router.get('/confirmation' , function(req, res){
-     res.render('confirmation')
- })
+/* GET CONFIRMATION PAGE */
+router.get('/confirmation' , function(req, res){
+    res.render('confirmation')
+})
 
-  /* GET CART PAGE */
-  router.get('/cart' , function(req, res){
+/* GET CART PAGE */
+router.get('/cart' , function(req, res){
     res.render('cart')
 })
 
- /* GET ORDER STATUS PAGE */
- router.get('/orderStatus' , function(req, res){
+/* GET ORDER STATUS PAGE */
+router.get('/orderStatus' , function(req, res){
     res.render('orderStatus')
 })
 
 /* GET ORDER MANAGEMENT PAGE */
 router.get('/manageorder', (req, res) => {
-   res.render('manageOrder');
+    res.render('manageOrder');
 });
 
-  /* GET RESTURANT MENU PAGE */
-  router.get('/restaurantMenuPage', (req, res) => {
+/* GET RESTURANT MENU PAGE */
+router.get('/restaurantMenuPage', (req, res) => {
     res.render('restaurantMenuPage');
-  }); 
+}); 
 
 /* GET RESTURANT ACCOUNT PAGE */
 router.get('/restaurantAccount', (req, res) => {
     res.render('restaurantAccount');
 }); 
 
-  /* GET DRIVER ACCOUNT PAGE */
+/* GET DRIVER ACCOUNT PAGE */
 router.get('/driverAccount', (req, res) => {
     res.render('driverAccount');
 });
@@ -133,10 +130,35 @@ router.get('/help', (req, res) => {
 router.get('/notifications', (req, res) => {
     res.render('notifications');
 }); 
+
 /* GET EDIT USER PAGE */
 router.get('/editUser', (req, res) => {
     res.render('editUser');
 }); 
+
+/* GET ORDERS PAGE */
+router.get('/orders', (req, res) => {
+    res.render('orders');
+});
+
+/* GET FAVORITES PAGE */
+router.get('/favorites', (req, res) => {
+    res.render('favorites');
+});
   
+/* GET EDIT DRIVER ACCOUNT PAGE */
+router.get('/editDriverAccount', (req, res) => {    
+    res.render('editDriverAccount');
+});
+
+/* GET PROMOTIONS PAGE */
+router.get('/promotions', (req, res) => {    
+    res.render('promotions');
+});
+
+/* GET CHECKOUT PAGE */
+router.get('/checkout', (req, res) => {
+    res.render('checkout');
+});
 
 module.exports = router;
