@@ -454,7 +454,7 @@ div.card-grid {
   background-color: #FFF;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 5px;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -490,7 +490,7 @@ div.card-grid {
   font-size: 16px;
   color: #FFF;
   background-color: black;
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 10px 30px;
   text-decoration: none;
   margin-top: 20px;
@@ -515,7 +515,7 @@ div.card-grid {
 .main-card {
   background-color: white;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   border-radius: 5px;
   padding: 20px;
   display: flex;
@@ -525,10 +525,10 @@ div.card-grid {
 }
 
 .main-card img {
-  width: 400px;
-  height: 280px;
-  border-radius: 30%;
-  border: 1px solid black;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  /*border: 1px solid black;*/
   object-fit: cover;
   object-position: center;
   margin-bottom: 20px;
@@ -553,12 +553,12 @@ div.card-grid {
   font-size: 16px;
   color: #FFF;
   background-color: black;
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 10px 10px;
   text-decoration: none;
   margin-top: 20px;
   transition: background-color 0.2s ease-in-out;
-  width: 40%;
+  width: 60%;
 }
 
 .main-card a.btn:hover {
@@ -607,7 +607,7 @@ div.card-grid {
   font-size: 16px;
   color: #FFF;
   background-color: #333;
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 10px 30px;
 }
 
@@ -1244,6 +1244,13 @@ label.cart-label2 {
 .hr-line{
   width: 60%;
   margin: auto;
+
+}
+
+.hr-line2{
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
 
 }
 /* Style the buttons that are used to open and close the faq-page body */
@@ -2155,6 +2162,131 @@ button.signup-form-btn[type="submit"] {
   margin: 10px 0;
 }
 
-/* table, td {
-  border: 1px solid black;
-} */
+.dropdown {
+  float: right;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  top: 80px;
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  right: 0;
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-weight: bold;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+
+.faq-body #answer{
+  margin: 10px;
+}
+
+.faq-body #question{
+  font-weight: bold;
+}
+
+.notifications {
+  width: 60%;
+  margin: 20px auto;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  padding: 10px;
+  background-color: #eee;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tab-button.active {
+  background-color: #333;
+  color: #fff;
+}
+
+.tab-button:hover:not(.active){
+  background-color: #ddd;
+}
+
+.tab-contents {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.tab-content {
+  display: none;
+  background-color: #fff;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.notification {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: #ffc107;
+  padding-bottom: 50px;
+}
+
+.move-buttons{
+  float: right;
+}
+
+.movebtn {
+  border: none;
+  background-color: #FFF;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+  font-weight: bold;
+}
+
+.movebtn:hover{
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.faq h4{
+  padding-top: 30px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.faq p{
+  text-align: center;
+  padding-bottom: 10px;
+}

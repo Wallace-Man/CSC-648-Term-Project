@@ -1,0 +1,89 @@
+//- This file contains the help page which has the answers to questions the user might have
+    about ordering food
+
+    Author: Wallace Man
+//- 
+extends layouts/main-layout
+
+block content 
+    .faq 
+        h1 All topics
+        .faq-container
+            .faq-one
+                // faq question 1
+                h3.faq-page Help with an order
+                    // faq answer 1
+                .faq-body
+                    p(id="question") Q: How to check the status of my order?
+                        p(id="answer") &emsp; A: Go to the home page. Click on the profile icon in the top right. In the pull down menu, tap on Orders. Track your delivery person's progress as they make their way to you.
+                    hr.hr-line2
+                    p(id="question") Q: How do I change my delivery address if the delivery address on my order is incorrect?
+                        p(id="answer") &emsp; A: As soon as your order is assigned to a delivery person, you can contact them directly through their provided phone number.
+                    hr.hr-line2
+                    p(id="question") Q: How do I check if a promo code as applied to an ongoing order?
+                        p(id="answer") &emsp; A: From the home page, tap the profile icon in the top right and tap on Orders. Check the receipt of the order you want to check. If the promotion applied, you'll see a discount.
+                    hr.hr-line2
+                    p(id="question") Q: How do I change my delivery address if the delivery address on my order is incorrect?
+                        p(id="answer") &emsp; A: As soon as your order is assigned to a delivery person, you can contact them directly through their provided phone number.
+                    hr.hr-line2
+                    p(id="question") Q: How can I cancel my order?
+                        p(id="answer") &emsp; A: You are unable to cancel once you confirm your order.
+                    hr.hr-line2
+                    p(id="question") Q: My order never arrived.
+                        p(id="answer") &emsp; A: If you never recieved your order but were charged for it, please contact us for a refund.
+                    hr.hr-line2
+                    p(id="question") Q: How do I change my delivery address if the delivery address on my order is incorrect?
+                        p(id="answer") &emsp; A: As soon as your order is assigned to a delivery person, you can contact them directly through their provided phone number.
+            hr.hr-line
+            .faq-two
+                // faq question 2
+                h3.faq-page Account and payments
+                // faq answer 2
+                .faq-body
+                    p(id="question") Q: How do I view my account information?
+                        p(id="answer") &emsp; A: From the home page, tap the profile icon in the top right and tap on View Account.
+                    hr.hr-line2
+                    p(id="question") Q: How do I update my address?
+                        p(id="answer") &emsp; A: From the home page, tap the profile icon in the top right and tap on View Account. From there, you can update your saved address.
+                    hr.hr-line2
+                    p(id="question") Q: How do I view my account information?
+                        p(id="answer") &emsp; A: From the home page, tap the profile icon in the top right and tap on View Account.
+                    hr.hr-line2
+                    p(id="question") Q: How do I update my payment method?
+                        p(id="answer") &emsp; A: Your payment method, the Gator card, is linked with your SFSU student email. You cannot change your payment method.
+                    hr.hr-line2
+                    p(id="question") Q: Can I use other payment methods?
+                        p(id="answer") &emsp; A: Unfornutately, you can't use any other payment methods aside from your Gator Card.
+                    hr.hr-line2
+                    p(id="question") Q: How come my payment didn't go through?
+                        p(id="answer") &emsp; A: This is a SFSU demo for CSC-648 Spring 2023. We do not accept payments.
+                    hr.hr-line2
+                    p(id="question") Q: What are promo codes and how do they work?
+                        p(id="answer") &emsp; A: We offer special promos for SFSU student and faculties. Promos must be applied before placing your order. Promos can't be combined and only one will work per order.
+                    hr.hr-line2
+                    p(id="question") Q: How do I view my promos?
+                        p(id="answer") &emsp; A: From the home page, tap the profile icon in the top right and tap on Promotions. Here, you can view the promos available to you.  
+            hr.hr-line
+            .faq-three
+                // faq question 3
+                h3.faq-page Delivery and pickup basics
+                // faq answer 3
+                .faq-body
+                    p(id="question") Q: Am I expected to leave a tip?
+                        p(id="answer") &emsp; A: While tipping is never required, you can add a tip as an extra way to thank your delivery person for their efforts.
+                    hr.hr-line2
+                    p(id="question") Q: Where should I meet my delivery person?
+                        p(id="answer") &emsp; A: You have 3 options:
+                        p(id="answer") &emsp; 1. Leave at door - Your order will be left at your door.
+                        p(id="answer") &emsp; 2. Meet at door - The delivery person will meet you at your door.
+                        p(id="answer") &emsp; 3. Pick up outside - You'll meet your delivery person outside.
+                    hr.hr-line2
+                    p(id="question") Q: How does GatorBites work?
+                        p(id="answer") &emsp; A: GatorBites connects you to local restaurant near SFSU, so that you can have your favorite meals delivery to your door fast.
+                    hr.hr-line2
+                    p(id="question") Q: How do delivery fees work?
+                        p(id="answer") &emsp; A: Delivery fees will be automatically added to your order total and the amount will depend on many factors like how far away the restaurant is and how busy our delivery people are. 
+                    hr.hr-line2
+        h4 Can't find what you are looking for?
+        p Email us at csc648team2@gmail.com
+    script(src="/js/help.js")
