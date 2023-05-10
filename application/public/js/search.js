@@ -70,72 +70,62 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Create a new card for each restaurant
         restaurants.forEach(function(restaurant) {
-            // Create a new div with the class 'restaurant-card'
-            const restaurantCard = document.createElement('div');
-            restaurantCard.classList.add('restaurant-card');
+    
+   // Create a new div with the class 'restaurant-card'
+   const restaurantCard = document.createElement('div');
+   restaurantCard.classList.add('restaurant-card');
 
-            // Add the restaurant name
-            const restaurantName = document.createElement('h2');
-            restaurantName.textContent = restaurant.restaurant_Name;
-            restaurantCard.appendChild(restaurantName);
+  
+   // Add the restaurant image
+   const restaurantImage = document.createElement('img');
+   restaurantImage.src = restaurant.image_url;
+   restaurantImage.classList.add('clickable');
+   restaurantCard.appendChild(restaurantImage);
+    
+   // Add the restaurant name
+   const restaurantName = document.createElement('h2');
+   restaurantName.textContent = restaurant.restaurant_Name;
+   restaurantCard.appendChild(restaurantName);
 
-            // Add the restaurant image
-            const restaurantImage = document.createElement('img');
-            restaurantImage.src = restaurant.image_url;
-            restaurantCard.appendChild(restaurantImage);
+  // Add the delivery information
+  const deliveryInfo = document.createElement('span');
+  deliveryInfo.textContent = ` 3.5 mi - `;
+  deliveryInfo.classList.add('delivery-info');
+  restaurantCard.appendChild(deliveryInfo);
 
-            // Add the restaurant rating
-            const restaurantRating = document.createElement('p');
-            restaurantRating.textContent = 'Rating: ' + 'TBD';
-            restaurantCard.appendChild(restaurantRating);
+  
+  // Add the delivery fee
+   const deliveryFee = document.createElement('span');
+   deliveryFee.textContent = `${restaurant.delivery_time} `;
+   deliveryFee.classList.add('delivery-fee');
+   deliveryInfo.appendChild(deliveryFee);
+   // Add the restaurant rating'
 
-            // Add the 'View Menu' button
-            const viewMenuButton = document.createElement('a');
-            viewMenuButton.href = '/menu/' + restaurant.id;
-            viewMenuButton.textContent = 'View Menu';
-            viewMenuButton.classList.add('button');
-            restaurantCard.appendChild(viewMenuButton);
-            //Add the 'Delivery Time' text display
-            const deliveryTimePrint = document.createElement('p');
-            deliveryTimePrint.textContent = 'Delivery Time: ' + restaurant.delivery_time;
-            restaurantCard.appendChild(deliveryTimePrint);
-            
 
-            // Add the restaurant card to the popular restaurants
-            // section
+   const restaurantRating = document.createElement('span');
+   deliveryFee.classList.add('star');
+   restaurantRating.innerHTML = `4.5 <i class="fas fa-star">  </i>`;
+   restaurantCard.appendChild(restaurantRating);
+   
+   const heartIcon = document.createElement('span');
+   heartIcon.classList.add('heart-icon', 'far', 'fa-heart');
+   restaurantCard.insertBefore(heartIcon, restaurantImage);
+   
+   // Add a click event listener to the heart icon
+    heartIcon.addEventListener('click', function() {
+    // Perform an action when the heart icon is clicked
+    if (heartIcon.classList.contains('far')) {
+        heartIcon.classList.remove('far', 'heart-outline');
+        heartIcon.classList.add('fas', 'heart-red');
+    } else {
+        heartIcon.classList.remove('fas', 'heart-red');
+        heartIcon.classList.add('far', 'heart-outline');
+    }
+      console.log('Heart icon clicked!');
+  });
+
+
             popularRestaurantsSection.appendChild(restaurantCard);
         });
     }
 });
-
-// // Google Maps API code for initialization
-// function initMap() {
-//     var map = new google.maps.Map(document.getElementById('map'), {
-//         center: { lat: 37.7749, lng: -122.4194 },
-//         zoom: 14
-//     });
-//
-//     var request = {
-//         location: { lat: 37.7749, lng: -122.4194 },
-//         radius: '500',
-//         query: 'restaurants'
-//     };
-//
-//     var service = new google.maps.places.PlacesService(map);
-//     service.textSearch(request, callback);
-//
-//     function callback(results, status) {
-//         if (status == google.maps.places.PlacesServiceStatus.OK) {
-//             for (var i = 0; i < results.length; i++) {
-//                 createMarker(results[i]);
-//             }
-//         }
-//     }
-//
-//     function createMarker(place) {
-//         var marker = new google.maps.Marker({
-//             map: map,
-//             position: place.geometry.location
-//         });
-//     }
-// }
