@@ -1,3 +1,7 @@
+//-
+    This file contains the restaurant menu page. It is a child of the main-layout.pug file. 
+    It will display the menu of the restaurant that the user has selected.
+//-
 extends layouts/main-layout
 
 block content
@@ -53,7 +57,9 @@ block content
                     h2 Cart
                     hr
                     ul 
-                        p Your cart is empty
-                    button Checkout
-        script(src="/js/restaurantMenu.js")
+                        p(id="cart-empty") 
+                    button(id='clear-cart') Clear Cart
+                    button(onclick="window.location.href='/cart'") Go To Cart
+        script(type='module' src="/js/cart.js")
+        script(type='module' src="/js/restaurantMenu.js")
 
