@@ -137,6 +137,20 @@ router.get('/notifications', (req, res) => {
 router.get('/editUser', (req, res) => {
     res.render('editUser');
 }); 
-  
+
+  /* GET EDIT DRIVER ACCOUNT PAGE */
+router.get('/editDriverAccount', (req, res) => {    
+    res.render('editDriverAccount');
+});
+
+  /* GET PROMOTIONS PAGE */
+router.get('/promotions', (req, res) => {    
+res.render('promotions');
+});
+
+/* GET CHECKOUT PAGE */
+router.get('/checkout', (req, res) => {
+    res.render('checkout');
+});
 
 module.exports = router;
