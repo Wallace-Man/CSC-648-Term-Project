@@ -392,7 +392,7 @@ async function geocodeAddress(geocoder, address) {
 }
 
 async function geocodeRestaurants(address) {
-    const API_KEY = "AIzaSyCqHQxuCGH2vnVMNkTRDReJIX3YZU-CIY8";
+    const API_KEY = "AIzaSyCqqeOdsPM-latuhbnfIieM8IAMJzGtfG4";
     const baseUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${API_KEY}`;
 
     const response = await fetch(baseUrl);
