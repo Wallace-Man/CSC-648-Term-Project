@@ -2,10 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 /* GET HOME PAGE */
-router.get('/', function(req, res, next) {
-  res.render('index');
-});
-
+// router.get('/', function(req, res, next) {
+//   res.render('index');
+// });
+router.get('/', (req, res) => {
+    res.render('index', { user: req.session.user });
+  });
+  
 /* GET ABOUT US PAGE */
 router.get('/aboutUs', function(req, res) {
   res.render('aboutUs');
@@ -112,15 +115,24 @@ router.get('/restaurantAccount', (req, res) => {
 }); 
 
   /* GET DRIVER ACCOUNT PAGE */
-  router.get('/driverAccount', (req, res) => {
+router.get('/driverAccount', (req, res) => {
     res.render('driverAccount');
-  });
+});
 
 /* GET USER ACCOUNT PAGE */
 router.get('/userAccount', (req, res) => {
     res.render('userAccount');
 }); 
 
+/* GET HELP PAGE */
+router.get('/help', (req, res) => {
+    res.render('help');
+}); 
+
+/* GET NOTIFICATION PAGE */
+router.get('/notifications', (req, res) => {
+    res.render('notifications');
+}); 
 /* GET EDIT USER PAGE */
 router.get('/editUser', (req, res) => {
     res.render('editUser');
