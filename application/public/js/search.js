@@ -76,11 +76,17 @@ document.addEventListener('DOMContentLoaded', function() {
    restaurantCard.classList.add('restaurant-card');
 
   
-   // Add the restaurant image
-   const restaurantImage = document.createElement('img');
-   restaurantImage.src = restaurant.image_url;
-   restaurantImage.classList.add('clickable');
-   restaurantCard.appendChild(restaurantImage);
+   const handleImageClick = () => {
+    window.location.href = `/restaurants/${restaurant.id}`;
+  };
+  
+  const restaurantImage = document.createElement('img');
+  restaurantImage.src = restaurant.image_url;
+  restaurantImage.classList.add('clickable');
+  restaurantCard.appendChild(restaurantImage);
+  
+  restaurantImage.addEventListener('click', handleImageClick);
+  
     
    // Add the restaurant name
    const restaurantName = document.createElement('h2');
