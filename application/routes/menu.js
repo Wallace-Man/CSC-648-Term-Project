@@ -7,7 +7,7 @@ const util = require('util');
 const dbConnection = mysql.createConnection({
   host: "34.102.56.1",
   user: "root",
-  password: "Jaws0044!!!!@@@@",
+  password: "Jaws0044!!!!",
   database: "restaurantdb",
 });
 
@@ -125,3 +125,4 @@ router.post('/updateMenuItem', async (req, res) => {
 
 
 module.exports = router;
+
