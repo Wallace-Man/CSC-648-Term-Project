@@ -10,18 +10,29 @@
 */
 
 // For when the window fully loads, add the event listener
+
+const restaurantID = window.restaurantID;
+
 window.addEventListener("DOMContentLoaded", (event) => {
     const listOfItems = document.getElementById("items");
     const addItemBtn = document.getElementById("add-item-btn");
     const form = document.getElementById("restaurant-info-form");
     if(form){
-        // Collects the element's value from the fields
         form.addEventListener("submit", () => {
             event.preventDefault();
-            /*TO DO */
-            /* GET ELEMENTS FROM ALL THE MENU ITEMS */
-
-            window.location.href='/confirmation';   // Require changing
+            const menuItems = [];
+            const items = document.querySelectorAll('.item');
+            items.forEach(item => {
+                const name = item.querySelector('#item-name').value;
+                const price = item.querySelector('#item-price').value;
+                const category = item.querySelector('#item-category').value;
+                const description = item.querySelector('#description').value;
+                const menuItem = { name, price, category, description };
+                alert(menuItem);
+                menuItems.push(menuItem);
+            });
+            console.log('Menu items:', menuItems);
+    
         });
     }
     if(addItemBtn){
@@ -57,3 +68,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 });
+
+// fetch('/returnMenu?restaurantID=restaurantID')
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log(data.menuItems); 
+//   })
+//   .catch(error => console.error(error));
