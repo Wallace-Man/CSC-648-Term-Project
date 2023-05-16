@@ -912,7 +912,7 @@ h2, h3 {
   padding: 20px;
   /*border: 1px solid black;*/
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  /*box-shadow: 0 2px 4px rgba(0,0,0,0.2);*/
   width: 450px;
   margin: 20px;
   display: flex;
@@ -2129,7 +2129,7 @@ button.signup-form-btn[type="submit"] {
   */
   margin-bottom: 0.5in;
   position: relative;
-  border: 2px solid #ddd;
+  /*border: 2px solid #ddd;*/
 
 }
 
@@ -2139,16 +2139,21 @@ button.signup-form-btn[type="submit"] {
 }
 
 .restaurant-card .delivery-fee {
-  color: grey;
+
   font-weight: bold;
-  font-size: 14px;
+  position: absolute;
+  bottom: 15px;
+  right: 25px;
+  top: 295px;
+  color: grey;
+  font-size: 16px;
 }
 
 .restaurant-card h3 {
   margin-top: 0;
 }
 .restaurant-card h2{
-  font-size: 14px;
+  font-size: 24px;
 }
 
 .restaurant-card p {
@@ -2163,12 +2168,12 @@ button.signup-form-btn[type="submit"] {
 
 
 .restaurant-card i  {
-  font-size: 12px;
+  font-size: 16px;
   
 
 }
-.restaurant-card .star  {
-  font-size: 12px;
+.restaurant-card .star span {
+  font-size: 16px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 }

@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Add the delivery information
   const deliveryInfo = document.createElement('span');
-  deliveryInfo.textContent = ` 3.5 mi - `;
+  deliveryInfo.textContent = ` 3.5 mi `;
   deliveryInfo.classList.add('delivery-info');
   restaurantCard.appendChild(deliveryInfo);
 
