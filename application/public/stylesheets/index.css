@@ -158,6 +158,9 @@ nav a.logo{
 .signup-btn {
   margin-left: 10px;
   text-decoration: none;
+  border-color: #000;
+  border-width: 1px;
+  border-style: solid;
 }
 
 .login-btn:hover {
@@ -2183,7 +2186,7 @@ button.signup-form-btn[type="submit"] {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   border: 2px solid #333;
   position: fixed;
-  top: 460px;
+  top: 40%;
   right: 35px;
   z-index: 9999;
 }
@@ -2259,7 +2262,8 @@ form#edit-restaurant-form select#edit-cuisine-choice {
   border: 1px solid #ddd;
   padding: 1rem;
   margin-bottom: 1rem;
-  width: 500px
+  width: 100%;
+  border-radius: 5px;
 }
 
 .cart-card-img {
@@ -2274,6 +2278,7 @@ form#edit-restaurant-form select#edit-cuisine-choice {
 
 .cart-card-info {
   flex: 1;
+  text-align: left;
 }
 
 .cart-card-title {
@@ -2342,6 +2347,7 @@ form#edit-restaurant-form select#edit-cuisine-choice {
   max-width: 1200px;
   width: 100%;
 }
+
 #checkout-cards{
   margin: 0;
   width: 50%;
@@ -2350,11 +2356,21 @@ form#edit-restaurant-form select#edit-cuisine-choice {
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px; */
 }
+
 #checkout-card {
   border: 2px solid #ddd;
   padding: 1rem;
   margin-bottom: 1rem;
   width: 100%;
+  text-align: center;
+  border-radius: 5px;
+}
+
+#subtotal-label,
+#tax-label,
+#total-label {
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 #checkout-card select {
@@ -2367,24 +2383,51 @@ form#edit-restaurant-form select#edit-cuisine-choice {
   color: #333;
 
 }
+
+.totals-info label {
+  margin: 10px;
+}
+
+.totals-info p {
+  font-size: 25px;
+  border-top:#000;
+  border-top-style: solid;
+  border-top-width: 1px;
+  margin: 10px;
+  padding-top: 10px;
+}
+
 div#delivery-details-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
-  width: 50%;
+  width: 100%;
 }
 
 div#delivery-details-card h3 {
   grid-column: 1 / span 2;
+  text-align: center;
 }
 
 div#delivery-details-card p {
   grid-column: 1;
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 div#delivery-details-card input,
 div#delivery-details-card select {
   grid-column: 2;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  /*background-color: none;*/
+  width: 100%;
+  text-align: center;
+  resize: vertical;
+  height: 100%;
 }
 
 .place-order-button {
@@ -2402,7 +2445,7 @@ div#delivery-details-card select {
 .totals-info {
   font-size: 20px;
 }
-=======
+
 .dropdown {
   float: right;
   position: relative;
@@ -2410,16 +2453,18 @@ div#delivery-details-card select {
 }
 
 .dropdown-content {
-  top: 80px;
+  top: 97px;
   display: none;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
   overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  right: 0;
+  right: 1px;
   z-index: 1;
   border-radius: 5px;
+  border-width: 1px;
+  border-color:#000;
+  border-style: solid;
 }
 
 .dropdown-content a {
