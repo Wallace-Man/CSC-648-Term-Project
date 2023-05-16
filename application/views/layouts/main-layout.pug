@@ -9,6 +9,8 @@ html(lang="en")
 
     if user
       include ../partials/headerUser
+    else if restaurantID 
+      include ../partials/headerRestaurant
     else
       include ../partials/header
     block content

@@ -11,9 +11,6 @@ block content
         script(type='module' src="/js/cart.js")
     div.checkoutContainer(id='checkout-container')
         h1 Checkout
-        br
-        br
-        br
         div#restaurant-header
             div#restaurant-info
                 h3 Roma Antica
@@ -25,7 +22,6 @@ block content
             div#checkout-card
                 div#delivery-details-card
                     h3 Delivery Details
-                    br
                     p Delivery Address: 
                     input(type='text' id='delivery-address' placeholder='SFSU' readonly)
                     p Delivery Instructions: 
@@ -35,7 +31,6 @@ block content
             #checkout-card 
                 #order-summary-card 
                     h3 Order Summary
-                    br
                     .totals-info 
                         p Subtotal:
                         label(for="subtotal" id='subtotal-label')
@@ -43,8 +38,6 @@ block content
                         label(for="tax" id='tax-label')
                         p Total:
                         label(for="total" id='total-label')
-                        br
-                        br
 
 
             //- #checkout-card 
