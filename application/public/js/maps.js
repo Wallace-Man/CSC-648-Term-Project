@@ -198,7 +198,7 @@ async function handleFormSubmit(event) {
     try {
         const response = await fetch(url);
         const restaurantsData = await response.json();
-
+        
         const restaurants = await Promise.all(
             restaurantsData.map(async (restaurant) => {
                 try {

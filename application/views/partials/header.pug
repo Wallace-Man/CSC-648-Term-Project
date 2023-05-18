@@ -12,7 +12,7 @@ header
                             span.bold Bites
                     td.search
                         div.nav-search-form-container
-                            form.search-form(action='')
+                            form.search-form(onsubmit ='handleFormSubmit(event)', method="GET",  enctype="application/x-www-form-urlencoded")
                                 select#category-select(name='category')
                                     option(value='') All
                                     option(value='italian') Italian
