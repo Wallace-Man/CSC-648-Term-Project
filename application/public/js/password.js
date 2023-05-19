@@ -6,6 +6,6 @@ function validatePassword() {
         alert("Passwords do not match.");
         return false;
     }
-    
+
     return true;
 }
