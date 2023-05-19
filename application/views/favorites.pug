@@ -1,39 +1,40 @@
 //- This file contains the current user's favorited restaurants as
-    well as information about each restaurant and links to their menus.
-
-    Author: Timothy Polich
+//- well as information about each restaurant and links to their menus.
+//- Author: Timothy Polich
 //- 
 extends layouts/main-layout
 
 block content
-    main(style='margin-top: 80px')
-        h2.userAccount-heading Favorite Restaurants
-        section.popular-restaurants
-            .restaurant-card
-                h2 Restaurant Name 
-                img
-                p Rating: TBD 
-                a(href='/menu/restaurant-id') View Menu
-                p Deliver Time:
-                    restaruant-delivery-time
-            .restaurant-card
-                h2 Restaurant Name 
-                img
-                p Rating: TBD 
-                a(href='/menu/restaurant-id') View Menu
-                p Deliver Time:
-                    restaruant-delivery-time
-            .restaurant-card
-                h2 Restaurant Name 
-                img
-                p Rating: TBD 
-                a(href='/menu/restaurant-id') View Menu
-                p Deliver Time:
-                    restaruant-delivery-time
-            .restaurant-card
-                h2 Restaurant Name 
-                img
-                p Rating: TBD 
-                a(href='/menu/restaurant-id') View Menu
-                p Deliver Time:
-                    restaruant-delivery-time
+  main(style='margin-top: 80px')
+    h2.userAccount-heading Favorite Restaurants
+    section.popular-restaurants
+      if favorites
+        each favorite in favorites
+          .restaurant-card
+            h2= favorite.restaurant_Name 
+            img(src=favorite.image_url)
+            p Rating: 
+              span 4.5
+            a(href='/menu/' + favorite.restaurantID) View Menu
+            p Deliver Time: 
+              span= favorite.delivery_time
+            button(data-fav-id=favorite.id) Remove from Favorites
+  script.
+    document.querySelectorAll('button[data-fav-id]').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const favId = e.target.getAttribute('data-fav-id');
+        fetch(`/favorites/${favId}`, {
+          method: 'DELETE',
+        }).then(response => {
+          if (response.ok) {
+            // Handle successful removal here
+            // For example, you could remove the restaurant card from the DOM
+            e.target.parentElement.remove();
+          } else {
+            // Handle the error here
+            console.error('Error removing favorite:', response);
+          }
+        }).catch(err => console.error(err));
+      });
+    });
+

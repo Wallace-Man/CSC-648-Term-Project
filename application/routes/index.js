@@ -142,9 +142,9 @@ router.get('/orders', (req, res) => {
 });
 
 /* GET FAVORITES PAGE */
-router.get('/favorites', (req, res) => {
-    res.render('favorites');
-});
+// router.get('/favorites', (req, res) => {
+//     res.render('favorites');
+// });
   
 /* GET EDIT DRIVER ACCOUNT PAGE */
 router.get('/editDriverAccount', (req, res) => {    
