@@ -8,12 +8,12 @@
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 |  |  |
 | :---------------- | :---------------: |
-| Server URL or IP | https://application-dyk33n7j6q-wl.a.run.app |
-| Database IP:Port | 34.94.177.91:3306 |
-| Database username | user |
-| Database password | _vj,Dl2=NT,}}3Q" |
-| MySQLWorkbench Connection Name | csc648db |
-| Cloud SQL Instance Name/ID | csc648-cloud |
+| Server URL or IP | http://34.102.89.98/ |
+| Database IP:Port | 34.102.56.1:3306 |
+| Database username | root |
+| Database password | Jaws0044!!!! |
+| MySQLWorkbench Connection Name | csc648-386221:us-west2:csc-648-database-project |
+| Cloud SQL Instance Name/ID | csc-648-database-project |
 
 ### Instructions on how to use the above information.
 
