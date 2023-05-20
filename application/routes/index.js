@@ -102,9 +102,9 @@ router.get('/manageorder', (req, res) => {
 });
 
 /* GET RESTURANT MENU PAGE */
-router.get('/restaurantMenuPage', (req, res) => {
-    res.render('restaurantMenuPage');
-}); 
+// router.get('/restaurantMenuPage', (req, res) => {
+//     res.render('restaurantMenuPage');
+// }); 
 
 /* GET RESTURANT ACCOUNT PAGE */
 router.get('/restaurantAccount', (req, res) => {
@@ -142,9 +142,9 @@ router.get('/orders', (req, res) => {
 });
 
 /* GET FAVORITES PAGE */
-router.get('/favorites', (req, res) => {
-    res.render('favorites');
-});
+// router.get('/favorites', (req, res) => {
+//     res.render('favorites');
+// });
   
 /* GET EDIT DRIVER ACCOUNT PAGE */
 router.get('/editDriverAccount', (req, res) => {    

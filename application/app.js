@@ -11,6 +11,7 @@ const { router: usersRouter, ensureAuthenticated } = require('./routes/users');
 const registerRouter = require('./routes/register');
 const driverRouter = require('./routes/driver');
 const menuRouter = require('./routes/menu');
+const methodOverride = require('method-override');
 
 const app = express();
 
@@ -59,7 +60,8 @@ app.use('/restaurants', restaurantRouter);
 app.use('/', usersRouter);
 app.use('/', registerRouter);
 app.use('/', driverRouter);
-app.use('/menu', menuRouter);
+app.use('/', menuRouter);
+app.use(methodOverride('_method'));
 
 const port = parseInt(process.env.PORT) || 8081;
 

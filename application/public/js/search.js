@@ -77,15 +77,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   
    const handleImageClick = () => {
-    window.location.href = `/restaurants/${restaurant.id}`;
-  };
+    window.location.href = `/restaurantMenuPage/${restaurant.restaurantID}`;
+};
   
-  const restaurantImage = document.createElement('img');
-  restaurantImage.src = restaurant.image_url;
-  restaurantImage.classList.add('clickable');
-  restaurantCard.appendChild(restaurantImage);
+const restaurantImage = document.createElement('img');
+restaurantImage.src = restaurant.image_url;
+restaurantImage.classList.add('clickable');
+restaurantCard.appendChild(restaurantImage);
   
-  restaurantImage.addEventListener('click', handleImageClick);
+restaurantImage.addEventListener('click', handleImageClick);
+
   
     
    // Add the restaurant name
@@ -117,19 +118,50 @@ document.addEventListener('DOMContentLoaded', function() {
    heartIcon.classList.add('heart-icon', 'far', 'fa-heart');
    restaurantCard.insertBefore(heartIcon, restaurantImage);
    
-   // Add a click event listener to the heart icon
-    heartIcon.addEventListener('click', function() {
-    // Perform an action when the heart icon is clicked
-    if (heartIcon.classList.contains('far')) {
-        heartIcon.classList.remove('far', 'heart-outline');
-        heartIcon.classList.add('fas', 'heart-red');
-    } else {
-        heartIcon.classList.remove('fas', 'heart-red');
-        heartIcon.classList.add('far', 'heart-outline');
-    }
-      console.log('Heart icon clicked!');
-  });
+//    // Add a click event listener to the heart icon
+//     heartIcon.addEventListener('click', function() {
+//     // Perform an action when the heart icon is clicked
+//     if (heartIcon.classList.contains('far')) {
+//         heartIcon.classList.remove('far', 'heart-outline');
+//         heartIcon.classList.add('fas', 'heart-red');
+//     } else {
+//         heartIcon.classList.remove('fas', 'heart-red');
+//         heartIcon.classList.add('far', 'heart-outline');
+//     }
+//       console.log('Heart icon clicked!');
+//   });
+heartIcon.addEventListener('click', function() {
+    // Send a POST request to the server to toggle the favorite status
+    console.log('Heart icon was clicked!');
+    fetch('/favorites', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ restaurant_id: restaurant.restaurantID }),
+    })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(response) {
+      if (response.success) {
+        console.log('Restaurant', restaurant.restaurantID, 'has been', response.action, 'from favorites');
+  
+        // Update the heart icon based on the server's response
+        if (response.action === 'added') {
+          heartIcon.classList.remove('far', 'heart-outline');
+          heartIcon.classList.add('fas', 'heart-red');
+        } else {
+          heartIcon.classList.remove('fas', 'heart-red');
+          heartIcon.classList.add('far', 'heart-outline');
+        }
+      } else {
+        console.log('Error updating favorites:', response.message);
+      }
+    });
+});
 
+  
 
             popularRestaurantsSection.appendChild(restaurantCard);
         });

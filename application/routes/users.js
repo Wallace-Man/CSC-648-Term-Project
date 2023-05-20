@@ -76,6 +76,71 @@ router.get('/logout', (req, res) => {
   req.session.destroy();
   res.redirect('/');
 });
+router.get('/favorites', ensureAuthenticated, async (req, res) => {
+  const user_id = req.session.user.user_id;
+  const querySelect = 'SELECT f.id, r.restaurantID, r.restaurant_Name, r.image_url, r.delivery_time FROM favorites AS f INNER JOIN Restaurant AS r ON f.restaurant_id = r.restaurantID WHERE f.user_id = ?';
+  
+  try {
+    const queryPromise = util.promisify(connection.query).bind(connection);
+    const favorites = await queryPromise(querySelect, [user_id]);
+
+    // log favorites data
+    console.log('Favorites:', favorites);
+    res.render('favorites', { favorites: favorites || [] });
+
+  } catch (err) {
+    console.error('Error getting favorites:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
+
+
+
+
+
+router.post('/favorites', ensureAuthenticated, async (req, res) => {
+  const user_id = req.session.user.user_id;
+  const { restaurant_id } = req.body;
+  const querySelect = 'SELECT * FROM favorites WHERE user_id = ? AND restaurant_id = ?';
+  const queryInsert = 'INSERT INTO favorites (user_id, restaurant_id) VALUES (?, ?)';
+  const queryDelete = 'DELETE FROM favorites WHERE user_id = ? AND restaurant_id = ?';
+  
+  try {
+    const queryPromise = util.promisify(connection.query).bind(connection);
+    const favorites = await queryPromise(querySelect, [user_id, restaurant_id]);
+
+    if (favorites.length > 0) {
+      // The restaurant is already in the user's favorites, so remove it
+      await queryPromise(queryDelete, [user_id, restaurant_id]);
+      res.json({ success: true, action: 'removed' });
+    } else {
+      // The restaurant is not in the user's favorites, so add it
+      await queryPromise(queryInsert, [user_id, restaurant_id]);
+      res.json({ success: true, action: 'added' });
+    }
+
+  } catch (err) {
+    console.error('Error updating favorites:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
+
+router.delete('/favorites/:id', ensureAuthenticated, async (req, res) => {
+  const user_id = req.session.user.user_id;
+  const favorite_id = req.params.id;
+  const queryDelete = 'DELETE FROM favorites WHERE id = ? AND user_id = ?';
+
+  try {
+    const queryPromise = util.promisify(connection.query).bind(connection);
+    await queryPromise(queryDelete, [favorite_id, user_id]);
+    res.json({ success: true, action: 'removed' });
+  } catch (err) {
+    console.error('Error removing favorite:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
+
+
 
 
 module.exports = {

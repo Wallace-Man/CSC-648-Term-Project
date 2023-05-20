@@ -1,15 +1,54 @@
-//-
-    This file contains the restaurant menu page. It is a child of the main-layout.pug file. 
-    It will display the menu of the restaurant that the user has selected.
-//-
+//- extends layouts/main-layout
+
+//- block content
+//-     head
+//-         title Restaurant Menu
+//-     body
+//-         div#restaurant-main
+//-             // Add a conditional check here
+//-             if menuItems && menuItems.length > 0
+//-                 each item in menuItems
+//-                     h2= item.itemName
+//-                     p= item.itemDescription
+//-                     p= item.itemPrice
+//-                     button(onclick=`addToCart(${item.itemID})`) Add to Cart
+//-             else
+//-                 h2 No menu items found.
+//-             // Debug line to print out menuItems
+//-             p This is a static text to check if the view is being rendered.
+//-             p Debug: #{JSON.stringify(menuItems)}
+                
+//-         div#restaurant-cart
+//-             h2 Cart
+//-             hr
+//-             ul 
+//-                 p(id="cart-empty") 
+//-             button(id='clear-cart') Clear Cart
+//-             button(onclick="window.location.href='/cart'") Go To Cart
+
+//-     script(type='module' src="/js/restaurantMenu.js")
+//-     script(type='module' src="/js/cart.js")
+
+
 extends layouts/main-layout
 
 block content
     head
-        title
+        title Restaurant Menu
     body
         div#restaurant-main
-                    
+            h1 Menu Items
+            if menuItems && menuItems.length > 0
+                each item in menuItems
+                    h2= item.itemName
+                    p= item.itemDescription
+                    p= item.itemPrice
+                    button(onclick=`addToCart(${item.itemID})`) Add to Cart
+            else
+                h2 No menu items found.
+            // Debug line to print out menuItems
+            //- p Debug: #{JSON.stringify(menuItems)}
+                
         div#restaurant-cart
             h2 Cart
             hr
@@ -20,5 +59,3 @@ block content
 
     script(type='module' src="/js/restaurantMenu.js")
     script(type='module' src="/js/cart.js")
-        
-

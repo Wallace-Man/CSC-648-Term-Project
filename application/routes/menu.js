@@ -122,6 +122,52 @@ router.post('/updateMenuItem', async (req, res) => {
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
+// Define /restaurantMenuPage endpoint to render the menu page
+// router.get('/restaurantMenuPage', async (req, res) => {
+//   const restaurantID = req.query.restaurantID;
+
+//   if (!restaurantID) {
+//     res.status(400).json({ error: 'No restaurantID found in query.' });
+//     return;
+//   }
+
+//   const query = 'SELECT * from Menu WHERE restaurantID = ?';
+
+//   try {
+//     const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
+//     const menuItems = await queryPromise(query, [restaurantID]);
+
+//     // Pass the menu items to the Pug template
+//     res.render('restaurantMenuPage', { menuItems });
+//   } catch (err) {
+//     console.error('Error during menu item retrieval:', err);
+//     res.status(500).send('Internal Server Error: ' + err.message);
+//   }
+// });
+router.get('/restaurantMenuPage/:restaurantID', async (req, res) => {
+  const restaurantID = req.params.restaurantID;
+  const query = 'SELECT * from Menu WHERE restaurantID = ?';
+
+  try {
+    const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
+    
+    const menuItems = await queryPromise(query, [restaurantID]);
+
+    // Log the result of the query
+    console.log("Query Result: ", menuItems);
+
+    // Log the data that's about to be passed to the view
+    console.log("Fetched Menu Items: ", menuItems);
+    
+    console.log("Menu items being passed to view:", menuItems);
+res.render('restaurantMenuPage', { menuItems });
+
+  } catch (err) {
+    console.error('Error during menu item retrieval:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
+
 
 
 module.exports = router;
