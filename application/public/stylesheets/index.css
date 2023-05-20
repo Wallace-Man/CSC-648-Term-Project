@@ -635,6 +635,10 @@ div.card-grid {
   margin-top: 80px;
 }
 
+.login-form-container a {
+  margin-bottom: 5px;
+}
+
 .restaurant-signup-form-container{
   display:flex;
   justify-content: center;
@@ -731,7 +735,8 @@ input.signup[type="checkbox"] {
 }
 
 input.login[type="username"],
-input.login[type="password"] {
+input.login[type="password"],
+input.login[type="email"] {
   padding: 10px;
   border: 1px solid black;
   border-radius: 5px;
