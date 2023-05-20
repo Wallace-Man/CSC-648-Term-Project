@@ -693,11 +693,13 @@ label.login {
 }
 
 input.driver-signup[type="username"],
+input.driver-signup[type="text"],
 input.driver-signup[type="email"],
 input.driver-signup[type="password"],
 input.driver-signup[type="email"],
 input.driver-signup[type="tel"],
 input.restaurant-signup[type="restaurant-address"],
+input.restaurant-signup[type="text"],
 input.restaurant-signup[type="city"],
 input.restaurant-signup[type="state"],
 input.restaurant-signup[type="country"],

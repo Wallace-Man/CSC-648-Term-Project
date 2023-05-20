@@ -6,7 +6,7 @@ block content
             .form-group
                 label.signup(for="username") Username:
                     span.mandatory-tag *
-                input.signup(type="username", id="username", name="username", minlength="3", maxlength="20", oninvalid="setCustomValidity('Minimum 3 characters')", oninput="setCustomValidity('')", required)
+                input.signup(type="username", id="username", name="username", minlength="3", maxlength="20", required)
             .form-group
                 label.signup(for="email") Email:
                     span.mandatory-tag *
@@ -14,11 +14,11 @@ block content
             .form-group
                 label.signup(for="password") Password:
                     span.mandatory-tag *
-                input.signup(type="password", id="password", name="password", minlength="4", maxlength="20", oninvalid="setCustomValidity('Minimum 4 characters')", oninput="setCustomValidity('')", required)
+                input.signup(type="password", id="password", name="password", minlength="4", maxlength="20", required)
             .form-group
                 label.signup(for="password2") Confirm Password:
                     span.mandatory-tag *
-                input.signup(type="password", id="password2", name="password2", minlength="4", maxlength="20", oninvalid="setCustomValidity('Minimum 4 characters')", oninput="setCustomValidity('')", required)
+                input.signup(type="password", id="password2", name="password2", minlength="4", maxlength="20", required)
             .form-group
                 label.signup
                     input.signup(type="checkbox", oninvalid="setCustomValidity('Must be agreed to')", oninput="setCustomValidity('')", required)

@@ -6,11 +6,11 @@ block content
             .form-group
                 label.login(for="username") Username:
                     span.mandatory-tag *
-                input.login(type="username", id="username", name="username", minlength="3", maxlength="20", oninvalid="setCustomValidity('Minimum 3 characters')", oninput="setCustomValidity('')", required)
+                input.login(type="username", id="username", name="username", minlength="3", maxlength="20", required)
             .form-group
                 label.login(for="password") Password:
                     span.mandatory-tag *
-                input.login(type="password", id="password", name="password", minlength="4", maxlength="20", oninvalid="setCustomValidity('Minimum 4 characters')", oninput="setCustomValidity('')", required)
+                input.login(type="password", id="password", name="password", minlength="4", maxlength="20", required)
                 br
             br
             button.login-form-btn(type="submit") Login
