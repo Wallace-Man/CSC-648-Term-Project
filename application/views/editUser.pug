@@ -10,14 +10,14 @@ block content
         form.signup(action="/signup", method="post")
             .form-group
                 label.signup(for="fname") First Name:
-                input.signup(type="text", id="fname", name="fname")
+                input.signup(type="text", id="fname", name="fname", maxlength="20")
             .form-group
                 label.signup(for="lname") Last Name:
-                input.signup(type="text", id="lname", name="lname")
+                input.signup(type="text", id="lname", name="lname", maxlength="20")
             .form-group
                 label.signup(for="email") Email:
-                input.signup(type="email", id="email", name="email")
+                input.signup(type="email", id="email", name="email", maxlength="20", pattern=".+@sfsu\.edu", placeholder='example123@ex.com', oninvalid="setCustomValidity('Must be @sfsu.edu')", oninput="setCustomValidity('')")
             .form-group
                 label.signup(for="tel") Phone Number:
-                input.signup(type="tel", id="tel", name="tel")
+                input.signup(type="tel", id="tel", name="tel", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', placeholder='123-456-7890')
             button.signup-form-btn(type="submit") Confirm Changes

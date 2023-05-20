@@ -10,7 +10,7 @@ block content
             .form-group
                 label.signup(for="email") Email:
                     span.mandatory-tag *
-                input.signup(type="email", id="email", name="email", minlength="7", maxlength="20", pattern=".+@sfsu\.edu", oninvalid="setCustomValidity('Must be @sfsu.edu')", oninput="setCustomValidity('')", required)
+                input.signup(type="email", id="email", name="email", minlength="7", maxlength="20", pattern=".+@sfsu\.edu", placeholder='example123@ex.com', oninvalid="setCustomValidity('Must be @sfsu.edu')", oninput="setCustomValidity('')", required)
             .form-group
                 label.signup(for="password") Password:
                     span.mandatory-tag *
