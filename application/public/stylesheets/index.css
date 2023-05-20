@@ -1033,6 +1033,7 @@ div.maps-frame {
   justify-content: center;
   margin-top: 40px;
   margin-bottom: 80px;
+  width: 50%;
 }
 
 form.cart-form {
@@ -2585,4 +2586,38 @@ div#delivery-details-card select {
 .faq p{
   text-align: center;
   padding-bottom: 10px;
+}
+
+.menu-card{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 1px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.menu-card h2,
+.menu-card p.price,
+.menu-card #description{
+  border-style: none;
+  width: 100%;
+  text-align: center;
+}
+
+.menu-card p.price{
+  font-weight: bold;
+}
+
+.menu-card #add-to-cart-button{
+  color: white;
+  background-color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 10px auto;
+  text-align: center;
+  width: auto;
+  display: block;
 }
