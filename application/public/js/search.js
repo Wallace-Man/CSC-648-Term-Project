@@ -77,15 +77,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   
    const handleImageClick = () => {
-    window.location.href = `/restaurants/${restaurant.id}`;
-  };
+    window.location.href = `/restaurantMenuPage/${restaurant.restaurantID}`;
+};
   
-  const restaurantImage = document.createElement('img');
-  restaurantImage.src = restaurant.image_url;
-  restaurantImage.classList.add('clickable');
-  restaurantCard.appendChild(restaurantImage);
+const restaurantImage = document.createElement('img');
+restaurantImage.src = restaurant.image_url;
+restaurantImage.classList.add('clickable');
+restaurantCard.appendChild(restaurantImage);
   
-  restaurantImage.addEventListener('click', handleImageClick);
+restaurantImage.addEventListener('click', handleImageClick);
+
   
     
    // Add the restaurant name

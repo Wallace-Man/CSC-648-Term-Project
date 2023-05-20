@@ -102,9 +102,9 @@ router.get('/manageorder', (req, res) => {
 });
 
 /* GET RESTURANT MENU PAGE */
-router.get('/restaurantMenuPage', (req, res) => {
-    res.render('restaurantMenuPage');
-}); 
+// router.get('/restaurantMenuPage', (req, res) => {
+//     res.render('restaurantMenuPage');
+// }); 
 
 /* GET RESTURANT ACCOUNT PAGE */
 router.get('/restaurantAccount', (req, res) => {
