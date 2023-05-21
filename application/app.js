@@ -56,7 +56,7 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/',indexRouter);
-app.use('/restaurants', restaurantRouter);
+app.use('/', restaurantRouter);
 app.use('/', usersRouter);
 app.use('/', registerRouter);
 app.use('/', driverRouter);

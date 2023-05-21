@@ -188,11 +188,11 @@ async function handleFormSubmit(event) {
     let url;
 
     if (searchTerm === '' && cuisineType === '') {
-        url = 'restaurants/getAllRestaurants';
+        url = '/getAllRestaurants';
     } else if (cuisineType !== '') {
-        url = 'restaurants/getCuisineType?searchTerm=' + encodeURIComponent(cuisineType);
+        url = '/getCuisineType?searchTerm=' + encodeURIComponent(cuisineType);
     } else {
-        url = 'restaurants/getRestaurants?searchTerm=' + encodeURIComponent(searchTerm);
+        url = '/getRestaurants?searchTerm=' + encodeURIComponent(searchTerm);
     }
 
     try {
@@ -242,7 +242,7 @@ async function handleFormSubmit(event) {
 
 
 async function fetchRestaurants() {
-    const response = await fetch('restaurants/getAllRestaurants');
+    const response = await fetch('/getAllRestaurants');
 
     if (response.ok) {
         const data = await response.json();

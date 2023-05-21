@@ -42,9 +42,9 @@ router.get('/learnMoreChristian', function(req, res) {
 });
 
 /* GET LOGIN PAGE */
-router.get('/login', function(req, res) {
-    res.render('login');
-});
+// router.get('/login', function(req, res) {
+//     res.render('login');
+// });
 
 /* GET SIGNUP PAGE */
 router.get('/signup', function(req, res) {
@@ -77,9 +77,9 @@ router.get('/restaurant', function(req, res) {
 });
 
 /* GET RESTAURANT INFO PAGE */
-router.get('/restaurantInfo', function(req, res) {
-    res.render('restaurantInfo');
-});
+// router.get('/restaurantInfo', function(req, res) {
+//     res.render('restaurantInfo');
+// });
 
 /* GET CONFIRMATION PAGE */
 router.get('/confirmation' , function(req, res){
@@ -162,9 +162,9 @@ router.get('/checkout', (req, res) => {
 });
 
 /* GET RESTAURANT LOGIN PAGE */
-router.get('/restaurantLogin', (req, res) => {
-    res.render('restaurantLogin');
-});
+// router.get('/restaurantLogin', (req, res) => {
+//     res.render('restaurantLogin');
+// });
 
 /* GET DRIVER LOGIN PAGE */
 router.get('/driverLogin', (req, res) => {
