@@ -48,7 +48,8 @@ cloudinary.config({
 // Define /getRestaurants endpoint to search for restaurants by name
 router.get('/getRestaurants', (req, res) => {
   const searchTerm = req.query.searchTerm; // Get the search term from the query string
-  const query = "SELECT * FROM Restaurant WHERE restaurant_Name LIKE '%" + searchTerm + "%'"; // Create SQL query
+  const query = "SELECT restaurantID, restaurant_Name FROM Restaurant WHERE restaurant_Name LIKE '%" + searchTerm + "%'";
+ // Create SQL query
   console.log(`Executing query: ${query}`);
 
   // Execute the SQL query and handle the result
@@ -67,7 +68,8 @@ router.get('/getRestaurants', (req, res) => {
 router.get('/getCuisineType', (req, res) => {
   const searchTerm = req.query.searchTerm; // Get the search term from the query string
   // const query = "SELECT restaurant_Name, image_url,delivery_time FROM Restaurant WHERE cuisine_type = '" + searchTerm + "'"; // Create SQL query, include image_url
-  const query = "SELECT restaurant_Name, address_, city, state_, zip_code, image_url, delivery_time FROM Restaurant WHERE cuisine_type = '" + searchTerm + "'";
+  const query = "SELECT restaurantID, restaurant_Name, address_, city, state_, zip_code, image_url, delivery_time FROM Restaurant WHERE cuisine_type = '" + searchTerm + "'";
+
 
   console.log(`Executing query: ${query}`);
 
@@ -124,7 +126,12 @@ router.post('/restaurant', async (req, res) => {
 
 // Add a new route for the restaurant login
 // Add a new route for the restaurant login
-router.post('/restaurant/login', async (req, res) => {
+router.get('/restaurantLogin', (req, res) => {
+  res.render('restaurantLogin');
+});
+
+// Add a new route for the restaurant login
+router.post('/restaurantLogin', async (req, res) => {
   const { username, password } = req.body;
   const query = 'SELECT restaurantID, password FROM Restaurant WHERE restaurant_username = ?';
 
@@ -138,6 +145,9 @@ router.post('/restaurant/login', async (req, res) => {
     if (result.length > 0 && await bcrypt.compare(password, result[0].password)) {
       // Store the restaurantID in the session
       req.session.restaurantID = result[0].restaurantID;
+      
+      // Log the session information
+      console.log("Restaurant session info: ", req.session);
 
       // Redirect the user to the home page
       res.redirect('/');
@@ -151,7 +161,6 @@ router.post('/restaurant/login', async (req, res) => {
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
-
 
 
 

@@ -3,6 +3,7 @@ const router = express.Router();
 const mysql = require('mysql');
 const util = require('util');
 const bcrypt = require('bcrypt');
+const { ensureUserAuthenticated, ensureRestaurantAuthenticated, ensureDriverAuthenticated } = require('./users');
 
 // Configure the MySQL database connection
 const connection = mysql.createConnection({
@@ -53,7 +54,7 @@ router.post('/driver', async (req, res) => {
 });
 
 //Route to handle driver login
-router.post('/driver/login', async (req, res) => {
+router.post('/driverLogin', async (req, res) => {
   const { username, password } = req.body;
   const query = 'SELECT driverID, driver_password FROM drivers WHERE driver_username = ?';
 

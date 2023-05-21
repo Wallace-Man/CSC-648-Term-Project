@@ -13,65 +13,171 @@
 
 const restaurantID = window.restaurantID;
 
-window.addEventListener("DOMContentLoaded", (event) => {
+window.addEventListener("DOMContentLoaded", async (event) => {
     const listOfItems = document.getElementById("items");
     const addItemBtn = document.getElementById("add-item-btn");
     const form = document.getElementById("restaurant-info-form");
-    if(form){
-        form.addEventListener("submit", () => {
-            event.preventDefault();
-            const menuItems = [];
-            const items = document.querySelectorAll('.item');
-            items.forEach(item => {
-                const name = item.querySelector('#item-name').value;
-                const price = item.querySelector('#item-price').value;
-                const category = item.querySelector('#item-category').value;
-                const description = item.querySelector('#description').value;
-                const menuItem = { name, price, category, description };
-                alert(menuItem);
-                menuItems.push(menuItem);
-            });
-            console.log('Menu items:', menuItems);
-    
+
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const newItems = [];
+        const updatedItems = [];
+        const deletedItems = [];
+        const items = document.querySelectorAll('.item');
+        
+        items.forEach(item => {
+            const itemId = item.querySelector('#item-id').value;
+            const name = item.querySelector('#item-name').value;
+            const price = item.querySelector('#item-price').value;
+            const category = item.querySelector('#item-category').value;
+            const description = item.querySelector('#description').value;
+            const deleted = item.querySelector('#item-deleted').value === 'true';
+
+            const menuItem = { itemId, name, price, category, description };
+
+            if (deleted) {
+                deletedItems.push(menuItem);
+            } else if (itemId === null) {
+                newItems.push(menuItem);
+            } else {
+                updatedItems.push(menuItem);
+            }
         });
-    }
+
+        // Post new items
+        for (const item of newItems) {
+            try {
+                const response = await fetch('/addMenuItem', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        itemName: item.name,
+                        itemDescription: item.description,
+                        itemPrice: item.price
+                    })
+                });
+                
+                const data = await response.json();
+                console.log(data.message);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Post updated items
+        for (const item of updatedItems) {
+            try {
+                const response = await fetch('/updateMenuItem', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        itemID: item.itemId,
+                        itemName: item.name,
+                        itemDescription: item.description,
+                        itemPrice: item.price
+                    })
+                });
+                
+                const data = await response.json();
+                console.log(data.message);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Post deleted items
+        for (const item of deletedItems) {
+            try {
+                const response = await fetch('/deleteMenuItem', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        itemID: item.itemId,
+                    })
+                });
+                
+                const data = await response.json();
+                console.log(data.message);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    });
+
     if(addItemBtn){
         // Adding a new menu item card to the list
         addItemBtn.addEventListener("click", function() {
             const newItem = document.createElement('div');
             newItem.classList.add("item");
             const newMarkup = `
-                <label id="item_label" for="item-name">Name of Menu Item:</label>
-                <input type="text" id="item-name" name="item-name" required>
-                <label id="item_label" for="item-price">Price of Menu Item:</label>
-                <input type="text" id="item-price" name="item-price" placeholder="123.45" required>
-                <label id="item_label" for="item-category">Menu Item Category</label>
-                <select id="item-category">
-                    <option disabled selected>-- Select An Option --</option>
-                    <option value="option1">Entree</option>
-                    <option value="option2">Side</option>
-                    <option value="option3">Drink</option>
-                    <option value="option3">Combo</option>
-                </select>
-                <label id="item_label" for="item-description">Description:</label>
-                <textarea id="description" name="description" rows="4" cols="50" placeholder="Description of Menu Item" required></textarea>
-                <button type="button" class="delete-item-btn">Delete</button>
-                `;
+                <div class="item-details">
+                    <label for="item-id">ID</label>
+                    <input type="number" id="item-id" name="item-id" placeholder="Item ID" readonly>
+                    <label for="item-name">Name</label>
+                    <input type="text" id="item-name" name="item-name" placeholder="Item Name" required>
+                    <label for="item-price">Price</label>
+                    <input type="number" id="item-price" name="item-price" placeholder="Item Price" required>
+                    <label for="item-category">Category</label>
+                    <input type="text" id="item-category" name="item-category" placeholder="Item Category" required>
+                    <label for="description">Description</label>
+                    <input type="text" id="description" name="description" placeholder="Item Description" required>
+                    <input type="hidden" id="item-deleted" name="item-deleted" value="false">
+                </div>
+                <div class="item-actions">
+                    <button type="button" class="delete-btn">Delete</button>
+                </div>
+            `;
             newItem.innerHTML = newMarkup;
-            // Appending the newly created item html div to the list
             listOfItems.appendChild(newItem);
-            // Creating a button to delete self from list
-            const deleteBtn = newItem.querySelector(".delete-item-btn");
-            deleteBtn.addEventListener("click", function(){
-                listOfItems.removeChild(newItem);
-            });
         });
     }
-});
-
-// fetch('/returnMenu?restaurantID=restaurantID')
-//   .then(response => response.json())
-//   .then(data => {
-//     console.log(data.menuItems); 
-//   })
-//   .catch(error => console.error(error));
+    
+    // Get menu items from database
+    try {
+        const response = await fetch(`/returnMenu?restaurantID=${restaurantID}`);
+        const data = await response.json();
+    
+        // Populate menu items from database
+        for (const menuItem of data.menuItems) {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add("item");
+            itemElement.innerHTML = `
+            <div class="item-details">
+                <label for="item-id">ID</label>
+                <input type="number" id="item-id" name="item-id" value="${menuItem.itemID}" placeholder="Item ID" readonly>
+                <label for="item-name">Name</label>
+                <input type="text" id="item-name" name="item-name" value="${menuItem.itemName}" placeholder="Item Name" required>
+                <label for="item-price">Price</label>
+                <input type="number" id="item-price" name="item-price" value="${menuItem.itemPrice}" placeholder="Item Price" required>
+                <label for="item-description">Description</label>
+                <input type="text" id="item-description" name="item-description" value="${menuItem.itemDescription}" placeholder="Item Description" required>
+                <input type="hidden" id="item-deleted" name="item-deleted" value="false">
+            </div>
+            <div class="item-actions">
+                <button type="button" class="delete-btn">Delete</button>
+            </div>
+            `;
+            listOfItems.appendChild(itemElement);
+        }
+    
+        // Add event listeners to delete buttons
+        const deleteBtns = document.querySelectorAll('.delete-btn');
+        deleteBtns.forEach(btn => {
+            btn.addEventListener('click', event => {
+                const itemElement = event.target.closest('.item');
+                const deletedInput = itemElement.querySelector('#item-deleted');
+                deletedInput.value = 'true';
+                itemElement.style.display = 'none';
+            });
+        });
+    } catch (error) {
+        console.error('Error:', error);
+    }
+    });
+    
