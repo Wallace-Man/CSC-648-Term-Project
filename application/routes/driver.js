@@ -71,6 +71,7 @@ router.post('/driverLogin', async (req, res) => {
       if (await bcrypt.compare(password, results[i].driver_password)) {
         // Store the driverID in the session
         req.session.driverID = results[i].driverID;
+        console.log(req.session.driverID);
 
         // Redirect the user to the home page
         res.redirect('/');
