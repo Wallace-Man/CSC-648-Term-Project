@@ -1,21 +1,15 @@
-//- This file contains restaurant sign up form where restaurant owners
-    can create their menu by adding, deleting, or editing their menu items. 
-    
-    Author: Wallace Man
-//- 
 extends layouts/main-layout
-block content
-        div 
-            p(id="create-your-menu") Create Your Menu
-            // Container for the handling menu items
-            .restaurant-menu-container
-                form.edit-menu(method="post")
-                    .menu 
-                        .menu-items(id="menu-items")
-                            .items(id="items")
-                            
-                        button.add-item-btn(type="button", id="add-item-btn") Add Item
-                    button.signup-form-btn(type="submit", id="confirm-menu") Confirm
-        script(src="/js/editMenuItems.js" charset="utf-8" type=text)
 
+block content
+  div
+    p(id="create-your-menu") Create Your Menu
+    // Container for handling menu items
+    .restaurant-menu-container
+      form.edit-menu(id="restaurant-info-form", method="post")
+        .menu
+          .menu-items(id="menu-items")
+            .items(id="items")
             
+          button.add-item-btn(type="button", id="add-item-btn") Add Item
+        button.signup-form-btn(type="submit", id="confirm-menu") Confirm
+  script(src="/js/editMenuItems.js", charset="utf-8", type="text/javascript")
