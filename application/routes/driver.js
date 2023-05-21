@@ -33,7 +33,7 @@ router.post('/driver', async (req, res) => {
   }
 
   // Define the SQL query to insert a new driver into the database
-  const query = 'INSERT INTO drivers (diver_username, driver_email, driver_password, phone_number) VALUES (?, ?, ?, ?)';
+  const query = 'INSERT INTO drivers (driver_username, driver_email, driver_password, phone_number) VALUES (?, ?, ?, ?)';
 
   try {
     // Hash the password using bcrypt
