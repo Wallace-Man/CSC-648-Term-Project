@@ -103,16 +103,13 @@ router.get('/getAllRestaurants', (req, res) => {
 
 router.post('/restaurant', async (req, res) => {
   const { address, city, state, country, zip, name, username, email, password, phone, website, open, close, deliveryTime, cuisine } = req.body;
-  const query = 'INSERT INTO Restaurant (restaurant_Name, website, address_, city, state_, zip_code, country, open_, closed, cuisine_type , delivery_time, restaurant_username, password, email, phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+  const query = 'INSERT INTO Restaurant (restaurant_Name, website, address_, city, state_, zip_code, country, open_, closed, cuisine_type, delivery_time, restaurant_username, password, email, phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
 
   try {
-    // Hash the password using bcrypt
-    const hashedPassword = await bcrypt.hash(password, 10);
     // Promisify the MySQL query function
     const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
     // Execute the SQL query with the form data
-    await queryPromise(query, [name, website, address, city, state, zip, country, open, close, cuisine, deliveryTime, username, hashedPassword, email, phone]);
-
+    await queryPromise(query, [name, website, address, city, state, zip, country, open, close, cuisine, deliveryTime, username, hashPassword(password), email, phone]);
 
     console.log('Account Created!');
     // Redirect the user to the home page
@@ -125,36 +122,39 @@ router.post('/restaurant', async (req, res) => {
 });
 
 // Add a new route for the restaurant login
-// Add a new route for the restaurant login
 router.get('/restaurantLogin', (req, res) => {
   res.render('restaurantLogin');
 });
 
 // Add a new route for the restaurant login
+// Add a new route for the restaurant login
 router.post('/restaurantLogin', async (req, res) => {
-  const { username, password } = req.body;
-  const query = 'SELECT restaurantID, password FROM Restaurant WHERE restaurant_username = ?';
+  const { email, password } = req.body;
+  const query = 'SELECT restaurantID, password FROM Restaurant WHERE email = ?';
 
   try {
     // Promisify the MySQL query function
     const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
     // Execute the SQL query with the form data
-    const result = await queryPromise(query, [username]);
+    const results = await queryPromise(query, [email]);
 
-    // Check if there's a matching user and if the password is correct
-    if (result.length > 0 && await bcrypt.compare(password, result[0].password)) {
-      // Store the restaurantID in the session
-      req.session.restaurantID = result[0].restaurantID;
-      
-      // Log the session information
-      console.log("Restaurant session info: ", req.session);
+    // Check if there's a matching restaurant and if the password is correct
+    for (let i = 0; i < results.length; i++) {
+      if (await bcrypt.compare(password, results[i].password)) {
+        // Store the restaurantID in the session
+        req.session.restaurantID = results[i].restaurantID;
+        req.session.restaurant = true;
 
-      // Redirect the user to the home page
-      res.redirect('/');
-    } else {
-      // Redirect the user to the login page with an error message
-      res.redirect('/login?error=Invalid username or password');
+        console.log('Session after successful restaurant login:', req.session); // Log the session object
+
+        // Redirect the restaurant owner to the home page
+        res.redirect('/');
+        return; // Exit the function
+      }
     }
+
+    // If no match was found, redirect the user to the login page with an error message
+    res.redirect('/login?error=Invalid email or password');
   } catch (err) {
     // Handle errors during the login process
     console.error('Error during login:', err);
@@ -163,6 +163,10 @@ router.post('/restaurantLogin', async (req, res) => {
 });
 
 
-
 module.exports = router;
-  
+
+function hashPassword(password) {
+  const salt = bcrypt.genSaltSync(10);
+  const hashedPassword = bcrypt.hashSync(password, salt);
+  return hashedPassword;
+}

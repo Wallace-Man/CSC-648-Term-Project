@@ -162,9 +162,9 @@ router.get('/checkout', (req, res) => {
 });
 
 /* GET RESTAURANT LOGIN PAGE */
-router.get('/restaurantLogin', (req, res) => {
-    res.render('restaurantLogin');
-});
+// router.get('/restaurantLogin', (req, res) => {
+//     res.render('restaurantLogin');
+// });
 
 /* GET DRIVER LOGIN PAGE */
 router.get('/driverLogin', (req, res) => {

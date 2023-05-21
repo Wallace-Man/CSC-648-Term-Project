@@ -54,33 +54,40 @@ router.post('/driver', async (req, res) => {
 });
 
 //Route to handle driver login
+//Route to handle driver login
+// Route to handle driver login
 router.post('/driverLogin', async (req, res) => {
-  const { username, password } = req.body;
-  const query = 'SELECT driverID, driver_password FROM drivers WHERE driver_username = ?';
+  const { email, password } = req.body;
+  const query = 'SELECT driverID, driver_password FROM drivers WHERE driver_email = ?';
 
   try {
     // Promisify the MySQL query function
-    const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
+    const queryPromise = util.promisify(connection.query).bind(connection);
     // Execute the SQL query with the form data
-    const result = await queryPromise(query, [username]);
+    const results = await queryPromise(query, [email]);
 
     // Check if there's a matching user and if the password is correct
-    if (result.length > 0 && await bcrypt.compare(password, result[0].driver_password)) {
-      // Store the driverID in the session
-      req.session.driverID = result[0].driverID;
+    for (let i = 0; i < results.length; i++) {
+      if (await bcrypt.compare(password, results[i].driver_password)) {
+        // Store the driverID in the session
+        req.session.driverID = results[i].driverID;
 
-      // Redirect the user to the home page
-      res.redirect('/');
-    } else {
-      // Redirect the user to the login page with an error message
-      res.redirect('/login?error=Invalid username or password');
+        // Redirect the user to the home page
+        res.redirect('/');
+        return; // Exit the function
+      }
     }
+
+    // If no match was found, redirect the user to the login page with an error message
+    res.redirect('/login?error=Invalid email or password');
   } catch (err) {
     // Handle errors during the login process
     console.error('Error during login:', err);
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
+
+
 
 // Export the router for use in other files
 module.exports = router;
