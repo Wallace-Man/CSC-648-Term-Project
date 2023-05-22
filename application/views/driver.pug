@@ -3,27 +3,27 @@ extends layouts/main-layout
 block content
     div.driver-banner
         .driver-signup-form-container
-            form.driver-signup(action="/driver", method="post")
+            form.driver-signup(action="/driver", method="post", onsubmit="return validatePassword()")
                 p(id="mandatory-field") Mandatory Field *
                 p(id="get-started") Become a Driver
                 .form-group
                     label.driver-signup(for="username") Username:
                         span.mandatory-tag *
-                    input.driver-signup(type="username", id="username", name="username", required)
+                    input.driver-signup(type="username", id="username", name="username", minlength="3", maxlength="20", required)
                 .form-group
                     label.driver-signup(for="email") Email:
                         span.mandatory-tag *
-                    input.driver-signup(type="email", id="email", name="email", required)
+                    input.driver-signup(type="email", id="email", name="email", minlength="7", maxlength="20", placeholder='example123@ex.com', required)
                 .form-group
                     label.driver-signup(for="password") Password:
                         span.mandatory-tag *
-                    input.driver-signup(type="password", id="password", name="password", required)
+                    input.driver-signup(type="password", id="password", name="password", minlength="4", maxlength="20", required)
                 .form-group
-                    label.driver-signup(for="secPassword") Confirm Password:
+                    label.driver-signup(for="password2") Confirm Password:
                         span.mandatory-tag *
-                    input.driver-signup(type="password", id="secPassword", name="secPassword", required)
+                    input.driver-signup(type="password", id="password2", name="password2", minlength="4", maxlength="20", required)
                 .form-group
                     label.driver-signup(for="phoneNum") Phone:
                         span.mandatory-tag *
-                    input.driver-signup(type="tel", id="phoneNum", name="phoneNum", required)
+                    input.driver-signup(type="tel", id="phoneNum", name="phoneNum", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', placeholder='123-456-7890', required)
                 button.signup-form-btn(type="submit") Become a Driver
