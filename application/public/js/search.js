@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // If a category is selected, fetch restaurants by cuisine type
         if (selectedCategory !== '') {
-            fetch('/getCuisineType?searchTerm=' + encodeURIComponent(selectedCategory))
+            fetch('restaurants/getCuisineType?searchTerm=' + encodeURIComponent(selectedCategory))
                 .then(function(response) {
                     return response.json();
                 })
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         // If a search term is entered, fetch restaurants by name
         else if (searchInput !== '') {
-            fetch('/getRestaurants?searchTerm=' + encodeURIComponent(searchInput))
+            fetch('restaurants/getRestaurants?searchTerm=' + encodeURIComponent(searchInput))
                 .then(function(response) {
                     return response.json();
                 })
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         // If no category or search term is specified, fetch all restaurants
         else {
-            fetch('/getAllRestaurants')
+            fetch('/restaurants/getAllRestaurants')
                 .then(function(response) {
                     return response.json();
                 })
