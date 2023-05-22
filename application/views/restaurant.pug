@@ -9,6 +9,8 @@
 extends layouts/main-layout
 
 block content
+    head 
+        title Restaurant Sign Up - Gator Bites
     div.restaurant-banner(id="top")
         .restaurant-signup-form-container
             form.restaurant-signup(id='restaurant-form' action="/restaurant", method="post")
