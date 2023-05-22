@@ -669,6 +669,11 @@ form.signup {
   opacity: 85%;
 }
 
+form.login h2{
+  text-align: center;
+  padding: 10px;
+}
+
 form.restaurant-signup{
   border: 1px solid black;
   border-radius: 5px;

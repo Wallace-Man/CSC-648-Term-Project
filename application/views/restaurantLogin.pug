@@ -3,6 +3,7 @@ extends layouts/main-layout
 block content
     .login-form-container
         form.login(action="/restaurantLogin", method="post")
+            h2 Restaurant Login
             .form-group
                 label.login(for="email") Email:
                     span.mandatory-tag *
