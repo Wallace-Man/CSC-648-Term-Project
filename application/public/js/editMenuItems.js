@@ -12,7 +12,6 @@
 // For when the window fully loads, add the event listener
 
 const restaurantID = window.restaurantID;
-
 window.addEventListener("DOMContentLoaded", async (event) => {
   const listOfItems = document.getElementById("items");
   const addItemBtn = document.getElementById("add-item-btn");
@@ -92,7 +91,11 @@ window.addEventListener("DOMContentLoaded", async (event) => {
           headers: {
             'Content-Type': 'application/json'
           },
-          
+          body: JSON.stringify({
+            itemName: item.name,
+            itemDescription: item.description,
+            itemPrice: item.price
+          })
         });
 
         const data = await response.json();
@@ -163,7 +166,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     }
 
     // Add event listeners to delete buttons
-    const deleteBtns = document.querySelectorAll('.delete-btn');
+    const deleteBtns = document.querySelectorAll('.delete-item-btn');
     deleteBtns.forEach(btn => {
       btn.addEventListener('click', event => {
         const itemElement = event.target.closest('.item');

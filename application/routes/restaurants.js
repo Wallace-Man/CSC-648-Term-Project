@@ -125,6 +125,10 @@ router.post('/restaurant', async (req, res) => {
 router.get('/restaurantLogin', (req, res) => {
   res.render('restaurantLogin');
 });
+router.get('/Restaurantlogout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/');
+});
 
 // Add a new route for the restaurant login
 // Add a new route for the restaurant login

@@ -21,14 +21,14 @@ connection.connect((err) => {
 });
 
 router.get('/menu', ensureRestaurantAuthenticated, async (req, res) => {
-  const query = 'SELECT * FROM menu';
+  const query = 'SELECT * FROM Menu';
   const restaurantID = req.session.restaurantID;
 
   try {
     const queryPromise = util.promisify(connection.query).bind(connection);
     const results = await queryPromise(query, [restaurantID]);
 
-    res.render('menu', { menu: results });
+    res.render('restaurantInfo', { menu: results });
   } catch (err) {
     console.error('Error retrieving menu:', err);
     res.status(500).send('Internal Server Error: ' + err.message);
@@ -122,5 +122,20 @@ router.get('/restaurantInfo', ensureRestaurantAuthenticated, async (req, res) =>
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
+router.get('/returnMenu', ensureRestaurantAuthenticated, async (req, res) => {
+  const restaurantID = req.query.restaurantID; // We're using query parameter to get restaurantID
+  const query = 'SELECT * FROM Menu WHERE restaurantID = ?';
+
+  try {
+    const queryPromise = util.promisify(connection.query).bind(connection);
+    const results = await queryPromise(query, [restaurantID]);
+
+    res.json({ menuItems: results });  // Sending data as JSON
+  } catch (err) {
+    console.error('Error retrieving menu:', err);
+    res.status(500).json({ error: 'Internal Server Error: ' + err.message });
+  }
+});
+
 
 module.exports = router;
