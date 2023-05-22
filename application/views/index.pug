@@ -82,7 +82,7 @@ html(lang="en")
                 option(value='vietnamese') Vietnamese
                 option(value='greek') Greek
                 option(value='french') French
-            input.search-input(id='search-input', type='text', name="searchTerm",  placeholder='Search For Restaurants', maxlength="40")
+            input.search-input(id='search-input', type='text', name="searchTerm",  placeholder='Search For Restaurants', maxlength="40", pattern="[a-zA-Z0-9\\s]{0,40}")
             button.search-btn(type='submit')
                 img(src='images/search-icon.png', alt='search', style='width: 30px; height: 30px;')
 
