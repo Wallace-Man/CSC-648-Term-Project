@@ -3,7 +3,8 @@ html(lang="en")
 
     // Include the head partial file which contains metadata for the webpage
     include ./partials/head
-
+    head 
+        title Gator Bites
     // Define the header section of the webpage with the logo, login/signup buttons, and search form
     header(style="margin-bottom: 0")
         h5 SFSU - Spring 2023 - Team 02
@@ -26,10 +27,10 @@ html(lang="en")
                                     img.profile-cart(src="/images/user.png")
                                 div(id="myDropdown" class="dropdown-content")
                                     a(href="userAccount") View Account 
-                                    a(href="") Orders 
-                                    a(href="") Favorites 
+                                    a(href="orders") Orders 
+                                    a(href="favorites") Favorites 
                                     a(href="help") Help 
-                                    a(href="") Promotions 
+                                    a(href="promotions") Promotions 
                                     a(href="notifications") Notifications 
                                     a(href="/Logout") Sign out
                     tr
@@ -41,7 +42,59 @@ html(lang="en")
                                     a(href='driver') Drivers
                                 li
                                     a(href='restaurant') Restaurants
+        else if restaurantID
+            nav
+                table
+                    tr
+                        td.logo
+                            a.logo(href='/')
+                                span.thin Gator
+                                span.bold Bites
 
+                        td.login-signup
+                            div.right-btns
+                                a.login-btn(onclick="dropMenu()", class="dropbtn")
+                                    img.profile-cart(src="/images/restaurantIcon.png")
+                                div(id="myDropdown" class="dropdown-content")
+                                    a(href="restaurantAccount") View Account
+                                    a(href="restaurantInfo") Edit Menu
+                                    a(href="help") Help
+                                    a(href="/Logout") Sign out
+                    tr
+                        td.index(colspan='2')
+                            ul
+                                li
+                                    a(href='/aboutUs') About Us
+                                li
+                                    a(href='driver') Drivers
+                                li
+                                    a(href='restaurant') Restaurants
+        else if driverID 
+            nav
+                table
+                    tr
+                        td.logo
+                            a.logo(href='/')
+                                span.thin Gator
+                                span.bold Bites
+
+                        td.login-signup
+                            div.right-btns
+                                a.login-btn(onclick="dropMenu()", class="dropbtn")
+                                    img.profile-cart(src="/images/carIcon.png")
+                                div(id="myDropdown" class="dropdown-content")
+                                    a(href="driverAccount") View Account 
+                                    a(href="help") Help 
+                                    a(href="/Logout") Sign out
+                    tr
+                        td.index(colspan='2')
+                            ul
+                                li
+                                    a(href='/aboutUs') About Us
+                                li
+                                    a(href='driver') Drivers
+                                li
+                                    a(href='restaurant') Restaurants
         else
             nav
                 table
