@@ -132,11 +132,18 @@ window.addEventListener("DOMContentLoaded", async (event) => {
           <input type="hidden" id="item-deleted" name="item-deleted" value="false">
         </div>
         <div class="item-actions">
-          <button type="button" class="delete-btn">Delete</button>
+          <button type="button" class="delete-item-btn">Delete</button>
         </div>
       `;
       newItem.innerHTML = newMarkup;
       listOfItems.appendChild(newItem);
+    });
+
+    listOfItems.addEventListener("click", function (event) {
+      if (event.target.classList.contains("delete-item-btn")) {
+        const itemElement = event.target.closest('.item');
+        itemElement.remove();
+      }
     });
   }
 
@@ -162,7 +169,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
           <input type="hidden" id="item-deleted" name="item-deleted" value="false">
         </div>
         <div class="item-actions">
-          <button type="button" class="delete-btn">Delete</button>
+          <button type="button" class="delete-item-btn">Delete</button>
         </div>
       `;
       listOfItems.appendChild(itemElement);

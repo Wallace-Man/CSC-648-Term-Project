@@ -29,9 +29,9 @@ function createCartCard(itemName, itemPrice, quantity) {
 
     // set attributes and text content
     cartCard.classList.add('cart-card');
-    cartCardImg.classList.add('cart-card-img');
-    img.setAttribute('src', 'https://via.placeholder.com/150');
-    img.setAttribute('alt', 'Fake Item Image');
+    //cartCardImg.classList.add('cart-card-img');
+    //img.setAttribute('src', 'https://via.placeholder.com/150');
+    //img.setAttribute('alt', 'Fake Item Image');
     cartCardInfo.classList.add('cart-card-info');
     title.classList.add('cart-card-title');
     title.textContent = itemName;

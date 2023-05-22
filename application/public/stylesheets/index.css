@@ -670,6 +670,11 @@ form.signup {
   opacity: 85%;
 }
 
+form.login h2{
+  text-align: center;
+  padding: 10px;
+}
+
 form.restaurant-signup{
   border: 1px solid black;
   border-radius: 5px;
@@ -1034,6 +1039,7 @@ div.maps-frame {
   justify-content: center;
   margin-top: 40px;
   margin-bottom: 80px;
+  width: 50%;
 }
 
 form.cart-form {
@@ -1094,6 +1100,10 @@ label.cart-label2 {
   height: 100%;
 }
 
+.item-details{
+  width: 100%;
+}
+
 .item{
   padding: 20px;
   border: 1px solid black;
@@ -1109,9 +1119,22 @@ label.cart-label2 {
   font-weight: bold;
 }
 
+#item-id{
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  resize: none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
 #item-name{
-  width: 50%;
-  padding: 20px;
+  width: 70%;
+  padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #000000;
   border-radius: 5px;
@@ -1123,7 +1146,7 @@ label.cart-label2 {
 }
 
 #item-category{
-  width: 50%;
+  width: 70%;
   padding: 15px;
   margin-bottom: 10px;
   border: 1px solid #000000;
@@ -1135,7 +1158,7 @@ label.cart-label2 {
 }
 
 #item-price{
-  width: 50%;
+  width: 70%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #000000;
@@ -1354,7 +1377,7 @@ label.cart-label2 {
  }
 
  #description{
-   width: 50%;
+   width: 70%;
    padding: 10px;
    margin-bottom: 10px;
    border: 1px solid #000000;
@@ -2586,4 +2609,38 @@ div#delivery-details-card select {
 .faq p{
   text-align: center;
   padding-bottom: 10px;
+}
+
+.menu-card{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 1px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.menu-card h2,
+.menu-card p.price,
+.menu-card #description{
+  border-style: none;
+  width: 100%;
+  text-align: center;
+}
+
+.menu-card p.price{
+  font-weight: bold;
+}
+
+.menu-card #add-to-cart-button{
+  color: white;
+  background-color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 10px auto;
+  text-align: center;
+  width: auto;
+  display: block;
 }
