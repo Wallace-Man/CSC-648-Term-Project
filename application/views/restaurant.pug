@@ -11,7 +11,7 @@ extends layouts/main-layout
 block content
     div.restaurant-banner(id="top")
         .restaurant-signup-form-container
-            form.restaurant-signup(id='restaurant-form' action="/restaurants/restaurant", method="post", onsubmit="return validatePassword()")
+            form.restaurant-signup(id='restaurant-form' action="/restaurant", method="post", onsubmit="return validatePassword()")
                 p(id="mandatory-field") Mandatory Field *
                 p(id="get-started") Register your Restaurant
                 .form-group

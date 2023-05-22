@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
 const util = require('util');
+const { ensureUserAuthenticated, ensureRestaurantAuthenticated } = require('./users');
 
-// Create a MySQL connection
-const dbConnection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: "34.102.56.1",
   user: "root",
   password: "Jaws0044!!!!",
@@ -12,117 +12,115 @@ const dbConnection = mysql.createConnection({
 });
 
 // Connect to the MySQL database
-dbConnection.connect((err) => {
+connection.connect((err) => {
   if (err) {
     console.error('Error connecting to the database:', err);
     return;
   }
+  console.log('Connected to the database.');
 });
 
-// Define /addMenuItem endpoint to add a new menu item for a specific restaurant
-router.post('/addMenuItem', async (req, res) => {
-  const { itemName, itemDescription, itemPrice} = req.body;
+router.get('/menu', ensureRestaurantAuthenticated, async (req, res) => {
+  const query = 'SELECT * FROM menu';
   const restaurantID = req.session.restaurantID;
 
-  if (!restaurantID) {
-    res.status(400).json({ error: 'No restaurantID found in session.' });
-    return;
-  }
-
-  const query = 'INSERT INTO Menu (restaurantID, itemName, itemDescription, itemPrice) VALUES (?,?,?,?)';
-
   try {
-    // Promisify the MySQL query function
-    const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
-    // Execute the SQL query with the form data
-    await queryPromise(query, [restaurantID, itemName, itemDescription, itemPrice]);
+    const queryPromise = util.promisify(connection.query).bind(connection);
+    const results = await queryPromise(query, [restaurantID]);
 
-    console.log('Menu item added!');
-    res.status(201).json({ message: 'Menu item added successfully.' });
+    res.render('menu', { menu: results });
   } catch (err) {
-    // Handle errors during the addition process
-    console.error('Error during menu item addition:', err);
+    console.error('Error retrieving menu:', err);
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
 
-
-// Define /menu endpoint to get all menu items for a specific restaurant
-router.get('/returnMenu', async (req, res) => {
-  const restaurantID = req.query.restaurantID;
-  console.log('restaurantID:', restaurantID);
-  const query = 'SELECT * from Menu WHERE restaurantID = ?';
-
-  try {
-    // Promisify the MySQL query function
-    const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
-    // Execute the SQL query with the form data
-    const menuItems = await queryPromise(query, [restaurantID]);
-
-    console.log('Menu items retrieved:', menuItems);
-    res.status(200).json({ menuItems });
-  }
-  catch (err) {
-    // Handle errors during the addition process
-    console.error('Error during menu item retrieval:', err);
-    res.status(500).send('Internal Server Error: ' + err.message);
-  }
+router.get('/addMenuItem', ensureRestaurantAuthenticated, (req, res) => {
+  res.render('addMenuItem');
 });
 
-//define /deleteMenuItem endpoint to delete a menu item for a specific restaurant
-router.post('/deleteMenuItem', async (req, res) => {
-  const { itemID } = req.body;
-
-  const restaurantID = req.session.restaurantID;
-  if (!restaurantID) {
-    res.status(400).json({ error: 'No restaurantID found in session.' });
-    return;
-  }
-  const query = 'DELETE FROM Menu WHERE itemID = ? AND restaurantID = ?';
-
-  try {
-    // Promisify the MySQL query function
-    const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
-    // Execute the SQL query with the form data
-    await queryPromise(query, [itemID, restaurantID]);
-
-    console.log('Menu item deleted!');
-    res.status(201).json({ message: 'Menu item deleted successfully.' });
-  } catch (err) {
-    // Handle errors during the addition process
-    console.error('Error during menu item deletion:', err);
-    res.status(500).send('Internal Server Error: ' + err.message);
-  }
-});
-
-
-// Define /updateMenuItem endpoint to update a menu item for a specific restaurant
-router.post('/updateMenuItem', async (req, res) => { 
-  const { itemID, itemName, itemPrice, itemDescription } = req.body;
+router.post('/addMenuItem', ensureRestaurantAuthenticated, async (req, res) => {
+  const { item_name, description, price, category } = req.body;
   const restaurantID = req.session.restaurantID;
 
-  if (!restaurantID) {
-    res.status(400).json({ error: 'No restaurantID found in session.' });
-    return;
-  }
-
-  const query = 'UPDATE Menu SET itemName = ?, itemPrice = ?, itemDescription = ? WHERE itemID = ? AND restaurantID = ?';
+  const query = 'INSERT INTO Menu (restaurantID, itemName, itemDescription, itemPrice) VALUES (?, ?, ?, ?)';
 
   try {
-    // Promisify the MySQL query function
-    const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
-    // Execute the SQL query with the form data
-    await queryPromise(query, [itemName, itemPrice, itemDescription, itemID, restaurantID]);
+    const queryPromise = util.promisify(connection.query).bind(connection);
+    await queryPromise(query, [restaurantID, item_name, description, price]);
 
-    console.log('Menu item updated!');
-    res.status(201).json({ message: 'Menu item updated successfully.' });
+    res.redirect('/restaurantInfo');
   } catch (err) {
-    // Handle errors during the addition process
-    console.error('Error during menu item update:', err);
+    console.error('Error adding menu item:', err);
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
 
+router.get('/editMenuItem/:id', ensureRestaurantAuthenticated, async (req, res) => {
+  const id = req.params.id;
+  const query = 'SELECT * FROM menu WHERE id = ?';
+
+  try {
+    const queryPromise = util.promisify(connection.query).bind(connection);
+    const results = await queryPromise(query, [id]);
+
+    if (results.length > 0) {
+      res.render('editMenuItem', { item: results[0] });
+    } else {
+      res.status(404).send('Menu item not found');
+    }
+  } catch (err) {
+    console.error('Error retrieving menu item:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
+
+router.post('/editMenuItem/:id', ensureRestaurantAuthenticated, async (req, res) => {
+  const id = req.params.id;
+  const { item_name, description, price, category } = req.body;
+
+  const query = 'UPDATE menu SET item_name = ?, description = ?, price = ?, category = ? WHERE id = ?';
+
+  try {
+    const queryPromise = util.promisify(connection.query).bind(connection);
+    await queryPromise(query, [item_name, description, price, category, id]);
+
+    res.redirect('/menu');
+  } catch (err) {
+    console.error('Error updating menu item:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
+
+router.post('/deleteMenuItem/:id', ensureRestaurantAuthenticated, async (req, res) => {
+  const id = req.params.id;
+
+  const query = 'DELETE FROM menu WHERE id = ?';
+
+  try {
+    const queryPromise = util.promisify(connection.query).bind(connection);
+    await queryPromise(query, [id]);
+
+    res.redirect('/menu');
+  } catch (err) {
+    console.error('Error deleting menu item:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
+
+router.get('/restaurantInfo', ensureRestaurantAuthenticated, async (req, res) => {
+  const restaurantID = req.session.restaurantID;
+  const query = 'SELECT * FROM Menu WHERE restaurantID = ?';
+
+  try {
+    const queryPromise = util.promisify(connection.query).bind(connection);
+    const results = await queryPromise(query, [restaurantID]);
+
+    res.render('restaurantInfo', { restaurantID: restaurantID, menu: results });
+  } catch (err) {
+    console.error('Error retrieving restaurant menu:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
 
 module.exports = router;
-

@@ -42,9 +42,9 @@ router.get('/learnMoreChristian', function(req, res) {
 });
 
 /* GET LOGIN PAGE */
-router.get('/login', function(req, res) {
-    res.render('login');
-});
+// router.get('/login', function(req, res) {
+//     res.render('login');
+// });
 
 /* GET SIGNUP PAGE */
 router.get('/signup', function(req, res) {
@@ -77,9 +77,9 @@ router.get('/restaurant', function(req, res) {
 });
 
 /* GET RESTAURANT INFO PAGE */
-router.get('/restaurantInfo', function(req, res) {
-    res.render('restaurantInfo');
-});
+// router.get('/restaurantInfo', function(req, res) {
+//     res.render('restaurantInfo');
+// });
 
 /* GET CONFIRMATION PAGE */
 router.get('/confirmation' , function(req, res){
@@ -102,9 +102,9 @@ router.get('/manageorder', (req, res) => {
 });
 
 /* GET RESTURANT MENU PAGE */
-router.get('/restaurantMenuPage', (req, res) => {
-    res.render('restaurantMenuPage');
-}); 
+// router.get('/restaurantMenuPage', (req, res) => {
+//     res.render('restaurantMenuPage');
+// }); 
 
 /* GET RESTURANT ACCOUNT PAGE */
 router.get('/restaurantAccount', (req, res) => {
@@ -142,9 +142,9 @@ router.get('/orders', (req, res) => {
 });
 
 /* GET FAVORITES PAGE */
-router.get('/favorites', (req, res) => {
-    res.render('favorites');
-});
+// router.get('/favorites', (req, res) => {
+//     res.render('favorites');
+// });
   
 /* GET EDIT DRIVER ACCOUNT PAGE */
 router.get('/editDriverAccount', (req, res) => {    
@@ -159,6 +159,16 @@ router.get('/promotions', (req, res) => {
 /* GET CHECKOUT PAGE */
 router.get('/checkout', (req, res) => {
     res.render('checkout');
+});
+
+/* GET RESTAURANT LOGIN PAGE */
+// router.get('/restaurantLogin', (req, res) => {
+//     res.render('restaurantLogin');
+// });
+
+/* GET DRIVER LOGIN PAGE */
+router.get('/driverLogin', (req, res) => {
+    res.render('driverLogin');
 });
 
 module.exports = router;

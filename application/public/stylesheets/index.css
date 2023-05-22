@@ -338,6 +338,7 @@ section.popular-restaurants img {
   width: 400px;
   height: 200px;
   border-radius: 5px;
+  margin-bottom: 0.1in;
 }
 
 section h2 {
@@ -635,6 +636,10 @@ div.card-grid {
   margin-top: 80px;
 }
 
+.login-form-container a {
+  margin-bottom: 5px;
+}
+
 .restaurant-signup-form-container{
   display:flex;
   justify-content: center;
@@ -676,12 +681,16 @@ form.restaurant-signup{
   overflow: auto;
 }
 
+
+
+
 .form-group {
   margin-bottom: 20px;
   text-align: center;
   max-height: fit-content;
   resize: vertical;
 }
+/**/
 
 label.driver-signup,
 label.restaurant-signup,
@@ -733,7 +742,8 @@ input.signup[type="checkbox"] {
 }
 
 input.login[type="username"],
-input.login[type="password"] {
+input.login[type="password"],
+input.login[type="email"] {
   padding: 10px;
   border: 1px solid black;
   border-radius: 5px;
@@ -907,11 +917,27 @@ h2, h3 {
 /* Set margin and padding for restaurant card */
 .popular-restaurants div {
   padding: 20px;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  /*box-shadow: 0 2px 4px rgba(0,0,0,0.2);*/
   width: 450px;
   margin: 20px;
+  display: flex;
+}
+
+.heart-icon {
+  position: absolute;
+  bottom: 15px;
+  right: 25px;
+  top: 255px;
+  color: red;
+  font-size: 18px;
+ 
+  /*
+  background-color: white;
+  border-radius: 50%;
+  padding: 8px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);*/
 }
 
 /* Set styles for restaurant image */
@@ -2102,17 +2128,41 @@ button.signup-form-btn[type="submit"] {
 .restaurant-card {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  /*
+  background-color: #ccc;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  */
+  margin-bottom: 0.5in;
   position: relative;
-  border: 2px solid #ddd;
+  /*border: 2px solid #ddd;*/
 
 }
+
+.restaurant-card .delivery-info {
+  color: black;
+  font-size: 16px;
+}
+
+.restaurant-card .delivery-fee {
+
+  font-weight: bold;
+  position: absolute;
+  bottom: 15px;
+  right: 25px;
+  top: 295px;
+  color: grey;
+  font-size: 16px;
+}
+
 .restaurant-card h3 {
   margin-top: 0;
 }
+.restaurant-card h2{
+  font-size: 24px;
+}
+
 .restaurant-card p {
   margin-bottom: 10px;
 }
@@ -2122,15 +2172,24 @@ button.signup-form-btn[type="submit"] {
   right: 10px;
   font-weight: bold;
 }
-.restaurant-card button {
-  align-self: flex-end;
-  padding: 10px 20px;
-  background-color: #000000;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
+
+
+.restaurant-card i  {
+  font-size: 16px;
+  
+
+}
+.restaurant-card .star span {
+  font-size: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+.clickable {
+
   cursor: pointer;
 }
+
+
 #restaurant-cart {
   width: 20%;
   background-color: #f5f5f5;
