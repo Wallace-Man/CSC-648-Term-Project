@@ -161,16 +161,4 @@ router.get('/checkout', (req, res) => {
     res.render('checkout');
 });
 
-/* GET DRIVER LOGIN PAGE */
-router.get('/driverLogin', (req, res) => {
-    res.render('driverLogin');
-});
-
-/* GET RESTAURANT LOGIN PAGE */
-router.get('/restaurantLogin', (req, res) => {
-    res.render('restaurantLogin');
-});
-
-
-
 module.exports = router;
