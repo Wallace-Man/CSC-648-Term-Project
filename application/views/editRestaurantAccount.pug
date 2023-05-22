@@ -1,0 +1,46 @@
+extends layouts/main-layout
+
+block content
+  head 
+    title Restaurant Account
+  br
+  br
+  br
+  p#driver-profile Restaurant Details 
+  .driverAccountFormContainer
+        form.driverAccountForm(id='restaurant-account-form', action="/restaurantAccount", method="post")
+            p#get-started Restaurant Profile
+            img(src="/images/meal.png", alt="Profile Picture")
+            label(for="driver-name-input") Restaurant Name:
+            input#driver-name-input(type="text", name="restaurantName", placeholder='Rando\'s Restaurant')
+            label.driver-id(for="idUpload") Upload Id:
+            input.driver-id(type="file", id="idUpload", name="idUpload")
+            label(for="driver-name-input") Address:
+            input#driver-address-input(type="text", name="restaurantAddress", placeholder='123 Fake St.')
+            label(for="driver-name-input") City:
+            input#driver-address-input(type="text", name="restaurantCity", placeholder='Daly City')
+            label(for="driver-name-input") State:
+            input#driver-address-input(type="text", name="restaurantState", placeholder='CA')
+            label(for="driver-name-input") Country:
+            input#driver-address-input(type="text", name="restaurantCountry", placeholder='United States')
+            label(for="driver-name-input") Zip:
+            input#driver-address-input(type="text", name="restaurantZip", placeholder='94123')
+            label(for="driver-phone-input") Phone Number:
+            input#driver-phone-input(type="tel", name="restaurantPhone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', placeholder='513-858-1394' )
+            label(for="driver-vehicle-input") Email:
+            input#driver-vehicle-input(type="text", placeholder="example123@ex.com", name="email" )
+            label(for="driver-website-input") Website:
+            input#driver-address-input(type="text", name="restaurantWebsite", placeholder='https://example.com')
+            label(for="driver-hours-input") Hours:
+            input#driver-address-input(type="time", name="restaurantHours", placeholder='Time')
+            label(for="driver-delivery-input") Delivery Time:
+            input#driver-address-input(type="text", name="restaurantDelivery", placeholder='20 Minutes')
+            label(for="driver-cuisine-input") Cuisine:
+            input#driver-address-input(type="text", name="restaurantWebsite", placeholder='Italian')
+            label(for="driver-location-input") Change Password:
+            input#driver-location-input(type="password", name="driverLocation", minlength="4", maxlength="20", required)
+            label(for="driver-location-input") Confirm Password:
+            input#driver-location-input(type="password", name="driverLocation", minlength="4", maxlength="20", required)
+            label(for="additional-info")  Bio (Optional):
+            textarea#additional-info(type="textarea", name="additionalInfo", placeholder="I am a restaurant near SF State!")
+            button#save-driver-button(type="submit") Save Changes

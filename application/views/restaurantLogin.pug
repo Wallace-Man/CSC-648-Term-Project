@@ -6,11 +6,11 @@ block content
             .form-group
                 label.login(for="email") Email:
                     span.mandatory-tag *
-                input.login(type="email", id="email", name="email", required)
+                input.login(type="email", id="email", name="email", minlength="7", maxlength="20", placeholder='example123@ex.com', required)
             .form-group
                 label.login(for="password") Password:
                     span.mandatory-tag *
-                input.login(type="password", id="password", name="password", required)
+                input.login(type="password", id="password", name="password", minlength="4", maxlength="20", required)
                 br
             br
             button.login-form-btn(type="submit") Login
