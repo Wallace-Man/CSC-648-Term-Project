@@ -1,0 +1,22 @@
+extends layouts/main-layout
+
+block content
+    .login-form-container
+        form.login(action="/driverLogin", method="post")
+            .form-group
+                label.login(for="email") Email:
+                    span.mandatory-tag *
+                input.login(type="email", id="email", name="email", required)
+            .form-group
+                label.login(for="password") Password:
+                    span.mandatory-tag *
+                input.login(type="password", id="password", name="password", required)
+                br
+            br
+            button.login-form-btn(type="submit") Login
+            br
+            br
+
+            a.forgot-password(href="/restaurantLogin") Log in for restaurant owner
+            a.forgot-password(href="/login") Log in for user
+            a.forgot-password(href="#") Forgot password?

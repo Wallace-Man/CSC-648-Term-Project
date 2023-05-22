@@ -1,10 +1,7 @@
-doctype html
-html
-  include partials/head
-  body
-    header
-      if user
-        a(href="/logout") Log Out
-      else
-        a(href="/login") Log In
-    block content
+if user
+  console.log('User object:', user)
+  console.log('Welcome message:', 'Welcome, ' + user.username + '!')
+  p Welcome, #{user.username}!
+else
+  console.log('User object not defined')
+  p Please log in
