@@ -219,11 +219,11 @@ async function handleFormSubmit(event) {
 
         console.log("Created markers:", markers);
 
-        // const bounds = new google.maps.LatLngBounds();
-        // markers.forEach(function (marker) {
-        //     bounds.extend(marker.getPosition());
-        // });
-        // map.fitBounds(bounds);
+        const bounds = new google.maps.LatLngBounds();
+        markers.forEach(function (marker) {
+            bounds.extend(marker.getPosition());
+        });
+        map.fitBounds(bounds);
     } catch (error) {
         console.error(`Error fetching and processing restaurant data: ${error.message}`);
     }
