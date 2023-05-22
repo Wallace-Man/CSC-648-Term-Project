@@ -1,6 +1,8 @@
 extends layouts/main-layout
 
 block content
+    head
+        title Driver Signup - Gator Bites
     div.driver-banner
         .driver-signup-form-container
             form.driver-signup(action="/driver", method="post")
@@ -27,3 +29,6 @@ block content
                         span.mandatory-tag *
                     input.driver-signup(type="tel", id="phoneNum", name="phoneNum", required)
                 button.signup-form-btn(type="submit") Become a Driver
+                hr
+                a.forgot-password(href="/driverLogin") Already a driver? Log in here
+
