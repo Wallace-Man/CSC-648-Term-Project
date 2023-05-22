@@ -1,6 +1,8 @@
 extends layouts/main-layout
 
 block content
+    head
+        title Signup - Gator Bites
     .signup-form-container
         form.signup(action="/signup", method="post", onsubmit="return validatePassword()")
             .form-group

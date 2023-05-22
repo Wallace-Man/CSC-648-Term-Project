@@ -33,9 +33,12 @@ header
                                     img.search(src='images/search-icon.png', alt='search',)
                     td.login-signup
                         div.right-btns
-                            a.login-btn(href='')
+                            a.login-btn(onclick="dropMenu()", class="dropbtn")
                                 img.profile-cart(src="/images/carIcon.png") 
-                                
+                            div(id="myDropdown" class="dropdown-content")
+                                a(href="driverAccount") View Account 
+                                a(href="help") Help 
+                                a(href="/Logout") Sign out
                 tr 
                     td.nav(colspan='2')
                         ul

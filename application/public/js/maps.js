@@ -41,43 +41,32 @@ let userLocation; // Object to store the user's location coordinates
  */
 function initMap() {
     // Create a new InfoWindow object to display information when a marker is clicked
-    infoWindow = new google.maps.InfoWindow();
+     infoWindow = new google.maps.InfoWindow();
 
-    // If the user's location can be obtained, initialize the map and location services
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            // Store the user's location coordinates in a LatLng object
-            userLocation = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
+    // Store the predefined location coordinates in a LatLng object
+     userLocation = {
+        lat: 37.7261723,
+        lng: -122.4799151,
+    };
 
-            // Create a new Google Maps object centered on the user's location
-            map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 14,
-                center: userLocation
-            });
+    // Create a new Google Maps object centered on the predefined location
+     map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: userLocation
+    });
 
-            // Create a new PlacesService object to interact with the Google Places API
-            service = new google.maps.places.PlacesService(map);
+    // Create a new PlacesService object to interact with the Google Places API
+     service = new google.maps.places.PlacesService(map);
 
-            // // Initialize the Autocomplete feature to provide place suggestions as the user types
-            // const input = document.getElementById("search-input");
-            // autocomplete = new google.maps.places.Autocomplete(input);
-            // autocomplete.bindTo("bounds", map);
-            //
-            // // Add a listener for when the user selects a place from the Autocomplete dropdown
-            // autocomplete.addListener("place_changed", onPlaceChanged);
+    // Initialize the Autocomplete feature to provide place suggestions as the user types
+    // var input = document.getElementById("search-input");
+    // var autocomplete = new google.maps.places.Autocomplete(input);
+    // autocomplete.bindTo("bounds", map);
 
-        }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-        });
-    }
-    // If the user's location cannot be obtained, display an error message
-    else {
-        handleLocationError(false, infoWindow, map.getCenter());
-    }
+    // Add a listener for when the user selects a place from the Autocomplete dropdown
+    // autocomplete.addListener("place_changed", onPlaceChanged);
 }
+
 
 /**
  * Called when the user selects a place from the autocomplete dropdown or presses the Enter key.
@@ -209,6 +198,7 @@ async function handleFormSubmit(event) {
                         address: searchLocation,
                         lat: location.lat,
                         lng: location.lng,
+                        
                     };
                 } catch (error) {
                     console.error(`Error geocoding address for ${restaurant.restaurant_Name}: ${error.message}`);
@@ -392,23 +382,27 @@ async function geocodeAddress(geocoder, address) {
 }
 
 async function geocodeRestaurants(address) {
-    const API_KEY = "AIzaSyCqqeOdsPM-latuhbnfIieM8IAMJzGtfG4";
+    const API_KEY = "AIzaSyCfV1bTVxwdTvH-rfqAARNj-d79geM8ShM";
     const baseUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${API_KEY}`;
 
-    const response = await fetch(baseUrl);
-    if (!response.ok) {
-        throw new Error(`Failed to geocode address: ${address}`);
-    }
+    try {
+        const response = await fetch(baseUrl);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
-    const data = await response.json();
-    if (data.status !== "OK") {
-        throw new Error(`Geocoding error: ${data.status}`);
-    }
+        const data = await response.json();
+        if (data.status !== "OK") {
+            throw new Error(`Geocoding API error! status: ${data.status}`);
+        }
 
-    const location = data.results[0].geometry.location;
-    return { lat: location.lat, lng: location.lng };
+        const location = data.results[0].geometry.location;
+        return { lat: location.lat, lng: location.lng };
+    } catch (error) {
+        console.error(`Error geocoding address ${address}: ${error.message}`);
+        return null;
+    }
 }
-
 
 
 

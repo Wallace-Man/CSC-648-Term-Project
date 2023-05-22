@@ -115,6 +115,7 @@ router.get('/favorites', ensureUserAuthenticated, async (req, res) => {
 
 
 
+
 router.post('/favorites', ensureUserAuthenticated, async (req, res) => {
   const user_id = req.session.user.user_id;
   const { restaurant_id } = req.body;
