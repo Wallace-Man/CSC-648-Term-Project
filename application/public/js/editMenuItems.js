@@ -26,19 +26,15 @@ window.addEventListener("DOMContentLoaded", async (event) => {
     const items = document.querySelectorAll('.item');
 
     items.forEach(item => {
-      const itemId = item.querySelector('#item-id').value;
       const name = item.querySelector('#item-name').value;
       const price = item.querySelector('#item-price').value;
-      const category = item.querySelector('#item-category').value;
       const description = item.querySelector('#description').value;
       const deleted = item.querySelector('#item-deleted').value === 'true';
 
-      const menuItem = { itemId, name, price, category, description };
+      const menuItem = { name, price, description };
 
       if (deleted) {
         deletedItems.push(menuItem);
-      } else if (itemId === null) {
-        newItems.push(menuItem);
       } else {
         updatedItems.push(menuItem);
       }
@@ -75,7 +71,6 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            itemID: item.itemId,
             itemName: item.name,
             itemDescription: item.description,
             itemPrice: item.price
@@ -97,9 +92,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({
-            itemID: item.itemId,
-          })
+          
         });
 
         const data = await response.json();
@@ -119,15 +112,11 @@ window.addEventListener("DOMContentLoaded", async (event) => {
       newItem.classList.add("item");
       const newMarkup = `
         <div class="item-details">
-          <label for="item-id">ID</label>
-          <input type="number" id="item-id" name="item-id" placeholder="Item ID" readonly>
           <label for="item-name">Name</label>
           <input type="text" id="item-name" name="item-name" placeholder="Item Name" required>
           <label for="item-price">Price</label>
           <input type="number" id="item-price" name="item-price" placeholder="Item Price" required>
-          <label for="item-category">Category</label>
-          <input type="text" id="item-category" name="item-category" placeholder="Item Category" required>
-          <label for="description">Description</label>
+          <label for="item-category">Description</label>
           <input type="text" id="description" name="description" placeholder="Item Description" required>
           <input type="hidden" id="item-deleted" name="item-deleted" value="false">
         </div>
@@ -158,8 +147,6 @@ window.addEventListener("DOMContentLoaded", async (event) => {
       itemElement.classList.add("item");
       itemElement.innerHTML = `
         <div class="item-details">
-          <label for="item-id">ID</label>
-          <input type="number" id="item-id" name="item-id" value="${menuItem.itemID}" placeholder="Item ID" readonly>
           <label for="item-name">Name</label>
           <input type="text" id="item-name" name="item-name" value="${menuItem.itemName}" placeholder="Item Name" required>
           <label for="item-price">Price</label>
