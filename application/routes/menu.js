@@ -40,10 +40,10 @@ router.get('/addMenuItem', ensureRestaurantAuthenticated, (req, res) => {
 });
 
 router.post('/addMenuItem', ensureRestaurantAuthenticated, async (req, res) => {
-  const { item_name, description, price, category } = req.body;
+  const { item_name, description, price } = req.body;
   const restaurantID = req.session.restaurantID;
 
-  const query = 'INSERT INTO Menu (restaurantID, itemName, itemDescription, itemPrice) VALUES (?, ?, ?, ?)';
+  const query = 'INSERT INTO Menu (itemName, itemDescription, itemPrice) VALUES (?, ?, ?, ?)';
 
   try {
     const queryPromise = util.promisify(connection.query).bind(connection);
