@@ -107,9 +107,9 @@ router.get('/manageorder', (req, res) => {
 // }); 
 
 /* GET RESTURANT ACCOUNT PAGE */
-router.get('/restaurantAccount', (req, res) => {
-    res.render('restaurantAccount');
-}); 
+// router.get('/restaurantAccount', (req, res) => {
+//     res.render('restaurantAccount');
+// }); 
 
 /* GET DRIVER ACCOUNT PAGE */
 router.get('/driverAccount', (req, res) => {
