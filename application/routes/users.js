@@ -175,6 +175,55 @@ router.get('/restaurantMenuPage/:id', async (req, res) => {
 
 
 
+router.get('/editUser', ensureUserAuthenticated, async (req, res) => {
+  const userId = req.session.user.user_id;
+  const query = 'SELECT * FROM user WHERE user_id = ?';
+
+  try {
+    const queryPromise = util.promisify(connection.query).bind(connection);
+    const user = await queryPromise(query, [userId]);
+
+    // Render the edit user information page and pass the user data
+    res.render('editUser', { user });
+  } catch (err) {
+    console.error('Error fetching user data:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
+
+router.post('/editUser', ensureUserAuthenticated, async (req, res) => {
+  const userId = req.session.user.user_id;
+  const { fullname, email, phone, password, confirmPassword } = req.body;
+
+  // Validate input data
+  if (password !== confirmPassword) {
+    res.render('editUser', { user: { full_name: fullname, email, phone }, error: 'Passwords do not match' });
+    return;
+  }
+
+  try {
+    // Check if password is provided
+    if (!password) {
+      throw new Error('Password is required');
+    }
+
+    // Hash the password before updating the database
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Update the user information in the database
+    const query = 'UPDATE user SET full_name = ?, email = ?, phone = ?, password = ? WHERE user_id = ?';
+    const queryPromise = util.promisify(connection.query).bind(connection);
+    await queryPromise(query, [fullname, email, phone, hashedPassword, userId]);
+
+    res.redirect('/'); // Redirect to home page or any other desired page after successful update
+  } catch (err) {
+    console.error('Error updating user information:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
+
+
+
 
 module.exports = {
   router,

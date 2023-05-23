@@ -19,13 +19,13 @@ block content
             p#get-started Your Profile
             img(src="/images/user.png", alt="Profile Picture")
             label(for="driver-name-input") Your Name:
-            input#driver-name-input(type="text", name="userName", readonly value='John Doe')
+            input#driver-name-input(type="text", name="userName", value=user.username)
             label.driver-id(for="idUpload") Upload Id:
             input.driver-id(type="file", id="idUpload", name="idUpload")
             label(for="driver-phone-input") Phone Number:
-            input#driver-phone-input(type="tel", name="userPhone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', readonly value='513-858-1394' )
+            input#driver-phone-input(type="tel", name="userPhone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', value=user.phone )
             label(for="driver-vehicle-input") Email:
-            input#driver-vehicle-input(type="text", readonly value="you@sfsu.edu", name="email" )
+            input#driver-vehicle-input(type="text", value=user.email, name="email")
             label(for="additional-info")  Bio (Optional):
             textarea#additional-info(type="textarea", name="additionalInfo" readonly placeholder="I am a student at SF State!")
             button#save-driver-button(type="submit") Edit Info
