@@ -8,37 +8,37 @@ block content
   br
   p#driver-profile Restaurant Details 
   .driverAccountFormContainer
-    form.restaurant-signup(id='restaurant-form', action="/restaurantAccount", method="post")
+    form.restaurant-signup(id='restaurant-form', action="/RestaurantAccount", method="post")
       p#get-started Restaurant Profile
       img(src="/images/meal.png", alt="Profile Picture")
       label(for="driver-name-input") Restaurant Name:
-      input#driver-name-input(type="text", name="restaurant_Name", value='Rando\'s Restaurant')
+      input#driver-name-input(type="text", name="restaurant_Name" ')
       label.driver-id(for="idUpload") Upload Id:
       input.driver-id(type="file", id="image_url", name="image_url")
       label(for="driver-name-input") Address:
-      input#driver-name-input(type="text", name="address_", value='123 Fake St.')
+      input#driver-name-input(type="text", name="address_")
       label(for="driver-name-input") City:
-      input#driver-name-input(type="text", name="city", value='Daly City')
+      input#driver-name-input(type="text", name="city")
       label(for="driver-name-input") State:
       input#driver-name-input(type="text", name="state", value='CA')
       label(for="driver-name-input") Country:
       input#driver-name-input(type="text", name="country", value='United States')
       label(for="driver-name-input") Zip:
-      input#driver-name-input(type="text", name="zip_code", value='94123')
+      input#driver-name-input(type="text", name="zip_code")
       label(for="driver-phone-input") Phone Number:
-      input#driver-phone-input(type="tel", name="phone", value='513-858-1394' )
+      input#driver-phone-input(type="tel", name="phone" )
       label(for="driver-vehicle-input") Email:
-      input#driver-vehicle-input(type="text", value="example123@ex.com", name="email" )
+      input#driver-vehicle-input(type="text", name = "email" )
       label(for="driver-website-input") Website:
-      input#driver-name-input(type="text", name="website", value='https://example.com')
+      input#driver-name-input(type="text", name="website")
       label(for="driver-hours-input") Hours:
-      input#driver-name-input(type="time", name="open_", value='Time')
+      input#driver-name-input(type="time", name="open_")
       label(for="driver-delivery-input") Delivery Time:
-      input#driver-name-input(type="text", name="delivery_time", value='20 Minutes')
+      input#driver-name-input(type="text", name="delivery_time")
       label(for="driver-cuisine-input") Cuisine:
-      input#driver-name-input(type="text", name="cuisine_type", value='Italian')
+      input#driver-name-input(type="text", name="cuisine_type")
       label(for="driver-price-input") Price Range (1-5):
-      input#driver-price-input(type="number", name="store-price", min="1", max="5", value="3")
+      input#driver-price-input(type="number", name="store-price (1-5)")
       label(for="additional-info")  Bio (Optional):
       textarea#additional-info(type="textarea", name="bio"  placeholder="I am a restaurant near SF State!")
       button#save-driver-button(type="submit") Edit Info

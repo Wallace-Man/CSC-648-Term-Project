@@ -157,12 +157,31 @@ router.get('/returnMenu', ensureRestaurantAuthenticated, async (req, res) => {
 //     res.status(500).json({ error: 'Internal Server Error: ' + err.message });
 //   }
 // });
+router.post('/editRestaurantAccount', ensureRestaurantAuthenticated, (req, res) => {
+  const restaurantID = req.session.restaurantID;
 
-router.post('/restaurantAccount', ensureRestaurantAuthenticated, (req, res) => {
-  let restaurantID = req.session.restaurantID;
-  
-  console.log("Inside Post: RestaurantID =", restaurantID);
+  console.log("Inside POST: RestaurantID =", restaurantID);
   console.log(req.body); // log the request body
+
+  const {
+    restaurant_Name,
+    imageURL,
+    address_,
+    city,
+    state_,
+    zip_code,
+    country,
+    open_,
+    closed,
+    cuisine_type,
+    website,
+    delivery_time,
+    price_range,
+    restaurant_username,
+    email,
+    phone,
+    bio
+  } = req.body;
 
   connection.query('SELECT * FROM Restaurant WHERE restaurantID = ?', [restaurantID], function (error, results, fields) {
     if (error) {
@@ -178,48 +197,47 @@ router.post('/restaurantAccount', ensureRestaurantAuthenticated, (req, res) => {
     const currentDetails = results[0];
     console.log(currentDetails); // log the current details
 
-    let restaurant_Name = req.body['restaurant_Name'] || currentDetails.restaurant_Name;
-    let website = req.body['website'] || currentDetails.website;
-    let address_ = req.body['address_'] || currentDetails.address_;
-    let city = req.body['city'] || currentDetails.city;
-    let state_ = req.body['state'] || currentDetails.state_;
-    let zip_code = req.body['zip_code'] || currentDetails.zip_code;
-    let country = req.body['country'] || currentDetails.country;
-    let open_ = req.body['open_'] || currentDetails.open_;
-    let closed = req.body['closed'] || currentDetails.closed;
-    let cuisine_type = req.body['cuisine_type'] || currentDetails.cuisine_type;
-    let image_url = req.body['image_url'] || currentDetails.image_url;
-    let delivery_time = req.body['delivery_time'] || currentDetails.delivery_time;
-    let price_range = parseInt(req.body['price_range']) || currentDetails.price_range;
-    let restaurant_username = req.body['restaurant_username'] || currentDetails.restaurant_username;
-    let email = req.body['email'] || currentDetails.email;
-    let phone = req.body['phone'] || currentDetails.phone;
-    let bio = req.body['bio'] || currentDetails.bio;
+    const updatedRestaurant = {
+      restaurant_Name: restaurant_Name || currentDetails.restaurant_Name,
+      website: website || currentDetails.website,
+      address_: address_ || currentDetails.address_,
+      city: city || currentDetails.city,
+      state_: state_ || currentDetails.state_,
+      zip_code: zip_code || currentDetails.zip_code,
+      country: country || currentDetails.country,
+      open_: open_ || currentDetails.open_,
+      closed: closed || currentDetails.closed,
+      cuisine_type: cuisine_type || currentDetails.cuisine_type,
+      image_url: imageURL || currentDetails.image_url,
+      delivery_time: delivery_time || currentDetails.delivery_time,
+      price_range: price_range || currentDetails.price_range,
+      restaurant_username: restaurant_username || currentDetails.restaurant_username,
+      email: email || currentDetails.email,
+      phone: phone || currentDetails.phone,
+      bio: bio || currentDetails.bio
+    };
 
-    console.log(city + address_ + state_);
+    console.log(updatedRestaurant);
 
-    const sqlQuery = `UPDATE Restaurant SET restaurant_Name = ?, website = ?, address_ = ?, city = ?, state_ = ?, zip_code = ?, country = ?, open_ = ?, closed = ?, cuisine_type = ?, image_url = ?, delivery_time = ?, price_range = ?, restaurant_username = ?, email = ?, phone = ?, bio = ? WHERE restaurantID = ?`;
+    const sqlQuery = `UPDATE Restaurant SET ? WHERE restaurantID = ?`;
 
     console.log(sqlQuery); // log the SQL query
 
-    connection.query(sqlQuery, 
-      [restaurant_Name, website, address_, city, state_, zip_code, country, open_, closed, cuisine_type, image_url, delivery_time, price_range, restaurant_username, email, phone, bio, restaurantID], 
-      (err, result) => {
-        if (err) {
-          console.log("Error updating details:", err);
-          res.status(500).send("Error updating details");
-        } else {
-          console.log(result); // log the result of the SQL query
-          res.redirect('/');
-        }
+    connection.query(sqlQuery, [updatedRestaurant, restaurantID], (err, result) => {
+      if (err) {
+        console.log("Error updating details:", err);
+        res.status(500).send("Error updating details");
+      } else {
+        console.log(result); // log the result of the SQL query
+        res.redirect('/');
       }
-    );
+    });
   });
 });
 
 
 
-router.get('/restaurantAccount/:restaurantID', async (req, res) => {
+router.get('/editRestaurantAccount/:restaurantID', async (req, res) => {
   const restaurantID = req.params.restaurantID;
   console.log(restaurantID);
   if (!restaurantID) {
@@ -243,7 +261,7 @@ router.get('/restaurantAccount/:restaurantID', async (req, res) => {
     }
 
     // Render the Pug file with the current details
-    res.render('restaurantAccount', { currentDetails });
+    res.render('editRestaurantAccount', { currentDetails });
 });
 
 module.exports = router;
