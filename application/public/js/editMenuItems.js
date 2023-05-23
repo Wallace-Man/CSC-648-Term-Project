@@ -20,29 +20,21 @@ window.addEventListener("DOMContentLoaded", async (event) => {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const newItems = [];
-    const updatedItems = [];
-    const deletedItems = [];
     const items = document.querySelectorAll('.item');
 
     items.forEach(item => {
       const name = item.querySelector('#item-name').value;
       const price = item.querySelector('#item-price').value;
       const description = item.querySelector('#description').value;
-      const deleted = item.querySelector('#item-deleted').value === 'true';
 
       const menuItem = { name, price, description };
-
-      if (deleted) {
-        deletedItems.push(menuItem);
-      } else {
-        updatedItems.push(menuItem);
-      }
+      newItems.push(menuItem);
     });
 
     // Post new items
     for (const item of newItems) {
       try {
-        const response = await fetch('/addMenuItem', {
+        const response = await fetch(`/addMenuItem/${restaurantID}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -53,7 +45,11 @@ window.addEventListener("DOMContentLoaded", async (event) => {
             itemPrice: item.price
           })
         });
-
+    
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+    
         const data = await response.json();
         console.log(data.message);
       } catch (error) {
@@ -61,51 +57,8 @@ window.addEventListener("DOMContentLoaded", async (event) => {
       }
     }
 
-    // Post updated items
-    for (const item of updatedItems) {
-      try {
-        const response = await fetch('/updateMenuItem', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            itemName: item.name,
-            itemDescription: item.description,
-            itemPrice: item.price
-          })
-        });
-
-        const data = await response.json();
-        console.log(data.message);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    }
-
-    // Post deleted items
-    for (const item of deletedItems) {
-      try {
-        const response = await fetch('/deleteMenuItem', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            itemName: item.name,
-            itemDescription: item.description,
-            itemPrice: item.price
-          })
-        });
-
-        const data = await response.json();
-        console.log(data.message);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    }
-
-    form.submit();
+    // You may want to reload the page here to refresh the form and item list
+    window.location.reload();
   });
 
   if (addItemBtn) {
@@ -143,37 +96,27 @@ window.addEventListener("DOMContentLoaded", async (event) => {
   try {
     const response = await fetch(`/returnMenu?restaurantID=${restaurantID}`);
     const data = await response.json();
-
-    // Populate menu items from database
-    for (const menuItem of data.menuItems) {
-      const itemElement = document.createElement('div');
-      itemElement.classList.add("item");
-      itemElement.innerHTML = `
+    const menuItems = data.data;
+    menuItems.forEach(item => {
+      // Create a new item element and add it to the list
+      const newItem = document.createElement('div');
+      newItem.classList.add("item");
+      const newMarkup = `
         <div class="item-details">
           <label for="item-name">Name</label>
-          <input type="text" id="item-name" name="item-name" value="${menuItem.itemName}" placeholder="Item Name" required>
+          <input type="text" id="item-name" name="item-name" placeholder="Item Name" value="${item.name}" required>
           <label for="item-price">Price</label>
-          <input type="number" id="item-price" name="item-price" value="${menuItem.itemPrice}" placeholder="Item Price" required>
-          <label for="item-description">Description</label>
-          <input type="text" id="item-description" name="item-description" value="${menuItem.itemDescription}" placeholder="Item Description" required>
+          <input type="number" id="item-price" name="item-price" placeholder="Item Price" value="${item.price}" required>
+          <label for="item-category">Description</label>
+          <input type="text" id="description" name="description" placeholder="Item Description" value="${item.description}" required>
           <input type="hidden" id="item-deleted" name="item-deleted" value="false">
         </div>
         <div class="item-actions">
           <button type="button" class="delete-item-btn">Delete</button>
         </div>
       `;
-      listOfItems.appendChild(itemElement);
-    }
-
-    // Add event listeners to delete buttons
-    const deleteBtns = document.querySelectorAll('.delete-item-btn');
-    deleteBtns.forEach(btn => {
-      btn.addEventListener('click', event => {
-        const itemElement = event.target.closest('.item');
-        const deletedInput = itemElement.querySelector('#item-deleted');
-        deletedInput.value = 'true';
-        itemElement.style.display = 'none';
-      });
+      newItem.innerHTML = newMarkup;
+      listOfItems.appendChild(newItem);
     });
   } catch (error) {
     console.error('Error:', error);

@@ -171,4 +171,9 @@ router.get('/driverLogin', (req, res) => {
     res.render('driverLogin');
 });
 
+/* GET EDIT RESTURANT ACCOUNT PAGE */
+router.get('/editRestaurantAccount', (req, res) => {
+    res.render('editRestaurantAccount');
+}); 
+
 module.exports = router;

@@ -13,17 +13,17 @@ block content
         title Restaurant Sign Up - Gator Bites
     div.restaurant-banner(id="top")
         .restaurant-signup-form-container
-            form.restaurant-signup(id='restaurant-form' action="/restaurant", method="post")
+            form.restaurant-signup(id='restaurant-form' action="/restaurant", method="post", onsubmit="return validatePassword()")
                 p(id="mandatory-field") Mandatory Field *
                 p(id="get-started") Register your Restaurant
                 .form-group
                     label.restaurant-signup(for="restaurant-address") Restaurant Address:
                         span.mandatory-tag *
-                    input.restaurant-signup(type="restaurant-address", id="restaurant-address", name="address", required)
+                    input.restaurant-signup(type="restaurant-address", id="restaurant-address", name="address", minlength="5", maxlength="40", required)
                 .form-group
                     label.restaurant-signup(for="city") City:
                         span.mandatory-tag *
-                    input.restaurant-signup(type="city", id="city", name="city", required)
+                    input.restaurant-signup(type="city", id="city", name="city", minlength="3", maxlength="30", required)
                 .form-group
                     label.restaurant-signup(for="state") State:
                         span.mandatory-tag *
@@ -83,19 +83,19 @@ block content
                 .form-group
                     label.restaurant-signup(for="country") Country:
                         span.mandatory-tag *
-                    input.restaurant-signup(type="country", id="country", name="country", required)
+                    input.restaurant-signup(type="country", id="country", name="country", minlength="3", maxlength="30", required)
                 .form-group
                     label.restaurant-signup(for="zipcode") Zip Code:
                         span.mandatory-tag *
-                    input.restaurant-signup(type="number", id="zipcode", name="zip", min=00501, max=99950, required)
+                    input.restaurant-signup(type="text", id="zipcode", name="zip", pattern="[0-9]{5}", oninvalid="setCustomValidity('Must be a valid zip')", oninput="setCustomValidity('')", required)
                 .form-group
                     label.restaurant-signup(for="restaurant-name") Restaurant Name:
                         span.mandatory-tag *
-                    input.restaurant-signup(type="restaurant-name", id="restaurant-name", name="name", required)
+                    input.restaurant-signup(type="restaurant-name", id="restaurant-name", name="name", minlength="3", maxlength="40", required)
                 .form-group
                     label.restaurant-signup(for="username") Username:
                         span.mandatory-tag *
-                    input.restaurant-signup(type="username", id="username", name="username", required)
+                    input.restaurant-signup(type="username", id="username", name="username", minlength="3", maxlength="20", required)
                 .form-group
                     label.restaurant-signup(for="email") Email:
                         span.mandatory-tag *
@@ -103,14 +103,18 @@ block content
                 .form-group
                     label.restaurant-signup(for="password") Password:
                         span.mandatory-tag *
-                    input.restaurant-signup(type="password", id="password", name="password", required)
+                    input.restaurant-signup(type="password", id="password", name="password", minlength="4", maxlength="20", required)
+                .form-group
+                    label.restaurant-signup(for="password2") Confirm Password:
+                        span.mandatory-tag *
+                    input.restaurant-signup(type="password", id="password2", name="password2", minlength="4", maxlength="20", required)
                 .form-group
                     label.restaurant-signup(for="phone") Phone:
                         span.mandatory-tag *
                     input.restaurant-signup(type="tel", id="phone", name="phone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', placeholder='123-456-7890', required)
                 .form-group
                     label.restaurant-signup(for="website") Website:
-                    input.restaurant-signup(type="url", id="website", name="website", placeholder='https://example.com')
+                    input.restaurant-signup(type="url", id="website", name="website", placeholder='https://example.com', maxlength="40")
                 .form-group
                     label.restaurant-signup(for="hours") Operating Hours:
                         span.mandatory-tag *

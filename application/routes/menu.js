@@ -39,15 +39,18 @@ router.get('/addMenuItem', ensureRestaurantAuthenticated, (req, res) => {
   res.render('addMenuItem');
 });
 
-router.post('/addMenuItem', ensureRestaurantAuthenticated, async (req, res) => {
-  const { item_name, description, price } = req.body;
-  const restaurantID = req.session.restaurantID;
+router.post('/addMenuItem/:restaurantID', ensureRestaurantAuthenticated, async (req, res) => {
+  const { itemName, itemDescription, itemPrice } = req.body;
+  const { restaurantID } = req.params;
 
-  const query = 'INSERT INTO Menu (itemName, itemDescription, itemPrice) VALUES (?, ?, ?, ?)';
+  console.log('Request body:', req.body); // Log the body to see if the data is received correctly
+  console.log('Restaurant ID:', restaurantID); // Log the restaurantID to see if it is received correctly
+
+  const query = 'INSERT INTO Menu (restaurantID, itemName, itemDescription, itemPrice) VALUES (?, ?, ?, ?)';
 
   try {
     const queryPromise = util.promisify(connection.query).bind(connection);
-    await queryPromise(query, [restaurantID, item_name, description, price]);
+    await queryPromise(query, [restaurantID, itemName, itemDescription, itemPrice]);
 
     res.redirect('/restaurantInfo');
   } catch (err) {
@@ -55,6 +58,8 @@ router.post('/addMenuItem', ensureRestaurantAuthenticated, async (req, res) => {
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
+
+
 
 router.get('/editMenuItem/:id', ensureRestaurantAuthenticated, async (req, res) => {
   const id = req.params.id;
