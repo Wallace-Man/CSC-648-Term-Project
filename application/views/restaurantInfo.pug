@@ -14,4 +14,8 @@ block content
             
           button.add-item-btn(type="button", id="add-item-btn") Add Item
         button.signup-form-btn(type="submit", id="confirm-menu") Confirm
+  // Add a script tag to expose restaurantID to client-side JavaScript
+  script.
+    window.restaurantID = "#{restaurantID}";
+  // Include your script after setting window.restaurantID
   script(src="/js/editMenuItems.js", charset="utf-8", type="text/javascript")
