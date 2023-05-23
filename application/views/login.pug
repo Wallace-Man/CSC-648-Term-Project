@@ -8,11 +8,11 @@ block content
             .form-group
                 label.login(for="username") Username:
                     span.mandatory-tag *
-                input.login(type="username", id="username", name="username", required)
+                input.login(type="username", id="username", name="username", minlength="3", maxlength="20", required)
             .form-group
                 label.login(for="password") Password:
                     span.mandatory-tag *
-                input.login(type="password", id="password", name="password", required)
+                input.login(type="password", id="password", name="password", minlength="4", maxlength="20", required)
                 br
             br
             button.login-form-btn(type="submit") Login
@@ -22,13 +22,13 @@ block content
             .alt-login
                 p Or continue with:
                 a.social-login.google(href="#")
-                    i.fa.fa-google
+                    img(src="/images/google.png", style= {width: "20px", height: "20px"} )
                     span Google
                 a.social-login.apple(href="#")
-                    i.fa.fa-apple
+                    img(src="/images/apple.png", style= {width: "20px", height: "20px"} )
                     span Apple
                 a.social-login.facebook(href="")
-                    i.fa.fa-facebook
+                    img(src="/images/facebook.png", style= {width: "20px", height: "20px"} )
                     span Facebook
             hr
             a.forgot-password(href="/driverLogin") Log in for driver

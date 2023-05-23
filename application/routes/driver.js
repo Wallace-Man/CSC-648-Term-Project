@@ -78,6 +78,10 @@ router.post('/driverLogin', async (req, res) => {
         return; // Exit the function
       }
     }
+    router.get('/driverLogout', (req, res) => {
+      req.session.destroy();
+      res.redirect('/');
+    });
 
     // If no match was found, redirect the user to the login page with an error message
     res.redirect('/login?error=Invalid email or password');

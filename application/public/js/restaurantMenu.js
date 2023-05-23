@@ -80,7 +80,7 @@
   
 import { addToCart, calculateTotal } from './cart.js';
 // get the "Add to Cart" buttons
-const addToCartButtons = document.querySelectorAll('.restaurant-card button');
+const addToCartButtons = document.querySelectorAll('.menu-card button');
 
 // initialize the cart items
 let cartItems = [];
@@ -89,12 +89,12 @@ let cartItems = [];
 addToCartButtons.forEach((button) => {
 button.addEventListener('click', (event) => {
     // get the card element
-    const card = event.target.parentNode;
+    const card = button.closest('.menu-card');
 
     // get the item name and price
-    const itemName = card.querySelector('h3').textContent;
+    const itemName = card.querySelector('h2').textContent;
     let itemPrice = card.querySelector('.price').textContent;
-    itemPrice = itemPrice.substring(1);
+    // itemPrice = itemPrice.substring(1);
 
     // update the cart in local storage
     addToCart(itemName, itemPrice, 1);

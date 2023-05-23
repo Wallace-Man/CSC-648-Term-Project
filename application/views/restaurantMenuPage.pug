@@ -38,12 +38,14 @@ block content
     body
         div#restaurant-main
             h1 Menu Items
+            div#restaurant-menu
             if menuItems && menuItems.length > 0
                 each item in menuItems
-                    h2= item.itemName
-                    p= item.itemDescription
-                    p= item.itemPrice
-                    button(onclick=`addToCart(${item.itemID})`) Add to Cart
+                    .menu-card
+                        h2= item.itemName
+                        p#description= item.itemDescription
+                        p.price= item.itemPrice
+                        button(id='add-to-cart-button') Add to Cart
             else
                 h2 No menu items found.
             // Debug line to print out menuItems

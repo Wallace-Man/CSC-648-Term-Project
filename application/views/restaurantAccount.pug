@@ -1,55 +1,42 @@
 extends layouts/main-layout
 
 block content
-        .restaurant-signup-form-container
-            form.restaurant-signup(id='restaurant-form' action="/restaurantInfo", method="post")
-                p(id="get-started") Edit Restaurant Details
-                br
-                br
-                hr
-                .form-group
-                    label.restaurant-signup(for="store-address") Store Address:
-                    input.restaurant-signup(type="store-address", id="store-address", name="store-address")
-                .form-group
-                    label.restaurant-signup(for="floor-suite") Floor / Suite :
-                    input.restaurant-signup(type="floor-suite", id="floor-suite", name="floor-suite")
-                .form-group
-                    label.restaurant-signup(for="store-name") Store Name:
-                    input.restaurant-signup(type="store-name", id="store-name", name="store-name")
-                .form-group
-                    label.restaurant-signup(for="full-name") Full Name:
-                    input.restaurant-signup(type="full-name", id="full-name", name="full-name")
-                .form-group
-                    label.restaurant-signup(for="email") Email:
-                    input.restaurant-signup(type="email", id="email", name="email", placeholder='example123@ex.com')
-                .form-group
-                    label.restaurant-signup(for="password") Password:
-                    input.restaurant-signup(type="password", id="password", name="password")
-                .form-group
-                    label.restaurant-signup(for="phone") Phone:
-                    input.restaurant-signup(type="tel", id="phone", name="phone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', placeholder='123-456-7890')
-                .form-group
-                    label.restaurant-signup(for="website") Website:
-                    input.restaurant-signup(type="url", id="website", name="website", placeholder='https://example.com')
-                .form-group
-                    label.restaurant-signup(for="hours") Operating Hours:
-                    input.restaurant-signup(type="time", id="start-time", name="start-time")
-                    input.restaurant-signup(type="time", id="end-time", name="end-time", style="margin-left: 10px;")
-                .form-group
-                    label.restaurant-signup(for="cuisine") *Cuisine:
-                    select#cuisine-choice(name='category')
-                        option(disabled selected) --Select An Option--
-                        option(value='american') American
-                        option(value='italian') Italian
-                        option(value='mexican') Mexican
-                        option(value='chinese') Chinese
-                        option(value='japanese') Japanese
-                        option(value='korean') Korean
-                        option(value='thai') Thai
-                        option(value='vietnamese') Vietnamese
-                        option(value='greek') Greek
-                        option(value='french') French
-                .form-group
-                    label.restaurant-signup(for="logo") Logo:
-                    input.restaurant-signup(type="file", id="logo", name="logo")
-                button.signup-form-btn(type="submit") Save Changes
+  head 
+    title Restaurant Account
+  br
+  br
+  br
+  p#driver-profile Restaurant Details 
+  .driverAccountFormContainer
+        form.driverAccountForm(id='restaurant-account-form', action="/editRestaurantAccount", method="GET")
+            p#get-started Restaurant Profile
+            img(src="/images/meal.png", alt="Profile Picture")
+            label(for="driver-name-input") Restaurant Name:
+            input#driver-name-input(type="text", name="restaurantName", readonly value='Rando\'s Restaurant')
+            label.driver-id(for="idUpload") Upload Id:
+            input.driver-id(type="file", id="idUpload", name="idUpload")
+            label(for="driver-name-input") Address:
+            input#driver-name-input(type="text", name="restaurantAddress", readonly value='123 Fake St.')
+            label(for="driver-name-input") City:
+            input#driver-name-input(type="text", name="restaurantCity", readonly value='Daly City')
+            label(for="driver-name-input") State:
+            input#driver-name-input(type="text", name="restaurantState", readonly value='CA')
+            label(for="driver-name-input") Country:
+            input#driver-name-input(type="text", name="restaurantCountry", readonly value='United States')
+            label(for="driver-name-input") Zip:
+            input#driver-name-input(type="text", name="restaurantZip", readonly value='94123')
+            label(for="driver-phone-input") Phone Number:
+            input#driver-phone-input(type="tel", name="restaurantPhone", readonly value='513-858-1394' )
+            label(for="driver-vehicle-input") Email:
+            input#driver-vehicle-input(type="text", readonly value="example123@ex.com", name="email" )
+            label(for="driver-website-input") Website:
+            input#driver-name-input(type="text", name="restaurantWebsite", readonly value='https://example.com')
+            label(for="driver-hours-input") Hours:
+            input#driver-name-input(type="time", name="restaurantHours", readonly value='Time')
+            label(for="driver-delivery-input") Delivery Time:
+            input#driver-name-input(type="text", name="restaurantDelivery", readonly value='20 Minutes')
+            label(for="driver-cuisine-input") Cuisine:
+            input#driver-name-input(type="text", name="restaurantWebsite", readonly value='Italian')
+            label(for="additional-info")  Bio (Optional):
+            textarea#additional-info(type="textarea", name="additionalInfo" readonly placeholder="I am a restaurant near SF State!")
+            button#save-driver-button(type="submit") Edit Info
