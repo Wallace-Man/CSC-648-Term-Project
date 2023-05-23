@@ -62,9 +62,9 @@ router.get('/privacyPolicy', function(req, res) {
 });
 
 /* GET DRIVER PAGE */
-router.get('/driver', function(req, res) {
-    res.render('driver');
-});
+// router.get('/driver', function(req, res) {
+//     res.render('driver');
+// });
 
 /* GET DRIVER INFO PAGE */
 router.get('/driverInfo', function(req, res) {

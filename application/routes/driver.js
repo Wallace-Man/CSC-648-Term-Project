@@ -54,8 +54,6 @@ router.post('/driver', async (req, res) => {
 });
 
 //Route to handle driver login
-//Route to handle driver login
-// Route to handle driver login
 router.post('/driverLogin', async (req, res) => {
   const { email, password } = req.body;
   const query = 'SELECT driverID, driver_password FROM drivers WHERE driver_email = ?';
@@ -90,6 +88,9 @@ router.post('/driverLogin', async (req, res) => {
 router.get('/driverLogout', (req, res) => {
   req.session.destroy();
   res.redirect('/');
+});
+router.get('/driver', function(req, res) {
+  res.render('driver');
 });
 
 

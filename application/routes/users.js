@@ -157,21 +157,18 @@ router.delete('/favorites/:id', ensureUserAuthenticated, async (req, res) => {
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
-router.get('/restaurantMenuPage', (req, res) => {
-  res.render('restaurantMenuPage');
-}); 
-
 router.get('/restaurantMenuPage/:id', async (req, res) => {
   const restaurantId = req.params.id;
-  // Fetch the restaurant menu from the database using the restaurantId
-  // For example
   const query = 'SELECT * FROM Menu WHERE restaurantId = ?';
   const queryPromise = util.promisify(connection.query).bind(connection);
   const menuItems = await queryPromise(query, [restaurantId]);
-
-  // Pass the menuItems to the Pug template
   res.render('restaurantMenuPage', { menuItems });
 });
+
+router.get('/restaurantMenuPage', (req, res) => {
+  res.render('restaurantMenuPage');
+});
+
 
 
 
