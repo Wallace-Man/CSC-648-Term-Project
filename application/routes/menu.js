@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
 const util = require('util');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const { ensureUserAuthenticated, ensureRestaurantAuthenticated } = require('./users');
 
 const connection = mysql.createConnection({
@@ -141,6 +143,125 @@ router.get('/returnMenu', ensureRestaurantAuthenticated, async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error: ' + err.message });
   }
 });
+// router.get('/restaurantAccount', ensureRestaurantAuthenticated, async (req, res) => {
+//   const restaurantID = req.query.restaurantID; // We're using query parameter to get restaurantID
+//   const query = 'SELECT * FROM Menu WHERE restaurantID = ?';
 
+//   try {
+//     const queryPromise = util.promisify(connection.query).bind(connection);
+//     const results = await queryPromise(query, [restaurantID]);
+
+//     res.render({ menuItems: results });  // Sending data as JSON
+//   } catch (err) {
+//     console.error('Error retrieving menu:', err);
+//     res.status(500).json({ error: 'Internal Server Error: ' + err.message });
+//   }
+// });
+router.post('/editRestaurantAccount', ensureRestaurantAuthenticated, (req, res) => {
+  const restaurantID = req.session.restaurantID;
+
+  console.log("Inside POST: RestaurantID =", restaurantID);
+  console.log(req.body); // log the request body
+
+  const {
+    restaurant_Name,
+    imageURL,
+    address_,
+    city,
+    state_,
+    zip_code,
+    country,
+    open_,
+    closed,
+    cuisine_type,
+    website,
+    delivery_time,
+    price_range,
+    restaurant_username,
+    email,
+    phone,
+    bio
+  } = req.body;
+
+  connection.query('SELECT * FROM Restaurant WHERE restaurantID = ?', [restaurantID], function (error, results, fields) {
+    if (error) {
+      console.log('Error retrieving restaurant details:', error);
+      return res.status(500).send('Error retrieving restaurant details');
+    }
+
+    if (results.length === 0) {
+      console.log('No restaurant found with this ID');
+      return res.status(404).send('No restaurant found with this ID');
+    }
+
+    const currentDetails = results[0];
+    console.log(currentDetails); // log the current details
+
+    const updatedRestaurant = {
+      restaurant_Name: restaurant_Name || currentDetails.restaurant_Name,
+      website: website || currentDetails.website,
+      address_: address_ || currentDetails.address_,
+      city: city || currentDetails.city,
+      state_: state_ || currentDetails.state_,
+      zip_code: zip_code || currentDetails.zip_code,
+      country: country || currentDetails.country,
+      open_: open_ || currentDetails.open_,
+      closed: closed || currentDetails.closed,
+      cuisine_type: cuisine_type || currentDetails.cuisine_type,
+      image_url: imageURL || currentDetails.image_url,
+      delivery_time: delivery_time || currentDetails.delivery_time,
+      price_range: price_range || currentDetails.price_range,
+      restaurant_username: restaurant_username || currentDetails.restaurant_username,
+      email: email || currentDetails.email,
+      phone: phone || currentDetails.phone,
+      bio: bio || currentDetails.bio
+    };
+
+    console.log(updatedRestaurant);
+
+    const sqlQuery = `UPDATE Restaurant SET ? WHERE restaurantID = ?`;
+
+    console.log(sqlQuery); // log the SQL query
+
+    connection.query(sqlQuery, [updatedRestaurant, restaurantID], (err, result) => {
+      if (err) {
+        console.log("Error updating details:", err);
+        res.status(500).send("Error updating details");
+      } else {
+        console.log(result); // log the result of the SQL query
+        res.redirect('/');
+      }
+    });
+  });
+});
+
+
+
+router.get('/editRestaurantAccount/:restaurantID', async (req, res) => {
+  const restaurantID = req.params.restaurantID;
+  console.log(restaurantID);
+  if (!restaurantID) {
+      return res.status(400).send('Missing restaurantID parameter');
+  }
+  
+    
+    let currentDetails;
+//
+    const query = 'SELECT * FROM Restaurant WHERE restaurantID = ?';
+
+    try {
+      const queryPromise = util.promisify(connection.query).bind(connection);
+      
+      currentDetails = (await queryPromise(query, [restaurantID]));
+  
+      // res.redirect('/restaurantAccount');
+    } catch (err) {
+      console.error('Error adding menu item:', err);
+      res.status(500).send('Internal Server Error: ' + err.message);
+    }
+
+    // Render the Pug file with the current details
+    res.render('editRestaurantAccount', { currentDetails });
+});
 
 module.exports = router;

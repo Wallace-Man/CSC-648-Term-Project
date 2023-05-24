@@ -122,7 +122,7 @@ block content
                     input.restaurant-signup(type="time", id="end-time", name="close", style="margin-left: 10px;" required)
                 .form-group
                     label.restaurant-signup(for="delivery-time") Delivery Time(minutes):
-                    input.restaurant-signup(type="number", id="delivery-time", name="deliveryTime", min=0, max=120)
+                    input.restaurant-signup(type="text", id="delivery-time", name="deliveryTime")
                 .form-group
                     label.restaurant-signup(for="cuisine") Cuisine:
                         span.mandatory-tag *
@@ -139,8 +139,8 @@ block content
                         option(value='greek') Greek
                         option(value='french') French
                 .form-group
-                    label.restaurant-signup(for="logo") Logo:
-                    input.restaurant-signup(type="file", id="logo", name="logo")
+                    label.restaurant-signup(for="imageURL") Image URL:
+                    input.restaurant-signup(type="url", id="imageURL", name="imageURL", placeholder='imageURL')
                 button.signup-form-btn(type="submit") Become a Partner
                 hr 
                 a.forgot-password(href="/restaurantLogin") Already have an account? Login here
