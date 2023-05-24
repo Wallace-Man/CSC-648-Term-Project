@@ -5,7 +5,7 @@ block content
         title Driver Signup - Gator Bites
     div.driver-banner
         .driver-signup-form-container
-            form.driver-signup(action="/driver", method="post", onsubmit="return validatePassword()")
+            form.driver-signup(action="/driver", method="post", onsubmit="return validatePass")
                 p(id="mandatory-field") Mandatory Field *
                 p(id="get-started") Become a Driver
                 .form-group
@@ -15,7 +15,7 @@ block content
                 .form-group
                     label.driver-signup(for="email") Email:
                         span.mandatory-tag *
-                    input.driver-signup(type="email", id="email", name="email", minlength="7", maxlength="20", placeholder='example123@ex.com', required)
+                    input.driver-signup(type="email", id="email", name="email", minlength="7", maxlength="35", placeholder='example123@ex.com', required)
                 .form-group
                     label.driver-signup(for="password") Password:
                         span.mandatory-tag *
