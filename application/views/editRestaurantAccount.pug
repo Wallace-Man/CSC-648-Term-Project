@@ -1,8 +1,3 @@
-//- This file contains the ability to edit the current restaurant
-    account page.
-
-    Author: Timothy Polich
-//- 
 extends layouts/main-layout
 
 block content
@@ -13,102 +8,102 @@ block content
   br
   p#driver-profile Restaurant Details 
   .driverAccountFormContainer
-        form.driverAccountForm(id='restaurant-account-form', action="/restaurantAccount", method="post")
-            p#get-started Restaurant Profile
-            img(src="/images/meal.png", alt="Profile Picture")
-            label(for="driver-name-input") Restaurant Name:
-            input#driver-name-input(type="text", name="restaurantName", placeholder='Rando\'s Restaurant', minlength="3", maxlength="40")
-            label.driver-id(for="idUpload") Upload Id:
-            input.driver-id(type="file", id="idUpload", name="idUpload")
-            label(for="driver-name-input") Address:
-            input#driver-name-input(type="text", name="restaurantAddress", placeholder='123 Fake St.', minlength="5", maxlength="40")
-            label(for="driver-name-input") City:
-            input#driver-name-input(type="text", name="restaurantCity", placeholder='Daly City', minlength="3", maxlength="30")
-            label(for="driver-name-input") State:
-            select#cuisine-choice(name='state', style="margin-bottom: 10px")
-                option(disabled selected) --Select State--
-                option(value='AL') Alabama
-                option(value='AK') Alaska
-                option(value='AZ') Arizona
-                option(value='AR') Arkansas
-                option(value='CA') California
-                option(value='CO') Colorado
-                option(value='CT') Connecticut
-                option(value='DE') Delaware
-                option(value='DC') District Of Columbia
-                option(value='FL') Florida
-                option(value='GA') Georgia
-                option(value='HI') Hawaii
-                option(value='ID') Idaho
-                option(value='IL') Illinois
-                option(value='IN') Indiana
-                option(value='IA') Iowa
-                option(value='KS') Kansas
-                option(value='KY') Kentucky
-                option(value='LA') Louisiana
-                option(value='ME') Maine
-                option(value='MD') Maryland
-                option(value='MA') Massachusetts
-                option(value='MI') Michigan
-                option(value='MN') Minnesota
-                option(value='MS') Mississippi
-                option(value='MO') Missouri
-                option(value='MT') Montana
-                option(value='NE') Nebraska
-                option(value='NV') Nevada
-                option(value='NH') New Hampshire
-                option(value='NJ') New Jersey
-                option(value='NM') New Mexico
-                option(value='NY') New York
-                option(value='NC') North Carolina
-                option(value='ND') North Dakota
-                option(value='OH') Ohio
-                option(value='OK') Oklahoma
-                option(value='OR') Oregon
-                option(value='PA') Pennsylvania
-                option(value='RI') Rhode Island
-                option(value='SC') South Carolina
-                option(value='SD') South Dakota
-                option(value='TN') Tennessee
-                option(value='TX') Texas
-                option(value='UT') Utah
-                option(value='VT') Vermont
-                option(value='VA') Virginia
-                option(value='WA') Washington
-                option(value='WV') West Virginia
-                option(value='WI') Wisconsin
-                option(value='WY') Wyoming
-            label(for="driver-name-input") Country:
-            input#driver-name-input(type="text", name="restaurantCountry", placeholder='United States', minlength="3", maxlength="30")
-            label(for="driver-name-input") Zip:
-            input#driver-name-input(type="text", name="restaurantZip", placeholder='94123', pattern="[0-9]{5}", oninvalid="setCustomValidity('Must be a valid zip')", oninput="setCustomValidity('')")
-            label(for="driver-phone-input") Phone Number:
-            input#driver-phone-input(type="tel", name="restaurantPhone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', placeholder='513-858-1394' )
-            label(for="driver-vehicle-input") Email:
-            input#driver-vehicle-input(type="text", placeholder="example123@ex.com", name="email")
-            label(for="driver-website-input") Website:
-            input#driver-name-input(type="text", name="restaurantWebsite", placeholder='https://example.com', maxlength="40")
-            label(for="driver-hours-input") Hours:
-            input#driver-name-input(type="time", name="restaurantHours", placeholder='Time')
-            label(for="driver-delivery-input") Delivery Time:
-            input#driver-name-input(type="number", name="restaurantDelivery", placeholder='20 Minutes', min=0, max=120)
-            label(for="driver-cuisine-input") Cuisine:
-            select#cuisine-choice(name='cuisine', style="margin-bottom: 10px")
-                        option(disabled selected) --Select An Option--
-                        option(value='american') American
-                        option(value='italian') Italian
-                        option(value='mexican') Mexican
-                        option(value='chinese') Chinese
-                        option(value='japanese') Japanese
-                        option(value='korean') Korean
-                        option(value='thai') Thai
-                        option(value='vietnamese') Vietnamese
-                        option(value='greek') Greek
-                        option(value='french') French
-            label(for="driver-location-input") Change Password:
-            input#driver-location-input(type="password", name="driverLocation", minlength="4", maxlength="20", required)
-            label(for="driver-location-input") Confirm Password:
-            input#driver-location-input(type="password", name="driverLocation", minlength="4", maxlength="20", required)
-            label(for="additional-info")  Bio (Optional):
-            textarea#additional-info(type="textarea", name="additionalInfo", placeholder="I am a restaurant near SF State!", maxlength="200", pattern="[a-zA-Z0-9\\s.-?]{0,200}")
-            button#save-driver-button(type="submit") Save Changes
+    form.driverAccountForm(id='restaurant-account-form', action="/editRestaurantAccount", method="post")
+      p#get-started Restaurant Profile
+      img(src="/images/meal.png", alt="Profile Picture")
+      label(for="driver-name-input") Restaurant Name:
+      input#driver-name-input(type="text", name="restaurant_Name", placeholder='Dylan\'s Restaurant', minlength="3", maxlength="40")
+      label.driver-id(for="imageURL") Image URL:
+      input.driver-id(type="url", id="imageURL", name="imageURL")
+      label(for="address-input") Address:
+      input#address-input(type="text", name="address_", placeholder='123 Fake St.', minlength="5", maxlength="40")
+      label(for="city-input") City:
+      input#city-input(type="text", name="city", placeholder='Daly City', minlength="3", maxlength="30")
+      label(for="state-input") State:
+      select#state-input(name='state', style="margin-bottom: 10px")
+        option(disabled selected) --Select State--
+        option(value='AL') Alabama
+        option(value='AK') Alaska
+        option(value='AZ') Arizona
+        option(value='AR') Arkansas
+        option(value='CA') California
+        option(value='CO') Colorado
+        option(value='CT') Connecticut
+        option(value='DE') Delaware
+        option(value='DC') District Of Columbia
+        option(value='FL') Florida
+        option(value='GA') Georgia
+        option(value='HI') Hawaii
+        option(value='ID') Idaho
+        option(value='IL') Illinois
+        option(value='IN') Indiana
+        option(value='IA') Iowa
+        option(value='KS') Kansas
+        option(value='KY') Kentucky
+        option(value='LA') Louisiana
+        option(value='ME') Maine
+        option(value='MD') Maryland
+        option(value='MA') Massachusetts
+        option(value='MI') Michigan
+        option(value='MN') Minnesota
+        option(value='MS') Mississippi
+        option(value='MO') Missouri
+        option(value='MT') Montana
+        option(value='NE') Nebraska
+        option(value='NV') Nevada
+        option(value='NH') New Hampshire
+        option(value='NJ') New Jersey
+        option(value='NM') New Mexico
+        option(value='NY') New York
+        option(value='NC') North Carolina
+        option(value='ND') North Dakota
+        option(value='OH') Ohio
+        option(value='OK') Oklahoma
+        option(value='OR') Oregon
+        option(value='PA') Pennsylvania
+        option(value='RI') Rhode Island
+        option(value='SC') South Carolina
+        option(value='SD') South Dakota
+        option(value='TN') Tennessee
+        option(value='TX') Texas
+        option(value='UT') Utah
+        option(value='VT') Vermont
+        option(value='VA') Virginia
+        option(value='WA') Washington
+        option(value='WV') West Virginia
+        option(value='WI') Wisconsin
+        option(value='WY') Wyoming
+      label(for="country-input") Country:
+      input#country-input(type="text", name="country", placeholder='United States', minlength="3", maxlength="30")
+      label(for="zip-input") Zip:
+      input#zip-input(type="text", name="zip_code", placeholder='94123', pattern="[0-9]{5}", oninvalid="setCustomValidity('Must be a valid zip')", oninput="setCustomValidity('')")
+      label(for="phone-input") Phone Number:
+      input#phone-input(type="tel", name="phone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', placeholder='513-858-1394' )
+      label(for="email-input") Email:
+      input#email-input(type="text", name="email", placeholder="example123@ex.com")
+      label(for="website-input") Website:
+      input#website-input(type="text", name="website", placeholder='https://example.com', maxlength="40")
+      label(for="open-input") Open:
+      input#open-input(type="time", name="open_", placeholder='Time')
+      label(for="closed-input") Closed:
+      input#closed-input(type="time", name="closed", placeholder='Time')
+      label(for="delivery-input") Delivery Time:
+      input#delivery-input(type="text", name="delivery_time", placeholder='20 Minutes')
+      label(for="cuisine-input") Cuisine:
+      select#cuisine-input(name='cuisine', style="margin-bottom: 10px")
+        option(disabled selected) --Select Cuisine--
+        option(value='american') American
+        option(value='italian') Italian
+        option(value='mexican') Mexican
+        option(value='chinese') Chinese
+        option(value='japanese') Japanese
+        option(value='korean') Korean
+        option(value='thai') Thai
+        option(value='vietnamese') Vietnamese
+        option(value='greek') Greek
+        option(value='french') French
+      label(for="price-input") Price Range:
+      input#price-input(type="text", name="price_range", placeholder='1-5')
+      label(for="bio-input") Bio (Optional):
+      textarea#bio-input(type="textarea", name="bio", placeholder="I am a restaurant near SF State!")
+      button#save-driver-button(type="submit") Edit Info

@@ -62,9 +62,9 @@ router.get('/privacyPolicy', function(req, res) {
 });
 
 /* GET DRIVER PAGE */
-router.get('/driver', function(req, res) {
-    res.render('driver');
-});
+// router.get('/driver', function(req, res) {
+//     res.render('driver');
+// });
 
 /* GET DRIVER INFO PAGE */
 router.get('/driverInfo', function(req, res) {
@@ -107,9 +107,9 @@ router.get('/manageorder', (req, res) => {
 // }); 
 
 /* GET RESTURANT ACCOUNT PAGE */
-router.get('/restaurantAccount', (req, res) => {
-    res.render('restaurantAccount');
-}); 
+// router.get('/restaurantAccount', (req, res) => {
+//     res.render('restaurantAccount');
+// }); 
 
 /* GET DRIVER ACCOUNT PAGE */
 router.get('/driverAccount', (req, res) => {
