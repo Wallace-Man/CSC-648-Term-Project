@@ -12,7 +12,7 @@ header
                             span.bold Bites
                     td.search
                         div.nav-search-form-container
-                            form.search-form(action='')
+                            form.search-form(onsubmit = 'handleFormSubmit(event)', method="GET",  enctype="application/x-www-form-urlencoded")
                                 select#category-select(name='category')
                                     option(value='') All
                                     option(value='italian') Italian
@@ -27,20 +27,20 @@ header
                                     option(value='french') French
                                 input.search-input(id='search-input', type='text', placeholder='Search For Restaurants', maxlength="40", pattern="[a-zA-Z0-9\\s]{0,40}")
                                 
-                                button.search-btn(type='submit')
+                                button.search-btn(type='submit' onclick="window.location.href='/'")
                                     img.search(src='images/search-icon.png', alt='search',)
                     td.login-signup
                         div.right-btns
-                            a.login-btn(href='login')
+                            a.login-btn(href='/login')
                                 img.user(src="/images/user.png")
                                 span.login Log in
-                            a.signup-btn(href='signup') Sign up
+                            a.signup-btn(href='/signup') Sign up
                 tr 
                     td.index(colspan='2')
                         ul
                             li 
                                 a(href='/aboutUs') About Us
                             li 
-                                a(href='driver') Drivers
+                                a(href='/driver') Drivers
                             li 
-                                a(href='restaurant') Restaurants
+                                a(href='/restaurant') Restaurants
