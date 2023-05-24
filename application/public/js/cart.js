@@ -85,14 +85,15 @@ export function addToCart(itemName, itemPrice, quantity) {
     localStorage.setItem('cart', JSON.stringify(cart));
     console.log(calculateTotal());
 }
+
 function getCartItemCount() {
     const cart = JSON.parse(localStorage.getItem('cart'));
     let count = 0;
     for (let i = 0; i < cart.length; i++) {
-      count += parseInt(cart[i].quantity);
+        count += parseInt(cart[i].quantity);
     }
     return count;
-  }
+}
 export function calculateTotal() {
     const cart = JSON.parse(localStorage.getItem('cart'));
     console.log(cart)
@@ -129,8 +130,8 @@ function loadCartCards() {
         cartContainer.appendChild(cartCard);
     }
 }
+
 function loadOrderSummary() {
-    console.log('Loading order summary...')
     const cart = JSON.parse(localStorage.getItem('cart'));
     const cartContainer = document.getElementById('order-summary-card');
     const cartFormContainer = document.getElementById('the-container');
@@ -146,9 +147,10 @@ function loadOrderSummary() {
         cartCard.querySelector('select').remove();
         cartCard.querySelector('label').append(cart[i].quantity);
         cartContainer.appendChild(cartCard);
-        
+
     }
 }
+
 function updateCartSubtotal() {
 
     const subtotal = document.getElementById('subtotal-label');
@@ -163,11 +165,17 @@ function updateCartSubtotal() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    if(window.location.pathname === '/cart') {
+    if (window.location.pathname === '/cart') {
         let localCart = JSON.parse(localStorage.getItem('cart'));
         let cartContainer = document.getElementById('the-container');
         let subtotal = document.getElementById('subtotal-label');
         let cartCount = document.getElementById('cart-count');
+        let restaurantJSON = JSON.parse(localStorage.getItem('restaurant'));
+
+        let restImage = document.getElementById('restaurantImage');
+        let restName = document.getElementById('restaurantName');
+        restName.innerHTML = restaurantJSON.restaurant_Name;
+        restImage.src = restaurantJSON.image_url;
         cartCount.innerHTML = '';
         cartCount.append(getCartItemCount() + ' items');
         subtotal.append('$' + calculateTotal());
@@ -180,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Get the selected quantity
                 const selectedQuantity = event.target.value;
                 const itemName = select.parentNode.parentNode.childNodes[0].textContent
-    
+
                 const existingItemIndex = localCart.findIndex((item) => item.name === itemName);
                 localCart[existingItemIndex].quantity = selectedQuantity;
                 console.log(localCart[existingItemIndex])
@@ -188,65 +196,101 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateCartSubtotal();
 
             });
+            let restaurantImage = document.getElementById('restaurantImage');
+            console.log('restaurantImage', restaurantImage)
+            restaurantImage.addEventListener('click', () => {
+                let restaurantJSON = JSON.parse(localStorage.getItem('restaurant'));
+                let  restaurantID = restaurantJSON.restaurantID;    
+                
+                window.location.href = '/restaurantMenuPage/' + restaurantID;
+            });
         }
 
-        if(localStorage.getItem('promos').length != 0) {
+        let promoContainer = document.getElementById('active-promos');
+
+        if (localStorage.getItem('promos').length != 0) {
             let promoStorage = JSON.parse(localStorage.getItem('promos'));
-            let promoContainer = document.getElementById('cart-cards');
-            let promo = document.createElement('p');
-            promo.append('Active Promotion: ' + promoStorage);
-            promoContainer.append(promo);
+            let promotion = ('Active Promotion: ' + promoStorage);
+            console.log('promoStorage', promoStorage);
+            if(promoStorage === null || promoStorage === undefined || promoStorage === []){
+                promoContainer.append('No active promotions');
+            }else{
+
+                promoContainer.append(promotion);
+            }
+        } else {
+            promoContainer.append('No active promotions');
         }
-        
+
     }
-    if(window.location.pathname === '/promotions') {
+    if (window.location.pathname === '/promotions') {
         // Get all the add promo buttons
         const addPromoButtons = document.querySelectorAll('.add-promo');
+        
         console.log(addPromoButtons)
-            // Add event listener to each button
-            addPromoButtons.forEach(button => {
+        // Add event listener to each button
+        addPromoButtons.forEach(button => {
             button.addEventListener('click', () => {
                 // Change button text to "Added"
                 button.innerHTML = 'Added';
-            
+
                 // Change button background color to green
                 button.style.backgroundColor = 'green';
+                button.parentElement.parentElement.style.backgroundColor = 'white';
 
                 // // Disable button
                 // button.disabled = true;
 
                 // Get the promo code
                 let promoStorage = JSON.parse(localStorage.getItem('promos'));
-                
+                const percentagePattern = /\d+(?=%)/; // Matches one or more digits followed by a % sign
+
+                // Get the promo percentage
+                let promoString = button.parentNode.textContent;
+                const percentageMatch = promoString.match(percentagePattern);
+                if (percentageMatch) {
+                    const percentage = parseFloat(percentageMatch[0]) / 100;
+                    console.log('Setting Percentage (decimal):', percentage);
+                    localStorage.setItem('promoDiscount', percentage);
+                }
+
+                // Get the promo title
                 let promoTitle = button.parentNode.textContent.split(':')[0];
                 setPromos(promoTitle);
-                });
             });
+        });
     }
-if(window.location.pathname === '/checkout') {
-  loadOrderSummary();
+    if (window.location.pathname === '/checkout') {
+        loadOrderSummary();
 
-  const subtotal = document.getElementById('subtotal-label');
-  const tax = document.getElementById('tax-label');
-  const total = document.getElementById('total-label');
+        const subtotal = document.getElementById('subtotal-label');
+        const tax = document.getElementById('tax-label');
+        const total = document.getElementById('total-label');
+        const promoDiscount = localStorage.getItem('promoDiscount');
+        const promoContainer = document.getElementById('promo-discount-label');
+        const discount = (calculateTotal() * promoDiscount).toFixed(2);
+        promoContainer.append('-$' + discount);
+        subtotal.append('$' + calculateTotal());
+        tax.append('$' + (calculateTotal() * 0.0925).toFixed(2));
+        let totalNumber = (calculateTotal() * 1.0925) - discount;
+        console.log(totalNumber.toFixed(2))
+        total.append('$' + totalNumber.toFixed(2));
 
-  subtotal.append('$' + calculateTotal());
-  tax.append('$' + (calculateTotal() * 0.0925).toFixed(2));
-  total.append('$' + (calculateTotal() * 1.0925).toFixed(2));
+
+        const placeOrderButton = document.createElement('button');
+        placeOrderButton.innerText = 'Place Order';
+        placeOrderButton.classList.add('place-order-button')
+        placeOrderButton.addEventListener('click', () => {
+            window.location.href = '/orderstatus';
+        });
+        const checkoutContainer = document.querySelector('#checkout-cards');
+        checkoutContainer.appendChild(placeOrderButton);
 
 
-  const placeOrderButton = document.createElement('button');
-  placeOrderButton.innerText = 'Place Order';
-  placeOrderButton.classList.add('place-order-button')
-  placeOrderButton.addEventListener('click', () => {
-    window.location.href = '/orderstatus';
-});
-  const checkoutContainer = document.querySelector('#order-summary-card');
-  checkoutContainer.appendChild(placeOrderButton);
-}
+    }
+    
 
     const clearCartBtn = document.getElementById('clear-cart');
-    console.log(clearCartBtn)
     clearCartBtn.addEventListener('click', () => {
         localStorage.setItem('cart', JSON.stringify([]));
         location.reload(); // Refresh the page after clearing the cart

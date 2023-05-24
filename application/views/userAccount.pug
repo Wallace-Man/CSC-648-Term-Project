@@ -13,11 +13,11 @@ block content
   br
   br
   br
-  p#driver-profile Your Details 
+  p#driver-profile Account Info
   .driverAccountFormContainer
         form.driverAccountForm(id='driver-account-form', action="/editUser", method="GET")
-            p#get-started Your Profile
-            img(src="/images/user.png", alt="Profile Picture")
+            p#get-started 
+            img(src="/images/user-pfp.png", alt="Profile Picture")
             label(for="driver-name-input") Your Name:
             input#driver-name-input(type="text", name="userName", readonly value='John Doe')
             label.driver-id(for="idUpload") Upload Id:

@@ -7,95 +7,31 @@
 extends layouts/main-layout
 
 block content
-    table.userAccount-main-table(style="height: auto; margin-top: 80px")
-        tr
-            td.userAccount-orderHistory-cell
-                h2.userAccount-heading Order History
-                table.userAccount-sub-table(style='border: 1px solid black; border-radius: 5px')
-                    tr.userAccount-orderHistory-top
-                        td ORDER 
-                        td DATE 
-                        td PAYMENT STATUS 
-                        td FULFILLMENT STATUS   
-                        td TOTAL 
-                    tr.userAccount-divider
-                        td(colspan='5')
-                            hr
-                    tr.userAccount-orderHistory-bottom
-                        td #
-                        td 00/00/0000
-                        td Paid
-                        td Fulfilled
-                        td $
-        tr
-            td.userAccount-orderHistory-cell
-                table.userAccount-sub-table(style='border: 1px solid black; border-radius: 5px')
-                    tr.userAccount-orderHistory-top
-                        td ORDER 
-                        td DATE 
-                        td PAYMENT STATUS 
-                        td FULFILLMENT STATUS   
-                        td TOTAL 
-                    tr.userAccount-divider
-                        td(colspan='5')
-                            hr
-                    tr.userAccount-orderHistory-bottom
-                        td #
-                        td 00/00/0000
-                        td Paid
-                        td Fulfilled
-                        td $
-        tr
-            td.userAccount-orderHistory-cell
-                table.userAccount-sub-table(style='border: 1px solid black; border-radius: 5px')
-                    tr.userAccount-orderHistory-top
-                        td ORDER 
-                        td DATE 
-                        td PAYMENT STATUS 
-                        td FULFILLMENT STATUS   
-                        td TOTAL 
-                    tr.userAccount-divider
-                        td(colspan='5')
-                            hr
-                    tr.userAccount-orderHistory-bottom
-                        td #
-                        td 00/00/0000
-                        td Paid
-                        td Fulfilled
-                        td $
-        tr
-            td.userAccount-orderHistory-cell
-                table.userAccount-sub-table(style='border: 1px solid black; border-radius: 5px')
-                    tr.userAccount-orderHistory-top
-                        td ORDER 
-                        td DATE 
-                        td PAYMENT STATUS 
-                        td FULFILLMENT STATUS   
-                        td TOTAL 
-                    tr.userAccount-divider
-                        td(colspan='5')
-                            hr
-                    tr.userAccount-orderHistory-bottom
-                        td #
-                        td 00/00/0000
-                        td Paid
-                        td Fulfilled
-                        td $
-        tr
-            td.userAccount-orderHistory-cell
-                table.userAccount-sub-table(style='border: 1px solid black; border-radius: 5px')
-                    tr.userAccount-orderHistory-top
-                        td ORDER 
-                        td DATE 
-                        td PAYMENT STATUS 
-                        td FULFILLMENT STATUS   
-                        td TOTAL 
-                    tr.userAccount-divider
-                        td(colspan='5')
-                            hr
-                    tr.userAccount-orderHistory-bottom
-                        td #
-                        td 00/00/0000
-                        td Paid
-                        td Fulfilled
-                        td $
+    head 
+        title Order History - Gator Bites
+    .cart-form-container
+        h1 Order History
+        br
+        br
+        br
+        .cart-card(style="background-color: white")
+            .promo-card-info
+                h2.cart-card-title(id='order-history-label') Panda Express
+                br
+                p Order Number: 123456789
+                br
+                p.cart-card-text Date Ordered: 12/12/2020
+                p.cart-card-text Payment Status: Paid
+                p.cart-card-text Delivery Status: Delivered
+                br
+                p.cart-card-text Total: $12.56
+        .cart-card(style="background-color: white")
+            .promo-card-info
+                h2.cart-card-title(id='order-history-label') Bar None
+                p Order Number: 123456789
+                br
+                p.cart-card-text Date Ordered: 12/12/2020
+                p.cart-card-text Payment Status: Paid
+                p.cart-card-text Delivery Status: Delivered
+                br
+                p.cart-card-text Total: $12.56
