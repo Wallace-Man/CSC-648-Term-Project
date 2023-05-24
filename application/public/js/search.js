@@ -48,6 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    if(window.location.pathname != '/favorites') {
+
     // Fetch all restaurants when the page loads
     fetch('/getAllRestaurants')
         .then(function(response) {
@@ -57,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Call the displayRestaurants() function with all the restaurants
             displayRestaurants(allRestaurants);
         });
-
+    }
     // Function to display the restaurants on the page
     function displayRestaurants(restaurants) {
         // Clear any previous search results
