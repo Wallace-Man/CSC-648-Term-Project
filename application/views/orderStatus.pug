@@ -8,6 +8,10 @@
 extends layouts/main-layout
 
 block content
+    head 
+        title Order Status - Gator Bites
+    
+    h1 Order Placed
     .orderStatus-form-container(onload='initMap()')
         div.maps-orderStatus(id="map")
             iframe(
@@ -16,10 +20,7 @@ block content
                 loading="lazy",
                 allowfullscreen,
                 referrerpolicy="no-referrer-when-downgrade",
-                src="https://www.google.com/maps/embed/v1/place" +
-                "?key=AIzaSyCqHQxuCGH2vnVMNkTRDReJIX3YZU-CIY8" +
-                "&q=San+Francisco+CA" +
-                "&zoom=14"
+                src="https://www.google.com/maps/embed/v1/place" +"?key=AIzaSyCqHQxuCGH2vnVMNkTRDReJIX3YZU-CIY8" +"&q=SFSU" +"&zoom=14"
             )
         table
             tr
@@ -33,7 +34,7 @@ block content
                                 td.orderStatus-info
                                     label.orderStatus-label1 Order Number:
                                 td.orderStatus-info
-                                    label.orderStatus-label1 Estimated Arrival Time:
+                                    label.orderStatus-eta-label Estimated Arrival Time: 
                             tr
                                 td.orderStatus-progress
                                     .orderStatus-label2 Preparing
@@ -44,7 +45,21 @@ block content
                                 td.orderStatus-progress
                                     .orderStatus-label2 Delivered 
                                     progress.orderStatus-bar(value='0' max='2')
+    script.
+        // Get current time
+        var currentTime = new Date();
+        currentTime.setMinutes(currentTime.getMinutes() + 30);
+        // Extract hours and minutes
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+        // Format hours and minutes (add leading zeros if necessary)
+        var formattedHours = hours < 10 ? "0" + hours : hours;
+        var formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+
+        // Display the time (hours:minutes)
+        var formattedTime = formattedHours + ":" + formattedMinutes;
 
 
-
-
+        //- console.log(formattedTime); // Output: "14:30"
+        document.querySelector('.orderStatus-label1').innerHTML = `Order Number: ${Math.floor(Math.random() * 1000000000)}`;
+        document.querySelector('.orderStatus-eta-label').innerHTML = `Estimated Arrival Time: ${formattedTime}`;
