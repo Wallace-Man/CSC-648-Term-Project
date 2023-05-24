@@ -173,7 +173,78 @@ router.get('/restaurantMenuPage', (req, res) => {
   res.render('restaurantMenuPage');
 });
 
+router.post('/editUserAccount', ensureUserAuthenticated, async (req, res) => {
+  const userId = req.session.user.user_id;
+  const { fullname, email, phone, password, confirmPassword, imageURL } = req.body;
 
+  console.log("Inside POST: UserID =", userId);
+  console.log(req.body);
+
+  // Validate input data
+  if (password !== confirmPassword) {
+    res.render('editUserAccount', { user: { full_name: fullname, email, phone }, error: 'Passwords do not match' });
+    return;
+  }
+
+  try {
+    // Check if password is provided
+    if (!password && !confirmPassword) {
+      // Password fields are optional, so we only update the user information
+      await util.promisify(connection.query).bind(connection)(
+        'UPDATE user SET full_name = ?, email = ?, phone = ?, gator_id = ? WHERE user_id = ?',
+        [fullname, email, phone, imageURL, userId]
+      );
+    } else {
+      // Hash the password before updating the database
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      // Update the user information in the database
+      await util.promisify(connection.query).bind(connection)(
+        'UPDATE user SET full_name = ?, email = ?, phone = ?, password = ?, gator_id = ? WHERE user_id = ?',
+        [fullname, email, phone, hashedPassword, imageURL, userId]
+      );
+    }
+
+    // Update the session data with the new user information
+    req.session.user.full_name = fullname;
+    req.session.user.email = email;
+    req.session.user.phone = phone;
+    req.session.user.imageURL = imageURL;
+
+    // Fetch the updated user data
+    const user = await util.promisify(connection.query).bind(connection)(
+      'SELECT * FROM user WHERE user_id = ?',
+      [userId]
+    );
+
+    // Render the edit user information page with the updated user data
+    res.redirect('/userAccount');
+  } catch (err) {
+    console.error('Error updating user information:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
+
+
+router.get('/editUserAccount/:userId', ensureUserAuthenticated, async (req, res) => {
+  const userId = req.params.userId;
+  console.log(userId);
+
+  if (!userId) {
+    return res.status(400).send('Missing userId parameter');
+  }
+
+  try {
+    const queryPromise = util.promisify(connection.query).bind(connection);
+    const user = await queryPromise('SELECT * FROM user WHERE user_id = ?', [userId]);
+
+    // Render the edit user information page and pass the user data
+    res.render('editUser', { user });
+  } catch (err) {
+    console.error('Error fetching user data:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
 
 
 
