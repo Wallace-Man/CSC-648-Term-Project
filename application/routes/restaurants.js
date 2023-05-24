@@ -31,7 +31,7 @@ cloudinary.config({
   api_secret: 'ICod3Gyzgek7V8PxsDI_28aCguA'
 });
 //Generates cloud link for image to then be used on postman as a post request
-// cloudinary.uploader.upload('public/images/jjop.jpeg', (error, result) => {
+// cloudinary.uploader.upload('public/images/cinnabon.png', (error, result) => {
 //   if (error) {
 //     console.error('Error uploading image:', error);
 //   } else {
@@ -102,14 +102,14 @@ router.get('/getAllRestaurants', (req, res) => {
 });
 
 router.post('/restaurant', async (req, res) => {
-  const { address, city, state, country, zip, name, username, email, password, phone, website, open, close, deliveryTime, cuisine,imageURL } = req.body;
-  const query = 'INSERT INTO Restaurant (restaurant_Name, website, address_, city, state_, zip_code, country, open_, closed, cuisine_type, image_url, delivery_time, restaurant_username, password, email, phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+  const { address, city, state, country, zip, name, username, email, password, phone, website, open, close, deliveryTime, cuisine } = req.body;
+  const query = 'INSERT INTO Restaurant (restaurant_Name, website, address_, city, state_, zip_code, country, open_, closed, cuisine_type, delivery_time, restaurant_username, password, email, phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
 
   try {
     // Promisify the MySQL query function
     const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
     // Execute the SQL query with the form data
-    await queryPromise(query, [name, website, address, city, state, zip, country, open, close, cuisine, imageURL, deliveryTime, username, hashPassword(password), email, phone]);
+    await queryPromise(query, [name, website, address, city, state, zip, country, open, close, cuisine, deliveryTime, username, hashPassword(password), email, phone]);
 
     console.log('Account Created!');
     // Redirect the user to the home page
@@ -133,42 +133,38 @@ router.get('/Restaurantlogout', (req, res) => {
 // Add a new route for the restaurant login
 // Add a new route for the restaurant login
 router.post('/restaurantLogin', async (req, res) => {
-  console.log('Request Body:', req.body); // Log the request body
-
   const { email, password } = req.body;
   const query = 'SELECT restaurantID, password FROM Restaurant WHERE email = ?';
 
   try {
+    // Promisify the MySQL query function
     const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
+    // Execute the SQL query with the form data
     const results = await queryPromise(query, [email]);
 
-    console.log('Query results:', results);
-
-    if (results.length === 0) {
-      console.error('Error during login: Email not found');
-      res.status(401).send('Invalid email or password');
-      return;
-    }
-
+    // Check if there's a matching restaurant and if the password is correct
     for (let i = 0; i < results.length; i++) {
       if (await bcrypt.compare(password, results[i].password)) {
+        // Store the restaurantID in the session
         req.session.restaurantID = results[i].restaurantID;
         req.session.restaurant = true;
 
-        console.log('Session after successful restaurant login:', req.session);
+        console.log('Session after successful restaurant login:', req.session); // Log the session object
+
+        // Redirect the restaurant owner to the home page
         res.redirect('/');
-        return;
+        return; // Exit the function
       }
     }
 
-    console.error('Error during login: Incorrect password');
-    res.status(401).send('Invalid email or password');
+    // If no match was found, redirect the user to the login page with an error message
+    res.redirect('/login?error=Invalid email or password');
   } catch (err) {
+    // Handle errors during the login process
     console.error('Error during login:', err);
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
-
 
 
 module.exports = router;
