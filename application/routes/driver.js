@@ -22,26 +22,40 @@ connection.connect((err) => {
 });
 
 // Route to handle driver registration
+// Route to handle driver registration
+// Route to handle driver registration
 router.post('/driver', async (req, res) => {
+  console.log('Driver registration route hit.');
+  console.log('Request Body:', req.body);
+
   // Extract form data from the request body
-  const { username, email, password, secPassword, phoneNum } = req.body;
+  const { username, email, password, password2, phoneNum } = req.body;
 
   // Check if the two passwords match
-  if (password != secPassword) {
+  if (password != password2) {
+    console.log('Error: Passwords do not match.');
     res.render('driver', { error: 'Passwords do not match' });
     return;
   }
 
   // Define the SQL query to insert a new driver into the database
   const query = 'INSERT INTO drivers (driver_username, driver_email, driver_password, phone_number) VALUES (?, ?, ?, ?)';
+  console.log('SQL Query:', query);
 
   try {
     // Hash the password using bcrypt
+    console.log('Hashing password...');
     const hashedPassword = await bcrypt.hash(password, 10);
+    console.log('Password hashed.');
+
     // Promisify the MySQL query function
+    console.log('Promisifying query function...');
     const queryPromise = util.promisify(connection.query).bind(connection);
+
     // Execute the SQL query with the form data
+    console.log('Executing SQL query...');
     await queryPromise(query, [username, email, hashedPassword, phoneNum]);
+    console.log('SQL query executed.');
 
     console.log('Account Created!');
     // Redirect the user to the home page
@@ -50,6 +64,7 @@ router.post('/driver', async (req, res) => {
     // Handle errors during the registration process
     console.error('Error during registration:', err);
     res.status(500).send('Internal Server Error: ' + err.message);
+    return;
   }
 });
 

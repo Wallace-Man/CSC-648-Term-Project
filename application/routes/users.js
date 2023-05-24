@@ -28,7 +28,9 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
+  console.log('Request body:', req.body);
   const query = 'SELECT * FROM user WHERE username = ?';
+  console.log('Query:', query);
 
   try {
     // Promisify the connection.query function
@@ -36,6 +38,7 @@ router.post('/login', async (req, res) => {
 
     // Query the database for a user with the given username
     const results = await queryPromise(query, [username]);
+    console.log('Query results:', results);
 
     if (results.length > 0) {
       const user = results[0];
@@ -64,6 +67,7 @@ router.post('/login', async (req, res) => {
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
+
 router.get('/logout', (req, res) => {
   req.session.destroy();
   res.redirect('/');

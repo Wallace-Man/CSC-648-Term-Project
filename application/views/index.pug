@@ -26,12 +26,12 @@ html(lang="en")
                                 a.login-btn(onclick="dropMenu()", class="dropbtn")
                                     img.profile-cart(src="/images/user.png")
                                 div(id="myDropdown" class="dropdown-content")
-                                    a(href="userAccount") View Account 
-                                    a(href="orders") Orders 
-                                    a(href="favorites") Favorites 
-                                    a(href="help") Help 
-                                    a(href="promotions") Promotions 
-                                    a(href="notifications") Notifications 
+                                    a(href="/userAccount") View Account 
+                                    a(href="/orders") Orders 
+                                    a(href="/favorites") Favorites 
+                                    a(href="/help") Help 
+                                    a(href="/promotions") Promotions 
+                                    a(href="/notifications") Notifications 
                                     a(href="/Logout") Sign out
                     tr
                         td.index(colspan='2')
@@ -57,8 +57,8 @@ html(lang="en")
                                     img.profile-cart(src="/images/restaurantIcon.png")
                                 div(id="myDropdown" class="dropdown-content")
                                     a(href="/editRestaurantAccount/${currentDetails.restaurantID}") View Account
-                                    a(href="restaurantInfo") Edit Menu
-                                    a(href="help") Help
+                                    a(href="/restaurantInfo") Edit Menu
+                                    a(href="/help") Help
                                     a(href="/Logout") Sign out
                     tr
                         td.index(colspan='2')
@@ -83,8 +83,8 @@ html(lang="en")
                                 a.login-btn(onclick="dropMenu()", class="dropbtn")
                                     img.profile-cart(src="/images/carIcon.png")
                                 div(id="myDropdown" class="dropdown-content")
-                                    a(href="driverAccount") View Account 
-                                    a(href="help") Help 
+                                    a(href="/driverAccount") View Account 
+                                    a(href="/help") Help 
                                     a(href="/Logout") Sign out
                     tr
                         td.index(colspan='2')
