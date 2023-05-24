@@ -102,14 +102,15 @@ router.get('/getAllRestaurants', (req, res) => {
 });
 
 router.post('/restaurant', async (req, res) => {
-  const { address, city, state, country, zip, name, username, email, password, phone, website, open, close, deliveryTime, cuisine,imageURL } = req.body;
-  const query = 'INSERT INTO Restaurant (restaurantName, website, address, city, state_, zipcode, country, open, closed, cuisine_type, image_url, delivery_time, restaurant_username, password, email, phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+  const { address, city, state, country, zip, name, username, email, password, phone, website, open, close, deliveryTime, cuisine } = req.body;
+  const query = 'INSERT INTO Restaurant (restaurant_Name, website, address_, city, state_, zip_code, country, open_, closed, cuisine_type, delivery_time, restaurant_username, password, email, phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
 
   try {
     // Promisify the MySQL query function
     const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
     // Execute the SQL query with the form data
-    await queryPromise(query, [name, website, address, city, state, zip, country, open, close, cuisine, imageURL, deliveryTime, username, hashPassword(password), email, phone]);
+    await queryPromise(query, [name, website, address, city, state, zip, country, open, close, cuisine, deliveryTime, username, hashPassword(password), email, phone]);
+
     console.log('Account Created!');
     // Redirect the user to the home page
     res.redirect('/');
