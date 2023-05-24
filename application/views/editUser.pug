@@ -16,17 +16,17 @@ block content
             p#get-started Edit Details
             img(src="/images/user.png", alt="Profile Picture")
             label(for="driver-name-input") Your Name:
-            input#driver-name-input(type="text", name="userName", value=user.username, maxlength="40", pattern="[a-zA-Z0-9\\s]{0,40}", required)
+            input#driver-name-input(type="text", name="fullname", value=user.full_name, maxlength="40", pattern="[a-zA-Z0-9\\s]{0,40}", required)
             label.driver-id(for="idUpload") Upload Id:
             input.driver-id(type="file", id="idUpload", name="idUpload")
             label(for="driver-phone-input") Phone Number:
-            input#driver-phone-input(type="tel", name="userPhone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', value=user.phone required)
+            input#driver-phone-input(type="tel", name="phone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', value=user.phone , required)
             label(for="driver-vehicle-input") Email:
-            input#driver-vehicle-input(type="text", placeholder="you@sfsu.edu", name="email", minlength="7", maxlength="20", pattern=".+@sfsu\.edu", oninvalid="setCustomValidity('Must be @sfsu.edu')", oninput="setCustomValidity('')")
+            input#driver-vehicle-input(type="text", value=user.email, placeholder="you@sfsu.edu", name="email", minlength="7", maxlength="20", pattern=".+@sfsu\.edu", oninvalid="setCustomValidity('Must be @sfsu.edu')", oninput="setCustomValidity('')")
             label(for="driver-location-input") Change Password:
-            input#driver-location-input(type="password", name="driverLocation", minlength="4", maxlength="20")
+            input#driver-location-input(type="password", name="password", minlength="4", maxlength="20")
             label(for="driver-location-input") Confirm Password:
-            input#driver-location-input(type="password", name="driverLocation", minlength="4", maxlength="20")
-            label(for="additional-info")  Bio (Optional):
+            input#driver-location-input(type="password", name="confirmPassword", minlength="4", maxlength="20")
+            label(for="additional-info") Bio (Optional):
             textarea#additional-info(type="textarea", name="additionalInfo", maxlength="200", pattern="[a-zA-Z0-9\\s.-?]{0,200}")
             button#save-driver-button(type="submit") Save Changes

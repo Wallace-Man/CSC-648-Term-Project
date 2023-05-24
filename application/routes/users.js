@@ -204,24 +204,28 @@ router.post('/editUser', ensureUserAuthenticated, async (req, res) => {
 
   try {
     // Check if password is provided
-    if (!password) {
-      throw new Error('Password is required');
+    if (!password && !confirmPassword) {
+      // Password fields are optional, so we only update the user information
+      const query = 'UPDATE user SET full_name = ?, email = ?, phone = ? WHERE user_id = ?';
+      const queryPromise = util.promisify(connection.query).bind(connection);
+      await queryPromise(query, [fullname, email, phone, userId]);
+    } else {
+      // Hash the password before updating the database
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      // Update the user information in the database
+      const query = 'UPDATE user SET full_name = ?, email = ?, phone = ?, password = ? WHERE user_id = ?';
+      const queryPromise = util.promisify(connection.query).bind(connection);
+      await queryPromise(query, [fullname, email, phone, hashedPassword, userId]);
     }
 
-    // Hash the password before updating the database
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Update the user information in the database
-    const query = 'UPDATE user SET full_name = ?, email = ?, phone = ?, password = ? WHERE user_id = ?';
-    const queryPromise = util.promisify(connection.query).bind(connection);
-    await queryPromise(query, [fullname, email, phone, hashedPassword, userId]);
-
-    res.redirect('/'); // Redirect to home page or any other desired page after successful update
+    res.redirect('/'); // Redirect to the home page or any other desired page after a successful update
   } catch (err) {
     console.error('Error updating user information:', err);
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
+
 
 
 
