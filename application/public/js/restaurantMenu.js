@@ -82,9 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return response.json();
     }).then(function (allRestaurants) {
         const urlParams = window.location.href;
-        const restaurantID = urlParams.slice(-1);
+        const restaurantID = urlParams.split('/')[4] //urlParams.slice(-1);
+        
         const restaurant = allRestaurants.find(restaurant => restaurant.restaurantID == restaurantID);
         localStorage.setItem('restaurant', JSON.stringify(restaurant));
+        
         const restaurantJSON = JSON.parse(localStorage.getItem('restaurant'));
 
         const menuName = document.getElementById('MenuName');
