@@ -6,7 +6,7 @@ extends layouts/main-layout
 
 block content
   main(style='margin-top: 80px')
-    h2.userAccount-heading Favorite Restaurants
+    h1 Favorite Restaurants
     section.popular-restaurants
       if favorites
         each favorite in favorites
@@ -15,11 +15,23 @@ block content
             img(src=favorite.image_url)
             p Rating: 
               span 4.5
-            a(href='/menu/' + favorite.restaurantID) View Menu
+            a(href='/restaurantMenuPage/' + favorite.restaurantID) View Menu
             p Deliver Time: 
               span= favorite.delivery_time
-            button(data-fav-id=favorite.id) Remove from Favorites
+            button(id='add-promo-button' data-fav-id=favorite.id) Remove 
   script.
+    let popular = document.getElementsByClassName('popular-restaurants')
+    console.log('popular', popular)
+    if(popular.length > 0 && popular[0].firstElementChild){
+      let hasFavorites = true;
+    }else{
+      console.log('no favorites')
+      let noFavorites = document.createElement('h3')
+      noFavorites.setAttribute('id', 'no-favorites')
+      noFavorites.innerHTML = 'You have no favorites.'
+      popular[0].appendChild(noFavorites)
+      //popular[0].innerHTML = '<h3>You have no favorites.</h3>'
+    }
     document.querySelectorAll('button[data-fav-id]').forEach(button => {
       button.addEventListener('click', (e) => {
         const favId = e.target.getAttribute('data-fav-id');
@@ -29,7 +41,18 @@ block content
           if (response.ok) {
             // Handle successful removal here
             // For example, you could remove the restaurant card from the DOM
-            e.target.parentElement.remove();
+                  e.target.parentElement.remove();
+                  if(popular.length > 0 && popular[0].firstElementChild){
+                    hasFavorites = true;
+                  }else{
+                      let noFavorites = document.createElement('h3')
+                      noFavorites.setAttribute('id', 'no-favorites')
+                      noFavorites.innerHTML = 'You have no favorites.'
+                      popular[0].appendChild(noFavorites)
+                  }
+
+
+
           } else {
             // Handle the error here
             console.error('Error removing favorite:', response);

@@ -27,11 +27,14 @@ block content
                         option(value='door') Leave at Door
                         option(value='meet') Meet Outside        
             #checkout-card 
-                #order-summary-card 
                     h3 Order Summary
+                    #order-summary-card 
+
                     .totals-info 
                         p Subtotal:
                         label(for="subtotal" id='subtotal-label')
+                        p Promo Discount:
+                        label(for= 'promos' id='promo-discount-label')
                         p Tax:
                         label(for="tax" id='tax-label')
                         p Total:

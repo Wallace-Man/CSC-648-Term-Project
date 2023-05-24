@@ -1,62 +1,98 @@
+const { search } = require("../../routes");
 
 document.addEventListener('DOMContentLoaded', function() {
     // Get the search form element
-    const form = document.querySelector('form.search-form');
+    // const form = document.querySelector('form.search-form');
 
-    // Add an event listener for form submissions
-    form.addEventListener('submit', function(event) {
-        // Prevent the default form submission behavior
-        event.preventDefault();
+    // // Add an event listener for form submissions
+    // form.addEventListener('submit', async function(event) {
+    //     // Prevent the default form submission behavior
+    //     event.preventDefault();
 
         // Get the selected category and search input values
-        const categorySelect = document.getElementById('category-select');
-        const selectedCategory = categorySelect.options[categorySelect.selectedIndex].value;
-        const searchInput = document.querySelector('input.search-input').value;
+        // const categorySelect = document.getElementById('category-select');
+        // const selectedCategory = categorySelect.options[categorySelect.selectedIndex].value;
+        // const searchInput = document.querySelector('input.search-input').value;
+        
+    //     console.log("selectedCategory: " + selectedCategory)
+    //     console.log("searchInput: " + searchInput)
+    //     url = encodeURIComponent( 'restaurants/getRestaurants?searchTerm=panda')
+    //     console.log("url: " + url)
+    //     const response = await fetch(url);
+    //     console.log("response data: " + response)
+    //     const data = await response.json();
+    //     console.log("data: " + data)
+    // });
+        // if(selectedCategory == '' && searchInput != '') {
 
-        // If a category is selected, fetch restaurants by cuisine type
-        if (selectedCategory !== '') {
-            fetch('restaurants/getCuisineType?searchTerm=' + encodeURIComponent(selectedCategory))
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(function(restaurantsByCuisineType) {
-                    // Call the displayRestaurants() function with the filtered restaurants
-                    displayRestaurants(restaurantsByCuisineType);
-                });
-        }
-        // If a search term is entered, fetch restaurants by name
-        else if (searchInput !== '') {
-            fetch('restaurants/getRestaurants?searchTerm=' + encodeURIComponent(searchInput))
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(function(restaurantsByName) {
-                    // Call the displayRestaurants() function with the filtered restaurants
-                    displayRestaurants(restaurantsByName);
-                });
-        }
-        // If no category or search term is specified, fetch all restaurants
-        else {
-            fetch('/restaurants/getAllRestaurants')
-                .then(function(response) {
-                    return response.json();
-                })
-                .then(function(allRestaurants) {
-                    // Call the displayRestaurants() function with all the restaurants
-                    displayRestaurants(allRestaurants);
-                });
-        }
-    });
+        //     fetch('/getRestaurants?searchTerm=' + searchInput)
+        //     .then(function(response) {
+        //         console.log("searching:")
+        //         console.log(response)
+        //         let restaurantData = response.json()
+        //         console.log(restaurantData)
+        //         return response.json();
+        //     })
+        //     .then(function(restaurantsByName) {
+        //         // Call the displayRestaurants() function with the filtered restaurants
+        //         displayRestaurants(restaurantsByName);
+        //     });
+        // }});
+            
+    //     // If a category is selected, fetch restaurants by cuisine type
+    //     if (selectedCategory !== '' ) {
+    //         fetch('restaurants/getCuisineType?searchTerm=' + encodeURIComponent(selectedCategory))
+    //             .then(function(response) {
+    //                 console.log("category respsonse:")
+    //                 return response.json();
+    //             })
+    //             .then(function(restaurantsByCuisineType) {
+    //                 // Call the displayRestaurants() function with the filtered restaurants
+    //                 displayRestaurants(restaurantsByCuisineType);
+    //             });
+    //     }
+    //     // If a search term is entered, fetch restaurants by name
+    //     else if (searchInput !== '') {
+    //         fetch('restaurants/getRestaurants?searchTerm=' + encodeURIComponent(searchInput))
+    //             .then(function(response) {
+    //                 console.log("search response with empty searchInput:")
+    //                 console.log(response)
 
+    //                 return response.json();
+    //             })
+    //             .then(function(restaurantsByName) {
+    //                 // Call the displayRestaurants() function with the filtered restaurants
+    //                 displayRestaurants(restaurantsByName);
+    //             });
+    //     }
+    //     // If no category or search term is specified, fetch all restaurants
+    //     else {
+    //         fetch('/restaurants/getAllRestaurants')
+    //             .then(function(response) {
+    //                 return response.json();
+    //             })
+    //             .then(function(allRestaurants) {
+    //                 // Call the displayRestaurants() function with all the restaurants
+    //                 displayRestaurants(allRestaurants);
+    //             });
+    //     }
+    // });
+
+    if(window.location.pathname != '/favorites') {
     // Fetch all restaurants when the page loads
-    fetch('/getAllRestaurants')
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(allRestaurants) {
-            // Call the displayRestaurants() function with all the restaurants
-            displayRestaurants(allRestaurants);
-        });
+    // fetch('/getAllRestaurants')
+    //     .then(function(response) {
+    //         console.log("search response with empty searchInput:")
+    //         return response.json();
+    //     })
+    //     .then(function(allRestaurants) {
+    //         // Call the displayRestaurants() function with all the 
+            
+
+    
+    //         displayRestaurants(allRestaurants);
+    //     });
+    }
 
     // Function to display the restaurants on the page
     function displayRestaurants(restaurants) {

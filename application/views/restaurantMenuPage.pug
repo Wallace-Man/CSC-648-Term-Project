@@ -36,8 +36,10 @@ block content
     head
         title Restaurant Menu
     body
-        div#restaurant-main
-            h1 Menu Items
+        div#restaurant-main 
+            #restaurantInfo
+                h1(id="MenuName")
+                img(id="restaurantImage")
             div#restaurant-menu
             if menuItems && menuItems.length > 0
                 each item in menuItems
@@ -56,8 +58,9 @@ block content
             hr
             ul 
                 p(id="cart-empty") 
-            button(id='clear-cart') Clear Cart
-            button(onclick="window.location.href='/cart'") Go To Cart
+            div#cart-buttons
+                button(id='clear-cart') Clear Cart
+                button(onclick="window.location.href='/cart'") Go To Cart
 
     script(type='module' src="/js/restaurantMenu.js")
     script(type='module' src="/js/cart.js")
