@@ -1042,7 +1042,7 @@ div.maps-frame {
   justify-content: center;
   margin-top: 40px;
   margin-bottom: 80px;
-  width: 50%;
+  width: 40%;
   max-width: fit-content;
 }
 
@@ -2388,6 +2388,7 @@ form#edit-restaurant-form select#edit-cuisine-choice {
   background-color: #ffc107;
 }
 .promo-card-info {
+
   flex: 1;
 }
 
@@ -2398,7 +2399,7 @@ form#edit-restaurant-form select#edit-cuisine-choice {
   border-radius: 5px;
   height: 40%;
   margin: 20px 5px 10px 1px;
-
+  border: none;
 }
 
 .checkoutContainer{
@@ -2555,7 +2556,7 @@ div#delivery-details-card select {
 }
 
 .notifications {
-  width: 60%;
+  width: 40%;
   margin: 20px auto;
 }
 
