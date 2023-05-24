@@ -1990,9 +1990,31 @@ a.login-link{
   border-radius: 5px;
   width: 100%;
 }
+
+#address-input, #city-input, #state-input, #country-input, #zip-input, #phone-input, #email-input, #website-input, #open-input, #closed-input, #cuisine-input, #price-input, #bio-input{
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.driver-id{
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
 #driver-name-input:focus, #driver-license-input:focus, #driver-phone-input:focus, #driver-vehicle-input:focus, #driver-location-input:focus {
   border-color: #000000;
 }
+
 #save-driver-button {
   display: block;
   margin-top: 20px;
