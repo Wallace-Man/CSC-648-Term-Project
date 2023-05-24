@@ -110,7 +110,6 @@ router.post('/restaurant', async (req, res) => {
     const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);
     // Execute the SQL query with the form data
     await queryPromise(query, [name, website, address, city, state, zip, country, open, close, cuisine, imageURL, deliveryTime, username, hashPassword(password), email, phone]);
-
     console.log('Account Created!');
     // Redirect the user to the home page
     res.redirect('/');
@@ -120,7 +119,6 @@ router.post('/restaurant', async (req, res) => {
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
-
 // Add a new route for the restaurant login
 router.get('/restaurantLogin', (req, res) => {
   res.render('restaurantLogin');
@@ -162,7 +160,7 @@ router.post('/restaurantLogin', async (req, res) => {
     }
 
     console.error('Error during login: Incorrect password');
-    res.status(401).send('Invalid email or password');
+    res.redirect('/login?error=Invalid email or password');
   } catch (err) {
     console.error('Error during login:', err);
     res.status(500).send('Internal Server Error: ' + err.message);
