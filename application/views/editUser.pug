@@ -12,13 +12,13 @@ block content
   br
   br
   .driverAccountFormContainer
-        form.driverAccountForm(id='user-account-form', action="/editUser", method="post")
+        form.driverAccountForm(id='user-account-form', action="/editUserAccount", method="post")
             p#get-started Edit Details
             img(src="/images/user.png", alt="Profile Picture")
             label(for="driver-name-input") Your Name:
             input#driver-name-input(type="text", name="fullname", value=user.full_name, maxlength="40", pattern="[a-zA-Z0-9\\s]{0,40}", required)
-            label.driver-id(for="idUpload") Upload Id:
-            input.driver-id(type="file", id="idUpload", name="idUpload")
+            label.driver-id(for="imageURL") Upload ID:
+            input.driver-id(type="url", id="imageURL", name="imageURL", placeholder='imageURL' value=user.gator_id)
             label(for="driver-phone-input") Phone Number:
             input#driver-phone-input(type="tel", name="phone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', value=user.phone , required)
             label(for="driver-vehicle-input") Email:
