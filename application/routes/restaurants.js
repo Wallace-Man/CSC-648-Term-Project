@@ -8,9 +8,9 @@ const util = require('util');
 
 // Create a MySQL connection
 const dbConnection = mysql.createConnection({
-  host: "34.102.56.1",
+  host: "localhost",
   user: "root",
-  password: "Jaws0044!!!!",
+  password: "Jaws0044",
   database: "restaurantdb",
 });
 
@@ -48,7 +48,7 @@ cloudinary.config({
 // Define /getRestaurants endpoint to search for restaurants by name
 router.get('/getRestaurants', (req, res) => {
   const searchTerm = req.query.searchTerm; // Get the search term from the query string
-  const query = "SELECT restaurantID, restaurant_Name FROM Restaurant WHERE restaurant_Name LIKE '%" + searchTerm + "%'";
+  const query = "SELECT restaurantID, restaurant_Name FROM restaurant WHERE restaurant_Name LIKE '%" + searchTerm + "%'";
  // Create SQL query
   console.log(`Executing query: ${query}`);
 
@@ -68,7 +68,7 @@ router.get('/getRestaurants', (req, res) => {
 router.get('/getCuisineType', (req, res) => {
   const searchTerm = req.query.searchTerm; // Get the search term from the query string
   // const query = "SELECT restaurant_Name, image_url,delivery_time FROM Restaurant WHERE cuisine_type = '" + searchTerm + "'"; // Create SQL query, include image_url
-  const query = "SELECT restaurantID, restaurant_Name, address_, city, state_, zip_code, image_url, delivery_time FROM Restaurant WHERE cuisine_type = '" + searchTerm + "'";
+  const query = "SELECT restaurantID, restaurant_Name, address_, city, state_, zip_code, image_url, delivery_time FROM restaurant WHERE cuisine_type = '" + searchTerm + "'";
 
 
   console.log(`Executing query: ${query}`);
@@ -88,7 +88,7 @@ router.get('/getCuisineType', (req, res) => {
 
 // Define /getAllRestaurants endpoint to return all restaurants
 router.get('/getAllRestaurants', (req, res) => {
-  const query = "SELECT * FROM Restaurant"; // Create SQL query
+  const query = "SELECT * FROM restaurant"; // Create SQL query
 
   // Execute the SQL query and handle the result
   dbConnection.query(query, (err, result) => {
@@ -103,7 +103,7 @@ router.get('/getAllRestaurants', (req, res) => {
 
 router.post('/restaurant', async (req, res) => {
   const { address, city, state, country, zip, name, username, email, password, phone, website, open, close, deliveryTime, cuisine,imageURL } = req.body;
-  const query = 'INSERT INTO Restaurant (restaurant_Name, website, address_, city, state_, zip_code, country, open_, closed, cuisine_type, image_url, delivery_time, restaurant_username, password, email, phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+  const query = 'INSERT INTO restaurant (restaurant_Name, website, address_, city, state_, zip_code, country, open_, closed, cuisine_type, image_url, delivery_time, restaurant_username, password, email, phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
 
   try {
     // Promisify the MySQL query function
@@ -134,7 +134,7 @@ router.post('/restaurantLogin', async (req, res) => {
   console.log('Request Body:', req.body); // Log the request body
 
   const { email, password } = req.body;
-  const query = 'SELECT restaurantID, password FROM Restaurant WHERE email = ?';
+  const query = 'SELECT restaurantID, password FROM restaurant WHERE email = ?';
 
   try {
     const queryPromise = util.promisify(dbConnection.query).bind(dbConnection);

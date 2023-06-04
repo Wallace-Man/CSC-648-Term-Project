@@ -7,9 +7,9 @@ const bcrypt = require('bcrypt');
 // Create a MySQL connection
 const connection = mysql.createConnection({
   
-  host: "34.102.56.1",
+  host: "localhost",
   user: "root",
-  password: "Jaws0044!!!!",
+  password: "Jaws0044",
   database: "restaurantdb",
 });
 
@@ -99,7 +99,7 @@ function ensureRestaurantAuthenticated(req, res, next) {
 
 router.get('/favorites', ensureUserAuthenticated, async (req, res) => {
   const user_id = req.session.user.user_id;
-  const querySelect = 'SELECT f.id, r.restaurantID, r.restaurant_Name, r.image_url, r.delivery_time FROM favorites AS f INNER JOIN Restaurant AS r ON f.restaurant_id = r.restaurantID WHERE f.user_id = ?';
+  const querySelect = 'SELECT f.id, r.restaurantID, r.restaurant_Name, r.image_url, r.delivery_time FROM favorites AS f INNER JOIN restaurant AS r ON f.restaurant_id = r.restaurantID WHERE f.user_id = ?';
   
   try {
     const queryPromise = util.promisify(connection.query).bind(connection);
@@ -163,7 +163,7 @@ router.delete('/favorites/:id', ensureUserAuthenticated, async (req, res) => {
 });
 router.get('/restaurantMenuPage/:id', async (req, res) => {
   const restaurantId = req.params.id;
-  const query = 'SELECT * FROM Menu WHERE restaurantId = ?';
+  const query = 'SELECT * FROM menu WHERE restaurantId = ?';
   const queryPromise = util.promisify(connection.query).bind(connection);
   const menuItems = await queryPromise(query, [restaurantId]);
   res.render('restaurantMenuPage', { menuItems });

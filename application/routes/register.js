@@ -7,9 +7,9 @@ const bcrypt = require('bcrypt');
 // Create a MySQL connection
 const connection = mysql.createConnection({
 
-  host: "34.102.56.1",
+  host: "localhost",
   user: "root",
-  password: "Jaws0044!!!!",
+  password: "Jaws0044",
   database: "restaurantdb",
 });
 

@@ -7,9 +7,9 @@ const saltRounds = 10;
 const { ensureUserAuthenticated, ensureRestaurantAuthenticated } = require('./users');
 
 const connection = mysql.createConnection({
-  host: "34.102.56.1",
+  host: "localhost",
   user: "root",
-  password: "Jaws0044!!!!",
+  password: "Jaws0044",
   database: "restaurantdb",
 });
 
@@ -23,7 +23,7 @@ connection.connect((err) => {
 });
 
 router.get('/menu', ensureRestaurantAuthenticated, async (req, res) => {
-  const query = 'SELECT * FROM Menu';
+  const query = 'SELECT * FROM menu';
   const restaurantID = req.session.restaurantID;
 
   try {
@@ -48,7 +48,7 @@ router.post('/addMenuItem/:restaurantID', ensureRestaurantAuthenticated, async (
   console.log('Request body:', req.body); // Log the body to see if the data is received correctly
   console.log('Restaurant ID:', restaurantID); // Log the restaurantID to see if it is received correctly
 
-  const query = 'INSERT INTO Menu (restaurantID, itemName, itemDescription, itemPrice) VALUES (?, ?, ?, ?)';
+  const query = 'INSERT INTO menu (restaurantID, itemName, itemDescription, itemPrice) VALUES (?, ?, ?, ?)';
 
   try {
     const queryPromise = util.promisify(connection.query).bind(connection);
@@ -117,7 +117,7 @@ router.post('/deleteMenuItem/:id', ensureRestaurantAuthenticated, async (req, re
 
 router.get('/restaurantInfo', ensureRestaurantAuthenticated, async (req, res) => {
   const restaurantID = req.session.restaurantID;
-  const query = 'SELECT * FROM Menu WHERE restaurantID = ?';
+  const query = 'SELECT * FROM menu WHERE restaurantID = ?';
 
   try {
     const queryPromise = util.promisify(connection.query).bind(connection);
@@ -131,7 +131,7 @@ router.get('/restaurantInfo', ensureRestaurantAuthenticated, async (req, res) =>
 });
 router.get('/returnMenu', ensureRestaurantAuthenticated, async (req, res) => {
   const restaurantID = req.query.restaurantID; // We're using query parameter to get restaurantID
-  const query = 'SELECT * FROM Menu WHERE restaurantID = ?';
+  const query = 'SELECT * FROM menu WHERE restaurantID = ?';
 
   try {
     const queryPromise = util.promisify(connection.query).bind(connection);
@@ -183,7 +183,7 @@ router.post('/editRestaurantAccount', ensureRestaurantAuthenticated, (req, res) 
     bio
   } = req.body;
 
-  connection.query('SELECT * FROM Restaurant WHERE restaurantID = ?', [restaurantID], function (error, results, fields) {
+  connection.query('SELECT * FROM restaurant WHERE restaurantID = ?', [restaurantID], function (error, results, fields) {
     if (error) {
       console.log('Error retrieving restaurant details:', error);
       return res.status(500).send('Error retrieving restaurant details');
@@ -219,7 +219,7 @@ router.post('/editRestaurantAccount', ensureRestaurantAuthenticated, (req, res) 
 
     console.log(updatedRestaurant);
 
-    const sqlQuery = `UPDATE Restaurant SET ? WHERE restaurantID = ?`;
+    const sqlQuery = `UPDATE restaurant SET ? WHERE restaurantID = ?`;
 
     console.log(sqlQuery); // log the SQL query
 
@@ -247,7 +247,7 @@ router.get('/editRestaurantAccount/:restaurantID', async (req, res) => {
     
     let currentDetails;
 //
-    const query = 'SELECT * FROM Restaurant WHERE restaurantID = ?';
+    const query = 'SELECT * FROM restaurant WHERE restaurantID = ?';
 
     try {
       const queryPromise = util.promisify(connection.query).bind(connection);
