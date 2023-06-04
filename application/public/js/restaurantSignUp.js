@@ -9,7 +9,7 @@
 const restaurantForm = document.getElementById("restaurant-form");
 const faq = document.getElementsByClassName("faq-page");
 
-window.addEventListener("resize", checkWindowSize);
+//window.addEventListener("resize", checkWindowSize);
 
 restaurantForm.addEventListener("submit", function (event) {
     event.preventDefault();

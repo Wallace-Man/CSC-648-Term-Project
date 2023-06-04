@@ -107,6 +107,54 @@ router.get('/driverLogout', (req, res) => {
 router.get('/driver', function(req, res) {
   res.render('driver');
 });
+// Route to handle editing driver information
+router.get('/editDriver', ensureDriverAuthenticated, async (req, res) => {
+  const driverID = req.session.driverID;
+  const query = 'SELECT * FROM drivers WHERE driverID = ?';
+
+  try {
+    const queryPromise = util.promisify(connection.query).bind(connection);
+    const driver = await queryPromise(query, [driverID]);
+
+    // Render the edit driver information page and pass the driver data
+    res.render('editDriver', { driver });
+  } catch (err) {
+    console.error('Error fetching driver data:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
+
+router.post('/editDriver', ensureDriverAuthenticated, async (req, res) => {
+  const driverID = req.session.driverID;
+  const { username, email, password, secPassword, phoneNum } = req.body;
+
+  // Validate input data
+  if (password !== secPassword) {
+    res.render('editDriver', { driver: { driver_username: username, driver_email: email, phone_number: phoneNum }, error: 'Passwords do not match' });
+    return;
+  }
+
+  try {
+    // Check if password is provided
+    if (!password) {
+      throw new Error('Password is required');
+    }
+
+    // Hash the password before updating the database
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Update the driver information in the database
+    const query = 'UPDATE drivers SET driver_username = ?, driver_email = ?, driver_password = ?, phone_number = ? WHERE driverID = ?';
+    const queryPromise = util.promisify(connection.query).bind(connection);
+    await queryPromise(query, [username, email, hashedPassword, phoneNum, driverID]);
+
+    res.redirect('/'); // Redirect to home page or any other desired page after successful update
+  } catch (err) {
+    console.error('Error updating driver information:', err);
+    res.status(500).send('Internal Server Error: ' + err.message);
+  }
+});
+
 
 
 // Export the router for use in other files

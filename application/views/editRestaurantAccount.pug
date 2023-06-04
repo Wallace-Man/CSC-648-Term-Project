@@ -10,10 +10,10 @@ block content
   .driverAccountFormContainer
     form.driverAccountForm(id='restaurant-account-form', action="/editRestaurantAccount", method="post")
       p#get-started Restaurant Profile
-      img(src="/images/meal.png", alt="Profile Picture")
+      img(src="/images//restaurant-pfp.png", alt="Profile Picture")
       label(for="driver-name-input") Restaurant Name:
       input#driver-name-input(type="text", name="restaurant_Name", placeholder='Dylan\'s Restaurant', minlength="3", maxlength="40")
-      label.driver-id(for="imageURL") Image URL:
+      label(for="driver-name-input") Image URL:
       input.driver-id(type="url", id="imageURL", name="imageURL")
       label(for="address-input") Address:
       input#address-input(type="text", name="address_", placeholder='123 Fake St.', minlength="5", maxlength="40")
@@ -105,5 +105,5 @@ block content
       label(for="price-input") Price Range:
       input#price-input(type="text", name="price_range", placeholder='1-5')
       label(for="bio-input") Bio (Optional):
-      textarea#bio-input(type="textarea", name="bio", placeholder="I am a restaurant near SF State!")
+      textarea#bio-input(type="textarea", name="bio", style="resize: none;" placeholder="I am a restaurant near SF State!")
       button#save-driver-button(type="submit") Edit Info

@@ -14,6 +14,9 @@ block content
 
     div.cart-form-container(id="the-container")
         h1 Cart
+        #restaurantInfo 
+            h2(id="restaurantName")
+            img(id="restaurantImage" class='clickable' onclick="window.location.href='/restaurant")
         br
         br
         p(id='cart-count')
@@ -21,12 +24,12 @@ block content
         div.cart-cards(id="cart-cards")
         hr
         p(id='active-promos')
-        p Subtotal:
+        p(id='cart-subtotal-label') Subtotal:
         label(for="subtotal" id='subtotal-label') 
 
 
-        button#save-driver-button(type="submit" onclick="window.location.href='/promotions'") Add Promotions
+        button#add-promo-button(type="submit" onclick="window.location.href='/promotions'") Add Promotions
 
-        button#save-driver-button(type="submit" onclick="window.location.href='/checkout'") Checkout
+        button#add-promo-button(type="submit" onclick="window.location.href='/checkout'") Checkout
         br
         br

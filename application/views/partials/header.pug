@@ -4,7 +4,7 @@ header
             table
                 tr
                     td(colspan='3')
-                        h5 SFSU - Spring 2023 - Team 02
+                        h5 SFSU Software Engineering Project - CSC 648-848 - Spring 2023 **For Demonstration Only**
                 tr
                     td.logo
                         a.logo(href='/')
@@ -12,7 +12,7 @@ header
                             span.bold Bites
                     td.search
                         div.nav-search-form-container
-                            form.search-form(action='')
+                            form.search-form(onsubmit = 'handleFormSubmit(event)', method="GET",  enctype="application/x-www-form-urlencoded")
                                 select#category-select(name='category')
                                     option(value='') All
                                     option(value='italian') Italian
@@ -27,8 +27,8 @@ header
                                     option(value='french') French
                                 input.search-input(id='search-input', type='text', placeholder='Search For Restaurants', maxlength="40", pattern="[a-zA-Z0-9\\s]{0,40}")
                                 
-                                button.search-btn(type='submit')
-                                    img.search(src='images/search-icon.png', alt='search',)
+                                button.search-btn(type='submit' onclick="window.location.href='/'")
+                                    img.search(src='/images/search-icon.png', alt='search',)
                     td.login-signup
                         div.right-btns
                             a.login-btn(href='/login')

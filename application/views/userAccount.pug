@@ -13,19 +13,19 @@ block content
   br
   br
   br
-  p#driver-profile Your Details 
+  p#driver-profile Account Info
   .driverAccountFormContainer
         form.driverAccountForm(id='driver-account-form', action="/editUser", method="GET")
-            p#get-started Your Profile
-            img(src="/images/user.png", alt="Profile Picture")
+            p#get-started 
+            img(src="/images/userProfile.png", alt="Profile Picture")
             label(for="driver-name-input") Your Name:
-            input#driver-name-input(type="text", name="userName", readonly value='John Doe')
-            label.driver-id(for="idUpload") Upload Id:
-            input.driver-id(type="file", id="idUpload", name="idUpload")
+            input#driver-name-input(type="text", name="fullname", readonly value=user.full_name)
+            label.driver-id(for="imageURL") Upload ID:
+            input.driver-id(type="url", id="imageURL", name="imageURL", placeholder='imageURL', readonly value=user.gator_id)
             label(for="driver-phone-input") Phone Number:
-            input#driver-phone-input(type="tel", name="userPhone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', readonly value='513-858-1394' )
+            input#driver-phone-input(type="tel", name="phone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', readonly value=user.phone)
             label(for="driver-vehicle-input") Email:
-            input#driver-vehicle-input(type="text", readonly value="you@sfsu.edu", name="email" )
-            label(for="additional-info")  Bio (Optional):
-            textarea#additional-info(type="textarea", name="additionalInfo" readonly placeholder="I am a student at SF State!")
+            input#driver-vehicle-input(type="text", readonly value=user.email, name="email")
+            label(for="additional-info") Bio (Optional):
+            textarea#additional-info(type="textarea", name="additionalInfo", readonly placeholder="I am a student at SF State!")
             button#save-driver-button(type="submit") Edit Info
