@@ -1,204 +1,196 @@
-//- This file contains restaurant sign up form that restaurant owners
-    have to fill out to register their restaurant. 
-
-    This page also contains the benefits of signing up with our platform, 
-    steps on how to sign up your restaurant, and answers to FAQ.
-
-    Author: Wallace Man
-//- 
 extends layouts/main-layout
 
 block content
-    head 
-        title Restaurant Sign Up - Gator Bites
-    div.restaurant-banner(id="top")
-        .restaurant-signup-form-container
-            form.restaurant-signup(id='restaurant-form' action="/restaurant", method="post", onsubmit="return validatePassword()")
-                p(id="mandatory-field") Mandatory Field *
-                p(id="get-started") Register your Restaurant
-                .form-group
-                    label.restaurant-signup(for="restaurant-address") Restaurant Address:
-                        span.mandatory-tag *
-                    input.restaurant-signup(type="restaurant-address", id="restaurant-address", name="address", minlength="5", maxlength="40", required)
-                .form-group
-                    label.restaurant-signup(for="city") City:
-                        span.mandatory-tag *
-                    input.restaurant-signup(type="city", id="city", name="city", minlength="3", maxlength="30", required)
-                .form-group
-                    label.restaurant-signup(for="state") State:
-                        span.mandatory-tag *
-                    select#cuisine-choice(name='state', required)
-                        option(disabled selected) --Select State--
-                        option(value='AL') Alabama
-                        option(value='AK') Alaska
-                        option(value='AZ') Arizona
-                        option(value='AR') Arkansas
-                        option(value='CA') California
-                        option(value='CO') Colorado
-                        option(value='CT') Connecticut
-                        option(value='DE') Delaware
-                        option(value='DC') District Of Columbia
-                        option(value='FL') Florida
-                        option(value='GA') Georgia
-                        option(value='HI') Hawaii
-                        option(value='ID') Idaho
-                        option(value='IL') Illinois
-                        option(value='IN') Indiana
-                        option(value='IA') Iowa
-                        option(value='KS') Kansas
-                        option(value='KY') Kentucky
-                        option(value='LA') Louisiana
-                        option(value='ME') Maine
-                        option(value='MD') Maryland
-                        option(value='MA') Massachusetts
-                        option(value='MI') Michigan
-                        option(value='MN') Minnesota
-                        option(value='MS') Mississippi
-                        option(value='MO') Missouri
-                        option(value='MT') Montana
-                        option(value='NE') Nebraska
-                        option(value='NV') Nevada
-                        option(value='NH') New Hampshire
-                        option(value='NJ') New Jersey
-                        option(value='NM') New Mexico
-                        option(value='NY') New York
-                        option(value='NC') North Carolina
-                        option(value='ND') North Dakota
-                        option(value='OH') Ohio
-                        option(value='OK') Oklahoma
-                        option(value='OR') Oregon
-                        option(value='PA') Pennsylvania
-                        option(value='RI') Rhode Island
-                        option(value='SC') South Carolina
-                        option(value='SD') South Dakota
-                        option(value='TN') Tennessee
-                        option(value='TX') Texas
-                        option(value='UT') Utah
-                        option(value='VT') Vermont
-                        option(value='VA') Virginia
-                        option(value='WA') Washington
-                        option(value='WV') West Virginia
-                        option(value='WI') Wisconsin
-                        option(value='WY') Wyoming
-                .form-group
-                    label.restaurant-signup(for="country") Country:
-                        span.mandatory-tag *
-                    input.restaurant-signup(type="country", id="country", name="country", minlength="3", maxlength="30", required)
-                .form-group
-                    label.restaurant-signup(for="zipcode") Zip Code:
-                        span.mandatory-tag *
-                    input.restaurant-signup(type="text", id="zipcode", name="zip", pattern="[0-9]{5}", oninvalid="setCustomValidity('Must be a valid zip')", oninput="setCustomValidity('')", required)
-                .form-group
-                    label.restaurant-signup(for="restaurant-name") Restaurant Name:
-                        span.mandatory-tag *
-                    input.restaurant-signup(type="restaurant-name", id="restaurant-name", name="name", minlength="3", maxlength="40", required)
-                .form-group
-                    label.restaurant-signup(for="username") Username:
-                        span.mandatory-tag *
-                    input.restaurant-signup(type="username", id="username", name="username", minlength="3", maxlength="20", required)
-                .form-group
-                    label.restaurant-signup(for="email") Email:
-                        span.mandatory-tag *
-                    input.restaurant-signup(type="email", id="email", name="email", placeholder='example123@ex.com', required)
-                .form-group
-                    label.restaurant-signup(for="password") Password:
-                        span.mandatory-tag *
-                    input.restaurant-signup(type="password", id="password", name="password", minlength="4", maxlength="20", required)
-                .form-group
-                    label.restaurant-signup(for="password2") Confirm Password:
-                        span.mandatory-tag *
-                    input.restaurant-signup(type="password", id="password2", name="password2", minlength="4", maxlength="20", required)
-                .form-group
-                    label.restaurant-signup(for="phone") Phone:
-                        span.mandatory-tag *
-                    input.restaurant-signup(type="tel", id="phone", name="phone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', placeholder='123-456-7890', required)
-                .form-group
-                    label.restaurant-signup(for="website") Website:
-                    input.restaurant-signup(type="url", id="website", name="website", placeholder='https://example.com', maxlength="40")
-                .form-group
-                    label.restaurant-signup(for="hours") Operating Hours:
-                        span.mandatory-tag *
-                    input.restaurant-signup(type="time", id="start-time", name="open", required)
-                    input.restaurant-signup(type="time", id="end-time", name="close", style="margin-left: 10px;" required)
-                .form-group
-                    label.restaurant-signup(for="delivery-time") Delivery Time(minutes):
-                    input.restaurant-signup(type="text", id="delivery-time", name="deliveryTime")
-                .form-group
-                    label.restaurant-signup(for="cuisine") Cuisine:
-                        span.mandatory-tag *
-                    select#cuisine-choice(name='cuisine', required)
-                        option(disabled selected) --Select An Option--
-                        option(value='american') American
-                        option(value='italian') Italian
-                        option(value='mexican') Mexican
-                        option(value='chinese') Chinese
-                        option(value='japanese') Japanese
-                        option(value='korean') Korean
-                        option(value='thai') Thai
-                        option(value='vietnamese') Vietnamese
-                        option(value='greek') Greek
-                        option(value='french') French
-                .form-group
-                    label.restaurant-signup(for="imageURL") Image URL:
-                    input.restaurant-signup(type="url", id="imageURL", name="imageURL", placeholder='imageURL')
-                button.signup-form-btn(type="submit") Become a Partner
-                hr 
-                a.forgot-password(href="/restaurantLogin") Already have an account? Login here
+  head
+    title Restaurant Sign Up - Gator Bites
+  div.restaurant-banner(id="top")
+    .restaurant-signup-form-container
+      form.restaurant-signup(id='restaurant-form', action="/restaurant", method="post", onsubmit="return validatePassword()")
+        p(id="mandatory-field") Mandatory Field *
+        p(id="get-started") Register your Restaurant
+        .form-group
+          label.restaurant-signup(for="restaurant-address") Restaurant Address:
+            span.mandatory-tag *
+          input.restaurant-signup(type="text", id="restaurant-address", name="address", minlength="5", maxlength="40", required)
+        .form-group
+          label.restaurant-signup(for="city") City:
+            span.mandatory-tag *
+          input.restaurant-signup(type="text", id="city", name="city", minlength="3", maxlength="30", required)
+        .form-group
+          label.restaurant-signup(for="state") State:
+            span.mandatory-tag *
+          select#cuisine-choice(name='state', required)
+            option(disabled selected) --Select State--
+            option(value='AL') Alabama
+            option(value='AK') Alaska
+            option(value='AZ') Arizona
+            option(value='AR') Arkansas
+            option(value='CA') California
+            option(value='CO') Colorado
+            option(value='CT') Connecticut
+            option(value='DE') Delaware
+            option(value='DC') District Of Columbia
+            option(value='FL') Florida
+            option(value='GA') Georgia
+            option(value='HI') Hawaii
+            option(value='ID') Idaho
+            option(value='IL') Illinois
+            option(value='IN') Indiana
+            option(value='IA') Iowa
+            option(value='KS') Kansas
+            option(value='KY') Kentucky
+            option(value='LA') Louisiana
+            option(value='ME') Maine
+            option(value='MD') Maryland
+            option(value='MA') Massachusetts
+            option(value='MI') Michigan
+            option(value='MN') Minnesota
+            option(value='MS') Mississippi
+            option(value='MO') Missouri
+            option(value='MT') Montana
+            option(value='NE') Nebraska
+            option(value='NV') Nevada
+            option(value='NH') New Hampshire
+            option(value='NJ') New Jersey
+            option(value='NM') New Mexico
+            option(value='NY') New York
+            option(value='NC') North Carolina
+            option(value='ND') North Dakota
+            option(value='OH') Ohio
+            option(value='OK') Oklahoma
+            option(value='OR') Oregon
+            option(value='PA') Pennsylvania
+            option(value='RI') Rhode Island
+            option(value='SC') South Carolina
+            option(value='SD') South Dakota
+            option(value='TN') Tennessee
+            option(value='TX') Texas
+            option(value='UT') Utah
+            option(value='VT') Vermont
+            option(value='VA') Virginia
+            option(value='WA') Washington
+            option(value='WV') West Virginia
+            option(value='WI') Wisconsin
+            option(value='WY') Wyoming
+        .form-group
+          label.restaurant-signup(for="country") Country:
+            span.mandatory-tag *
+          input.restaurant-signup(type="text", id="country", name="country", minlength="3", maxlength="30", required)
+        .form-group
+          label.restaurant-signup(for="zipcode") Zip Code:
+            span.mandatory-tag *
+          input.restaurant-signup(type="text", id="zipcode", name="zip", pattern="[0-9]{5}", oninvalid="setCustomValidity('Must be a valid zip')", oninput="setCustomValidity('')", required)
+        .form-group
+          label.restaurant-signup(for="restaurant-name") Restaurant Name:
+            span.mandatory-tag *
+          input.restaurant-signup(type="text", id="restaurant-name", name="name", minlength="3", maxlength="40", required)
+        .form-group
+          label.restaurant-signup(for="username") Username:
+            span.mandatory-tag *
+          input.restaurant-signup(type="text", id="username", name="username", minlength="3", maxlength="20", required)
+        .form-group
+          label.restaurant-signup(for="email") Email:
+            span.mandatory-tag *
+          input.restaurant-signup(type="email", id="email", name="email", placeholder='example123@ex.com', required)
+        .form-group
+          label.restaurant-signup(for="password") Password:
+            span.mandatory-tag *
+          input.restaurant-signup(type="password", id="password", name="password", minlength="4", maxlength="20", required)
+        .form-group
+          label.restaurant-signup(for="password2") Confirm Password:
+            span.mandatory-tag *
+          input.restaurant-signup(type="password", id="password2", name="password2", minlength="4", maxlength="20", required)
+        .form-group
+          label.restaurant-signup(for="phone") Phone:
+            span.mandatory-tag *
+          input.restaurant-signup(type="tel", id="phone", name="phone", pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}', placeholder='123-456-7890', required)
+        .form-group
+          label.restaurant-signup(for="website") Website:
+          input.restaurant-signup(type="url", id="website", name="website", placeholder='https://example.com', maxlength="40")
+        .form-group
+          label.restaurant-signup(for="hours") Operating Hours:
+            span.mandatory-tag *
+          input.restaurant-signup(type="time", id="start-time", name="open", required)
+          input.restaurant-signup(type="time", id="end-time", name="close", style="margin-left: 10px;", required)
+        .form-group
+          label.restaurant-signup(for="delivery-time") Delivery Time(minutes):
+          input.restaurant-signup(type="text", id="delivery-time", name="deliveryTime")
+        .form-group
+          label.restaurant-signup(for="cuisine") Cuisine:
+            span.mandatory-tag *
+          select#cuisine-choice(name='cuisine', required)
+            option(disabled selected) --Select An Option--
+            option(value='american') American
+            option(value='italian') Italian
+            option(value='mexican') Mexican
+            option(value='chinese') Chinese
+            option(value='japanese') Japanese
+            option(value='korean') Korean
+            option(value='thai') Thai
+            option(value='vietnamese') Vietnamese
+            option(value='greek') Greek
+            option(value='french') French
+        .form-group
+          label.restaurant-signup(for="imageURL") Image URL:
+          input.restaurant-signup(type="url", id="imageURL", name="imageURL", placeholder='imageURL')
+        button.signup-form-btn(type="submit") Become a Partner
+        hr
+        a.forgot-password(href="/restaurantLogin") Already have an account? Login here
 
-    .info-about-signingup 
-        .info-top-part 
-            h1 Benefits Of Growing Your Business Using GatorBites 
-        .info-bottom-part 
-            .bottom-part-left
-                h3 Attracting new customers 
-                h4 Reach out to your SFSU's students and faculty
-            .bottom-part-middle 
-                h3 Increase your orders 
-                h4 Stand out by offering deals to SFSU's students and faculty
-            .bottom-part-right
-                h3 Ease of use
-                h4 Manage your restaurant's order and info with our easy-to-use tools
-        .steps-to-signup 
-            h2 GatorBites Signup is Quick, Simple, and Easy 
-            .steps-container
-                div.steps-container-img
-                    img(src='/images/ordering.png')
-                .steps
-                    li
-                        | 1. Please complete the 
-                        a(href='#top') signup form
-                        | .
-                    li 2. Wait up to 24 hour period for your application to be approved
-                    li 3. Enter your restaurant's info and menu item
-                    li 4. Start earning money
-        .faq 
-            h1 Frequently Asked Questions
-            .faq-container
-                .faq-one
-                    // faq question 1
-                    h3.faq-page How will my customer base increase?
-                    // faq answer 1
-                    .faq-body
-                        p When you become a partner with Gator Bites, you can expect to see your monthly revenue stream increase substantially due to the large community of students, staff, and faculty which will be able place orders with your establishment directly through our app.
-                hr.hr-line
-                .faq-two
-                    // faq question 2
-                    h3.faq-page How long does it take to become a partner?
-                    // faq answer 2
-                    .faq-body
-                        p You can begin the process by signing up here. It will take less than 48 hours to be approved, have your menu set up, and start accepting orders.
-                hr.hr-line
-                .faq-three
-                    // faq question 3
-                    h3.faq-page Who handles the food delivery?
-                    // faq answer 3
-                    .faq-body
-                        p Our platform will connect you to drivers that signed up for our delivery service. You do not have to have your own delivery staff.
-                hr.hr-line
-                .faq-four 
-                    // faq question 4
-                    h3.faq-page Why should I sign up with GatorBites over food delivery services?
-                    // faq answer 4
-                    .faq-body 
-                        p Discounts will be offered our customer base to encourage them to order from our platform , helping your restaurant grow faster.
-    script(src="/js/restaurantSignUp.js")
+  .info-about-signingup
+    .info-top-part
+      h1 Benefits Of Growing Your Business Using GatorBites
+    .info-bottom-part
+      .bottom-part-left
+        h3 Attracting new customers
+        h4 Reach out to your SFSU's students and faculty
+      .bottom-part-middle
+        h3 Increase your orders
+        h4 Stand out by offering deals to SFSU's students and faculty
+      .bottom-part-right
+        h3 Ease of use
+        h4 Manage your restaurant's order and info with our easy-to-use tools
+    .steps-to-signup
+      h2 GatorBites Signup is Quick, Simple, and Easy
+      .steps-container
+        div.steps-container-img
+          img(src='/images/ordering.png')
+        .steps
+          li
+            | 1. Please complete the
+            a(href='#top') signup form
+            | .
+          li 2. Wait up to 24 hour period for your application to be approved
+          li 3. Enter your restaurant's info and menu item
+          li 4. Start earning money
+    .faq
+      h1 Frequently Asked Questions
+      .faq-container
+        .faq-one
+          // faq question 1
+          h3.faq-page How will my customer base increase?
+          // faq answer 1
+          .faq-body
+            p When you become a partner with Gator Bites, you can expect to see your monthly revenue stream increase substantially due to the large community of students, staff, and faculty which will be able place orders with your establishment directly through our app.
+        hr.hr-line
+        .faq-two
+          // faq question 2
+          h3.faq-page How long does it take to become a partner?
+          // faq answer 2
+          .faq-body
+            p You can begin the process by signing up here. It will take less than 48 hours to be approved, have your menu set up, and start accepting orders.
+        hr.hr-line
+        .faq-three
+          // faq question 3
+          h3.faq-page Who handles the food delivery?
+          // faq answer 3
+          .faq-body
+            p Our platform will connect you to drivers that signed up for our delivery service. You do not have to have your own delivery staff.
+        hr.hr-line
+        .faq-four
+          // faq question 4
+          h3.faq-page Why should I sign up with GatorBites over food delivery services?
+          // faq answer 4
+          .faq-body
+            p Discounts will be offered our customer base to encourage them to order from our platform , helping your restaurant grow faster.
+  script(src="/js/restaurantSignUp.js")

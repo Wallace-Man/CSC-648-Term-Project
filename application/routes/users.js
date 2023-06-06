@@ -98,15 +98,18 @@ function ensureRestaurantAuthenticated(req, res, next) {
 }
 
 router.get('/favorites', ensureUserAuthenticated, async (req, res) => {
-  const user_id = req.session.user.user_id;
+  const user_id = req.session.user.user_ID;
+  console.log(`GET /favorites userId: ${user_id}`); // New log
+
   const querySelect = 'SELECT f.id, r.restaurantID, r.restaurant_Name, r.image_url, r.delivery_time FROM favorites AS f INNER JOIN restaurant AS r ON f.restaurant_id = r.restaurantID WHERE f.user_id = ?';
-  
+
   try {
     const queryPromise = util.promisify(connection.query).bind(connection);
     const favorites = await queryPromise(querySelect, [user_id]);
 
     // log favorites data
-    console.log('Favorites:', favorites);
+    console.log(`GET Favorites Query Result: ${JSON.stringify(favorites)}`); // Modified log
+
     res.render('favorites', { favorites: favorites || [] });
 
   } catch (err) {
@@ -119,25 +122,28 @@ router.get('/favorites', ensureUserAuthenticated, async (req, res) => {
 
 
 
-
 router.post('/favorites', ensureUserAuthenticated, async (req, res) => {
-  const user_id = req.session.user.user_id;
+  const user_id = req.session.user.user_ID;
   const { restaurant_id } = req.body;
   const querySelect = 'SELECT * FROM favorites WHERE user_id = ? AND restaurant_id = ?';
   const queryInsert = 'INSERT INTO favorites (user_id, restaurant_id) VALUES (?, ?)';
   const queryDelete = 'DELETE FROM favorites WHERE user_id = ? AND restaurant_id = ?';
-  
+
   try {
     const queryPromise = util.promisify(connection.query).bind(connection);
     const favorites = await queryPromise(querySelect, [user_id, restaurant_id]);
 
+    console.log('Select Query Result:', favorites);
+
     if (favorites.length > 0) {
       // The restaurant is already in the user's favorites, so remove it
-      await queryPromise(queryDelete, [user_id, restaurant_id]);
+      const deleteResult = await queryPromise(queryDelete, [user_id, restaurant_id]);
+      console.log('Delete Query Result:', deleteResult);
       res.json({ success: true, action: 'removed' });
     } else {
       // The restaurant is not in the user's favorites, so add it
-      await queryPromise(queryInsert, [user_id, restaurant_id]);
+      const insertResult = await queryPromise(queryInsert, [user_id, restaurant_id]);
+      console.log('Insert Query Result:', insertResult);
       res.json({ success: true, action: 'added' });
     }
 
@@ -147,8 +153,9 @@ router.post('/favorites', ensureUserAuthenticated, async (req, res) => {
   }
 });
 
+
 router.delete('/favorites/:id', ensureUserAuthenticated, async (req, res) => {
-  const user_id = req.session.user.user_id;
+  const user_id = req.session.user.user_ID;
   const favorite_id = req.params.id;
   const queryDelete = 'DELETE FROM favorites WHERE id = ? AND user_id = ?';
 
@@ -174,7 +181,7 @@ router.get('/restaurantMenuPage', (req, res) => {
 });
 
 router.post('/editUserAccount', ensureUserAuthenticated, async (req, res) => {
-  const userId = req.session.user.user_id;
+  const userId = req.session.user.user_ID;
   const { fullname, email, phone, password, confirmPassword, imageURL } = req.body;
 
   console.log("Inside POST: UserID =", userId);
@@ -227,7 +234,7 @@ router.post('/editUserAccount', ensureUserAuthenticated, async (req, res) => {
 
 
 router.get('/editUserAccount/:userId', ensureUserAuthenticated, async (req, res) => {
-  const userId = req.params.userId;
+  const userId = req.params.user_ID;
   console.log(userId);
 
   if (!userId) {
@@ -236,7 +243,7 @@ router.get('/editUserAccount/:userId', ensureUserAuthenticated, async (req, res)
 
   try {
     const queryPromise = util.promisify(connection.query).bind(connection);
-    const user = await queryPromise('SELECT * FROM user WHERE user_id = ?', [userId]);
+    const user = await queryPromise('SELECT * FROM user WHERE user_ID = ?', [userId]);
 
     // Render the edit user information page and pass the user data
     res.render('editUser', { user });

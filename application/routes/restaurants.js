@@ -102,7 +102,12 @@ router.get('/getAllRestaurants', (req, res) => {
 });
 
 router.post('/restaurant', async (req, res) => {
-  const { address, city, state, country, zip, name, username, email, password, phone, website, open, close, deliveryTime, cuisine,imageURL } = req.body;
+  console.log(req.body);
+  const { address, city, state, country, zip, name, username, email, password, phone, website, open, close, deliveryTime, cuisine, imageURL } = req.body;
+  console.log('Inside Restaurant');
+  // Log the form data
+  console.log('Form data:', req.body);
+
   const query = 'INSERT INTO restaurant (restaurant_Name, website, address_, city, state_, zip_code, country, open_, closed, cuisine_type, image_url, delivery_time, restaurant_username, password, email, phone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
 
   try {
@@ -119,6 +124,8 @@ router.post('/restaurant', async (req, res) => {
     res.status(500).send('Internal Server Error: ' + err.message);
   }
 });
+
+
 // Add a new route for the restaurant login
 router.get('/restaurantLogin', (req, res) => {
   res.render('restaurantLogin');
